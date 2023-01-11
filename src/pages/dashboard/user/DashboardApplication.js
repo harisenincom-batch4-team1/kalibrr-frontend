@@ -9,7 +9,7 @@ const DashboardApplication = () => {
           <h1 className="text-3xl font-bold py-5 hidden md:block w-64">
             Lamaran
           </h1>
-          <div className="w-full px-5 mx-auto">
+          <div className="w-full px-5 md:px-0 mx-auto">
             <div className="w-auto bg-[#edf2f7] flex justify-between rounded-full rouded-full overflow-hidden">
               <input
                 type="text"
