@@ -15,10 +15,16 @@ const App = () => {
 
         {/* Protect Route */}
         <Route path="/user/dashboard/profile" element={<DashboardProfile />} />
-        <Route path="/user/dashboard/application" element={<DashboardApplication />} />
+        <Route
+          path="/user/dashboard/application"
+          element={<DashboardApplication />}
+        />
         <Route path="/user/dashboard/message" element={<DashboardMessage />} />
         <Route path="/user/dashboard/saved" element={<DashboardSaved />} />
-        <Route path="/user/dashboard/setting" element={<DashboardUserSetting />} />
+        <Route
+          path="/user/dashboard/setting"
+          element={<DashboardUserSetting />}
+        />
       </Routes>
     </BrowserRouter>
   );
