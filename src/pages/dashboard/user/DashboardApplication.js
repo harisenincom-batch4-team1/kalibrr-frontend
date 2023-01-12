@@ -1,12 +1,12 @@
-import HeaderWithSearch from "./components/header/HeaderWithSearch";
 import NavbarUserLayout from "./layouts/NavbarUserLayout";
 import Container from "./layouts/Container";
+import HeaderSearchApplication from "./components/header/HeaderSearchAppication";
 
 const DashboardApplication = () => {
   return (
     <NavbarUserLayout>
       <Container>
-        <HeaderWithSearch title={"Lamaran"} />
+        <HeaderSearchApplication title={"Lamaran"} />
       </Container>
     </NavbarUserLayout>
   );

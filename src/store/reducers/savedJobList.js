@@ -55,20 +55,12 @@ export const savedJobListReducer = (state = initialState, action) => {
     }
     case "loaded": {
       switch (action.type) {
-        case "FETCH_DETAIL": {
+        case "CHANGE_INPUT": {
           return {
             ...state,
-            tagDetail: "loading",
-            jobDetailId: action.payload,
-            errorMsg: "",
+            inputValue: action.payload,
           };
         }
-      }
-    }
-  }
-  switch (state.tagDetail) {
-    case "idle": {
-      switch (action.type) {
         case "FETCH_DETAIL": {
           return {
             ...state,
@@ -76,13 +68,6 @@ export const savedJobListReducer = (state = initialState, action) => {
             jobDetailId: action.payload,
           };
         }
-        default: {
-          return state;
-        }
-      }
-    }
-    case "loading": {
-      switch (action.type) {
         case "FETCH_DETAIL_SUCCESS": {
           return {
             ...state,
@@ -103,8 +88,26 @@ export const savedJobListReducer = (state = initialState, action) => {
           return state;
       }
     }
-    case "loaded": {
+    case "empty": {
       switch (action.type) {
+        case "CHANGE_INPUT": {
+          return {
+            ...state,
+            inputValue: action.payload,
+          };
+        }
+        default:
+          return state;
+      }
+    }
+    case "error": {
+      switch (action.type) {
+        case "CHANGE_INPUT": {
+          return {
+            ...state,
+            inputValue: action.payload,
+          };
+        }
         default:
           return state;
       }

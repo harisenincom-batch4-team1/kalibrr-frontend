@@ -1,8 +1,8 @@
-import Title from "./Title";
+import Title from "../card/Title";
 
 const CardCV = () => {
   return (
-    <div className="w-full rounded-lg overflow-hidden border-[1px] hover:shadow">
+    <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-[1px] hover:shadow">
       <Title title={"CV"} />
       <div className="bg-white px-4 md:flex gap-5">
         <div className="space-y-3 my-5 md:mt-0 w-full">

@@ -5,7 +5,6 @@ import NavbarUserLayout from "./layouts/NavbarUserLayout";
 import SkeletonCard from "./components/loading/SkeletonCard";
 import SkeletonJobDetail from "./components/loading/SkeletonJobDetail";
 import CardSavedJobList from "./components/saved/CardSavedJobList";
-import HeaderWithSearch from "./components/header/HeaderWithSearch";
 import DetailSavedJob from "./components/saved/DetailSavedJob";
 import EmptySavedJobList from "./components/saved/EmptySavedJobList";
 import ErrorSavedJobList from "./components/saved/ErrorSavedJobList";
@@ -15,6 +14,7 @@ import ContainerSavedJobList from "./layouts/ContainerSavedJobList";
 import LeftWrapperSavedJobList from "./layouts/LeftWrapperSavedJobList";
 import RightWrapperSavedJobList from "./layouts/RightWrapperSavedJobList";
 import DetailSavedWrapper from "./layouts/DetailSavedWrapper";
+import HeaderSearchSavedJob from "./components/header/HeaderSearchSavedJob";
 
 const DashboardSaved = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const DashboardSaved = () => {
   return (
     <NavbarUserLayout>
       <Container>
-        <HeaderWithSearch title={"Disimpan"} />
+        <HeaderSearchSavedJob title={"Disimpan"} />
         <ContainerSavedJobList>
           <LeftWrapperSavedJobList tag={tag}>
             {tag === "loading" && <SkeletonCard />}

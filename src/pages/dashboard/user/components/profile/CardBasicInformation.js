@@ -1,8 +1,8 @@
-import Title from "./Title";
+import Title from "../card/Title";
 
 const CardBasicInformation = () => {
   return (
-    <div className="w-full rounded-lg overflow-hidden border-[1px] hover:shadow relative">
+    <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-[1px] hover:shadow relative">
       <Title title={"Informasi Dasar"} />
       <button className="absolute right-0 top-0 py-3 px-4 text-white font-medium">
         Edit
