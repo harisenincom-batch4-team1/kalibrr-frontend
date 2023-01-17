@@ -1,10 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
-import DashboardProfile from "./pages/dashboard/user/DashboardProfile";
-import DashboardApplication from "./pages/dashboard/user/DashboardApplication";
-import DashboardMessage from "./pages/dashboard/user/DashboardMessage";
-import DashboardSaved from "./pages/dashboard/user/DashboardSaved";
-import DashboardUserSetting from "./pages/dashboard/user/DashboardUserSetting";
+import UserDashboardProfile from "./pages/user_dashboard/UserDashboardProfile";
+import UserDashboardApplication from "./pages/user_dashboard/UserDashboardApplication";
+import UserDashboardMessage from "./pages/user_dashboard/UserDashboardMessage";
+import UserDashboardSaved from "./pages/user_dashboard/UserDashboardSaved";
+import UserDashboardSetting from "./pages/user_dashboard/UserDashboardSetting";
+import CompanyDashboardProfile from "./pages/company_dashboard/CompanyDashboardProfile";
+import CompanyDashboardJob from "./pages/company_dashboard/CompanyDashboardJob";
+import CompanyDashboardApplicant from "./pages/company_dashboard/CompanyDashboardApplicant";
+import CompanyDashboardMessage from "./pages/company_dashboard/CompanyDashboardMessage";
+import CompanyDashboardSetting from "./pages/company_dashboard/CompanyDashboardSetting";
 
 const App = () => {
   return (
@@ -13,12 +18,19 @@ const App = () => {
         {/* Public Route */}
         <Route path="/" element={<Homepage />} />
 
-        {/* Protect Route */}
-        <Route path="/user/dashboard/profile" element={<DashboardProfile />} />
-        <Route path="/user/dashboard/application" element={<DashboardApplication />} />
-        <Route path="/user/dashboard/message" element={<DashboardMessage />} />
-        <Route path="/user/dashboard/saved" element={<DashboardSaved />} />
-        <Route path="/user/dashboard/setting" element={<DashboardUserSetting />} />
+        {/* Protect Route User Dashboard  */}
+        <Route path="/user/dashboard/profile" element={<UserDashboardProfile />} />
+        <Route path="/user/dashboard/application" element={<UserDashboardApplication />} />
+        <Route path="/user/dashboard/message" element={<UserDashboardMessage />} />
+        <Route path="/user/dashboard/saved" element={<UserDashboardSaved />} />
+        <Route path="/user/dashboard/setting" element={<UserDashboardSetting />} />
+
+        {/* Protect Route Company Dashboard */}
+        <Route path="/company/dashboard/profile" element={<CompanyDashboardProfile />} />
+        <Route path="/company/dashboard/job" element={<CompanyDashboardJob />} />
+        <Route path="/company/dashboard/applicant" element={<CompanyDashboardApplicant />} />
+        <Route path="/company/dashboard/message" element={<CompanyDashboardMessage />} />
+        <Route path="/company/dashboard/setting" element={<CompanyDashboardSetting />} />
       </Routes>
     </BrowserRouter>
   );

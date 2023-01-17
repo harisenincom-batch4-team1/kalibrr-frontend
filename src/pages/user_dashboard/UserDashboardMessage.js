@@ -2,7 +2,7 @@ import HeaderTitle from "./components/header/HeaderTitle";
 import NavbarUserLayout from "./layouts/NavbarUserLayout";
 import Container from "./layouts/Container";
 
-const DashboardMessage = () => {
+const UserDashboardMessage = () => {
   return (
     <NavbarUserLayout>
       <Container>
@@ -12,4 +12,4 @@ const DashboardMessage = () => {
   );
 };
 
-export default DashboardMessage;
+export default UserDashboardMessage;

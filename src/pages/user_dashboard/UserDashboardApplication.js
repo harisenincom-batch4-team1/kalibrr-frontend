@@ -2,7 +2,7 @@ import NavbarUserLayout from "./layouts/NavbarUserLayout";
 import Container from "./layouts/Container";
 import HeaderSearchApplication from "./components/header/HeaderSearchAppication";
 
-const DashboardApplication = () => {
+const UserDashboardApplication = () => {
   return (
     <NavbarUserLayout>
       <Container>
@@ -12,4 +12,4 @@ const DashboardApplication = () => {
   );
 };
 
-export default DashboardApplication;
+export default UserDashboardApplication;

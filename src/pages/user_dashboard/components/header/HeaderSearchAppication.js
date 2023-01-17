@@ -35,7 +35,7 @@ const HeaderSearchApplication = (props) => {
               // disabled={isDisabled}
               type="text"
               className="w-full bg-[#edf2f7] py-3 px-5 outline-none"
-              placeholder="Cari Pekerjaan yang Disimpan"
+              placeholder="Cari Lamaran"
             />
             <MagnifyingGlassIcon className="w-6 mr-5" />
           </div>

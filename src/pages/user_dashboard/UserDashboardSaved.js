@@ -16,7 +16,7 @@ import RightWrapperSavedJobList from "./layouts/RightWrapperSavedJobList";
 import DetailSavedWrapper from "./layouts/DetailSavedWrapper";
 import HeaderSearchSavedJob from "./components/header/HeaderSearchSavedJob";
 
-const DashboardSaved = () => {
+const UserDashboardSaved = () => {
   const dispatch = useDispatch();
 
   const tag = useSelector((state) => state.savedJobListReducer.tag);
@@ -85,4 +85,4 @@ const DashboardSaved = () => {
   );
 };
 
-export default DashboardSaved;
+export default UserDashboardSaved;

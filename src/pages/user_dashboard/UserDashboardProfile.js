@@ -5,7 +5,7 @@ import CardBasicInformation from "./components/profile/CardBasicInformation";
 import CardCV from "./components/profile/CardCV";
 import CardContainer from "./layouts/CardContainer";
 
-const DashboardProfile = () => {
+const UserDashboardProfile = () => {
   return (
     <NavbarUserLayout>
       <Container>
@@ -19,4 +19,4 @@ const DashboardProfile = () => {
   );
 };
 
-export default DashboardProfile;
+export default UserDashboardProfile;

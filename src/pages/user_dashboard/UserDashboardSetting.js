@@ -6,7 +6,7 @@ import CardChangeEmail from "./components/setting/CardChangeEmail";
 import CardChangePassword from "./components/setting/CardChangePassword";
 import CardDeleteAccount from "./components/setting/CardDeleteAccount";
 
-const DashboardUserSetting = () => {
+const UserDashboardSetting = () => {
   return (
     <NavbarUserLayout>
       <Container>
@@ -21,4 +21,4 @@ const DashboardUserSetting = () => {
   );
 };
 
-export default DashboardUserSetting;
+export default UserDashboardSetting;
