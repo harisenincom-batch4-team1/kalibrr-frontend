@@ -1,15 +1,20 @@
-import NavbarUserLayout from "./components/NavbarUserLayout";
+import Container from "./layouts/Container";
+import HeaderTitle from "./components/header/HeaderTitle";
+import NavbarUserLayout from "./layouts/NavbarUserLayout";
+import CardBasicInformation from "./components/profile/CardBasicInformation";
+import CardCV from "./components/profile/CardCV";
+import CardContainer from "./layouts/CardContainer";
 
 const DashboardProfile = () => {
   return (
     <NavbarUserLayout>
-      <div className="w-full flex justify-center  bg-[#fafafa]">
-        <div className="w-full">
-          <h1 className="text-3xl font-bold py-5 px-3 border-b-[1px]">
-            Profil
-          </h1>
-        </div>
-      </div>
+      <Container>
+        <HeaderTitle title={"Profil"} />
+        <CardContainer>
+          <CardBasicInformation />
+          <CardCV />
+        </CardContainer>
+      </Container>
     </NavbarUserLayout>
   );
 };

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import NavbarUser from "./NavbarUser";
-import SideNavbarUser from "./SideNavbarUser";
+import NavbarUser from "../components/navbar/NavbarUser";
+import SideNavbarUser from "../components/navbar/SideNavbarUser";
 
 const NavbarUserLayout = ({ children }) => {
   const [isSidebarShow, setIsSidebarShow] = useState(false);
-  
+
   return (
     <div className="h-screen overflow-hidden">
       <NavbarUser />

@@ -4,6 +4,7 @@ import DashboardProfile from "./pages/dashboard/user/DashboardProfile";
 import DashboardApplication from "./pages/dashboard/user/DashboardApplication";
 import DashboardMessage from "./pages/dashboard/user/DashboardMessage";
 import DashboardSaved from "./pages/dashboard/user/DashboardSaved";
+import DashboardUserSetting from "./pages/dashboard/user/DashboardUserSetting";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/user/dashboard/application" element={<DashboardApplication />} />
         <Route path="/user/dashboard/message" element={<DashboardMessage />} />
         <Route path="/user/dashboard/saved" element={<DashboardSaved />} />
+        <Route path="/user/dashboard/setting" element={<DashboardUserSetting />} />
       </Routes>
     </BrowserRouter>
   );
