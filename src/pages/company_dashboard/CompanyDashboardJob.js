@@ -1,12 +1,20 @@
+import { useState } from "react";
 import Container from "./layouts/Container";
 import NavbarUserLayout from "./layouts/NavbarUserLayout";
-import HeaderSearchJob from "./components/header/HeaderSearchJob";
+import HeaderTitleSearch from "./components/header/HeaderTitleSearch";
 
 const CompanyDashboardJob = () => {
+  const [input, setInput] = useState("");
+
   return (
     <NavbarUserLayout>
       <Container>
-        <HeaderSearchJob title={"Lowongan Kerja"} />
+        <HeaderTitleSearch
+          title={"Lowongan Kerja"}
+          placeholder={"Cari lowongan pekerjaan yang sudah di buat"}
+          input={input}
+          setInput={setInput}
+        />
       </Container>
     </NavbarUserLayout>
   );

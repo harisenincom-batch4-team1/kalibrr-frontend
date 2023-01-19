@@ -1,12 +1,20 @@
+import { useState } from "react";
 import Container from "./layouts/Container";
 import NavbarUserLayout from "./layouts/NavbarUserLayout";
-import HeaderSearchMessage from "./components/header/HeaderSearchMessage";
+import HeaderTitleSearch from "./components/header/HeaderTitleSearch";
 
 const CompanyDashboardMessage = () => {
+  const [input, setInput] = useState("");
+
   return (
     <NavbarUserLayout>
       <Container>
-        <HeaderSearchMessage title={"Pesan"} />
+        <HeaderTitleSearch
+          title={"Pesan"}
+          placeholder={"Cari pesan"}
+          input={input}
+          setInput={setInput}
+        />
       </Container>
     </NavbarUserLayout>
   );

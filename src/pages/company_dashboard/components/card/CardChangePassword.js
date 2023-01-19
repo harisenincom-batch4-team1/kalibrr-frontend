@@ -1,4 +1,4 @@
-import Title from "../card/Title";
+import Title from "./Title";
 
 const CardChangePassword = () => {
   return (
