@@ -10,6 +10,7 @@ import CompanyDashboardJob from "./pages/company_dashboard/CompanyDashboardJob";
 import CompanyDashboardApplicant from "./pages/company_dashboard/CompanyDashboardApplicant";
 import CompanyDashboardMessage from "./pages/company_dashboard/CompanyDashboardMessage";
 import CompanyDashboardSetting from "./pages/company_dashboard/CompanyDashboardSetting";
+import CompanyProfile from "./pages/company/CompanyProfile";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/user/dashboard/message" element={<UserDashboardMessage />} />
         <Route path="/user/dashboard/saved" element={<UserDashboardSaved />} />
         <Route path="/user/dashboard/setting" element={<UserDashboardSetting />} />
+        <Route path="/user/company-profile" element={<CompanyProfile />} />
 
         {/* Protect Route Company Dashboard */}
         <Route path="/company/dashboard/profile" element={<CompanyDashboardProfile />} />
