@@ -1,25 +1,17 @@
-import Title from "../card/Title";
+import { Card, FileInput, Label } from "flowbite-react";
 
 const CardCV = () => {
   return (
-    <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-[1px] hover:shadow">
-      <Title title={"CV"} />
-      <div className="bg-white px-4 md:flex gap-5">
-        <div className="space-y-3 my-5 md:mt-0 w-full">
-          <label
-            className="block my-2 text-xl font-medium"
-            htmlFor="file_input"
-          >
-            Unggah CV Anda
-          </label>
-          <input
-            className="block w-full text-lg cursor-pointer text-gray-900 border-[1px]"
-            id="file_input"
-            type="file"
-          />
+    <Card className="max-w-[800px] p-5 mx-auto rounded-lg overflow-hidden border-[1px] hover:shadow">
+      <div id="fileUpload">
+        <div className="mb-2 block">
+          <Label htmlFor="file" value="Unggah resume" />
         </div>
+        <FileInput
+          id="file"
+        />
       </div>
-    </div>
+    </Card>
   );
 };
 

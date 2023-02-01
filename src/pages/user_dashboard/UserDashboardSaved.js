@@ -42,7 +42,7 @@ const UserDashboardSaved = () => {
   useEffect(() => {
     if (jobDetailId) {
       axios
-        .get(process.env.REACT_APP_JOB + `/${jobDetailId}`)
+        .get(process.env.REACT_APP_JOB_DETAIL + `/${jobDetailId}`)
         .then((res) => {
           if (res.data[0].datas === 0) {
             dispatch({ type: "FETCH_DETAIL_EMPTY" });
