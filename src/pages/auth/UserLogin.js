@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const UserLogin = () => {
     return(
         <div className="flex bg-stone-100">
-            <div className="w-1/2 items-center justify-center px-6 py-5 mx-auto mt-14 border-gray-300 rounded-sm bg-white">
+            <div className="w-[550px] items-center justify-center px-6 py-5 mx-auto mt-14 border-gray-300 rounded-sm bg-white">
                 {/* login */}
                 <div className="m-5">
                     <div className="text-center text-2xl mb-5">
