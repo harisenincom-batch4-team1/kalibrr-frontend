@@ -1,0 +1,895 @@
+@media (max-width: 1359px) {
+    .inner-home .advice .wrapper, .wrapper {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px
+    }
+
+    .inner-home .advice .slidenav a {
+        left: 15px
+    }
+
+    .inner-home .advice .slidenav a:hover {
+        left: 12px
+    }
+
+    .inner-home .advice .slidenav a.next {
+        right: 15px
+    }
+
+    .inner-home .advice .slidenav a.next:hover {
+        right: 12px
+    }
+}
+
+@media (max-width: 991px) {
+    #top .util {
+        display: none
+    }
+
+    .mobile-trigger {
+        display: block;
+        float: right;
+        position: relative;
+        top: 4px
+    }
+
+    #top .nav li {
+        display: block;
+        text-align: center;
+        margin: 30px 0 0
+    }
+
+    #top .nav li:not(.btn) > a, #top .nav li.btn > a {
+        display: inline-block
+    }
+
+    #top .lang span > * {
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    #top .lang .holder {
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+        left: auto;
+        opacity: 1;
+        width: auto;
+        display: inline-block;
+        top: -2px;
+        margin: 0 0 0 10px
+    }
+
+    .menu-mobile {
+        width: 20px;
+        height: 15px;
+        position: relative;
+        display: inline-block
+    }
+
+    .menu-mobile .menu-bar b:after, .menu-mobile .menu-bar b:before, .menu-mobile .menu-bar b {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        top: 6px;
+        background: #283142;
+        display: block
+    }
+
+    .menu-mobile .menu-bar b {
+        -webkit-transition: background 300ms;
+        -moz-transition: background 300ms;
+        -o-transition: background 300ms;
+        -ms-transition: background 300ms;
+        transition: background 300ms
+    }
+
+    .menu-mobile .menu-bar b:after, .menu-mobile .menu-bar b:before {
+        content: "";
+        -webkit-transition: top 300ms 300ms, transform 300ms 0ms, -webkit-transform 300ms 0ms, background 300ms;
+        -moz-transition: top 300ms 300ms, transform 300ms 0ms, -webkit-transform 300ms 0ms, background 300ms;
+        -o-transition: top 300ms 300ms, transform 300ms 0ms, -webkit-transform 300ms 0ms, background 300ms;
+        -ms-transition: top 300ms 300ms, transform 300ms 0ms, -webkit-transform 300ms 0ms, background 300ms;
+        transition: top 300ms 300ms, transform 300ms 0ms, -webkit-transform 300ms 0ms, background 300ms
+    }
+
+    .menu-mobile .menu-bar b:after {
+        top: 6px
+    }
+
+    .menu-mobile .menu-bar b:before {
+        top: -6px
+    }
+
+    #top.is-sticky, #top {
+        padding: 14px 0 15px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .25)
+    }
+
+    #top.is-sticky .layer, #top .layer {
+        padding: 0;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0)
+    }
+
+    #top .logo img {
+        width: 62px;
+        top: auto
+    }
+
+    #body {
+        padding-top: 50px
+    }
+
+    .fnav, .mnav {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        overflow: hidden;
+        z-index: 9999999999
+    }
+
+    .fnav {
+        color: #000
+    }
+
+    .fnav span.bg, .mnav span.bg {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .6);
+        z-index: 1
+    }
+
+    .fnav .layer, .mnav .layer {
+        display: block;
+        position: absolute;
+        right: -50px;
+        top: 0;
+        width: 310px;
+        height: 100%;
+        background: #fff;
+        transition: all .3s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 2
+    }
+
+    .fnav .layer {
+        right: auto;
+        left: -50px
+    }
+
+    .fnav.open-layer .layer, .mnav.open-layer .layer {
+        opacity: 1;
+        visibility: visible;
+        right: 0
+    }
+
+    .fnav.open-layer .layer {
+        right: auto;
+        left: 0
+    }
+
+    .mnav a.cls {
+        display: block;
+        width: 14px;
+        height: 14px;
+        background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/close.svg");
+        margin: 18px 25px 25px
+    }
+
+    .fnav p, .mnav p {
+        margin: 0 0 15px 22px
+    }
+
+    .fnav .menu, .mnav .menu {
+        margin: 0 0 10px
+    }
+
+    .fnav .menu li:nth-child(even), .mnav .menu li:nth-child(odd) {
+        background: #F0F3F7
+    }
+
+    .fnav .menu li a, .mnav .menu li a {
+        display: block;
+        padding: 11px 36px;
+        color: #000;
+        line-height: 150%
+    }
+
+    .fnav .menu li a:hover, .mnav .menu li a:hover {
+        color: #0086FF
+    }
+
+    .mnav .country b, .mnav .lang b {
+        display: block;
+        position: relative;
+        border-top: 1px solid #CED9EA;
+        border-bottom: 1px solid #CED9EA;
+        cursor: pointer;
+        line-height: 150%;
+        padding: 11px 22px
+    }
+
+    .mnav .country b {
+        border-bottom: none
+    }
+
+    .mnav .country b:before, .mnav .lang b:before {
+        display: block;
+        position: absolute;
+        right: 55px;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: #CED9EA;
+        content: ""
+    }
+
+    .mnav .country b:after, .mnav .lang b:after {
+        display: block;
+        position: absolute;
+        right: 22px;
+        top: 20px;
+        transform: rotate(-180deg);
+        background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/arrow-lang.svg");
+        width: 10px;
+        height: 6px;
+        transition: transform .2s ease-in
+    }
+
+    .mnav .country.active b:after, .mnav .lang.active b:after {
+        transform: rotate(0deg)
+    }
+
+    .mnav .country .holder, .mnav .lang .holder {
+        display: block;
+        position: absolute;
+        width: calc(100% - 44px);
+        left: 22px;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, .07);
+        margin-top: -10px;
+        transition: all .2s ease-in;
+        opacity: 0;
+        visibility: hidden
+    }
+
+    .mnav .country.active .holder, .mnav .lang.active .holder {
+        opacity: 1;
+        visibility: visible;
+        margin-top: -5px;
+        z-index: 99
+    }
+
+    .mnav .country .holder li, .mnav .lang .holder li {
+        display: block;
+        padding: 10px 12px;
+        background: #fff
+    }
+
+    .mnav .country .holder li:nth-child(odd), .mnav .lang .holder li:nth-child(odd) {
+        background: #F0F3F7
+    }
+
+    .mnav .country .holder li a, .mnav .lang .holder li a {
+        color: #000
+    }
+
+    .mnav .action {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 0 20px 17px
+    }
+
+    .mnav .action a:first-child {
+        margin: 0 0 10px
+    }
+
+    .fnav .cls {
+        font-weight: 700;
+        font-size: 20px;
+        margin: 12px 0 17px 22px;
+        display: block;
+        color: #000
+    }
+
+    .fnav .cls:before {
+        width: 16px;
+        height: 16px;
+        background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/arrow-filter.svg");
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        margin-right: 12px;
+        top: -2px
+    }
+
+    .fnav .pops {
+        padding: 14px 20px 0;
+        border-top: 1px solid #CED9EA
+    }
+
+    .fnav .pops h3 {
+        margin: 0 0 20px;
+        line-height: 130%
+    }
+
+    .fnav .pops a {
+        display: inline-block;
+        vertical-align: middle;
+        color: #0086FF;
+        font-size: 16px;
+        margin: 0 10px 10px 0;
+        background: #F0F3F7;
+        border-radius: 8px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 8px
+    }
+
+    .inner-home .testi .caption, .inner-home .explore .hentry h2 {
+        flex: 40%;
+        max-width: 40%
+    }
+
+    .inner-home .testi .bubble, .inner-home .explore .hentry .caption {
+        flex: 55%;
+        max-width: 55%
+    }
+
+    .inner-home .testi .bubble .holder {
+        float: none;
+        width: 100%
+    }
+
+    .inner-home .app figure {
+        display: none
+    }
+
+    .inner-home .app {
+        margin: 100px 0 0
+    }
+
+    .inner-home .app .caption {
+        flex: 100%;
+        max-width: 100%
+    }
+
+    .inner-home .app .rowflex > * {
+        position: relative;
+        z-index: 2
+    }
+
+    .inner-home .app span.bg {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        border-radius: 10px;
+        overflow: hidden
+    }
+
+    #bottom .info {
+        flex: 35%;
+        max-width: 35%
+    }
+
+    .inner-home .app .action {
+        width: auto
+    }
+}
+
+@media (max-width: 768px) {
+    .inner-home .career .slidenav a.prev {
+        display: none !important
+    }
+
+    .inner-home .advice .slidenav, .inner-home .cta .slidenav, .inner-home .testi .caption .txt br, .inner-home .testi .caption h2 br, .inner-home .testi .bubble, .inner-home .explore .hentry .txt br, .inner-home .explore .slider, .inner-home .explore .hentry .txt + a, .inner-home .hero form button i, .inner-home .hero .search .drop *, .inner-home .hero .sugg, .inner-home .hero h2 br {
+        display: none
+    }
+
+    .inner-home .cta span.bg, .inner-home .hire, .inner-home .hero {
+        background-image: var(--mobile) !important
+    }
+
+    .inner-home .hero h2 {
+        text-shadow: 0 0 25px rgba(0, 134, 255, 0.5)
+    }
+
+    .inner-home .hero .txt {
+        font-weight: 400;
+        text-shadow: 0 0 rgba(0, 0, 0, 0)
+    }
+
+    .inner-home .hero .search {
+        max-width: 100%
+    }
+
+    .inner-home .hero .emul {
+        background: none;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        border-radius: 0;
+        float: none;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between
+    }
+
+    .inner-home .hero .search .drop {
+        border: none;
+        flex: 60px;
+        max-width: 60px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+        background: #fff;
+        height: 48px
+    }
+
+    .inner-home .hero .search .drop:after {
+        width: 16px;
+        height: 16px;
+        background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/filter-form.svg");
+        border: none;
+        top: 16px;
+        right: 21px
+    }
+
+    .inner-home .hero form button {
+        display: block;
+        float: none;
+        width: 100%;
+        text-align: center;
+        margin: 15px 0 0
+    }
+
+    .inner-home .hero form button span {
+        display: inline-block;
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px
+    }
+
+    .inner-home .hero .search .drop + input {
+        width: calc(100% - 70px);
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+        background: #fff;
+        height: 48px
+    }
+
+    .inner-home .hero {
+        padding-top: 160px;
+        padding-bottom: 135px
+    }
+
+    .inner-home .comp .layer {
+        padding: 40px 16px 22px
+    }
+
+    .inner-home .comp .rowflex {
+        margin: 0 -10px
+    }
+
+    .inner-home .comp figure {
+        text-align: center;
+        flex: calc(33.333333333333333333% - 20px);
+        max-width: calc(33.333333333333333333% - 20px);
+        margin: 0 10px 30px
+    }
+
+    .inner-home .comp .seeall {
+        text-align: center
+    }
+
+    .inner-home .career .item {
+        width: 270px
+    }
+
+    .inner-home .career .centered {
+        margin: 5px 0 0
+    }
+
+    .inner-home .career .centered * {
+        height: 0;
+        overflow: hidden;
+        opacity: 0
+    }
+
+    .inner-home .hire {
+        text-align: center;
+        padding: 70px 0 35px
+    }
+
+    .inner-home .hire .button {
+        display: block;
+        width: 100%
+    }
+
+    .inner-home .hire .txt {
+        margin: 0 0 15px
+    }
+
+    .inner-home .testi .caption, .inner-home .explore .hentry h2, .inner-home .explore .hentry .caption {
+        flex: 100%;
+        max-width: 100%;
+        text-align: center
+    }
+
+    .inner-home .explore .hentry h2 {
+        margin: 0 0 15px
+    }
+
+    .inner-home .explore .mslider {
+        display: block
+    }
+
+    .inner-home .explore .mslider .list {
+        width: 300px;
+        margin-right: 25px
+    }
+
+    .inner-home .explore .mslider a {
+        display: block;
+        width: 100%;
+        min-height: 145px;
+        position: relative;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 20px 27px 15px;
+        margin: 0 0 18px;
+        color: #fff
+    }
+
+    .inner-home .explore .mslider a h3, .inner-home .explore .mslider a span {
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+        line-height: 100%;
+        margin: 0 0 10px
+    }
+
+    .inner-home .explore .mslider a h3 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 28px;
+        text-transform: none;
+        line-height: 120%
+    }
+
+    .inner-home .explore .mslider a i {
+        display: block;
+        position: absolute;
+        right: 32px;
+        bottom: 24px;
+        width: 28px;
+        height: 16px;
+        background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/arrow-explore-mobile.svg")
+    }
+
+    .inner-home .explore .hentry {
+        margin: 0 0 35px
+    }
+
+    .inner-home .testi .caption {
+        top: auto
+    }
+
+    .inner-home .testi {
+        margin: 80px 0 0
+    }
+
+    .inner-home .testi .mbubble {
+        display: block;
+        margin: 30px 0 0
+    }
+
+    .inner-home .testi .mbubble .slick-slider .slick-list {
+        padding: 5px 0
+    }
+
+    .inner-home .testi .mbubble .pusher {
+        max-width: 270px;
+        margin: 0 auto
+    }
+
+    .inner-home .testi .mbubble .layer {
+        display: block;
+        position: relative;
+        padding: 35px 11px 35px 31px;
+        font-size: 20px;
+        line-height: 150%;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+        margin: 0 0 30px
+    }
+
+    .inner-home .testi .mbubble .layer:after {
+        display: block;
+        position: absolute;
+        left: 23px;
+        bottom: -34px;
+        width: 30px;
+        height: 38px;
+        background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/triangle-bubble.png");
+        transform: rotate(-90deg)
+    }
+
+    .inner-home .testi .mbubble .auth > * {
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    .inner-home .testi .mbubble b {
+        width: calc(100% - 100px);
+        margin-left: 15px;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: 700
+    }
+
+    .inner-home .testi .mbubble b small {
+        display: block;
+        line-height: 100%;
+        margin: 5px 0 0;
+        font-weight: 400;
+        color: #C4C4C4;
+        text-transform: none
+    }
+
+    .inner-home .app .wrapper {
+        padding: 0
+    }
+
+    .inner-home .app .wrapper .rowflex {
+        padding: 50px 35px
+    }
+
+    .inner-home .app .caption {
+        max-width: 305px;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center
+    }
+
+    .inner-home .cta .action .button, .inner-home .app .rowflex .button {
+        display: block;
+        width: 100%;
+        margin: 0 0 6px
+    }
+
+    .inner-home .cta .action .button {
+        margin: 0 0 8px
+    }
+
+    .inner-home .app span.bg {
+        border-radius: 0
+    }
+
+    .inner-home .app .small {
+        margin: 10px 0 0
+    }
+
+    .inner-home .advice, .inner-home .app {
+        margin: 45px 0 0
+    }
+
+    .slick-dots {
+        margin: 20px 0 0
+    }
+
+    .inner-home .cta .slick-track {
+        display: flex
+    }
+
+    .inner-home .cta .item {
+        float: none;
+        height: auto;
+        flex: 1
+    }
+
+    .inner-home .advice .item {
+        width: 260px;
+        flex: 260px;
+        max-width: 260px;
+        margin: 0 15px 0 0
+    }
+
+    .inner-home .advice .caption {
+        padding: 25px 16px 30px
+    }
+
+    .inner-home .advice .slider {
+        margin-right: -20px;
+        padding-left: 20px
+    }
+
+    .inner-home .advice .centered .button {
+        display: block;
+        width: 100%
+    }
+
+    #bottom .info, #bottom .holder, #bottom .holder .widget {
+        flex: 100%;
+        max-width: 100%
+    }
+
+    #bottom {
+        padding: 30px 0 15px
+    }
+
+    #bottom .info .for-mobile {
+        display: inline-block;
+        margin: 0 0 15px
+    }
+
+    #bottom .info {
+        margin-bottom: 50px
+    }
+
+    #bottom .info .txt {
+        max-width: 280px;
+        line-height: 180%
+    }
+
+    #bottom .widget h3 {
+        margin-bottom: 15px;
+        position: relative
+    }
+
+    #bottom .holder .widget h3 b {
+        display: inline-block;
+        top: 5px;
+        right: 0;
+        width: 10px;
+        height: 6px;
+        background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/triangle-menu.svg");
+        transition: transform .2s ease-in;
+        transform: rotate(0deg);
+        filter: brightness(0%);
+        position: absolute
+    }
+
+    #bottom .holder .widget h3 b.expanded {
+        transform: rotate(180deg)
+    }
+
+    #bottom .holder .widget {
+        margin-top: 13px;
+        padding: 0 15px
+    }
+
+    #bottom .holder .widget ul {
+        padding-left: 10px;
+        display: none;
+        padding-bottom: 10px
+    }
+
+    #bottom .footer-widget {
+        margin-bottom: 45px
+    }
+
+    #bottom .tribute ul {
+        text-align: right
+    }
+
+    #bottom .tribute p {
+        max-width: 40%;
+        flex: 40%
+    }
+
+    #bottom .widget li a {
+        color: #677793
+    }
+
+    #bottom .logo {
+        margin: 0 0 20px
+    }
+
+    #bottom .logo img {
+        width: 24px
+    }
+
+    .inner-home .app .action a {
+        display: block;
+        margin: 0 auto 10px
+    }
+
+    .inner-home .career .slidenav a:hover, .inner-home .career .slidenav a {
+        right: -11px
+    }
+
+    #bottom .info .app a.ps, #bottom .info .app a {
+        margin-right: 3px;
+        width: 100px;
+        height: 30px
+    }
+
+    .inner-home .advice .item .more {
+        left: 16px;
+        bottom: 20px
+    }
+
+    .inner-home .advice .item figure a {
+        height: 180px
+    }
+
+    .inner-home .cta h2, .inner-home .testi .caption h2, .inner-home .explore .hentry h2, .inner-home .hire h2, .inner-home .career h2, .inner-home .hero h2 {
+        font-size: 36px
+    }
+
+    .inner-home .app .caption h2, .inner-home .comp h2 {
+        font-size: 28px
+    }
+
+    .inner-home .advice h3 {
+        font-size: 20px
+    }
+
+    .inner-home .cta .txt, .inner-home .app .caption .txt, .inner-home .testi .caption .txt, .inner-home .explore .hentry .txt, .inner-home .hire .txt, .inner-home .comp .seeall a, .inner-home .hero .txt {
+        font-size: 16px
+    }
+
+    #bottom .tribute, #bottom .widget h3, #bottom .widget li, #bottom .info .txt, .inner-home .advice a.cat {
+        font-size: 13px
+    }
+
+    #bottom .holder .widget:first-child, .inner-home .cta {
+        margin: 0
+    }
+}
+
+@media (max-width: 1359px) {
+    #responsive {
+        background: #8a2be2 !important
+    }
+}
+
+@media (max-width: 991px) {
+    #responsive {
+        background: red !important
+    }
+}
+
+@media (max-width: 768px) {
+    #responsive {
+        background: blue !important
+    }
+}
+
+@media (max-width: 480px) {
+    #responsive {
+        background: #0ff !important
+    }
+}
+
+@media (max-width: 360px) {
+    #responsive {
+        background: green !important
+    }
+}

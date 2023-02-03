@@ -1,0 +1,1398 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block
+}
+
+ol, ul {
+    list-style: none
+}
+
+blockquote, q {
+    quotes: none
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent
+}
+
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0
+}
+
+.slick-list:focus {
+    outline: none
+}
+
+.slick-list.dragging {
+    cursor: pointer;
+}
+
+.slick-slider .slick-track, .slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+}
+
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.slick-track:before, .slick-track:after {
+    display: table;
+    content: ""
+}
+
+.slick-track:after {
+    clear: both
+}
+
+.slick-loading .slick-track {
+    visibility: hidden
+}
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px
+}
+
+[dir="rtl"] .slick-slide {
+    float: right
+}
+
+.slick-slide img {
+    display: block
+}
+
+.slick-slide.slick-loading img {
+    display: none
+}
+
+.slick-slide.dragging img {
+    pointer-events: none
+}
+
+.slick-initialized .slick-slide {
+    display: block
+}
+
+.slick-loading .slick-slide {
+    visibility: hidden
+}
+
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent
+}
+
+.slick-arrow.slick-hidden {
+    display: none
+}
+
+:before, :after, html * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased
+}
+
+.clearfix:after, .clear {
+    clear: both;
+    display: block;
+    height: 0;
+    width: 100%;
+    float: none !important
+}
+
+.clearfix:after {
+    content: ""
+}
+
+input::-moz-focus-inner /*Remove button padding in FF*/
+{
+    border: 0;
+    padding: 0
+}
+
+a {
+    text-decoration: none;
+    outline: 0 !important
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: none
+}
+
+img {
+    max-width: 100%;
+    vertical-align: top
+}
+
+:focus, textarea, input, textarea:focus, input:focus {
+    outline: none;
+    border-radius: 0
+}
+
+input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0
+}
+
+input[type=number] {
+    -moz-appearance: textfield !important
+}
+
+input::placeholder {
+    color: #C4C4C4;
+    opacity: 1
+}
+
+textarea::placeholder {
+    color: #C4C4C4;
+    opacity: 1
+}
+
+::-moz-placeholder {
+    opacity: 1
+}
+
+.cvr-bg-bf:before, .cvr-bg-af:after, .cvr-bg {
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
+}
+
+.cvr-bg-bf:before, .cvr-bg-af:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle
+}
+
+body {
+    background: #fff;
+    color: #000;
+    font-size: 16px;
+    font-family: "DM Sans";
+    font-weight: 400;
+    position: static;
+    overflow-y: auto
+}
+
+.wrapper {
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto
+}
+
+.rowflex {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.rowflex > * {
+    flex: 1
+}
+
+.format-text {
+    line-height: 110%;
+    font-size: 28px
+}
+
+.format-text > * {
+    margin-top: 5px
+}
+
+.format-text > :first-child {
+    margin-top: 0
+}
+
+.format-text b, .format-text strong {
+    font-weight: 700
+}
+
+.format-text em, .format-text i:not(.fa) {
+    font-style: italic
+}
+
+.format-text h1, .format-text h2, .format-text h3, .format-text h4, .format-text h5, .format-text h6 {
+    color: #000;
+    font-weight: 700;
+    line-height: 120%
+}
+
+.format-text h1 {
+    font-size: 70px
+}
+
+.format-text h2 {
+    font-size: 64px
+}
+
+.format-text h3 {
+    font-size: 58px
+}
+
+.format-text h4 {
+    font-size: 40px
+}
+
+.format-text h5 {
+    font-size: 30px
+}
+
+.format-text h6 {
+    font-size: 20px
+}
+
+.format-text a:not(.button) {
+    color: #000
+}
+
+.format-text a:not(.button):hover {
+    text-decoration: underline
+}
+
+.format-text ul {
+    list-style: disc;
+    padding-left: 20px
+}
+
+.format-text ul li, .format-text ol li {
+    padding-bottom: 10px
+}
+
+.format-text ol {
+    list-style: decimal;
+    padding-left: 60px
+}
+
+.format-text sup {
+    color: #d90000;
+    position: relative;
+    top: 0;
+    line-height: 100%
+}
+
+.format-text blockquote {
+    font-style: italic;
+    font-weight: 500;
+    text-align: center
+}
+
+.slick-dots {
+    display: block;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    margin: 40px 0 0
+}
+
+.slick-dots li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 6px
+}
+
+.slick-dots li button {
+    display: block;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0);
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    background: #ced9ea
+}
+
+.slick-dots li.slick-active button {
+    background: #0086ff
+}
+
+.button, .action li.btn > a, #top .nav li.btn > a {
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    color: #fff;
+    background: #0086FF;
+    border-radius: 5px;
+    padding: 0 28px;
+    font-weight: 700;
+    transition: all .2s ease-in;
+    min-width: 116px;
+    text-align: center
+}
+
+.button {
+    display: inline-block;
+    min-width: 1px
+}
+
+.button.btn-white {
+    color: #0086FF;
+    background: #fff
+}
+
+.button.btn-hollow, .action li.btn.btn-hollow > a, #top .nav li.btn.btn-hollow > a {
+    background: rgba(0, 0, 0, 0);
+    color: #0086FF;
+    border: 1px solid #0086FF;
+    line-height: 42px
+}
+
+.button.btn-hollow-white {
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+    border: 1px solid #fff;
+    line-height: 42px
+}
+
+.button.btn-hollow:hover, .button:hover, .action li.btn > a:hover, #top .nav li.btn > a:hover {
+    background: #0061b9;
+    border-color: #0061b9;
+    color: #fff
+}
+
+.button.btn-fullwidth {
+    display: block;
+    width: 100%
+}
+
+.inner-home {
+    padding: 0 0 60px
+}
+
+.inner-home .hero {
+    padding: 250px 0 265px;
+    color: #fff
+}
+
+.inner-home .hero .pusher {
+    max-width: 1180px;
+    margin: 0 auto
+}
+
+.inner-home .hero h2 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 130%;
+    margin: 0 0 10px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.25)
+}
+
+.inner-home .hero .txt {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 150%;
+    margin: 0 0 30px
+}
+
+.inner-home .hero .search {
+    max-width: 550px
+}
+
+.inner-home .hero .search form {
+    margin: 0 0 6px
+}
+
+.inner-home .hero .search input::placeholder {
+    color: #677793
+}
+
+.inner-home .hero .search input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "DM Sans";
+    height: 47px;
+    padding: 0 16px;
+    display: block;
+    width: 100%
+}
+
+.inner-home .hero .search .drop {
+    width: 30%;
+    border-right: 1px solid #E9EAEC;
+    position: relative
+}
+
+.inner-home .hero .search .drop:after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 5.5px 0;
+    border-color: #0086FF transparent transparent;
+    content: "";
+    position: absolute;
+    top: 19px;
+    right: 15px;
+    transition: transform .2s ease-in;
+    transform: rotate(0deg)
+}
+
+.inner-home .hero .search .drop:hover:after {
+    transform: rotate(180deg)
+}
+
+.inner-home .hero .search .drop * {
+    cursor: pointer
+}
+
+.inner-home .hero .search .drop .holder {
+    display: block;
+    position: absolute;
+    left: 15px;
+    width: 270px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    color: #000;
+    margin-top: -5px;
+    transition: all .2s ease-in;
+    opacity: 0;
+    visibility: hidden
+}
+
+.inner-home .hero .search .drop:hover .holder {
+    opacity: 1;
+    visibility: visible;
+    margin-top: -10px
+}
+
+.inner-home .hero .search .drop li {
+    display: block;
+    padding: 10px 12px;
+    background: #fff;
+    transition: background .2s ease-in
+}
+
+.inner-home .hero .search .drop li:hover {
+    background: #F0F3F7
+}
+
+.inner-home .hero .search .drop + input {
+    width: 70%;
+    display: inline-block
+}
+
+.inner-home .hero .emul {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+    width: calc(100% - 51px);
+    float: left
+}
+
+.inner-home .hero form button {
+    float: right;
+    width: 47px;
+    height: 47px;
+    cursor: pointer;
+    background: #0086FF;
+    border: none;
+    position: relative;
+    border-radius: 5px;
+    transition: background .2s ease-in
+}
+
+.inner-home .hero form button:hover {
+    background: #0061b9
+}
+
+.inner-home .hero form button i {
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/search.svg");
+    top: 15px;
+    left: 15px
+}
+
+.inner-home .hero .sugg > *, .inner-home .hero .emul > * {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.inner-home .hero .sugg span {
+    font-weight: 500;
+    font-size: 11px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    margin-right: 4px
+}
+
+.inner-home .hero .sugg a, .inner-home .hero .sugg b {
+    background: #fff;
+    color: #000;
+    font-size: 10px;
+    border-radius: 8px;
+    margin: 0 6px 0 0;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 8px;
+    cursor: pointer;
+    transition: all .2s ease-in
+}
+
+.inner-home .hero .sugg a:hover, .inner-home .hero .sugg b:hover {
+    color: #fff;
+    background: #0086FF
+}
+
+.inner-home .comp {
+    position: relative;
+    z-index: 2;
+    top: -125px;
+    margin: 0 0 -125px
+}
+
+.inner-home .comp .layer {
+    background-color: #fff;
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/map.webp");
+    background-position: top left;
+    padding: 80px 90px 65px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25)
+}
+
+.inner-home .comp h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    margin: 0 0 50px
+}
+
+.inner-home .comp .rowflex {
+    margin: 0 -21px
+}
+
+.inner-home .comp figure {
+    flex: calc(16.666666666666666% - 42px);
+    max-width: calc(16.666666666666666% - 42px);
+    margin: 0 21px 50px
+}
+
+.inner-home .comp .seeall {
+    text-align: right
+}
+
+.inner-home .explore .hentry .txt + a, .inner-home .career .centered a, .inner-home .comp .seeall a {
+    display: inline-block;
+    color: #0086FF;
+    font-weight: 700;
+    font-size: 20px
+}
+
+.inner-home .explore .hentry .txt + a:after, .inner-home .career .centered a:after, .inner-home .comp .seeall a:after {
+    display: inline-block;
+    vertical-align: middle;
+    width: 44px;
+    height: 12px;
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/arrow-comp.svg");
+    margin-left: 13px;
+    position: relative;
+    right: 0;
+    transition: right .2s ease-in
+}
+
+.inner-home .explore .hentry .txt + a:after, .inner-home .career .centered a:after {
+    width: 20px;
+    height: 12px;
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/arrow-career.svg");
+    margin-left: 15px
+}
+
+.inner-home .explore .hentry .txt + a:after {
+    margin-left: 10px;
+    top: 1px
+}
+
+.inner-home .explore .hentry .txt + a:hover:after, .inner-home .career .centered a:hover:after, .inner-home .comp .seeall a:hover:after {
+    right: -5px
+}
+
+.inner-home .career {
+    margin: 70px 0 0;
+    overflow: hidden
+}
+
+.inner-home .career h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 48px;
+    margin: 0 0 50px
+}
+
+.inner-home .career .slider {
+    position: relative
+}
+
+.inner-home .career .slider .pusher {
+    margin: -8px -10px
+}
+
+.inner-home .career .slick-list {
+    padding: 8px
+}
+
+.inner-home .career .slick-track {
+    display: flex
+}
+
+.inner-home .career .item {
+    margin: 0 10px;
+    background: #fff;
+    padding: 30px 20px 75px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .25);
+    transition: all .2s ease-in;
+    float: none;
+    height: auto;
+    position: relative
+}
+
+.inner-home .career .item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25)
+}
+
+.inner-home .career .item figure {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+    display: inline-flex;
+    height: 72px;
+    padding: 0 10px;
+    align-items: center;
+    margin: 0 0 15px
+}
+
+.inner-home .career .item figure img {
+    flex: 1
+}
+
+.inner-home .career .item h3 {
+    font-size: 28px;
+    line-height: 130%;
+    margin: 0 0 5px
+}
+
+.inner-home .career .item h3.cvr-bg-af:after {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/remote.svg");
+    margin-left: 8px;
+    top: -1px
+}
+
+.inner-home .career .item b {
+    display: block;
+    color: #0086FF;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 100%;
+    margin: 0 0 8px
+}
+
+.inner-home .career .item span {
+    color: #677793;
+    display: block;
+    line-height: 100%;
+    margin: 0 0 25px
+}
+
+.inner-home .career .item .button {
+    position: absolute;
+    left: 30px;
+    bottom: 30px
+}
+
+.inner-home .career .centered {
+    text-align: center;
+    margin: 40px 0 0
+}
+
+.inner-home .hire {
+    margin: 50px 0 0;
+    color: #fff;
+    padding: 100px 0 70px
+}
+
+.inner-home .hire h2 {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 130%;
+    text-shadow: 0 0 30px rgba(0, 0, 0, .3);
+    margin: 0 0 1px
+}
+
+.inner-home .hire .txt {
+    line-height: 160%;
+    font-weight: 500;
+    font-size: 20px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    margin: 0 0 30px
+}
+
+.inner-home .explore {
+    margin: 80px 0 0;
+    overflow: hidden
+}
+
+.inner-home .explore .hentry {
+    margin: 0 0 85px
+}
+
+.inner-home .explore .hentry .rowflex {
+    justify-content: space-between
+}
+
+.inner-home .explore .hentry h2 {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 130%;
+    flex: 36%;
+    max-width: 36%
+}
+
+.inner-home .explore .hentry .caption {
+    flex: 60%;
+    max-width: 60%
+}
+
+.inner-home .explore .hentry .txt {
+    font-size: 20px;
+    line-height: 150%;
+    margin: 0 0 15px
+}
+
+.inner-home .explore .slider {
+    position: relative
+}
+
+.inner-home .explore .pusher {
+    margin: -8px -17px
+}
+
+.inner-home .explore .slick-list {
+    padding: 8px 8px 15px
+}
+
+.inner-home .explore .item {
+    margin: 0 17px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .25);
+    position: relative;
+    transition: all .2s ease-in
+}
+
+.inner-home .explore .item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5)
+}
+
+.inner-home .explore .item:after {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 32%, rgba(255, 255, 255, 0.7) 100%);
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 32%, rgba(255, 255, 255, 0.7) 100%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 32%, rgba(255, 255, 255, 0.7) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffffff", endColorstr="#b3ffffff", GradientType=1);
+    opacity: 0;
+    transition: opacity .2s ease-in
+}
+
+.inner-home .explore .item.slick-current + .item + .item + .item:after {
+    opacity: 1
+}
+
+.inner-home .explore .item .caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0 30px 30px;
+    color: #fff;
+    z-index: 3
+}
+
+.inner-home .explore .item h3, .inner-home .explore .item span {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    line-height: 100%;
+    margin: 0 0 13px;
+    display: block
+}
+
+.inner-home .explore .item h3 {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 130%;
+    margin: 0 0 30px;
+    text-transform: none
+}
+
+.inner-home .career .slidenav, .inner-home .explore .slidenav {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 40%;
+    -ms-transform: translateY(-40%);
+    -webkit-transform: translateY(-40%);
+    transform: translateY(-40%);
+    width: 100%;
+    height: 0;
+    z-index: 3
+}
+
+.inner-home .career .slidenav {
+    top: 35%;
+    -ms-transform: translateY(-35%);
+    -webkit-transform: translateY(-35%);
+    transform: translateY(-35%);
+    height: 0
+}
+
+.inner-home .career .slidenav a, .inner-home .explore .slidenav a {
+    display: block;
+    float: right;
+    width: 106px;
+    height: 106px;
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/arrow-explore.svg");
+    position: relative;
+    right: -55px;
+    transition: right .2s ease-in
+}
+
+.inner-home .career .slidenav a:hover, .inner-home .explore .slidenav a:hover {
+    right: -60px
+}
+
+.inner-home .career .slidenav a.prev, .inner-home .explore .slidenav a.prev {
+    transform: rotate(-180deg);
+    float: left;
+    transition: left .2s ease-in;
+    right: auto;
+    left: -55px
+}
+
+.inner-home .career .slidenav a.prev:hover, .inner-home .explore .slidenav a.prev:hover {
+    left: -60px
+}
+
+.inner-home .testi {
+    margin: 150px 0 0
+}
+
+.inner-home .testi .rowflex {
+    justify-content: space-between
+}
+
+.inner-home .testi .caption {
+    flex: 25%;
+    max-width: 25%;
+    position: relative;
+    top: 100px
+}
+
+.inner-home .testi .caption h2 {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 130%;
+    margin: 0 0 10px
+}
+
+.inner-home .testi .caption .txt {
+    font-size: 20px;
+    line-height: 150%
+}
+
+.inner-home .testi .bubble {
+    flex: 70%;
+    max-width: 70%
+}
+
+.inner-home .testi .bubble .item:not(:first-child) {
+    margin: 55px 0 0
+}
+
+.inner-home .testi .bubble .holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: calc(100% - 200px);
+    float: left
+}
+
+.inner-home .testi .bubble .item:nth-child(even) .holder {
+    float: right
+}
+
+.inner-home .testi .bubble .holder figure {
+    flex: 74px;
+    max-width: 74px
+}
+
+.inner-home .testi .bubble .holder .layer {
+    flex: calc(100% - 125px);
+    max-width: calc(100% - 125px);
+    position: relative;
+    top: 20px
+}
+
+.inner-home .testi .bubble .holder .emul {
+    max-width: 485px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+    padding: 25px 35px
+}
+
+.inner-home .testi .bubble .holder .emul:before {
+    width: 30px;
+    height: 38px;
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/triangle-bubble.png");
+    position: absolute;
+    left: -30px;
+    top: 10px;
+    display: block
+}
+
+.inner-home .testi .bubble .holder b {
+    display: block;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    line-height: 130%
+}
+
+.inner-home .testi .bubble .holder b small {
+    text-transform: none;
+    color: #C4C4C4;
+    font-weight: 400;
+    display: inline-block;
+    margin-left: 5px
+}
+
+.inner-home .testi .bubble .holder .txt {
+    font-size: 20px;
+    line-height: 150%
+}
+
+.inner-home .app {
+    margin: 350px 0 0
+}
+
+.inner-home .app .rowflex {
+    align-items: flex-end;
+    justify-content: space-between;
+    background: #3CF;
+    border-radius: 10px;
+    min-height: 365px;
+    position: relative
+}
+
+.inner-home .app .caption {
+    flex: 42%;
+    max-width: 42%;
+    padding: 60px 0 30px 75px;
+    color: #fff;
+    position: relative;
+    z-index: 2
+}
+
+.inner-home .app .caption h2, .inner-home .app .caption .txt {
+    font-size: 48px;
+    line-height: 130%;
+    margin: 0 0 13px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .25);
+    font-weight: 700
+}
+
+.inner-home .app .caption .txt {
+    margin: 0 0 30px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%
+}
+
+.inner-home .app .action {
+    width: 660px
+}
+
+.inner-home .app .action a {
+    display: inline-block;
+    vertical-align: middle;
+    width: 196px;
+    height: 58px;
+    margin-right: 20px;
+    opacity: 1;
+    transition: opacity .2s ease-in
+}
+
+.inner-home .app .action a:hover {
+    opacity: .7
+}
+
+.inner-home .app .action a.ps {
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/ps.svg")
+}
+
+.inner-home .app .action a.ios {
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/ios.svg")
+}
+
+.inner-home .app .action a.hw {
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/hw.svg")
+}
+
+.inner-home .app figure {
+    flex: 58%;
+    max-width: 58%;
+    position: relative
+}
+
+.inner-home .app figure img {
+    display: block;
+    position: absolute;
+    right: -13px;
+    bottom: 0
+}
+
+.inner-home .app .small {
+    display: inline-block;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .25);
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: underline;
+    margin: 15px 0 0
+}
+
+.inner-home .cta {
+    margin: 100px 0 0;
+    text-align: center;
+    color: #fff;
+    position: relative
+}
+
+.inner-home .cta .slick-track {
+    display: flex
+}
+
+.inner-home .cta .slick-track .slick-slide {
+    height: auto;
+    flex: 1;
+    float: none
+}
+
+.inner-home .advice h2, .inner-home .cta h2 {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 130%;
+    max-width: 740px;
+    margin: 0 auto 15px
+}
+
+.inner-home .cta .txt {
+    font-size: 20px;
+    line-height: 150%;
+    margin: 0 0 25px
+}
+
+.inner-home .cta .action .button {
+    margin: 0 10px
+}
+
+.inner-home .cta span.bg {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: .2
+}
+
+.inner-home .cta .caption {
+    position: relative;
+    z-index: 2
+}
+
+.inner-home .cta .caption b {
+    display: inline-block;
+    line-height: 100%;
+    font-size: 20px;
+    margin: 0 0 10px
+}
+
+.inner-home .cta .item {
+    background: #0086FF;
+    padding: 70px 0 45px
+}
+
+.inner-home .cta .slidenav {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 40%;
+    -ms-transform: translateY(-40%);
+    -webkit-transform: translateY(-40%);
+    transform: translateY(-40%);
+    width: 100%;
+    height: 0
+}
+
+.inner-home .cta .slidenav a {
+    float: left;
+    display: block;
+    width: 11px;
+    height: 17px;
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/arrow-cta.svg");
+    position: relative;
+    left: 0;
+    transition: left .2s ease-in
+}
+
+.inner-home .cta .slidenav a:hover {
+    left: -3px
+}
+
+.inner-home .cta .slidenav a.next {
+    transform: rotate(-180deg);
+    float: right;
+    left: auto;
+    right: 0;
+    transition: right .2s ease-in
+}
+
+.inner-home .cta .slidenav a.next:hover {
+    left: auto;
+    right: -3px
+}
+
+.inner-home .advice {
+    margin: 70px 0 0
+}
+
+.inner-home .advice .wrapper {
+    max-width: 1070px
+}
+
+.inner-home .advice h2 {
+    max-width: none;
+    margin: 0 0 30px;
+    text-align: center;
+    font-size: 36px
+}
+
+.inner-home .advice .slick-track {
+    display: flex
+}
+
+.inner-home .advice .item {
+    margin: 0 10px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+    flex: 1;
+    float: none;
+    height: auto;
+    background: #f9fafc;
+    border-bottom: 4px solid #f9fafc;
+    position: relative
+}
+
+.inner-home .advice .item figure a {
+    display: block;
+    height: 240px
+}
+
+.inner-home .advice .item figure a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.inner-home .advice .caption {
+    padding: 35px 35px 40px
+}
+
+.inner-home .advice .centered {
+    text-align: center;
+    margin: 40px 0 0
+}
+
+.inner-home .advice .slider {
+    position: relative
+}
+
+.inner-home .advice .slidenav {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 52%;
+    -ms-transform: translateY(-52%);
+    -webkit-transform: translateY(-52%);
+    transform: translateY(-52%);
+    height: 0;
+    width: 100%
+}
+
+.inner-home .advice .slidenav a {
+    display: block;
+    width: 11px;
+    height: 17px;
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/arrow-advice.svg");
+    position: relative;
+    float: left;
+    left: -50px;
+    transition: left .2s ease-in
+}
+
+.inner-home .advice .slidenav a:hover {
+    left: -53px
+}
+
+.inner-home .advice .slidenav a.next {
+    float: right;
+    left: auto;
+    right: -50px;
+    transform: rotate(180deg);
+    transition: right .2s ease-in
+}
+
+.inner-home .advice .slidenav a.next:hover {
+    left: auto;
+    right: -53px
+}
+
+.inner-home .advice a.cat {
+    display: inline-block;
+    line-height: 100%;
+    color: #0086FF;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 13px
+}
+
+.inner-home .advice .item .more:hover, .inner-home .advice a.cat:hover {
+    text-decoration: underline
+}
+
+.inner-home .advice h3 {
+    color: #000;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 130%;
+    margin: 0 0 23px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.inner-home .advice h3 a {
+    color: #000;
+    transition: color .2s ease-in
+}
+
+.inner-home .advice h3 a:hover {
+    color: #0086FF
+}
+
+.inner-home .advice .item .txt {
+    line-height: 150%;
+    margin: 0 0 25px;
+    min-height: 96px
+}
+
+.inner-home .advice .item .more {
+    text-transform: uppercase;
+    color: #0086FF;
+    display: inline-block;
+    position: absolute;
+    left: 35px;
+    bottom: 30px
+}
+
+#bottom .info .for-mobile, #bottom .holder .widget h3 b, .inner-home .app span.bg, .inner-home .testi .mbubble, .inner-home .explore .mslider, .inner-home .hero form button span, .fnav, .mnav, .mobile-trigger {
+    display: none
+}
+
+#responsive {
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 9999
+}
