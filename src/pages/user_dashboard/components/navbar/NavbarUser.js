@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  UserCircleIcon,
-  Cog6ToothIcon,
-  ArrowLeftOnRectangleIcon,
-} from "@heroicons/react/24/solid";
+import { HiUserCircle, HiCog6Tooth, HiArrowLeftOnRectangle } from "react-icons/hi2";
 
 const NavbarUser = () => {
   const [isShowMenuAccount, setIsShowMenuAccount] = useState(false);
@@ -21,7 +17,7 @@ const NavbarUser = () => {
         </Link>
       </div>
       <div className="">
-        <UserCircleIcon
+        <HiUserCircle
           className="h-8 w-8 rounded-lg cursor-pointer"
           onClick={showMenuAccount}
         />
@@ -32,14 +28,14 @@ const NavbarUser = () => {
             to="/user/dashboard/setting"
             className="flex items-center py-3 px-4 hover:bg-blue-50 space-x-2 cursor-pointer"
           >
-            <Cog6ToothIcon className="h-5" />
+            <HiCog6Tooth className="h-5" />
             <span className="font-medium">Pengaturan Akun</span>
           </Link>
           <Link
             to="/"
             className="flex items-center py-3 px-4 hover:bg-blue-50 space-x-2 cursor-pointer"
           >
-            <ArrowLeftOnRectangleIcon className="h-5" />
+            <HiArrowLeftOnRectangle className="h-5" />
             <span className="font-medium">Keluar</span>
           </Link>
         </div>

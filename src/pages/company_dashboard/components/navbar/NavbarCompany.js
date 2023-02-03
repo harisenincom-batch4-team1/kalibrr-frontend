@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  Cog6ToothIcon,
-  ArrowLeftOnRectangleIcon,
-  BuildingOfficeIcon
-} from "@heroicons/react/24/solid";
+  HiCog6Tooth,
+  HiArrowLeftOnRectangle,
+  HiBuildingOffice,
+} from "react-icons/hi2";
 
 const NavbarCompany = () => {
   const [isShowMenuAccount, setIsShowMenuAccount] = useState(false);
@@ -21,7 +21,7 @@ const NavbarCompany = () => {
         </Link>
       </div>
       <div className="">
-        <BuildingOfficeIcon
+        <HiBuildingOffice
           className="h-8 w-8 rounded-lg cursor-pointer"
           onClick={showMenuAccount}
         />
@@ -32,14 +32,14 @@ const NavbarCompany = () => {
             to="/company/dashboard/setting"
             className="flex items-center py-3 px-4 hover:bg-blue-50 space-x-2 cursor-pointer"
           >
-            <Cog6ToothIcon className="h-5" />
+            <HiCog6Tooth className="h-5" />
             <span className="font-medium">Pengaturan Akun Perusahaan</span>
           </Link>
           <Link
             to="/"
             className="flex items-center py-3 px-4 hover:bg-blue-50 space-x-2 cursor-pointer"
           >
-            <ArrowLeftOnRectangleIcon className="h-5" />
+            <HiArrowLeftOnRectangle className="h-5" />
             <span className="font-medium">Keluar</span>
           </Link>
         </div>
