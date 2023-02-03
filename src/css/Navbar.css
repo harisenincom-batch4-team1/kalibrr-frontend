@@ -1,0 +1,230 @@
+#top .lang {
+    margin-left: 30px
+}
+
+#top .lang span {
+    display: block;
+    position: relative
+}
+
+#top .lang .holder {
+    display: block;
+    position: absolute;
+    left: 2px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease-in;
+    width: 100px
+}
+
+#top .lang span:hover .holder {
+    opacity: 1;
+    visibility: visible
+}
+
+#top .lang .holder li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 2px 3px 0 0
+}
+
+#top .lang .holder strong, #top .lang .holder a {
+    color: #000;
+    transition: color .2s ease-in;
+    font-size: 14px;
+    text-transform: uppercase
+}
+
+#top .lang .holder strong {
+    font-weight: 700
+}
+
+#top .lang .holder strong, #top .lang .holder a:hover {
+    color: #0086FF
+}
+
+#top .lang b {
+    display: block;
+    position: relative;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    color: #0086FF
+}
+
+#top .country b:after, #top .lang b:after {
+    width: 9px;
+    height: 6px;
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/arrow-lang.png");
+    position: absolute;
+    right: -16px;
+    top: 8px;
+    display: block;
+    transition: transform .2s ease-in;
+    transform: rotate(0deg)
+}
+
+#top .country:hover b:after, #top .lang span:hover b:after {
+    transform: rotate(180deg)
+}
+
+#top .country {
+    margin-left: 40px;
+    position: relative
+}
+
+.mnav .country b small, #top .country b {
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 24px;
+    cursor: pointer
+}
+
+#top .country .holder {
+    position: absolute;
+    right: 0;
+    width: 200px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background: #fff;
+    transition: all .2s ease-in;
+    opacity: 0;
+    visibility: hidden;
+    margin: 0
+}
+
+#top .country:hover .holder {
+    margin: 5px 0 0;
+    opacity: 1;
+    visibility: visible
+}
+
+#top .country .holder:before {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -5px;
+    height: 5px;
+    width: 100%;
+    content: ""
+}
+
+#top .country .holder ul {
+    display: block;
+    padding: 5px 0
+}
+
+#top .country .holder a small {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 15px
+}
+
+#top .country .holder a {
+    display: block;
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    transition: color .2s ease-in;
+    padding: 8px 11px
+}
+
+#top .country .holder li:nth-child(even) a {
+    background: rgba(217, 217, 217, .2)
+}
+
+#top .country .holder a:hover {
+    color: #0086FF
+}
+
+#top .country .holder strong {
+    display: block;
+    color: #677793;
+    font-size: 16px;
+    padding: 10px 15px 8px;
+    border-bottom: 1px solid #CED9EA;
+    font-weight: 400
+}
+
+#top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 37px 0 0;
+    transition: all .2s ease-in;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    background: rgba(255, 255, 255, 0)
+}
+
+#top.is-sticky {
+    background: #fff;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25)
+}
+
+#top .layer {
+    background: #fff;
+    padding: 32px 78px 31px 79px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    transition: all .2s ease-in
+}
+
+#top.is-sticky .layer {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    padding-top: 40px;
+    padding-bottom: 40px
+}
+
+#top .logo {
+    float: left;
+    position: relative;
+    top: 3px
+}
+
+#top .util {
+    float: right
+}
+
+#top .util > * {
+    display: inline-block;
+    vertical-align: middle
+}
+
+#top .nav li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 17px
+}
+
+#top .nav li:not(.btn) > a {
+    color: #000;
+    transition: color .2s ease-in;
+    display: block;
+    padding: 0 17px
+}
+
+#top .nav li.current-menu-item:not(.btn) > a, #top .nav li:not(.btn) > a:hover {
+    color: #0086FF
+}
+
+#top .nav li.current-menu-item:not(.btn) > a {
+    font-weight: 700;
+    cursor: default
+}
+
+.mnav .country b small {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    margin-right: 10px;
+    top: -1px
+}

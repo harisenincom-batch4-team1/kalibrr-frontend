@@ -1,0 +1,145 @@
+#bottom {
+    background: #F0F3F7;
+    padding: 100px 0 25px
+}
+
+#bottom .logo {
+    margin: 0 0 35px
+}
+
+#bottom .footer-widget {
+    margin-bottom: 120px
+}
+
+#bottom .rowflex {
+    justify-content: space-between
+}
+
+#bottom .tribute p {
+    flex: 25%;
+    max-width: 25%
+}
+
+#bottom .info {
+    flex: 35%;
+    max-width: 35%
+}
+
+#bottom .info .app {
+    margin: 25px 0 0
+}
+
+#bottom .info .app a {
+    display: inline-block;
+    vertical-align: middle;
+    width: 120px;
+    height: 36px;
+    margin: 0 10px 10px 0;
+    opacity: 1;
+    transition: opacity .2s ease-in
+}
+
+#bottom .info .app a:hover {
+    opacity: .7
+}
+
+#bottom .info .app a.ios {
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/ios-small.svg")
+}
+
+#bottom .info .app a.ps {
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/ps-small.svg");
+    width: 121px
+}
+
+#bottom .info .app a.hw {
+    background-image: url("https://b2c.kalibrr.com/wp-content/themes/kala/assets/img/icon/hw-small.svg");
+    margin-right: 0
+}
+
+#bottom .tribute ul, #bottom .holder {
+    max-width: 60%;
+    flex: 60%
+}
+
+#bottom .info {
+    line-height: 150%;
+    font-size: 24px;
+    font-weight: 700
+}
+
+#bottom .info .txt {
+    max-width: 325px
+}
+
+#bottom .holder {
+    display: flex;
+    flex-wrap: wrap
+}
+
+#bottom .holder .widget {
+    flex: 32%;
+    max-width: 32%
+}
+
+#bottom .widget h3 {
+    color: #0086FF;
+    font-weight: 700;
+    line-height: 130%;
+    margin-bottom: 25px
+}
+
+#bottom .widget li {
+    display: block;
+    line-height: 160%;
+    margin-top: 12px
+}
+
+#bottom .widget li:first-child {
+    margin: 0
+}
+
+#bottom .widget li a {
+    color: #000;
+    transition: color .2s ease-in
+}
+
+#bottom .tribute li a:hover, #bottom .widget li a:hover {
+    color: #0086FF
+}
+
+#bottom .tribute {
+    align-items: center
+}
+
+#bottom .tribute p {
+    color: #677793
+}
+
+#bottom .tribute li {
+    display: inline-block;
+    position: relative
+}
+
+#bottom .tribute li a {
+    color: #677793;
+    transition: color .2s ease-in
+}
+
+#bottom .tribute li + li {
+    margin-left: 5px;
+    position: relative;
+    top: 1px
+}
+
+#bottom .tribute li + li:before {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    margin-right: 7px;
+    background: #677793;
+    content: "";
+    width: 1px;
+    height: 14px;
+    top: -1px
+}
