@@ -22,7 +22,7 @@ const CardDeleteAccount = () => {
               outline={isLoading}
               disabled={isLoading}
               className={
-                isLoading ? "ml-auto" : "ml-auto bg-red-800 hover:bg-red-600"
+                isLoading ? "ml-auto" : "ml-auto bg-red-700 hover:bg-red-800"
               }
             >
               {isLoading ? <SpinnerRed /> : <span>Hapus</span>}

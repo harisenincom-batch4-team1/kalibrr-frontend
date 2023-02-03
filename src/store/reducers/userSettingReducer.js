@@ -6,12 +6,12 @@ const initialState = {
   newPasswordInput: "",
   confirmPasswordInput: "",
   errorMsg: "",
-  progress: 0
+  progress: 0,
 };
 
 export default function userSettingReducer(state = initialState, action) {
   switch (state.tag) {
-    case "idle":
+    case "idle": {
       switch (action.type) {
         case "FETCH_USER_SETTING":
           return {
@@ -21,7 +21,8 @@ export default function userSettingReducer(state = initialState, action) {
         default:
           return state;
       }
-    case "loading":
+    }
+    case "loading": {
       switch (action.type) {
         case "FETCH_USER_SETTING_SUCCESS":
           return {
@@ -33,7 +34,7 @@ export default function userSettingReducer(state = initialState, action) {
             newPasswordInput: "",
             confirmPasswordInput: "",
             errorMsg: "",
-            progress: action.payload
+            progress: action.payload,
           };
         case "FETCH_USER_SETTING_ERROR":
           return {
@@ -41,8 +42,11 @@ export default function userSettingReducer(state = initialState, action) {
             tag: "error",
             errorMsg: action.payload,
           };
+        default:
+          return state;
       }
-    case "loaded":
+    }
+    case "loaded": {
       switch (action.type) {
         case "CHANGE_EMAIL":
           return {
@@ -68,10 +72,13 @@ export default function userSettingReducer(state = initialState, action) {
           return {
             ...state,
             tag: "loading",
-            progress: action.payload
+            progress: action.payload,
           };
+        default:
+          return state;
       }
-    case "error":
+    }
+    case "error": {
       switch (action.type) {
         case "CHANGE_EMAIL":
           return {
@@ -98,7 +105,10 @@ export default function userSettingReducer(state = initialState, action) {
             ...state,
             tag: "loading",
           };
+        default:
+          return state;
       }
+    }
     default:
       return state;
   }

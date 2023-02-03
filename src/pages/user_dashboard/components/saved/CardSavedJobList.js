@@ -1,10 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  BriefcaseIcon,
-  MapPinIcon,
-  BanknotesIcon,
-} from "@heroicons/react/24/outline";
-import { BookmarkIcon } from "@heroicons/react/24/solid";
+import { HiBriefcase, HiMapPin, HiBanknotes, HiBookmark } from "react-icons/hi2";
 
 const CardSavedJobList = () => {
   const dispatch = useDispatch();
@@ -47,21 +42,21 @@ const CardSavedJobList = () => {
               </h2>
             </div>
             <div className="">
-              <BookmarkIcon className="h-6 w-6 rounded-lg hover:text-slate-700 cursor-pointer" />
+              <HiBookmark className="h-6 w-6 rounded-lg hover:text-slate-700 cursor-pointer" />
             </div>
           </div>
         </div>
         <div className="space-y-1 text-sm md:text-base">
           <div className="flex items-center space-x-2">
-            <MapPinIcon className="h-5" />
+            <HiMapPin className="h-5" />
             <span className="">{data.companyDetail.companyLocation}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <BanknotesIcon className="h-5" />
+            <HiBanknotes className="h-5" />
             <span className="">{data.salaryMin}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <BriefcaseIcon className="h-5" />
+            <HiBriefcase className="h-5" />
             <span className="">{data.jobType}</span>
           </div>
         </div>

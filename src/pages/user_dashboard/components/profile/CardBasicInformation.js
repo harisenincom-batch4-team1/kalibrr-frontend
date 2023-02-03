@@ -1,30 +1,29 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  EnvelopeIcon,
-  MapPinIcon,
-  PhoneIcon,
-  UserCircleIcon,
-} from "@heroicons/react/24/outline";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { Badge, Button, Card, Dropdown } from "flowbite-react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import LoadingBar from "react-top-loading-bar";
 
 const CardBasicInformation = () => {
   const dispatch = useDispatch();
-  const [isShowDetail, setIsShowDetail] = useState(false);
 
-  const [userDetail, setUserDetail] = useState({});
+  const tag = useSelector((state) => state.user.tag);
+  const userDetail = useSelector((state) => state.user.user);
+  const name = useSelector((state) => state.user.nameInput);
+  const location = useSelector((state) => state.user.locationInput);
+  const phone = useSelector((state) => state.user.phoneInput);
+  const role = useSelector((state) => state.user.roleInput);
+  const skill = useSelector((state) => state.user.skillInput);
+  const linkedinUrl = useSelector((state) => state.user.linkedinUrlInput);
+
   const [isEdit, setIsEdit] = useState(false);
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [phone, setPhone] = useState("");
-  const [role, setRole] = useState("");
-  const [skill, setSkill] = useState("");
-  const [linkedinUrl, setLinkedinUrl] = useState("");
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [progress, setProgress] = useState(100);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+    setIsSubmit(true);
+    setProgress(30);
     axios
       .put(
         process.env.REACT_APP_USER,
@@ -35,184 +34,189 @@ const CardBasicInformation = () => {
       )
       .then(() => {
         setIsEdit(false);
+        setIsSubmit(false);
+        setProgress(100);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        dispatch({ type: "FETCH_USER_ERROR", payload: err.message });
+        setIsSubmit(false);
+        setProgress(100);
+      });
   };
 
-  const handleIsEdit = () => {
+  const handleIsEdit = (e) => {
+    if (e.target.textContent === "Edit") {
+      dispatch({ type: "EDIT_USER" });
+    } else {
+      dispatch({ type: "CANCEL_EDIT_USER" });
+    }
     setIsEdit((prev) => !prev);
   };
 
-  const handleShowDetail = () => {
-    setIsShowDetail((prev) => !prev);
-  };
-
-  useEffect(() => {}, []);
-
   useEffect(() => {
-    dispatch({ type: "FETCH_USER_SETTING" });
+    dispatch({ type: "FETCH_USER" });
     axios
       .get(process.env.REACT_APP_USER, {
         headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
       })
       .then((res) => {
-        setUserDetail(res.data.datas);
-        dispatch({
-          type: "FETCH_USER_SETTING_SUCCESS",
-          payload: res.data.datas.email,
-        });
+        dispatch({ type: "FETCH_USER_SUCCESS", payload: res.data.datas });
       })
-      .catch((err) =>
-        dispatch({ type: "FETCH_USER_SETTING_ERROR", payload: err?.message })
-      );
-  }, [isEdit]);
+      .catch((err) => {
+        dispatch({ type: "FETCH_USER_ERROR", payload: err.message });
+      });
+  }, [isSubmit]);
 
   return (
-    <Card className="max-w-[800px] py-4 mx-auto rounded-lg overflow-hidden border-[1px] hover:shadow relative">
-      <div className={isEdit ? "flex flex-col items-center px-5" : "flex px-5 w-full md:w-10/12 mx-auto justify-between"}>
-        <div className="flex flex-col items-center">
+    <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-[1px] hover:shadow relative">
+      <LoadingBar color="#0086FF" height={"4px"} progress={progress} />
+      <h1 className="text-white font-semibold text-base md:text-xl bg-[#0086FF] py-3 px-4">
+        Informasi Dasar
+      </h1>
+      <button
+        onClick={handleIsEdit}
+        className="absolute right-0 top-0 py-3 px-4 text-white font-semibold"
+      >
+        {isEdit ? "Batal" : "Edit"}
+      </button>
+      <div className="bg-white py-3 px-4 md:flex md:flex-col gap-5">
+        <div className="rounded-full w-16 h-16 md:w-24 md:h-24 overflow-hidden sm:ml-6 mt-2">
           <img
-            className="mb-3 h-24 w-24 rounded-full shadow-lg"
+            className="rounded-full w-full"
             src={userDetail.photo}
-            alt="Bonnie image"
+            alt="profile"
           />
-          <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-            {userDetail.name}
-          </h5>
-          <span className="text-sm text-gray-500 dark:text-gray-400">
-            {userDetail.role}
-          </span>
-          <div className="mt-2 flex space-x-1 lg:mt-3">
-            <span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
-              Frontend Engineer
-            </span>
-          </div>
         </div>
         {isEdit ? (
-          <form className="w-full flex flex-col mt-5">
-            <div className="relative z-0 w-full mb-6 ">
-              <input
-                type="email"
-                name="floating_email"
-                id="floating_email"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                htmlFor="floating_email"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Nama
-              </label>
-            </div>
-            <div className="relative z-0 w-full mb-6 group">
-              <input
-                type="password"
-                name="floating_password"
-                id="floating_password"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                htmlFor="floating_password"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Lokasi
-              </label>
-            </div>
-            <div className="grid md:grid-cols-2 md:gap-6">
-              <div className="relative z-0 w-full mb-6 group">
-                <input
-                  type="text"
-                  name="floating_first_name"
-                  id="floating_first_name"
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                  required
-                />
-                <label
-                  htmlFor="floating_first_name"
-                  className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >
-                  Gelar
-                </label>
-              </div>
-              <div className="relative z-0 w-full mb-6 group">
-                <input
-                  type="text"
-                  name="floating_last_name"
-                  id="floating_last_name"
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                  required
-                />
-                <label
-                  htmlFor="floating_last_name"
-                  className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >
-                  Keahlian
-                </label>
-              </div>
-            </div>
-            <div className="grid md:grid-cols-2 md:gap-6">
-              <div className="relative z-0 w-full mb-6 group">
-                <input
-                  type="tel"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                  name="floating_phone"
-                  id="floating_phone"
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                  required
-                />
-                <label
-                  htmlFor="floating_phone"
-                  className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >
-                  Telepon
-                </label>
-              </div>
-              <div className="relative z-0 w-full mb-6 group">
-                <input
-                  type="text"
-                  name="floating_company"
-                  id="floating_company"
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                  required
-                />
-                <label
-                  htmlFor="floating_company"
-                  className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >
-                  Tautan Linkedin
-                </label>
-              </div>
-            </div>
-            <div className="ml-auto space-x-2">
-              <button
-                type="submit"
-                className="ml-auto text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Batal
-              </button>
-              <button
-                type="submit"
-                className="ml-auto text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Simpan
-              </button>
-            </div>
+          <form
+            onSubmit={handleUpdate}
+            className="max-w-full flex flex-wrap justify-between gap-y-2 mt-5"
+          >
+            <input
+              value={name}
+              onChange={(e) => {
+                dispatch({
+                  type: "CHANGE_INPUT_NAME",
+                  payload: e.target.value,
+                });
+              }}
+              placeholder={"Nama"}
+              type="text"
+              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
+            />
+            <input
+              value={location}
+              onChange={(e) =>
+                dispatch({
+                  type: "CHANGE_INPUT_LOCATION",
+                  payload: e.target.value,
+                })
+              }
+              placeholder={"Lokasi"}
+              type="text"
+              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
+            />
+            <input
+              value={phone}
+              onChange={(e) => {
+                dispatch({
+                  type: "CHANGE_INPUT_PHONE",
+                  payload: e.target.value,
+                });
+              }}
+              placeholder={"Telepon"}
+              type="number"
+              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
+            />
+            <input
+              value={role}
+              onChange={(e) => {
+                dispatch({
+                  type: "CHANGE_INPUT_ROLE",
+                  payload: e.target.value,
+                });
+              }}
+              placeholder={"Gelar"}
+              type="text"
+              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
+            />
+            <input
+              value={skill}
+              onChange={(e) => {
+                dispatch({
+                  type: "CHANGE_INPUT_SKILL",
+                  payload: e.target.value,
+                });
+              }}
+              placeholder={"Keahlian"}
+              type="text"
+              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
+            />
+            <input
+              value={linkedinUrl}
+              onChange={(e) => {
+                dispatch({
+                  type: "CHANGE_INPUT_LINKEDINURL",
+                  payload: e.target.value,
+                });
+              }}
+              placeholder={"Tautan Linkedin"}
+              type="text"
+              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
+            />
+            <button
+              type="submit"
+              className="mt-2 w-full md:w-fit bg-[#0086FF] text-white font-normal md:font-medium py-2 px-5 rounded-md hover:bg-blue-400 ml-auto"
+            >
+              Simpan
+            </button>
           </form>
         ) : (
-          <div className="flex">
-            <p>PLP</p>
+          <div className="mt-5 md:mt-0 flex justify-between flex-col sm:flex-row sm:w-11/12 mx-auto">
+            <div className="space-y-1 w-full md:w-6/12">
+              <p className="flex items-center gap-x-1">
+                <span>Nama : </span>
+                <span className="font-normal text-sm md:text-lg">
+                  {userDetail?.name}
+                </span>
+              </p>
+              <p className="flex items-center gap-x-1">
+                <span>Lokasi : </span>
+                <span className="font-normal text-sm md:text-lg">
+                  {userDetail.location}
+                </span>
+              </p>
+              <p className="flex items-center gap-x-1">
+                <span>Telepon : </span>
+                <span className="font-normal text-sm md:text-lg">
+                  {userDetail.phone}
+                </span>
+              </p>
+            </div>
+            <div className="space-y-1  w-full md:w-6/12">
+              <p className="flex items-center gap-x-1">
+                <span>Gelar : </span>
+                <span className="font-normal text-sm md:text-lg">
+                  {userDetail.role}
+                </span>
+              </p>
+              <p className="flex items-center gap-x-1">
+                <span>Keahlian : </span>
+                <span className="font-normal text-sm md:text-lg">
+                  {userDetail.skill}
+                </span>
+              </p>
+              <p className="flex items-center gap-x-1">
+                <span>Tautan LinkedIn : </span>
+                <span className="font-normal text-sm md:text-lg">
+                  {userDetail.linkedinUrl}
+                </span>
+              </p>
+            </div>
           </div>
         )}
       </div>
-    </Card>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { BookmarkIcon } from "@heroicons/react/24/solid";
+import { HiBookmark } from "react-icons/hi2";
 import convertRupiah from "rupiah-format";
 
 const DetailSavedJob = () => {
@@ -40,7 +40,7 @@ const DetailSavedJob = () => {
         <button className="bg-[#0086FF] text-white py-3 px-5 font-medium text-lg rounded-lg active:scale-[99%]">
           Lamar Sekarang
         </button>
-        <BookmarkIcon className="h-12 w-12 rounded-lg hover:text-slate-700 cursor-pointer active:scale-[99%]" />
+        <HiBookmark className="h-12 w-12 rounded-lg hover:text-slate-700 cursor-pointer active:scale-[99%]" />
       </div>
       <div>
         <h1 className="text-2xl font-bold my-3">Deskripsi Pekerjaan</h1>

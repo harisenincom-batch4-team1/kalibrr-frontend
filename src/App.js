@@ -11,6 +11,7 @@ import CompanyDashboardApplicant from "./pages/company_dashboard/CompanyDashboar
 import CompanyDashboardMessage from "./pages/company_dashboard/CompanyDashboardMessage";
 import CompanyDashboardSetting from "./pages/company_dashboard/CompanyDashboardSetting";
 import CompanyProfile from "./pages/company/CompanyProfile";
+import CompanyRegister from "./pages/company/CompanyRegister";
 
 const App = () => {
   return (
@@ -18,21 +19,49 @@ const App = () => {
       <Routes>
         {/* Public Route */}
         <Route path="/" element={<Homepage />} />
+        <Route path="/company/register" element={<CompanyRegister />} />
 
         {/* Protect Route User Dashboard  */}
-        <Route path="/user/dashboard/profile" element={<UserDashboardProfile />} />
-        <Route path="/user/dashboard/application" element={<UserDashboardApplication />} />
-        <Route path="/user/dashboard/message" element={<UserDashboardMessage />} />
+        <Route
+          path="/user/dashboard/profile"
+          element={<UserDashboardProfile />}
+        />
+        <Route
+          path="/user/dashboard/application"
+          element={<UserDashboardApplication />}
+        />
+        <Route
+          path="/user/dashboard/message"
+          element={<UserDashboardMessage />}
+        />
         <Route path="/user/dashboard/saved" element={<UserDashboardSaved />} />
-        <Route path="/user/dashboard/setting" element={<UserDashboardSetting />} />
+        <Route
+          path="/user/dashboard/setting"
+          element={<UserDashboardSetting />}
+        />
         <Route path="/user/company-profile" element={<CompanyProfile />} />
 
         {/* Protect Route Company Dashboard */}
-        <Route path="/company/dashboard/profile" element={<CompanyDashboardProfile />} />
-        <Route path="/company/dashboard/job" element={<CompanyDashboardJob />} />
-        <Route path="/company/dashboard/applicant" element={<CompanyDashboardApplicant />} />
-        <Route path="/company/dashboard/message" element={<CompanyDashboardMessage />} />
-        <Route path="/company/dashboard/setting" element={<CompanyDashboardSetting />} />
+        <Route
+          path="/company/dashboard/profile"
+          element={<CompanyDashboardProfile />}
+        />
+        <Route
+          path="/company/dashboard/job"
+          element={<CompanyDashboardJob />}
+        />
+        <Route
+          path="/company/dashboard/applicant"
+          element={<CompanyDashboardApplicant />}
+        />
+        <Route
+          path="/company/dashboard/message"
+          element={<CompanyDashboardMessage />}
+        />
+        <Route
+          path="/company/dashboard/setting"
+          element={<CompanyDashboardSetting />}
+        />
       </Routes>
     </BrowserRouter>
   );

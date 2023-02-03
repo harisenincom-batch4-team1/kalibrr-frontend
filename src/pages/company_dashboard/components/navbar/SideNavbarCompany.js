@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import {
-  BriefcaseIcon,
-  BuildingOfficeIcon,
-  ChatBubbleLeftRightIcon,
-  UserGroupIcon
-} from "@heroicons/react/24/solid";
+  HiBriefcase,
+  HiBuildingOffice,
+  HiChatBubbleLeftRight,
+  HiUserGroup,
+} from "react-icons/hi2";
 
 const SideNavbarCompany = () => {
   const { pathname } = useLocation();
@@ -23,14 +23,11 @@ const SideNavbarCompany = () => {
               : "flex items-center space-x-2 px-4"
           }
         >
-          <BuildingOfficeIcon className="h-6 w-6 rounded-lg hover:bg-blue-50" />
+          <HiBuildingOffice className="h-6 w-6 rounded-lg hover:bg-blue-50" />
           <span className="hidden md:block font-medium">Profil Perusahaan</span>
         </div>
       </Link>
-      <Link
-        to="/company/dashboard/job"
-        className="py-4 hover:bg-blue-50"
-      >
+      <Link to="/company/dashboard/job" className="py-4 hover:bg-blue-50">
         <div
           className={
             pathname === "/company/dashboard/job"
@@ -38,14 +35,11 @@ const SideNavbarCompany = () => {
               : "flex items-center space-x-2 px-4"
           }
         >
-          <BriefcaseIcon className="h-6 w-6 rounded-lg hover:bg-blue-50" />
+          <HiBriefcase className="h-6 w-6 rounded-lg hover:bg-blue-50" />
           <span className="hidden md:block font-medium">Lowongan Kerja</span>
         </div>
       </Link>
-      <Link
-        to="/company/dashboard/applicant"
-        className="py-4 hover:bg-blue-50"
-      >
+      <Link to="/company/dashboard/applicant" className="py-4 hover:bg-blue-50">
         <div
           className={
             pathname === "/company/dashboard/applicant"
@@ -53,14 +47,11 @@ const SideNavbarCompany = () => {
               : "flex items-center space-x-2 px-4"
           }
         >
-          <UserGroupIcon className="h-6 w-6 rounded-lg hover:bg-blue-50" />
+          <HiUserGroup className="h-6 w-6 rounded-lg hover:bg-blue-50" />
           <span className="hidden md:block font-medium">Pelamar</span>
         </div>
       </Link>
-      <Link
-        to="/company/dashboard/message"
-        className="py-4 hover:bg-blue-50"
-      >
+      <Link to="/company/dashboard/message" className="py-4 hover:bg-blue-50">
         <div
           className={
             pathname === "/company/dashboard/message"
@@ -68,7 +59,7 @@ const SideNavbarCompany = () => {
               : "flex items-center space-x-2 px-4"
           }
         >
-          <ChatBubbleLeftRightIcon className="h-6 w-6 rounded-lg hover:bg-blue-50" />
+          <HiChatBubbleLeftRight className="h-6 w-6 rounded-lg hover:bg-blue-50" />
           <span className="hidden md:block font-medium">Pesan</span>
         </div>
       </Link>

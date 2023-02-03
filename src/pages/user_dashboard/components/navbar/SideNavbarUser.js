@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import {
-  DocumentTextIcon,
-  UserCircleIcon,
-  ChatBubbleLeftRightIcon,
-  BookmarkIcon,
-} from "@heroicons/react/24/solid";
+  HiDocumentText,
+  HiUserCircle,
+  HiChatBubbleLeftRight,
+  HiBookmark,
+} from "react-icons/hi2";
 
 const SideNavbarUser = ({ isSidebarShow, setIsSidebarShow }) => {
   const { pathname } = useLocation();
@@ -23,7 +23,7 @@ const SideNavbarUser = ({ isSidebarShow, setIsSidebarShow }) => {
               : "flex items-center space-x-2 px-4"
           }
         >
-          <UserCircleIcon className="h-6 w-6 rounded-lg hover:bg-blue-50" />
+          <HiUserCircle className="h-6 w-6 rounded-lg hover:bg-blue-50" />
           <span className="hidden md:block font-medium">Profil</span>
         </div>
       </Link>
@@ -35,7 +35,7 @@ const SideNavbarUser = ({ isSidebarShow, setIsSidebarShow }) => {
               : "flex items-center space-x-2 px-4"
           }
         >
-          <DocumentTextIcon className="h-6 w-6 rounded-lg hover:bg-blue-50" />
+          <HiDocumentText className="h-6 w-6 rounded-lg hover:bg-blue-50" />
           <span className="hidden md:block font-medium">Lamaran</span>
         </div>
       </Link>
@@ -47,7 +47,7 @@ const SideNavbarUser = ({ isSidebarShow, setIsSidebarShow }) => {
               : "flex items-center space-x-2 px-4"
           }
         >
-          <BookmarkIcon className="h-6 w-6 rounded-lg hover:bg-blue-50" />
+          <HiBookmark className="h-6 w-6 rounded-lg hover:bg-blue-50" />
           <span className="hidden md:block font-medium">Disimpan</span>
         </div>
       </Link>
@@ -59,7 +59,7 @@ const SideNavbarUser = ({ isSidebarShow, setIsSidebarShow }) => {
               : "flex items-center space-x-2 px-4"
           }
         >
-          <ChatBubbleLeftRightIcon className="h-6 w-6 rounded-lg hover:bg-blue-50" />
+          <HiChatBubbleLeftRight className="h-6 w-6 rounded-lg hover:bg-blue-50" />
           <span className="hidden md:block font-medium">Pesan</span>
         </div>
       </Link>

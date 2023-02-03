@@ -1,6 +1,6 @@
 import NavbarUserLayout from "./layouts/NavbarUserLayout";
 import Container from "./layouts/Container";
-import HeaderSearchApplication from "./components/header/HeaderSearchAppication";
+import HeaderSearchApplication from "./components/header/HeaderSearchApplication";
 
 const UserDashboardApplication = () => {
   return (

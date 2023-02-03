@@ -1,5 +1,3 @@
-import React from "react";
-
 const HeaderTitle = (props) => {
   return (
     <div className="w-full flex justify-center bg-[#fafafa]">
