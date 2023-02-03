@@ -6,7 +6,7 @@ const CompanyBanner = () => {
     return (
     <div>
         {/* banner */}
-        <div className="container border rounded-lg mx-auto mt-6">
+        <div className="container border rounded-lg mx-auto">
 
             <div className="container mx-auto w-full content-center bg-[#fafafa] object-center">
                 <img    src={companyBanner} 
