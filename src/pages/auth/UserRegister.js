@@ -1,6 +1,6 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
-import HideShowPassword from "../../helper/HideShowPassword";
+import HideShowPassword from "../../helpers/HideShowPassword";
 
 const UserRegister = () => {
   return (

@@ -14,7 +14,7 @@ import CompanyProfile from "./pages/company/CompanyProfile";
 import CompanyRegister from "./pages/company/CompanyRegister";
 import UserLogin from "./pages/auth/UserLogin";
 import UserRegister from "./pages/auth/UserRegister";
-import SignUp from "./pages/signup/SignUp"
+import SignUp from "./pages/signup/SignUp";
 
 const App = () => {
   return (

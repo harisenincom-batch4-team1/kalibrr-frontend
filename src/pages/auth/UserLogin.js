@@ -1,7 +1,7 @@
-import { FaApple, FaFacebookSquare, FaGoogle } from "react-icons/fa";
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import HideShowPassword from "../../helper/HideShowPassword";
 import { Link } from "react-router-dom";
+import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { FaApple, FaFacebookSquare, FaGoogle } from "react-icons/fa";
+import HideShowPassword from "../../helpers/HideShowPassword";
 
 const UserLogin = () => {
   return (
