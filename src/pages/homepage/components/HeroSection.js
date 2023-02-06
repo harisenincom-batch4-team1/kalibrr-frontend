@@ -124,7 +124,7 @@ const HeroSection = () => {
         </div> */}
       </div>
 
-      <div className="container mx-auto mt-5 py-10">
+      <div className="container mx-auto mt-5 py-10 overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full">
         <div className="flex flex-row gap-4">
           <div className="container mx-auto">
             <a href="/">
