@@ -1,50 +1,66 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { companyJobApi } from "../../api";
+import { useCompanyJobContext } from "../../context/company-job-context";
 import axios from "axios";
 import Cookies from "js-cookie";
-import Container from "./layouts/Container";
-import NavbarUserLayout from "./layouts/NavbarUserLayout";
-import HeaderTitle from "./components/header/HeaderTitle";
 import Form from "./components/job/Form";
 import Table from "./components/job/Table";
+import Container from "./layouts/Container";
 import Spinner from "../../components/Spinner";
+import NavbarUserLayout from "./layouts/NavbarUserLayout";
+import HeaderTitle from "./components/header/HeaderTitle";
 
 const CompanyDashboardJob = () => {
-  const [jobs, setJobs] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handleDelete = (id) => {
-    setIsLoading(true);
-    axios
-      .delete(companyJobApi + "/" + id, {
-        headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
-      })
-      .then((res) => {
-        setIsLoading(false);
-        console.log(res);
-      });
-  };
+  const { state, dispatch } = useCompanyJobContext();
 
   useEffect(() => {
-    axios(companyJobApi, {
-      headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
-    }).then((res) => {
-      setIsLoading(false);
-      setJobs(res.data.datas);
-    });
-  }, [isLoading]);
+    switch (state.tag) {
+      case "idle":
+        dispatch({ type: "FETCH" });
+        break;
+      case "fetching":
+        axios(companyJobApi, {
+          headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
+        })
+          .then((res) => {
+            dispatch({ type: "FETCH_SUCCESS", payload: res.data.datas });
+          })
+          .catch((err) =>
+            dispatch({ type: "FETCH_ERROR", payload: err?.message })
+          );
+        break;
+      case "deleting":
+        axios
+          .delete(companyJobApi + "/" + state.id, {
+            headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
+          })
+          .then(() => {
+            dispatch({ type: "DELETE_SUCCESS" });
+          })
+          .catch((err) =>
+            dispatch({ type: "DELETE_ERROR", payload: err?.message })
+          );
+        break;
+      default:
+        break;
+    }
+  }, [state.tag]);
 
   return (
     <NavbarUserLayout>
       <Container>
         <HeaderTitle title={"Lowongan Kerja"} />
         <Form />
-        {isLoading && (
+        {state.tag === "fetching" && (
           <div className="p-5 w-full h-[60%] flex justify-center items-center">
             <Spinner />
           </div>
         )}
-        {!isLoading && <Table deleteFn={handleDelete} jobs={jobs} />}
+        {state.tag === "empty" && (
+          <p>Perusahaan belum menambahkan pekerjaan</p>
+        )}
+        {state.tag === "error" && <p>{state.errorMsg}</p>}
+        {state.tag === "loaded" && <Table />}
       </Container>
     </NavbarUserLayout>
   );

@@ -23,6 +23,9 @@ import CompanyDashboardMessage from "./pages/company_dashboard/CompanyDashboardM
 import CompanyDashboardSetting from "./pages/company_dashboard/CompanyDashboardSetting";
 import CompanyProfile from "./pages/company/CompanyProfile";
 
+import { CompanyJobProvider } from "./context/company-job-context";
+import { UserLoginProvider } from "./context/user-signin-context";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -34,7 +37,11 @@ const App = () => {
 
         {/* Auth */}
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/user/login" element={<UserLogin />} />
+        <Route path="/user/login" element={
+          <UserLoginProvider>
+            <UserLogin />
+          </UserLoginProvider>
+        } />
         <Route path="/user/register" element={<UserRegister />} />
         <Route path="/company/login" element={<CompanyLogin />} />
         <Route path="/company/register" element={<CompanyRegister />} />
@@ -51,7 +58,11 @@ const App = () => {
 
         {/* Protect Route Company Dashboard */}
         <Route path="/company/dashboard/profile" element={<CompanyDashboardProfile />} />
-        <Route path="/company/dashboard/job" element={<CompanyDashboardJob />} />
+        <Route path="/company/dashboard/job" element={
+          <CompanyJobProvider>
+            <CompanyDashboardJob />
+          </CompanyJobProvider>
+        } />
         <Route path="/company/dashboard/applicant" element={<CompanyDashboardApplicant />} />
         <Route path="/company/dashboard/message" element={<CompanyDashboardMessage />} />
         <Route path="/company/dashboard/setting" element={<CompanyDashboardSetting />} />

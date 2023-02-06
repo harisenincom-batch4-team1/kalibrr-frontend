@@ -1,4 +1,8 @@
-const Table = ({ jobs, deleteFn }) => {
+import { useCompanyJobContext } from "../../../../context/company-job-context";
+
+const Table = () => {
+  const { state, dispatch } = useCompanyJobContext();
+
   const truncate = (text, number) => {
     if (text.length > number) {
       return text.slice(0, number) + "...";
@@ -39,27 +43,29 @@ const Table = ({ jobs, deleteFn }) => {
             </tr>
           </thead>
           <tbody>
-            {jobs.map((job, i) => {
+            {state.datas.map((data, i) => {
               return (
                 <tr className="text-center" key={i}>
                   <th
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    {job.name}
+                    {data.name}
                   </th>
-                  <td>{truncate(job.jobDescription, 20)}</td>
-                  <td>{truncate(job.jobQualification, 20)}</td>
-                  <td>{job.type}</td>
-                  <td>{job.tenure}</td>
-                  <td>{job.status ? "Buka" : "Tutup"}</td>
-                  <td>{job.salaryMin + "-" + job.salaryMax}</td>
+                  <td>{truncate(data.jobDescription, 20)}</td>
+                  <td>{truncate(data.jobQualification, 20)}</td>
+                  <td>{data.type}</td>
+                  <td>{data.tenure}</td>
+                  <td>{data.status ? "Buka" : "Tutup"}</td>
+                  <td>{data.salaryMin + "-" + data.salaryMax}</td>
                   <div className="space-x-2 mt-4 w-full">
                     <button className="bg-yellow-400 text-white py-1 px-3 rounded-md text-xs">
                       Edit
                     </button>
                     <button
-                      onClick={() => deleteFn(job.id)}
+                      onClick={() =>
+                        dispatch({ type: "DELETE", payload: data.id })
+                      }
                       className="bg-red-600 text-white py-1 px-3 rounded-md text-xs"
                     >
                       Hapus
