@@ -4,7 +4,6 @@ import FullScreen from "../loading/FullScreen";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Cookies from "js-cookie";
-import LoadingBar from "react-top-loading-bar";
 
 const CardChangeEmail = () => {
   const dispatch = useDispatch();
@@ -50,7 +49,7 @@ const CardChangeEmail = () => {
   return (
     <>
       {/* {tag === "loading" && <FullScreen />} */}
-      <Card className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-[1px] hover:shadow">
+      <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-gray-200 border">
         <h1
           className={"text-white font-semibold text-lg py-3 px-4 bg-blue-600"}
         >
@@ -116,7 +115,7 @@ const CardChangeEmail = () => {
             </div>
           </form>
         </div>
-      </Card>
+      </div>
     </>
   );
 };

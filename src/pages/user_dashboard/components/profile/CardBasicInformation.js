@@ -2,7 +2,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LoadingBar from "react-top-loading-bar";
 
 const CardBasicInformation = () => {
   const dispatch = useDispatch();
@@ -68,8 +67,7 @@ const CardBasicInformation = () => {
   }, [isSubmit]);
 
   return (
-    <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-[1px] hover:shadow relative">
-      <LoadingBar color="#0086FF" height={"4px"} progress={progress} />
+    <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-gray-200 border relative">
       <h1 className="text-white font-semibold text-base md:text-xl bg-[#0086FF] py-3 px-4">
         Informasi Dasar
       </h1>

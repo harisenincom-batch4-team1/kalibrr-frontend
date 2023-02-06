@@ -5,7 +5,7 @@ const CardChangePassword = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <Card className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-[1px] hover:shadow">
+    <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border border-gray-200 hover:shadow">
       <h1 className={"text-white font-semibold text-lg py-3 px-4 bg-blue-600"}>
         Ubah Password
       </h1>
@@ -68,7 +68,7 @@ const CardChangePassword = () => {
           </div>
         </form>
       </div>
-    </Card>
+    </div>
   );
 };
 
