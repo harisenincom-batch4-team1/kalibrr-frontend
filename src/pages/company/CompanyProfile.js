@@ -14,10 +14,6 @@ const CompanyProfile = () => {
           <JobOpenings />
           <RelatedCompany />
         </div>
-
-        {/* <CompanyDetails/>
-        <JobOpenings/>
-        <RelatedCompany/> */}
       </div>
     </NavbarUserLayout>
   );
