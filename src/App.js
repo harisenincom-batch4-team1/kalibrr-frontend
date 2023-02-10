@@ -23,8 +23,10 @@ import CompanyDashboardMessage from "./pages/company_dashboard/CompanyDashboardM
 import CompanyDashboardSetting from "./pages/company_dashboard/CompanyDashboardSetting";
 import CompanyProfile from "./pages/company/CompanyProfile";
 
+import { JobListProvider } from "./context/joblist-context";
+import { UserLoginProvider } from "./context/user-login-context";
+import { UserRegisterProvider } from "./context/user-register-context";
 import { CompanyJobProvider } from "./context/company-job-context";
-import { UserLoginProvider } from "./context/user-signin-context";
 
 const App = () => {
   return (
@@ -32,8 +34,16 @@ const App = () => {
       <Routes>
         {/* Public Route */}
         <Route path="/" element={<Homepage />} />
-        <Route path="/job" element={<JobList /> } />
-        <Route path="/job/:id" element={<JobDetail />} />
+        <Route path="/job" element={
+          <JobListProvider>
+            <JobList />
+          </JobListProvider>
+        } />
+        <Route path="/job/:id" element={
+          <JobListProvider>
+            <JobDetail />
+          </JobListProvider>}
+        />
 
         {/* Auth */}
         <Route path="/signup" element={<SignUp />} />
@@ -42,7 +52,11 @@ const App = () => {
             <UserLogin />
           </UserLoginProvider>
         } />
-        <Route path="/user/register" element={<UserRegister />} />
+        <Route path="/user/register" element={
+          <UserRegisterProvider>
+            <UserRegister />
+          </UserRegisterProvider>
+        } />
         <Route path="/company/login" element={<CompanyLogin />} />
         <Route path="/company/register" element={<CompanyRegister />} />
 

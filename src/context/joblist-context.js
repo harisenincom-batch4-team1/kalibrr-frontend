@@ -1,0 +1,144 @@
+import { createContext, useReducer, useContext } from "react";
+
+export const JobListContext = createContext();
+
+export const JobListProvider = ({ children }) => {
+  const initialState = {
+    tag: "idle",
+    id: 0,
+    datas: [],
+    inputValue: "",
+    errorMsg: "",
+    page: 0,
+    limit: 10,
+  };
+
+  const reducer = (state, action) => {
+    switch (state.tag) {
+      case "idle": {
+        switch (action.type) {
+          case "FETCH": {
+            return {
+              ...state,
+              tag: "fetching",
+            };
+          }
+          default: {
+            return state;
+          }
+        }
+      }
+      case "fetching": {
+        switch (action.type) {
+          case "FETCH_SUCCESS": {
+            return {
+              ...state,
+              tag: "loaded",
+              datas: action.payload,
+              errorMsg: "",
+            };
+          }
+          case "FETCH_EMPTY": {
+            return {
+              ...state,
+              tag: "empty",
+              datas: [],
+              errorMsg: "",
+            };
+          }
+          case "FETCH_ERROR": {
+            return {
+              ...state,
+              tag: "error",
+              datas: [],
+              errorMsg: action.payload,
+            };
+          }
+          default:
+            return state;
+        }
+      }
+      case "loaded": {
+        switch (action.type) {
+          case "FETCH": {
+            return {
+              ...state,
+              tag: "fetching",
+            };
+          }
+          case "CHANGE_INPUT": {
+            return {
+              ...state,
+              inputValue: action.payload
+            };
+          }
+          case "NEXT_PAGE": {
+            return {
+              ...state,
+              tag: "fetching",
+              page: state.page + 1,
+              limit: state.limit + 10,
+            };
+          }
+          case "PREV_PAGE": {
+            return {
+              ...state,
+              tag: "fetching",
+              page: state.page - 1,
+              limit: state.limit - 10,
+            };
+          }
+          default: {
+            return state;
+          }
+        }
+      }
+      case "empty": {
+        switch (action.type) {
+          case "FETCH": {
+            return {
+              ...state,
+              tag: "fetching",
+            };
+          }
+          default:
+            return state;
+        }
+      }
+      case "error": {
+        switch (action.type) {
+          case "FETCH": {
+            return {
+              ...state,
+              tag: "fetching",
+            };
+          }
+          case "SUBMIT": {
+            return {
+              ...state,
+              tag: "submitting",
+              inputValue: action.payload,
+            };
+          }
+          default:
+            return state;
+        }
+      }
+      default: {
+        return state;
+      }
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const value = { state, dispatch };
+
+  return (
+    <JobListContext.Provider value={value}>{children}</JobListContext.Provider>
+  );
+};
+
+export const useJobListContext = () => {
+  return useContext(JobListContext);
+};

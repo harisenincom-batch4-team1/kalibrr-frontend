@@ -5,10 +5,6 @@ module.exports = {
     fontFamily: {
       main: "Plus Jakarta Sans",
     },
-    colors: {
-      blue: "#0086FF",
-      red: "#e11d48",
-    },
     extend: {},
   },
   plugins: [
