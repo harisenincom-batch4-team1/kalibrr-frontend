@@ -14,7 +14,7 @@ import ContainerSavedJobList from "./layouts/ContainerSavedJobList";
 import LeftWrapperSavedJobList from "./layouts/LeftWrapperSavedJobList";
 import RightWrapperSavedJobList from "./layouts/RightWrapperSavedJobList";
 import DetailSavedWrapper from "./layouts/DetailSavedWrapper";
-import HeaderSearchSavedJob from "./components/header/HeaderSearchSavedJob";
+import HeaderTitle from "./components/header/HeaderTitle";
 
 const UserDashboardSaved = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const UserDashboardSaved = () => {
   return (
     <NavbarUserLayout>
       <Container>
-        <HeaderSearchSavedJob title={"Disimpan"} />
+        <HeaderTitle title={"Disimpan"} />
         <ContainerSavedJobList>
           <LeftWrapperSavedJobList tag={tag}>
             {tag === "loading" && <SkeletonCard />}

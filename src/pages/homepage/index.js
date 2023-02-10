@@ -1,14 +1,17 @@
-import React from "react";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import PublicLayout from "../../layouts/PublicLayout";
+import HeroSection from "./components/HeroSection";
+import HomeNavbar from "./components/HomeNavbar";
+import JobCategory from "./components/JobCategory";
+import GetHired from "./components/GetHired";
 
 const Homepage = () => {
   return (
-    <div>
-      <Navbar />
-      <h1>HOMEPAGE</h1>
-      <Footer />
-    </div>
+    <PublicLayout>
+      <HomeNavbar />
+      <HeroSection />
+      <JobCategory />
+      <GetHired />
+    </PublicLayout>
   );
 };
 

@@ -1,9 +1,11 @@
-import React from 'react'
+import PublicLayout from "../../layouts/PublicLayout";
 
 const JobDetail = () => {
   return (
-    <div>JobDetail</div>
-  )
-}
+    <PublicLayout>
 
-export default JobDetail
+    </PublicLayout>
+  );
+};
+
+export default JobDetail;

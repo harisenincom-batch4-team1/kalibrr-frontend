@@ -7,22 +7,18 @@ import LoadingBar from "react-top-loading-bar";
 const NavbarUserLayout = ({ children }) => {
   const tag = useSelector((state) => state.userSettingReducer.tag);
   const progress = useSelector((state) => state.userSettingReducer.progress);
-  const [isSidebarShow, setIsSidebarShow] = useState(false);
 
   return (
     <div className="h-screen overflow-hidden relative">
       <LoadingBar
         className="absolute"
         color="#1C64F2"
-        height={"3px"}
+        height={3}
         progress={100}
       />
       <NavbarUser />
       <div className="h-full pt-16 flex justify-between">
-        <SideNavbarUser
-          isSidebarShow={isSidebarShow}
-          setIsSidebarShow={setIsSidebarShow}
-        />
+        <SideNavbarUser />
         {children}
       </div>
     </div>

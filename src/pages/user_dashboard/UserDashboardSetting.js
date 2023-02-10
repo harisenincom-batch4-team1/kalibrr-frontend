@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HeaderTitle from "./components/header/HeaderTitle";
 import NavbarUserLayout from "./layouts/NavbarUserLayout";
 import Container from "./layouts/Container";
-import CardContainer from "./layouts/CardContainer";
+import CardContainer from "./layouts/ProfileContainer";
 import CardChangeEmail from "./components/setting/CardChangeEmail";
 import CardChangePassword from "./components/setting/CardChangePassword";
 import CardDeleteAccount from "./components/setting/CardDeleteAccount";

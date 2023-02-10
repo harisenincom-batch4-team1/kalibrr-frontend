@@ -1,10 +1,10 @@
-import React from "react";
+import PublicLayout from "../../layouts/PublicLayout";
 
 const CompanyLogin = () => {
   return (
-    <div>
-      <h1 className="font-main">Company Login</h1>
-    </div>
+    <PublicLayout>
+
+    </PublicLayout>
   );
 };
 
