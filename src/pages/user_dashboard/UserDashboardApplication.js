@@ -22,9 +22,9 @@ const UserDashboardApplication = () => {
         })
           .then((res) => {
             if (res.data.datas === 0) {
-              dispatch({ type: "FETCH_SUCCESS", payload: res.data.datas });
-            } else {
               dispatch({ type: "FETCH_EMPTY" });
+            } else {
+              dispatch({ type: "FETCH_SUCCESS", payload: res.data.datas });
             }
           })
           .catch((err) =>
@@ -44,7 +44,11 @@ const UserDashboardApplication = () => {
           <Spinner />
         </div>
       )}
-      {state.tag === "loaded" && <Card />}
+      {state.tag === "loaded" && (
+        <div className="px-5">
+          <Card />
+        </div>
+      )}
       {state.tag === "empty" && (
         <div className="p-5 w-full h-[60%] flex justify-center items-center text-center">
           Kamu belum melamar pekerjaan apapun
