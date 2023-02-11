@@ -1,36 +1,21 @@
-import { useEffect, useState } from "react";
 import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
-import FullScreen from "../loading/FullScreen";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useUserSettingContext } from "../../../../context/user-setting-context";
+import { userEmail } from "../../../../api";
 
 const CardChangeEmail = () => {
-  const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
-  const tag = useSelector((state) => state.userSettingReducer.tag);
-  const email = useSelector((state) => state.userSettingReducer.email);
-  // const tag = useSelector((state) => state.userSettingReducer.tag);
-  const progress = useSelector((state) => state.userSettingReducer.progress);
-  const emailInput = useSelector(
-    (state) => state.userSettingReducer.emailInput
-  );
-  const currentPasswordInput = useSelector(
-    (state) => state.userSettingReducer.currentPasswordInput
-  );
-  const newPasswordInput = useSelector(
-    (state) => state.userSettingReducer.newPasswordInput
-  );
+  const { state, dispatch } = useUserSettingContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: "FETCH_USER_SETTING" });
     axios
       .put(
-        process.env.REACT_APP_USER_EMAIL,
+        userEmail,
         {
-          email: emailInput,
-          currentPassword: currentPasswordInput,
+          email: state.emailInput,
+          currentPassword: state.currentPasswordInput,
         },
         {
           headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
@@ -48,7 +33,6 @@ const CardChangeEmail = () => {
 
   return (
     <>
-      {/* {tag === "loading" && <FullScreen />} */}
       <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-gray-200 border">
         <h1
           className={"text-white font-semibold text-lg py-3 px-4 bg-blue-600"}
@@ -61,7 +45,7 @@ const CardChangeEmail = () => {
             className="space-y-3 pb-5 md:mt-0 w-full"
           >
             <p className="font-medium border-b-[1px] py-2 md:py-4">
-              Alamat email anda sekarang: {email}
+              Alamat email anda sekarang: {state.email}
             </p>
             <div className="w-full pb-4 space-y-2 border-b-[1px]">
               <div>
@@ -73,8 +57,6 @@ const CardChangeEmail = () => {
                   type="password"
                   required={true}
                   autoComplete="off"
-                  disabled={isLoading}
-                  value={currentPasswordInput}
                   onChange={(e) =>
                     dispatch({
                       type: "CHANGE_CURRENT_PASSWORD",
@@ -92,8 +74,6 @@ const CardChangeEmail = () => {
                   type="email"
                   required={true}
                   autoComplete="off"
-                  disabled={isLoading}
-                  value={emailInput}
                   onChange={(e) =>
                     dispatch({
                       type: "CHANGE_EMAIL",
@@ -106,8 +86,6 @@ const CardChangeEmail = () => {
             <div className="w-full flex">
               <Button
                 type="submit"
-                outline={isLoading}
-                disabled={isLoading}
                 className="ml-auto bg-blue-600 hover:bg-blue-500"
               >
                 Simpan

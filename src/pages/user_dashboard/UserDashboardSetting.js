@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useUserSettingContext } from "../../context/user-setting-context";
+import { userEmail } from "../../api";
 import HeaderTitle from "./components/header/HeaderTitle";
 import NavbarUserLayout from "./layouts/NavbarUserLayout";
 import Container from "./layouts/Container";
@@ -12,30 +13,40 @@ import Cookies from "js-cookie";
 import FullScreen from "./components/loading/FullScreen";
 
 const UserDashboardSetting = () => {
-  const dispatch = useDispatch();
-  const tag = useSelector((state) => state.userSettingReducer.tag);
-  const email = useSelector((state) => state.userSettingReducer.email);
+  const { state, dispatch } = useUserSettingContext();
 
   useEffect(() => {
-    dispatch({ type: "FETCH_USER_SETTING" });
-    axios
-      .get(process.env.REACT_APP_USER, {
-        headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
-      })
-      .then((res) => {
-        dispatch({
-          type: "FETCH_USER_SETTING_SUCCESS",
-          payload: res.data.datas.email,
-        });
-      })
-      .catch((err) =>
-        dispatch({ type: "FETCH_USER_SETTING_ERROR", payload: err?.message })
-      );
-  }, [email]);
+    switch (state.tag) {
+      case "idle":
+        dispatch({ type: "FETCH_USER_SETTING" });
+        break;
+      case "loading":
+        axios
+          .get(userEmail, {
+            headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
+          })
+          .then((res) => {
+            console.log(res.data.datas);
+            dispatch({
+              type: "FETCH_USER_SETTING_SUCCESS",
+              payload: res.data.datas.email,
+            });
+          })
+          .catch((err) =>
+            dispatch({
+              type: "FETCH_USER_SETTING_ERROR",
+              payload: err?.message,
+            })
+          );
+        break;
+      default:
+        break;
+    }
+  }, [state.tag]);
 
   return (
     <NavbarUserLayout>
-      {tag === "loading" && <FullScreen />}
+      {state.tag === "loading" && <FullScreen />}
       <Container>
         <HeaderTitle title={"Pengaturan Akun"} />
         <CardContainer>

@@ -47,7 +47,7 @@ const UserRegister = () => {
 
   return (
     <PublicLayout>
-      <div className="flex bg-stone-100 h-screen w-full items-center">
+      <div className="pt-28 pb-14">
         <div className="w-[550px] h-fit items-center justify-center px-6 py-5 mx-auto border rounded-md border-gray-200 bg-white">
           {/* register */}
           <div className="flex flex-col gap-5">

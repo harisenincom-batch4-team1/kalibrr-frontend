@@ -1,12 +1,9 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
 import NavbarUser from "../components/navbar/NavbarUser";
 import SideNavbarUser from "../components/navbar/SideNavbarUser";
 import LoadingBar from "react-top-loading-bar";
+import Navbar from "../../../components/Navbar";
 
 const NavbarUserLayout = ({ children }) => {
-  const tag = useSelector((state) => state.userSettingReducer.tag);
-  const progress = useSelector((state) => state.userSettingReducer.progress);
 
   return (
     <div className="h-screen overflow-hidden relative">
@@ -16,7 +13,7 @@ const NavbarUserLayout = ({ children }) => {
         height={3}
         progress={100}
       />
-      <NavbarUser />
+      <Navbar />
       <div className="h-full pt-16 flex justify-between">
         <SideNavbarUser />
         {children}
