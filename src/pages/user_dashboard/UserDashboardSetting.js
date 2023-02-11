@@ -1,16 +1,13 @@
 import { useEffect } from "react";
 import { useUserSettingContext } from "../../context/user-setting-context";
-import { userEmail } from "../../api";
-import HeaderTitle from "./components/header/HeaderTitle";
-import NavbarUserLayout from "./layouts/NavbarUserLayout";
-import Container from "./layouts/Container";
-import CardContainer from "./layouts/ProfileContainer";
-import CardChangeEmail from "./components/setting/CardChangeEmail";
-import CardChangePassword from "./components/setting/CardChangePassword";
-import CardDeleteAccount from "./components/setting/CardDeleteAccount";
+import { userEmailApi } from "../../api";
+import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
+import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
+import CardChangeEmail from "../../components/dashboard_user/setting/CardChangeEmail";
+import CardChangePassword from "../../components/dashboard_user/setting/CardChangePassword";
+import CardDeleteAccount from "../../components/dashboard_user/setting/CardDeleteAccount";
 import axios from "axios";
 import Cookies from "js-cookie";
-import FullScreen from "./components/loading/FullScreen";
 
 const UserDashboardSetting = () => {
   const { state, dispatch } = useUserSettingContext();
@@ -22,7 +19,7 @@ const UserDashboardSetting = () => {
         break;
       case "loading":
         axios
-          .get(userEmail, {
+          .get(userEmailApi, {
             headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
           })
           .then((res) => {
@@ -45,17 +42,14 @@ const UserDashboardSetting = () => {
   }, [state.tag]);
 
   return (
-    <NavbarUserLayout>
-      {state.tag === "loading" && <FullScreen />}
-      <Container>
-        <HeaderTitle title={"Pengaturan Akun"} />
-        <CardContainer>
-          <CardChangeEmail />
-          <CardChangePassword />
-          <CardDeleteAccount />
-        </CardContainer>
-      </Container>
-    </NavbarUserLayout>
+    <UserDashboardLayout>
+      <HeaderTitle title={"Pengaturan Akun"} />
+      <div className="max-w-full h-[95%] pb-16 mx-auto px-5 py-5 space-y-5 overflow-hidden overflow-y-scroll scrollbar-hide">
+        <CardChangeEmail />
+        <CardChangePassword />
+        <CardDeleteAccount />
+      </div>
+    </UserDashboardLayout>
   );
 };
 

@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const ProtectRoute = (props) => {
   if (Cookies.get("kalibrr") !== undefined) {

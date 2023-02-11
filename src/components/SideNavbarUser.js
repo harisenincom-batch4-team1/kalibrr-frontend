@@ -6,7 +6,7 @@ import {
   HiBookmark,
 } from "react-icons/hi2";
 
-const SideNavbarUser = ({ isSidebarShow, setIsSidebarShow }) => {
+const SideNavbarUser = () => {
   const { pathname } = useLocation();
 
   return (

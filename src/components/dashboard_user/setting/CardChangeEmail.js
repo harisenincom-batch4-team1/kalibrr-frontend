@@ -1,8 +1,8 @@
 import { Button, Card, Label, Spinner, TextInput } from "flowbite-react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useUserSettingContext } from "../../../../context/user-setting-context";
-import { userEmail } from "../../../../api";
+import { useUserSettingContext } from "../../../context/user-setting-context";
+import { userEmailApi } from "../../../api";
 
 const CardChangeEmail = () => {
   const { state, dispatch } = useUserSettingContext();
@@ -12,7 +12,7 @@ const CardChangeEmail = () => {
     dispatch({ type: "FETCH_USER_SETTING" });
     axios
       .put(
-        userEmail,
+        userEmailApi,
         {
           email: state.emailInput,
           currentPassword: state.currentPasswordInput,

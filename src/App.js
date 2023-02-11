@@ -10,8 +10,6 @@ import UserLogin from "./pages/auth/UserLogin";
 import UserRegister from "./pages/auth/UserRegister";
 import UserDashboardProfile from "./pages/user_dashboard/UserDashboardProfile";
 import UserDashboardApplication from "./pages/user_dashboard/UserDashboardApplication";
-import UserDashboardMessage from "./pages/user_dashboard/UserDashboardMessage";
-import UserDashboardSaved from "./pages/user_dashboard/UserDashboardSaved";
 import UserDashboardSetting from "./pages/user_dashboard/UserDashboardSetting";
 import CompanyDashboardProfile from "./pages/company_dashboard/CompanyDashboardProfile";
 
@@ -19,9 +17,7 @@ import CompanyLogin from "./pages/auth/CompanyLogin";
 import CompanyRegister from "./pages/auth/CompanyRegister";
 import CompanyDashboardJob from "./pages/company_dashboard/CompanyDashboardJob";
 import CompanyDashboardApplicant from "./pages/company_dashboard/CompanyDashboardApplicant";
-import CompanyDashboardMessage from "./pages/company_dashboard/CompanyDashboardMessage";
 import CompanyDashboardSetting from "./pages/company_dashboard/CompanyDashboardSetting";
-import CompanyProfile from "./pages/company/CompanyProfile";
 
 import { JobListProvider } from "./context/joblist-context";
 import { UserLoginProvider } from "./context/user-login-context";
@@ -83,18 +79,11 @@ const App = () => {
               </UserJobApplicationProvider>
             </ProtectRoute>
           } />
-          <Route path="/user/dashboard/message" element={<UserDashboardMessage />} />
-          <Route path="/user/dashboard/saved" element={<UserDashboardSaved />} />
           <Route path="/user/dashboard/setting" element={
             <ProtectRoute>
               <UserSettingProvider>
                 <UserDashboardSetting />
               </UserSettingProvider>
-            </ProtectRoute>
-          } />
-          <Route path="/user/company-profile" element={
-            <ProtectRoute>
-              <CompanyProfile />
             </ProtectRoute>
           } />
 
@@ -106,7 +95,6 @@ const App = () => {
             </CompanyJobProvider>
           } />
           <Route path="/company/dashboard/applicant" element={<CompanyDashboardApplicant />} />
-          <Route path="/company/dashboard/message" element={<CompanyDashboardMessage />} />
           <Route path="/company/dashboard/setting" element={<CompanyDashboardSetting />} />
 
           {/* Not Found */}

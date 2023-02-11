@@ -1,13 +1,10 @@
-import Container from "./layouts/Container";
-import NavbarUserLayout from "./layouts/NavbarUserLayout";
-import HeaderTitle from "./components/header/HeaderTitle";
+import NavbarUserLayout from "../../layouts/DashboardLayoutCompany";
+import HeaderTitle from "../../components/dashboard_company/header/HeaderTitle";
 
 const CompanyDashboardApplicant = () => {
   return (
     <NavbarUserLayout>
-      <Container>
-        <HeaderTitle title={"Pelamar"} />
-      </Container>
+      <HeaderTitle title={"Pelamar"} />
     </NavbarUserLayout>
   );
 };

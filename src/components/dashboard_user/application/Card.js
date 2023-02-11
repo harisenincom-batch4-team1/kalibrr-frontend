@@ -1,8 +1,4 @@
-import axios from "axios";
-import Cookies from "js-cookie";
-import { useEffect } from "react";
-import { userJobApplicationApi } from "../../../../api";
-import { useUserJobApplicationContext } from "../../../../context/user-job-application";
+import { useUserJobApplicationContext } from "../../../context/user-job-application";
 
 const Card = () => {
   const { state, dispatch } = useUserJobApplicationContext();

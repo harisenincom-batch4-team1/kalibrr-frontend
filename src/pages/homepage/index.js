@@ -1,8 +1,8 @@
 import PublicLayout from "../../layouts/PublicLayout";
-import HeroSection from "./components/HeroSection";
-import JobCategory from "./components/JobCategory";
-import GetHired from "./components/GetHired";
-import ExploreJobs from "./components/ExploreJob";
+import HeroSection from "../../components/homepage/HeroSection";
+import JobCategory from "../../components/homepage/JobCategory";
+import GetHired from "../../components/homepage/GetHired";
+import ExploreJobs from "../../components/homepage/ExploreJob";
 
 const Homepage = () => {
   return (

@@ -1,8 +1,8 @@
 import LoadingBar from "react-top-loading-bar";
-import NavbarCompany from "../components/navbar/NavbarCompany";
-import SideNavbarCompany from "../components/navbar/SideNavbarCompany";
+import NavbarCompany from "../components/dashboard_company/navbar/NavbarCompany";
+import SideNavbarCompany from "../components/dashboard_company/navbar/SideNavbarCompany";
 
-const NavbarUserLayout = ({ children }) => {
+const NavbarLayoutCompany = ({ children }) => {
   return (
     <div className="h-screen overflow-hidden">
       <LoadingBar
@@ -14,10 +14,12 @@ const NavbarUserLayout = ({ children }) => {
       <NavbarCompany />
       <div className="h-full pt-16 flex justify-between scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full ">
         <SideNavbarCompany />
-        {children}
+        <div className="w-full bg-[#fafafa] h-full overflow-hidden overflow-y-scroll pb-5">
+          {children}
+        </div>
       </div>
     </div>
   );
 };
 
-export default NavbarUserLayout;
+export default NavbarLayoutCompany;

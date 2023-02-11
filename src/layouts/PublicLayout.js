@@ -8,7 +8,7 @@ const PublicLayout = ({ children }) => {
       <LoadingBar
         className="absolute"
         color="#1C64F2"
-        height={3}
+        height={2}
         progress={100}
       />
       <Navbar />

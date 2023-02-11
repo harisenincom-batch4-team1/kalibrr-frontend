@@ -1,4 +1,4 @@
-import { useCompanyJobContext } from "../../../../context/company-job-context";
+import { useCompanyJobContext } from "../../../context/company-job-context";
 
 const Table = () => {
   const { state, dispatch } = useCompanyJobContext();

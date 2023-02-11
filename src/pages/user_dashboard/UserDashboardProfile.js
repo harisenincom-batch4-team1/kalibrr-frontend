@@ -1,21 +1,17 @@
-import Container from "./layouts/Container";
-import HeaderTitle from "./components/header/HeaderTitle";
-import NavbarUserLayout from "./layouts/NavbarUserLayout";
-import CardBasicInformation from "./components/profile/CardBasicInformation";
-import CardCV from "./components/profile/CardCV";
-import ProfileContainer from "./layouts/ProfileContainer";
+import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
+import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
+import CardBasicInformation from "../../components/dashboard_user/profile/CardBasicInformation";
+import CardCV from "../../components/dashboard_user/profile/CardCV";
 
 const UserDashboardProfile = () => {
   return (
-    <NavbarUserLayout>
-      <Container>
-        <HeaderTitle title={"Profil"} />
-        <ProfileContainer>
-          <CardBasicInformation />
-          <CardCV />
-        </ProfileContainer>
-      </Container>
-    </NavbarUserLayout>
+    <UserDashboardLayout>
+      <HeaderTitle title={"Profil"} />
+      <div className="max-w-full h-[95%] pb-16 mx-auto px-5 py-5 space-y-5 overflow-hidden overflow-y-scroll scrollbar-hide">
+        <CardBasicInformation />
+        <CardCV />
+      </div>
+    </UserDashboardLayout>
   );
 };
 
