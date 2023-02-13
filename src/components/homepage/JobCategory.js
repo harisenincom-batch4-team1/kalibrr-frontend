@@ -15,11 +15,10 @@ const JobCategory = () => {
       <div className="container mx-auto mt-10 bg-[#f7f9fb] rounded-lg h-fit flex flex-col justify-center">
         <div className="container px-10 py-10 text-center mx-auto">
           <h3 className="md:text-4xl text-2xl font-bold text-center">
-            Explore jobs by category
+            Jelajahi pekerjaan berdasarkan kategori
           </h3>
-          <p className="text-gray-600 text-md md:text-xl mt-8 mx-auto text-center">
-            Get the most exciting jobs from all around the world and grow your
-            career fast with others.
+          <p className="text-gray-600 text-md md:text-xl mt-4 mx-auto text-center">
+          Dapatkan pekerjaan paling menarik dari seluruh dunia dan kembangkan karirmu dengan cepat bersama orang lain.
           </p>
         </div>
         <div className="max-w-[1200px] flex flex-wrap px-5 w-fit mx-auto gap-10 justify-center pb-10">

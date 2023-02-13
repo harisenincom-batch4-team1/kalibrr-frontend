@@ -7,7 +7,7 @@ const Pagination = () => {
         <ul className="inline-flex items-center -space-x-px">
           <li>
             <button className="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-              <span className="sr-only">Previous</span>
+              <span className="sr-only">Sebelumnya</span>
               <svg
                 aria-hidden="true"
                 className="w-5 h-5"
@@ -50,7 +50,7 @@ const Pagination = () => {
           </li>
           <li>
             <button className="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-              <span className="sr-only">Next</span>
+              <span className="sr-only">Selanjutnya</span>
               <svg
                 aria-hidden="true"
                 className="w-5 h-5"

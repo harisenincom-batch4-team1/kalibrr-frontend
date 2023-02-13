@@ -5,19 +5,19 @@ const ExploreJobs = () => {
     <div className="mb-10">
       <div className="container mx-auto mt-10 p-5 bg-[#f7f9fb] rounded-lg h-fit flex flex-col justify-center">
         <div className="container mx-auto">
-          <h1 className="text-2xl text-center md:text-4xl md:text-left font-bold">
-            Explore popular jobs.
+          <h1 className="text-2xl text-center md:text-left md:text-4xl  font-bold">
+            Jelajahi pekerjaan populer.
           </h1>
-          <p className="mt-4 md:text-xl">
-            Check out our featured jobs from popular companies.
+          <p className="mt-4 text-center md:text-left md:text-xl">
+            Lihat pekerjaan unggulan dari perusahaan populer
           </p>
-          <p className="md:text-xl">Start applying now, or</p>
-          <div className="mt-4 flex">
+          <p className="text-center md:text-left md:text-xl ">Mulai melamar sekarang, atau</p>
+          <div className="mt-4 flex w-full justify-center md:justify-start">
             <a
               href="/"
               class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              View all jobs
+              Lihat semua pekerjaan
               <svg
                 aria-hidden="true"
                 class="w-4 h-4 ml-2 -mr-1"
@@ -65,7 +65,7 @@ const ExploreJobs = () => {
               href="/"
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Apply Now
+              Lamar Sekarang
             </a>
           </div>
 
@@ -98,7 +98,7 @@ const ExploreJobs = () => {
               href="/"
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Apply Now
+              Lamar Sekarang
             </a>
           </div>
 
@@ -131,7 +131,7 @@ const ExploreJobs = () => {
               href="/"
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Apply Now
+              Lamar Sekarang
             </a>
           </div>
 
@@ -164,7 +164,7 @@ const ExploreJobs = () => {
               href="/"
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Apply Now
+              Lamar Sekarang
             </a>
           </div>
 
@@ -197,7 +197,7 @@ const ExploreJobs = () => {
               href="/"
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Apply Now
+              Lamar Sekarang
             </a>
           </div>
 
@@ -230,7 +230,7 @@ const ExploreJobs = () => {
               href="/"
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Apply Now
+              Lamar Sekarang
             </a>
           </div>
         </div>

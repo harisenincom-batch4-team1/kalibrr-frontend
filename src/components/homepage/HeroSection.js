@@ -8,13 +8,12 @@ const HeroSection = () => {
         <div className="container flex flex-auto mx-auto rounded-md">
           <div className="w-screen container flex flex-col md:w-1/2 mx-8 my-8 ">
             <div className="container ">
-              <h1 className="text-5xl font-extrabold">
-                Find your dream job with
-                <p className="text-5xl text-[#0086ff] mt-4">Kalibrr</p>
+              <h1 className="text-3xl md:text-5xl font-extrabold w-full">
+                Temukan pekerjaan impianmu bersama
+                <p className="text-3xl md:text-5xl text-[#0086ff] mt-4">Kalibrr</p>
               </h1>
-              <p className="text-gray-600 text-xl mt-8">
-                Get the most exciting jobs from all around the world and grow
-                your career fast with others.
+              <p className="text-gray-600 md:text-xl mt-8">
+                Bersama Kalibrr, #kejarsuksesmu sekarang!
               </p>
             </div>
             <div className="container mt-8">
@@ -26,7 +25,7 @@ const HeroSection = () => {
                     className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
                     type="button"
                   >
-                    Job Title
+                    Nama Pekerjaan
                     <svg
                       aria-hidden="true"
                       className="w-4 h-4 ml-1"
@@ -54,7 +53,7 @@ const HeroSection = () => {
                           type="button"
                           className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
-                          Job Title
+                          Nama Pekerjaan
                         </button>
                       </li>
                       <li>
@@ -62,7 +61,7 @@ const HeroSection = () => {
                           type="button"
                           className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
-                          Location
+                          Lokasi
                         </button>
                       </li>
                       <li>
@@ -70,7 +69,7 @@ const HeroSection = () => {
                           type="button"
                           className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
-                          Company
+                          Perusahaan
                         </button>
                       </li>
                     </ul>
@@ -80,7 +79,7 @@ const HeroSection = () => {
                       type="search"
                       id="search-dropdown"
                       className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
-                      placeholder="What kind of role do you want?"
+                      placeholder="Pekerjaan apa yang kamu inginkan?"
                       required=""
                     />
                     <button
@@ -102,14 +101,14 @@ const HeroSection = () => {
                           d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                         />
                       </svg>
-                      <span className="sr-only">Search</span>
+                      <span className="sr-only">Pencarian</span>
                     </button>
                   </div>
                 </div>
               </form>
             </div>
             <div className="container mt-8 font-semibold">
-              <text>Popular Search: </text>
+              <text>Pencarian Populer: </text>
               <text className="text-gray-500">
                 <a href="/">Software developer, </a>
                 <a href="/">UI/UX Designer, </a>

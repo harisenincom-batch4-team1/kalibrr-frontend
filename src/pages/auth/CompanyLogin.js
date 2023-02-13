@@ -72,11 +72,11 @@ const CompanyLogin = () => {
               <div className="flex justify-between items-center gap-2">
                 <div className="flex gap-3">
                   <Checkbox id="remember" />
-                  <Label htmlFor="remember">Remember me</Label>
+                  <Label htmlFor="remember">Ingat saya</Label>
                 </div>
 
                 <a href="#!" className="text-blue-600">
-                  Forget password?
+                  Lupa password?
                 </a>
               </div>
               <Button type="submit">Login</Button>
@@ -86,9 +86,9 @@ const CompanyLogin = () => {
           {/* register */}
           <div className="text-center text-sm mt-3">
             <span>
-              Don't have an account yet?
+              Belum punya akun?
               <Link to="/signup" className="text-blue-500 ml-1 hover:underline">
-                Sign up
+                Daftar
               </Link>
             </span>
           </div>
