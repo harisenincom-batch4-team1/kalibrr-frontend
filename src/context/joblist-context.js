@@ -69,7 +69,7 @@ export const JobListProvider = ({ children }) => {
           case "CHANGE_INPUT": {
             return {
               ...state,
-              inputValue: action.payload
+              inputValue: action.payload,
             };
           }
           case "NEXT_PAGE": {
@@ -117,6 +117,12 @@ export const JobListProvider = ({ children }) => {
             return {
               ...state,
               tag: "submitting",
+              inputValue: action.payload,
+            };
+          }
+          case "CHANGE_INPUT": {
+            return {
+              ...state,
               inputValue: action.payload,
             };
           }

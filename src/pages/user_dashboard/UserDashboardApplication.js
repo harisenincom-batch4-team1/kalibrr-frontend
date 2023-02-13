@@ -1,11 +1,11 @@
+import { useEffect } from "react";
+import { userJobApplicationApi } from "../../api";
+import { useUserJobApplicationContext } from "../../context/user-job-application";
+import axios from "axios";
 import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
 import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
 import Card from "../../components/dashboard_user/application/Card";
-import { useUserJobApplicationContext } from "../../context/user-job-application";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
-import axios from "axios";
-import { userJobApplicationApi } from "../../api";
 import Spinner from "../../components/Spinner";
 
 const UserDashboardApplication = () => {
@@ -55,7 +55,7 @@ const UserDashboardApplication = () => {
         </div>
       )}
       {state.tag === "error" && (
-        <div className="p-5 w-full h-[60%] flex justify-center items-center">
+        <div className="p-5 w-full h-[60%] flex justify-center items-center text-center">
           {state.errorMsg}
         </div>
       )}

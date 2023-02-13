@@ -1,7 +1,7 @@
 import { useUserJobApplicationContext } from "../../../context/user-job-application";
 
 const Card = () => {
-  const { state, dispatch } = useUserJobApplicationContext();
+  const { state } = useUserJobApplicationContext();
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-[800px] mx-auto my-5">
@@ -19,7 +19,10 @@ const Card = () => {
         <tbody>
           {state.datas.map((data, i) => {
             return (
-              <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <tr
+                key={i}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
                 <th
                   scope="row"
                   className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"

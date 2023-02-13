@@ -2,13 +2,11 @@ import { Link } from "react-router-dom";
 import PublicLayout from "../../layouts/PublicLayout";
 
 const SignUp = () => {
-  
-
   return (
     <PublicLayout>
-      <div className="flex flex-col gap-20 bg-stone-100 h-full">
+      <div className="flex justify-center items-center flex-col gap-20 bg-stone-100 h-full">
         {/* area 1 */}
-        <div className="flex flex-col gap-4 h-fit items-center mx-auto mt-28">
+        <div className="flex flex-col gap-4 h-fit items-center mt-28">
           <p className="text-center font-bold text-xl">
             Selamat datang di Kalibrr!
           </p>
@@ -18,7 +16,7 @@ const SignUp = () => {
         {/* area 2 */}
         <div className="flex flex-row gap-[57px]">
           {/* client */}
-          <div className="flex flex-col gap-7 w-96 px-5 py-5 ml-44 bg-white">
+          <div className="flex flex-col gap-7 w-96 px-5 py-5 bg-white">
             <div className="w-fit font-semibold text-2xl mt-5 mx-5">
               <p>Saya sedang mencari pekerjaan</p>
             </div>

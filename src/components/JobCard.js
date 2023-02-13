@@ -1,12 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { useJobListContext } from "../context/joblist-context";
 
 const JobCard = () => {
+  const navigate = useNavigate();
   const { state, dispatch } = useJobListContext();
+
+  const handleDetailJob = (id) => {
+    navigate("/job/" + id);
+  };
 
   {
     return state.datas.map((data, i) => {
       return (
         <div
+          onClick={() => handleDetailJob(data.id)}
           key={i}
           className="border border-gray-200 w-[340px] md:w-[400px] p-5 rounded-lg hover:shadow cursor-pointer"
         >
