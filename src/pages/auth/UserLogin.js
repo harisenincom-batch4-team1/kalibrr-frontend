@@ -47,7 +47,8 @@ const UserLogin = () => {
 
   return (
     <PublicLayout>
-      <div className="flex w-full h-screen items-center bg-stone-100 px-5">
+      <div className="pt-24" />
+      <div className="flex w-full h-screen items-center px-5">
         <div className="w-[500px] items-center justify-center mb-40 px-6 py-5 mx-auto mt-14 border-gray-200 border rounded-sm bg-white">
           {/* login */}
           <div className="m-5">

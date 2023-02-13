@@ -1,16 +1,13 @@
 import { createContext, useReducer, useContext } from "react";
 
-export const JobListContext = createContext();
+export const UserJobApplicationContext = createContext();
 
-export const JobListProvider = ({ children }) => {
+export const UserJobApplicationProvider = ({ children }) => {
   const initialState = {
     tag: "idle",
     id: 0,
     datas: [],
-    inputValue: "",
-    errorMsg: "",
-    page: 0,
-    limit: 10,
+    errorMsg: ""
   };
 
   const reducer = (state, action) => {
@@ -66,28 +63,6 @@ export const JobListProvider = ({ children }) => {
               tag: "fetching",
             };
           }
-          case "CHANGE_INPUT": {
-            return {
-              ...state,
-              inputValue: action.payload,
-            };
-          }
-          case "NEXT_PAGE": {
-            return {
-              ...state,
-              tag: "fetching",
-              page: state.page + 1,
-              limit: state.limit + 10,
-            };
-          }
-          case "PREV_PAGE": {
-            return {
-              ...state,
-              tag: "fetching",
-              page: state.page - 1,
-              limit: state.limit - 10,
-            };
-          }
           default: {
             return state;
           }
@@ -113,19 +88,6 @@ export const JobListProvider = ({ children }) => {
               tag: "fetching",
             };
           }
-          case "SUBMIT": {
-            return {
-              ...state,
-              tag: "submitting",
-              inputValue: action.payload,
-            };
-          }
-          case "CHANGE_INPUT": {
-            return {
-              ...state,
-              inputValue: action.payload,
-            };
-          }
           default:
             return state;
         }
@@ -141,10 +103,10 @@ export const JobListProvider = ({ children }) => {
   const value = { state, dispatch };
 
   return (
-    <JobListContext.Provider value={value}>{children}</JobListContext.Provider>
+    <UserJobApplicationContext.Provider value={value}>{children}</UserJobApplicationContext.Provider>
   );
 };
 
-export const useJobListContext = () => {
-  return useContext(JobListContext);
+export const useUserJobApplicationContext = () => {
+  return useContext(UserJobApplicationContext);
 };
