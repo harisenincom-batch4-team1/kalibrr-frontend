@@ -12,20 +12,20 @@ const Footer = () => {
         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Take a tour
+              Kandidat
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
-                <a href="/" className="hover:underline">
-                  Features
+                <a href="/signup" className="hover:underline">
+                  Daftar
                 </a>
               </li>
               <li className="mb-4">
                 <a href="/" className="hover:underline">
-                  Pricing
+                  Lowongan kerja
                 </a>
               </li>
-              <li className="mb-4">
+              {/* <li className="mb-4">
                 <a href="/" className="hover:underline">
                   Product
                 </a>
@@ -34,22 +34,22 @@ const Footer = () => {
                 <a href="/" className="hover:underline">
                   Support
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Our company
+              Perusahaan
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
                 <a href="/" className="hover:underline ">
-                  About us
+                  Tentang Kami
                 </a>
               </li>
               <li className="mb-4">
-                <a href="/" className="hover:underline ">
-                  Blog
+                <a href="/company/register" className="hover:underline ">
+                  Mulai Merekrut
                 </a>
               </li>
               <li className="mb-4">
@@ -59,29 +59,29 @@ const Footer = () => {
               </li>
               <li className="mb-4">
                 <a href="/" className="hover:underline ">
-                  Contact us
+                  Hubungi Kami
                 </a>
               </li>
             </ul>
           </div>
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Resources
+              Bantuan
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
                 <a href="/" className="hover:underline">
-                  Privacy
+                  Kebijakan Privasi
                 </a>
               </li>
               <li className="mb-4">
                 <a href="/" className="hover:underline">
-                  Terms of Use
+                  Syarat & Ketentuan
                 </a>
               </li>
               <li className="mb-4">
                 <a href="/" className="hover:underline">
-                  Help Center
+                  Pusat Bantuan
                 </a>
               </li>
             </ul>

@@ -7,10 +7,10 @@ const GetHired = () => {
       <div className="max-w-[1200px] flex flex-col md:flex-row mx-auto">
         <div className="bg-[#f7f9fb] w-full md:w-1/2">
           <div className="container">
-            <h3 className="text-4xl font-bold ">
-              Get hired by popular companies.
+            <h3 className="text-2xl text-center md:text-4xl md:text-left font-bold ">
+              Dapatkan pekerjaan dari perusahaan populer.
             </h3>
-            <p className="text-gray-600 text-xl mt-8">
+            <p className="text-gray-600 text-center md:text-left md:text-xl mt-4">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Doloribus, laboriosam assumenda. Nisi praesentium officiis, vero
               quod sapiente delectus unde! Earum placeat veniam doloremque quod
@@ -118,7 +118,7 @@ const GetHired = () => {
               href="/"
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Read more
+              Lebih lengkap
               <svg
                 aria-hidden="true"
                 className="w-4 h-4 ml-2 -mr-1"
@@ -163,7 +163,7 @@ const GetHired = () => {
                   href="/"
                   className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  Hire Me
+                  Rekrut saya
                 </a>
               </div>
             </div>
@@ -171,10 +171,10 @@ const GetHired = () => {
         </div>
         <div className="container flex items-center justify-center w-full lg:w-1/2">
           <div className="container py-10">
-            <h3 className="text-4xl font-bold ">
+            <h3 className="text-2xl text-center md:text-4xl md:text-left font-bold ">
               Hire the best candidates for your company.
             </h3>
-            <p className="text-gray-600 text-xl mt-8">
+            <p className="text-gray-600 text-center md:text-xl md:text-left mt-4">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Doloribus, laboriosam assumenda. Nisi praesentium officiis, vero
               quod sapiente delectus unde! Earum placeat veniam doloremque quod

@@ -14,17 +14,17 @@ const CompanyRegister = () => {
         <div className="pt-28 pb-12">
           <div className="max-w-[850px] px-10 mx-auto border rounded-lg bg-white py-10">
             <div className="mx-auto mb-10">
-              <h1 className="text-center font-semibold text-5xl">
-                Hi Recruiter!
+              <h1 className="text-center font-semibold text-3xl md:text-5xl">
+                Hai Recruiter!
               </h1>
-              <p className="text-center text-gray-500 text-lg w-[600px] mx-auto mt-2">
-                We'd love to know more about you and your company so we can
-                solve your hiring needs together.
+              <p className="text-center text-gray-500 text-lg max-w-[650px] mx-auto mt-6">
+              Kami ingin mengetahui lebih banyak tentang Anda dan perusahaan Anda sehingga kami 
+              dapat menyelesaikan kebutuhan perekrutan Anda bersama-sama.
               </p>
             </div>
 
             <div className="">
-              <p className="font-semibold text-2xl w-[600px] my-5">Basic Information</p>
+              <p className="font-semibold text-2xl w-[600px] my-5">Informasi Dasar</p>
               <div className="mx-auto">
                 <form className="" id="form">
                   <div class="mb-6">
@@ -32,7 +32,7 @@ const CompanyRegister = () => {
                       for="name"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Full Name
+                      Nama Lengkap
                     </label>
                     <input
                       {...register("name")}
@@ -48,7 +48,7 @@ const CompanyRegister = () => {
                       for="location"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Location
+                      Lokasi
                     </label>
                     <input
                       {...register("location")}
@@ -64,7 +64,7 @@ const CompanyRegister = () => {
                       for="email"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Your email
+                      E-mail
                     </label>
                     <input
                       {...register("email")}
@@ -80,7 +80,7 @@ const CompanyRegister = () => {
                       for="password"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Your password
+                      Kata sandi
                     </label>
                     <input
                       {...register("password")}
@@ -95,7 +95,7 @@ const CompanyRegister = () => {
                       for="password2"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Repeat password
+                      Ulangi kata sandi
                     </label>
                     <input
                       {...register("password2")}
@@ -110,7 +110,7 @@ const CompanyRegister = () => {
                       for="phone"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Phone
+                      Telepon
                     </label>
                     <input
                       {...register("location")}
