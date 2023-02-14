@@ -1,5 +1,6 @@
 // PUBLIC
 export const jobsApi = process.env.REACT_APP_JOB;
+export const companyDetail = process.env.REACT_APP_COMPANY_DETAIL;
 export const applyJobApi = process.env.REACT_APP_JOB_APPLY;
 export const userLoginApi = process.env.REACT_APP_USER_LOGIN;
 export const userRegisterApi = process.env.REACT_APP_USER_REGISTER;

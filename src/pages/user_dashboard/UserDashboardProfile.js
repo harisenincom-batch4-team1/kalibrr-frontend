@@ -2,8 +2,40 @@ import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
 import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
 import CardBasicInformation from "../../components/dashboard_user/profile/CardBasicInformation";
 import CardCV from "../../components/dashboard_user/profile/CardCV";
+import { useEffect, useReducer } from "react";
+import { useUserProfileContext } from "../../context/user-profile-context";
+import { userProfileApi } from "../../api";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const UserDashboardProfile = () => {
+  const { state, dispatch } = useUserProfileContext();
+
+  useEffect(() => {
+    switch (state.tag) {
+      case "idle": {
+        dispatch({ type: "FETCH" });
+        break;
+      }
+      case "fetching": {
+        axios(userProfileApi, {
+          headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
+        })
+          .then((res) =>
+            dispatch({ type: "FETCH_SUCCESS", payload: res.data.datas })
+          )
+          .catch((err) => {
+            dispatch({ type: "FETCH_ERROR", payload: err?.message });
+          });
+        break;
+      }
+      default:
+        break;
+    }
+  }, [state.tag]);
+
+  console.log(state.tag);
+
   return (
     <UserDashboardLayout>
       <HeaderTitle title={"Profil"} />

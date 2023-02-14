@@ -1,37 +1,18 @@
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useUserProfileContext } from "../../../context/user-profile-context";
 
 const CardBasicInformation = () => {
-  const [isEdit, setIsEdit] = useState(false);
-  const [isSubmit, setIsSubmit] = useState(false);
+  const { state, dispatch } = useUserProfileContext();
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    axios
-      .put(
-        process.env.REACT_APP_USER,
-        {},
-        {
-          headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
-        }
-      )
-      .then(() => {
-        setIsEdit(false);
-        setIsSubmit(false);
-      })
-      .catch((err) => {
-        setIsSubmit(false);
-      });
-  };
-
-  const handleIsEdit = (e) => {
-    if (e.target.textContent === "Edit") {
-      // dispatch({ type: "EDIT_USER" });
-    } else {
-      // dispatch({ type: "CANCEL_EDIT_USER" });
+  const handleEdit = () => {
+    if (state.tag === "loaded") {
+      dispatch({ type: "EDIT" });
     }
-    setIsEdit((prev) => !prev);
+    if (state.tag === "editing") {
+      dispatch({ type: "CANCEL_EDIT" });
+    }
   };
 
   return (
@@ -40,21 +21,18 @@ const CardBasicInformation = () => {
         Informasi Dasar
       </h1>
       <button
-        onClick={handleIsEdit}
+        onClick={handleEdit}
         className="absolute right-0 top-0 py-3 px-4 text-white font-semibold"
       >
-        {isEdit ? "Batal" : "Edit"}
+        {state.tag === "editing" ? "Batal" : "Edit"}
       </button>
       <div className="bg-white py-3 px-4 md:flex md:flex-col gap-5">
         <div className="rounded-full w-16 h-16 md:w-24 md:h-24 overflow-hidden sm:ml-6 mt-2">
-          <img
-            className="rounded-full w-full"
-            alt="profile"
-          />
+          <img className="rounded-full w-full" alt="profile" />
         </div>
-        {isEdit ? (
+        {state.tag === "editing" && (
           <form
-            onSubmit={handleUpdate}
+            // onSubmit={handleUpdate}
             className="max-w-full flex flex-wrap justify-between gap-y-2 mt-5"
           >
             <input
@@ -94,34 +72,27 @@ const CardBasicInformation = () => {
               Simpan
             </button>
           </form>
-        ) : (
+        )}
+        {state.tag === "loaded" && (
           <div className="mt-5 md:mt-0 flex justify-between flex-col sm:flex-row sm:w-11/12 mx-auto">
             <div className="space-y-1 w-full md:w-6/12">
               <p className="flex items-center gap-x-1">
                 <span>Nama : </span>
-                <span className="font-normal text-sm md:text-lg">
-                  Budi
-                </span>
+                <span className="font-normal text-sm md:text-lg">Budi</span>
               </p>
               <p className="flex items-center gap-x-1">
                 <span>Lokasi : </span>
-                <span className="font-normal text-sm md:text-lg">
-                  Surabaya
-                </span>
+                <span className="font-normal text-sm md:text-lg">Surabaya</span>
               </p>
               <p className="flex items-center gap-x-1">
                 <span>Telepon : </span>
-                <span className="font-normal text-sm md:text-lg">
-                  98298402
-                </span>
+                <span className="font-normal text-sm md:text-lg">98298402</span>
               </p>
             </div>
             <div className="space-y-1  w-full md:w-6/12">
               <p className="flex items-center gap-x-1">
                 <span>Gelar : </span>
-                <span className="font-normal text-sm md:text-lg">
-                  Frontend
-                </span>
+                <span className="font-normal text-sm md:text-lg">Frontend</span>
               </p>
               <p className="flex items-center gap-x-1">
                 <span>Keahlian : </span>
@@ -131,9 +102,7 @@ const CardBasicInformation = () => {
               </p>
               <p className="flex items-center gap-x-1">
                 <span>Tautan LinkedIn : </span>
-                <span className="font-normal text-sm md:text-lg">
-                  Gak ada
-                </span>
+                <span className="font-normal text-sm md:text-lg">Gak ada</span>
               </p>
             </div>
           </div>
