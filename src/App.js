@@ -25,6 +25,7 @@ import { UserRegisterProvider } from "./context/user-register-context";
 import { CompanyJobProvider } from "./context/company-job-context";
 import { UserJobApplicationProvider } from "./context/user-job-application";
 import { UserSettingProvider } from "./context/user-setting-context";
+import { UserProfileProvider } from "./context/user-profile-context";
 import { GlobalProvider } from "./context/global-context";
 import ProtectRoute from "./middlewares/ProtectRoute";
 import AuthPage from "./middlewares/AuthPage";
@@ -69,7 +70,9 @@ const App = () => {
           {/* Protect Route User Dashboard  */}
           <Route path="/user/dashboard/profile" element={
             <ProtectRoute>
-              <UserDashboardProfile />
+              <UserProfileProvider>
+                <UserDashboardProfile />
+              </UserProfileProvider>
             </ProtectRoute>
           } />
           <Route path="/user/dashboard/application" element={

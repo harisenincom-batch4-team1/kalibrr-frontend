@@ -48,9 +48,7 @@ const Navbar = () => {
         break;
     }
   }, [state.tag]);
-
-  console.log(state.tag);
-
+  
   return (
     <nav className="w-full h-16 px-5 bg-white border-b-[1px] flex items-center justify-between fixed z-50">
       <div className="w-full flex flex-wrap items-center justify-between mx-auto">
