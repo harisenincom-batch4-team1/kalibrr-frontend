@@ -1,7 +1,5 @@
-import { useState } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
 import { useUserProfileContext } from "../../../context/user-profile-context";
+import { Button } from "flowbite-react";
 
 const CardBasicInformation = () => {
   const { state, dispatch } = useUserProfileContext();
@@ -28,7 +26,7 @@ const CardBasicInformation = () => {
 
   return (
     <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-gray-200 border relative">
-      <h1 className="text-white font-semibold text-base md:text-xl bg-[#0086FF] py-3 px-4">
+      <h1 className="text-white font-semibold text-base md:text-xl bg-blue-600 py-3 px-4">
         Informasi Dasar
       </h1>
       <button
@@ -50,67 +48,120 @@ const CardBasicInformation = () => {
             onSubmit={handleSubmit}
             className="max-w-full flex flex-wrap justify-between gap-y-2 mt-5"
           >
-            <input
-              value={state.nameInput}
-              onChange={(e) =>
-                dispatch({ type: "CHANGE_NAME", payload: e.target.payload })
-              }
-              placeholder={"Nama"}
-              type="text"
-              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
-            />
-            <input
-              value={state.emailInput}
-              onChange={(e) =>
-                dispatch({ type: "CHANGE_EMAIL", payload: e.target.payload })
-              }
-              placeholder={"Email"}
-              type="text"
-              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
-            />
-            <input
-              value={state.phoneInput}
-              onChange={(e) =>
-                dispatch({ type: "CHANGE_PHONE", payload: e.target.payload })
-              }
-              placeholder={"Telepon"}
-              type="number"
-              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
-            />
-            <input
-              value={state.locationInput}
-              onChange={(e) =>
-                dispatch({ type: "CHANGE_LOCATION", payload: e.target.payload })
-              }
-              placeholder={"Lokasi"}
-              type="text"
-              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
-            />
-            <input
-              value={state.roleInput}
-              onChange={(e) =>
-                dispatch({ type: "CHANGE_ROLE", payload: e.target.payload })
-              }
-              placeholder={"Gelar"}
-              type="text"
-              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
-            />
-            <input
-              value={state.skillInput}
-              onChange={(e) =>
-                dispatch({ type: "CHANGE_SKILL", payload: e.target.payload })
-              }
-              placeholder={"Keahlian"}
-              type="text"
-              className="w-full sm:w-[49%] bg-slate-100 outline-none rounded-md py-2 px-4 focus:outline-blue-400"
-            />
-            <button
-              onClick={handleSubmit}
-              type="submit"
-              className="mt-2 w-full md:w-fit bg-[#0086FF] text-white font-normal md:font-medium py-2 px-5 rounded-md hover:bg-blue-400 ml-auto"
-            >
+            <div className="w-full sm:w-[49%]">
+              <label
+                htmlFor="small-input"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Nama
+              </label>
+              <input
+                value={state.nameInput}
+                onChange={(e) =>
+                  dispatch({ type: "CHANGE_NAME", payload: e.target.payload })
+                }
+                placeholder={"Nama"}
+                type="text"
+                id="small-input"
+                className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+            <div className="w-full sm:w-[49%]">
+              <label
+                htmlFor="small-input"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Email
+              </label>
+              <input
+                value={state.emailInput}
+                onChange={(e) =>
+                  dispatch({ type: "CHANGE_EMAIL", payload: e.target.payload })
+                }
+                placeholder={"Email"}
+                type="text"
+                id="small-input"
+                className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+            <div className="w-full sm:w-[49%]">
+              <label
+                htmlFor="small-input"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Lokasi
+              </label>
+              <input
+                value={state.locationInput}
+                onChange={(e) =>
+                  dispatch({
+                    type: "CHANGE_LOCATION",
+                    payload: e.target.payload,
+                  })
+                }
+                placeholder={"Lokasi"}
+                type="text"
+                id="small-input"
+                className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+            <div className="w-full sm:w-[49%]">
+              <label
+                htmlFor="small-input"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Telepon
+              </label>
+              <input
+                value={state.phoneInput}
+                onChange={(e) =>
+                  dispatch({ type: "CHANGE_PHONE", payload: e.target.payload })
+                }
+                placeholder={"Telepon"}
+                type="text"
+                id="small-input"
+                className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+            <div className="w-full sm:w-[49%]">
+              <label
+                htmlFor="small-input"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Gelar
+              </label>
+              <input
+                value={state.roleInput}
+                onChange={(e) =>
+                  dispatch({ type: "CHANGE_ROLE", payload: e.target.payload })
+                }
+                placeholder={"Gelar"}
+                type="text"
+                id="small-input"
+                className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+            <div className="w-full sm:w-[49%]">
+              <label
+                htmlFor="small-input"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Keahlian
+              </label>
+              <input
+                value={state.skillInput}
+                onChange={(e) =>
+                  dispatch({ type: "CHANGE_SKILL", payload: e.target.payload })
+                }
+                placeholder={"Keahlian"}
+                type="text"
+                id="small-input"
+                className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+            <Button onClick={handleSubmit} type="submit" className="ml-auto mt-2">
               Simpan
-            </button>
+            </Button>
           </form>
         )}
         {state.tag === "loaded" && (

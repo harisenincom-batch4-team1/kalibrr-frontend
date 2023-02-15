@@ -17,7 +17,7 @@ const CompanyRegister = () => {
               <h1 className="text-center font-semibold text-3xl md:text-5xl">
                 Hai Recruiter!
               </h1>
-              <p className="text-center text-gray-500 text-lg max-w-[650px] mx-auto mt-6">
+              <p className="text-center text-gray-500 text-base max-w-[650px] mx-auto mt-6">
               Kami ingin mengetahui lebih banyak tentang Anda dan perusahaan Anda sehingga kami 
               dapat menyelesaikan kebutuhan perekrutan Anda bersama-sama.
               </p>

@@ -48,7 +48,7 @@ const Navbar = () => {
         break;
     }
   }, [state.tag]);
-  
+
   return (
     <nav className="w-full h-16 px-5 bg-white border-b-[1px] flex items-center justify-between fixed z-50">
       <div className="w-full flex flex-wrap items-center justify-between mx-auto">
@@ -63,24 +63,27 @@ const Navbar = () => {
           <div className="flex md:order-2 gap-y-10 sm:gap-5 items-center">
             <Link
               to="/user/login"
-              className="hidden sm:block font-medium cursor-pointer"
+              className="hidden md:block font-medium cursor-pointer"
             >
               Masuk
             </Link>
             <Link
               to="/user/register"
-              className="hidden sm:block font-medium cursor-pointer"
+              className="hidden md:block font-medium cursor-pointer"
             >
               Daftar
             </Link>
             <Link
               to="/company/register"
-              className="hidden font-medium bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded-md sm:flex items-center gap-2 cursor-pointer"
+              className="hidden font-medium bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded-md md:flex items-center gap-2 cursor-pointer"
             >
               Perusahaan <HiBuildingOffice />
             </Link>
             {/* Hamburger */}
-            <div onClick={handleClick} className="md:hidden z-10 duration-300">
+            <div
+              onClick={handleClick}
+              className="block md:hidden z-10 duration-300"
+            >
               {!nav ? <FaBars /> : <FaTimes />}
             </div>
           </div>
@@ -132,7 +135,7 @@ const Navbar = () => {
           offset={50}
           smooth={true}
           duration={500}
-          className="font-medium hover:cursor-pointer mr-auto hidden sm:block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+          className="font-medium hover:cursor-pointer mr-auto hidden md:block"
         >
           Lowongan Kerja
         </Link>

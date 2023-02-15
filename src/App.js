@@ -32,79 +32,114 @@ import AuthPage from "./middlewares/AuthPage";
 
 const App = () => {
   return (
-    <GlobalProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* Public Route */}
-          <Route path="/" element={<Homepage />} />
-          <Route path="/job" element={
-            <JobListProvider>
-              <JobList />
-            </JobListProvider>
-          } />
-          <Route path="/job/:id" element={
-            <JobListProvider>
-              <JobDetail />
-            </JobListProvider>}
-          />
+    <>
+      <GlobalProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* Public Route */}
+            <Route path="/" element={<Homepage />} />
+            <Route
+              path="/job"
+              element={
+                <JobListProvider>
+                  <JobList />
+                </JobListProvider>
+              }
+            />
+            <Route
+              path="/job/:id"
+              element={
+                <JobListProvider>
+                  <JobDetail />
+                </JobListProvider>
+              }
+            />
 
-          {/* Auth */}
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/user/login" element={
-            <AuthPage>
-              <UserLoginProvider>
-                <UserLogin />
-              </UserLoginProvider>
-            </AuthPage>
-          } />
-          <Route path="/user/register" element={
-            <AuthPage>
-              <UserRegisterProvider>
-                <UserRegister />
-              </UserRegisterProvider>
-            </AuthPage>
-          } />
-          <Route path="/company/login" element={<CompanyLogin />} />
-          <Route path="/company/register" element={<CompanyRegister />} />
+            {/* Auth */}
+            <Route path="/signup" element={<SignUp />} />
+            <Route
+              path="/user/login"
+              element={
+                <AuthPage>
+                  <UserLoginProvider>
+                    <UserLogin />
+                  </UserLoginProvider>
+                </AuthPage>
+              }
+            />
+            <Route
+              path="/user/register"
+              element={
+                <AuthPage>
+                  <UserRegisterProvider>
+                    <UserRegister />
+                  </UserRegisterProvider>
+                </AuthPage>
+              }
+            />
+            <Route path="/company/login" element={<CompanyLogin />} />
+            <Route path="/company/register" element={<CompanyRegister />} />
 
-          {/* Protect Route User Dashboard  */}
-          <Route path="/user/dashboard/profile" element={
-            <ProtectRoute>
-              <UserProfileProvider>
-                <UserDashboardProfile />
-              </UserProfileProvider>
-            </ProtectRoute>
-          } />
-          <Route path="/user/dashboard/application" element={
-            <ProtectRoute>
-              <UserJobApplicationProvider>
-                <UserDashboardApplication />
-              </UserJobApplicationProvider>
-            </ProtectRoute>
-          } />
-          <Route path="/user/dashboard/setting" element={
-            <ProtectRoute>
-              <UserSettingProvider>
-                <UserDashboardSetting />
-              </UserSettingProvider>
-            </ProtectRoute>
-          } />
+            {/* Protect Route User Dashboard  */}
+            <Route
+              path="/user/dashboard/profile"
+              element={
+                <ProtectRoute>
+                  <UserProfileProvider>
+                    <UserDashboardProfile />
+                  </UserProfileProvider>
+                </ProtectRoute>
+              }
+            />
+            <Route
+              path="/user/dashboard/application"
+              element={
+                <ProtectRoute>
+                  <UserJobApplicationProvider>
+                    <UserDashboardApplication />
+                  </UserJobApplicationProvider>
+                </ProtectRoute>
+              }
+            />
+            <Route
+              path="/user/dashboard/setting"
+              element={
+                <ProtectRoute>
+                  <UserSettingProvider>
+                    <UserDashboardSetting />
+                  </UserSettingProvider>
+                </ProtectRoute>
+              }
+            />
 
-          {/* Protect Route Company Dashboard */}
-          <Route path="/company/dashboard/profile" element={<CompanyDashboardProfile />} />
-          <Route path="/company/dashboard/job" element={
-            <CompanyJobProvider>
-              <CompanyDashboardJob />
-            </CompanyJobProvider>
-          } />
-          <Route path="/company/dashboard/applicant" element={<CompanyDashboardApplicant />} />
-          <Route path="/company/dashboard/setting" element={<CompanyDashboardSetting />} />
+            {/* Protect Route Company Dashboard */}
+            <Route
+              path="/company/dashboard/profile"
+              element={<CompanyDashboardProfile />}
+            />
+            <Route
+              path="/company/dashboard/job"
+              element={
+                <CompanyJobProvider>
+                  <CompanyDashboardJob />
+                </CompanyJobProvider>
+              }
+            />
+            <Route
+              path="/company/dashboard/applicant"
+              element={<CompanyDashboardApplicant />}
+            />
+            <Route
+              path="/company/dashboard/setting"
+              element={<CompanyDashboardSetting />}
+            />
 
-          {/* Not Found */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </GlobalProvider>
+            {/* Not Found */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </GlobalProvider>
+    </>
   );
 };
 

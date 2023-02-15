@@ -9,6 +9,7 @@ export const UserRegisterProvider = ({ children }) => {
     emailInput: "",
     passwordInput: "",
     errorMsg: "",
+    isShowPassword: false,
   };
 
   const reducer = (state, action) => {
@@ -39,6 +40,12 @@ export const UserRegisterProvider = ({ children }) => {
               passwordInput: action.payload,
             };
           }
+          case "SHOW_PASSWORD": {
+            return {
+              ...state,
+              isShowPassword: action.payload,
+            };
+          }
           default: {
             return state;
           }
@@ -67,12 +74,6 @@ export const UserRegisterProvider = ({ children }) => {
             return state;
         }
       }
-      case "loaded": {
-        switch (action.type) {
-          default:
-            return state;
-        }
-      }
       case "error": {
         switch (action.type) {
           case "SUBMIT": {
@@ -97,6 +98,12 @@ export const UserRegisterProvider = ({ children }) => {
             return {
               ...state,
               passwordInput: action.payload,
+            };
+          }
+          case "SHOW_PASSWORD": {
+            return {
+              ...state,
+              isShowPassword: action.payload,
             };
           }
           default:

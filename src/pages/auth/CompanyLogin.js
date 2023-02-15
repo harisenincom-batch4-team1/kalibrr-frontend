@@ -20,7 +20,7 @@ const CompanyLogin = () => {
   return (
     <PublicLayout>
       <div
-        className="bg-cover py-20 px-5"
+        className="bg-cover pt-32 lg:pt-40 pb-24 lg:pb-40 px-3"
         style={{ backgroundImage: `url("/assets/bgSignup.png")` }}
       >
         <div className="max-w-[550px] p-10 items-center justify-center mx-auto mt-14 border-gray-300 rounded-sm bg-[#f7f9fb] h-fit">

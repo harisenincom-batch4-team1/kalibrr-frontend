@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { toast, ToastContainer } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { userLoginApi } from "../../api";
 import { useUserLoginContext } from "../../context/user-login-context";
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -10,13 +12,27 @@ import Spinner from "../../components/Spinner";
 import PublicLayout from "../../layouts/PublicLayout";
 
 const UserLogin = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
   const { state, dispatch } = useUserLoginContext();
-  const { emailInput, passwordInput } = state;
-  const [isHidden, setIsHidden] = useState(true);
 
   const togglePasswordVisibility = () => {
-    setIsHidden((prevState) => !prevState);
+    state.tag !== "submitting" && state.isShowPassword
+      ? dispatch({ type: "SHOW_PASSWORD", payload: false })
+      : dispatch({ type: "SHOW_PASSWORD", payload: true });
+  };
+
+  const onSubmit = (data) => {
+    dispatch({ type: "CHANGE_EMAIL", payload: data.email });
+    dispatch({
+      type: "CHANGE_PASSWORD",
+      payload: data.password,
+    });
+    dispatch({ type: "SUBMIT" });
   };
 
   useEffect(() => {
@@ -24,21 +40,20 @@ const UserLogin = () => {
       case "submitting":
         axios
           .post(userLoginApi, {
-            email: emailInput,
-            password: passwordInput,
+            email: state.emailInput,
+            password: state.passwordInput,
           })
           .then((res) => {
-            Cookies.set("kalibrr", res.data.datas);
             dispatch({ type: "SUBMIT_SUCCESS" });
+            Cookies.set("kalibrr", res.data.datas);
+            setTimeout(() => {
+              navigate("/user/dashboard/profile");
+            }, 500);
           })
-          .catch((err) =>
-            dispatch({ type: "SUBMIT_ERROR", payload: err?.message })
-          );
-        break;
-      case "loaded":
-        setTimeout(() => {
-          navigate("/user/dashboard/profile");
-        }, 500);
+          .catch((err) => {
+            toast.error(err?.response?.data?.message);
+            dispatch({ type: "SUBMIT_ERROR", payload: err?.message });
+          });
         break;
       default:
         break;
@@ -47,95 +62,93 @@ const UserLogin = () => {
 
   return (
     <PublicLayout>
-      <div className="pt-24" />
-      <div className="flex w-full h-screen items-center px-5">
-        <div className="w-[500px] items-center justify-center mb-40 px-6 py-5 mx-auto mt-14 border-gray-200 border rounded-sm bg-white">
-          {/* login */}
-          <div className="m-5">
-            <div className="text-center text-2xl mb-5">
-              <span>Masuk ke Kalibrr</span>
-            </div>
-            <form className="flex flex-col gap-4">
-              <div>
-                <div className="mb-2 block">
-                  <label>Email</label>
+      <div className="pt-32 lg:pt-40 pb-24 lg:pb-40 px-3 bg-zinc-100">
+        <div className="max-w-[450px] h-fit items-center justify-center px-3 md:px-6 py-2 mx-auto border rounded-md border-gray-200 bg-white">
+          <div className="flex flex-col gap-5">
+            <h1 className="text-center text-2xl my-3 font-medium">
+              Masuk ke Kalibrr
+            </h1>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col gap-2"
+            >
+              <label className="block">Email *</label>
+              <input
+                {...register("email", { required: true })}
+                disabled={state.tag === "submitting"}
+                className={
+                  errors.email?.type === "required"
+                    ? "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-blue-50"
+                    : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50"
+                }
+                name="email"
+                id="email"
+                type="email"
+                placeholder="Email"
+                autoComplete="off"
+              />
+              <span className="mb-2 -mt-1 text-xs md:text-sm text-red-600">
+                {errors.email?.type === "required" && "Email harus di isi"}
+              </span>
+              <div className="flex flex-row relative items-center">
+                <div className="basis-full">
+                  <label className="mb-2 block">Kata Sandi *</label>
+                  <input
+                    {...register("password", { required: true })}
+                    disabled={state.tag === "submitting"}
+                    className={
+                      errors.password?.type === "required"
+                        ? "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-blue-50"
+                        : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50"
+                    }
+                    name="password"
+                    id="password"
+                    type={state.isShowPassword ? "text" : "password"}
+                    placeholder="Kata Sandi"
+                    autoComplete="off"
+                  />
+                  <span className="mb-2 -mt-1 text-xs md:text-sm text-red-600">
+                    {errors.password?.type === "required" &&
+                      "Kata sandi harus di isi"}
+                  </span>
                 </div>
-                <TextInput
-                  value={state.emailInput}
-                  onChange={(e) =>
-                    dispatch({ type: "CHANGE_EMAIL", payload: e.target.value })
+                <div
+                  className={
+                    errors.password?.type === "required"
+                      ? "absolute bottom-8 right-3 opacity-50 cursor-pointer"
+                      : "absolute bottom-2 right-3 opacity-50 cursor-pointer"
                   }
-                  type="email"
-                  placeholder="yourname@mail.com"
-                  required={true}
-                  autoComplete="off"
-                />
-              </div>
-              <div>
-                <div className="mb-2 block">
-                  <label>Kata Sandi</label>
-                </div>
-                {/* password */}
-                <div className="flex flex-row relative items-center">
-                  <div className="basis-full">
-                    <TextInput
-                      value={state.passwordInput}
-                      onChange={(e) =>
-                        dispatch({
-                          type: "CHANGE_PASSWORD",
-                          payload: e.target.value,
-                        })
-                      }
-                      id="password"
-                      type={isHidden ? "password" : "text"}
-                      placeholder="Kata Sandi"
-                      required={true}
-                      autoComplete="off"
-                    />
-                  </div>
-                  <div className="absolute right-5 opacity-50 cursor-pointer">
-                    {isHidden ? (
-                      <FaEyeSlash
-                        size={25}
-                        onClick={togglePasswordVisibility}
-                      />
-                    ) : (
-                      <FaEye size={25} onClick={togglePasswordVisibility} />
-                    )}
-                  </div>
+                >
+                  {state.isShowPassword ? (
+                    <FaEye size={25} onClick={togglePasswordVisibility} />
+                  ) : (
+                    <FaEyeSlash size={25} onClick={togglePasswordVisibility} />
+                  )}
                 </div>
               </div>
-              <div className="flex justify-between items-center gap-2">
-                <div className="flex gap-3 items-center">
-                  <Checkbox id="remember" />
-                  <Label htmlFor="remember">Ingat Saya</Label>
-                </div>
 
-                <a href="#!" className="text-blue-600">
-                  Lupa kata sandi?
-                </a>
-              </div>
               <Button
-                type="button"
-                onClick={() => dispatch({ type: "SUBMIT" })}
-                className="h-10"
+                type="submit"
+                className="mt-5 h-10"
+                disabled={state.tag === "submitting"}
               >
                 {state.tag === "submitting" ? <Spinner /> : "Masuk"}
               </Button>
             </form>
-          </div>
 
-          {/* register */}
-          <div className="text-center text-sm mt-3">
-            <span>
-              Belum mempunyai akun Kalibrr?
-              <Link to="/signup" className="text-blue-500 ml-1 hover:underline">
+            <div className="text-center text-xs md:text-sm mb-2">
+              Belum mempunyai akun?
+              <Link
+                to="/user/register"
+                className="text-blue-500 ml-1 hover:underline"
+              >
                 Daftar
               </Link>
-            </span>
+            </div>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </PublicLayout>
   );
 };

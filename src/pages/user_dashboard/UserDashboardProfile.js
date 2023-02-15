@@ -1,10 +1,10 @@
+import { useEffect } from "react";
+import { useUserProfileContext } from "../../context/user-profile-context";
+import { userProfileApi } from "../../api";
 import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
 import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
 import CardBasicInformation from "../../components/dashboard_user/profile/CardBasicInformation";
 import CardCV from "../../components/dashboard_user/profile/CardCV";
-import { useEffect, useReducer } from "react";
-import { useUserProfileContext } from "../../context/user-profile-context";
-import { userProfileApi } from "../../api";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -36,7 +36,7 @@ const UserDashboardProfile = () => {
           phone: state.phoneInput,
           location: state.locationInput,
           skill: state.skillInput,
-          role: state.roleInput
+          role: state.roleInput,
         }, {
           headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
         })
@@ -52,8 +52,6 @@ const UserDashboardProfile = () => {
         break;
     }
   }, [state.tag]);
-
-  console.log(state.tag);
 
   return (
     <UserDashboardLayout>
