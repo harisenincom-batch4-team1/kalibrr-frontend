@@ -29,6 +29,25 @@ const UserDashboardProfile = () => {
           });
         break;
       }
+      case "submitting": {
+        axios.put(userProfileApi, {
+          name: state.nameInput,
+          email: state.emailInput,
+          phone: state.phoneInput,
+          location: state.locationInput,
+          skill: state.skillInput,
+          role: state.roleInput
+        }, {
+          headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
+        })
+          .then((res) =>
+            dispatch({ type: "SUBMIT_SUCCESS", payload: res.data.datas })
+          )
+          .catch((err) => {
+            dispatch({ type: "SUBMIT_ERROR", payload: err?.message });
+          });
+        break;
+      }
       default:
         break;
     }
