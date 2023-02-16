@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import {
   HiArrowLeftOnRectangle,
@@ -10,8 +10,13 @@ import {
 } from "react-icons/hi2";
 import { useGlobalContext } from "../context/global-context";
 import Cookies from "js-cookie";
+import DropdownNavbar from "./DropdownNavbar";
+import axios from "axios";
+import { userProfileApi } from "../api";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { state, dispatch } = useGlobalContext();
   const [isShowMenuAccount, setIsShowMenuAccount] = useState(false);
   const [nav, setNav] = useState(false);
@@ -22,27 +27,37 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
     Cookies.remove("kalibrr");
-    dispatch({ type: "FETCH" });
   };
 
   useEffect(() => {
-    dispatch({ type: "FETCH" });
-    if (Cookies.get("kalibrr") !== undefined) {
-      dispatch({ type: "FETCH_SUCCESS", payload: true });
-    } else {
-      dispatch({ type: "FETCH_SUCCESS", payload: false });
-    }
     switch (state.tag) {
       case "idle":
         dispatch({ type: "FETCH" });
         break;
       case "fetching":
         if (Cookies.get("kalibrr") !== undefined) {
-          dispatch({ type: "FETCH_SUCCESS", payload: true });
+          dispatch({ type: "FETCH_SUCCESS", payload: { isLogin: true } });
+          dispatch({ type: "FETCH_USER" });
         } else {
           dispatch({ type: "FETCH_SUCCESS", payload: false });
         }
+        break;
+      case "fetching_user":
+        axios(userProfileApi, {
+          headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
+        })
+          .then((res) =>
+            dispatch({
+              type: "FETCH_USER_SUCCESS",
+              payload: { datas: res.data.datas },
+            })
+          )
+          .catch((err) => {
+            navigate("/");
+            toast.error(err?.message);
+          });
         break;
       default:
         break;
@@ -58,6 +73,9 @@ const Navbar = () => {
             src="/assets/logo.svg"
             alt="kalibrr-logo"
           />
+        </Link>
+        <Link to="/job" className="items-center cursor-pointer mr-auto font-medium hidden md:block">
+          Lowongan Kerja
         </Link>
         {state.isLogin === false ? (
           <div className="flex md:order-2 gap-y-10 sm:gap-5 items-center">
@@ -82,63 +100,14 @@ const Navbar = () => {
             {/* Hamburger */}
             <div
               onClick={handleClick}
-              className="block md:hidden z-10 duration-300"
+              className="block md:hidden z-10 duration-300 cursor-pointer"
             >
               {!nav ? <FaBars /> : <FaTimes />}
             </div>
           </div>
         ) : (
-          <>
-            <div
-              onClick={handleClick}
-              className="md:hidden z-10 duration-300 absolute right-5"
-            >
-              {!nav ? <FaBars /> : <FaTimes />}
-            </div>
-            <div className="hidden md:flex absolute right-5">
-              <HiUserCircle
-                className="h-8 w-8 rounded-lg cursor-pointer"
-                onClick={showMenuAccount}
-              />
-              {isShowMenuAccount && (
-                <div className="w-52 h-fit border-[1px] absolute right-1 top-10 bg-white flex flex-col rounded-md">
-                  <Link
-                    to="/user/dashboard/profile"
-                    className="flex items-center py-3 px-4 hover:bg-blue-50 space-x-2 cursor-pointer"
-                  >
-                    <HiNewspaper className="h-5" />
-                    <span className="font-medium">Dashboard</span>
-                  </Link>
-                  <Link
-                    to="/user/dashboard/setting"
-                    className="flex items-center py-3 px-4 hover:bg-blue-50 space-x-2 cursor-pointer"
-                  >
-                    <HiCog6Tooth className="h-5" />
-                    <span className="font-medium">Pengaturan Akun</span>
-                  </Link>
-                  <Link
-                    to={"/"}
-                    className="flex items-center py-3 px-4 hover:bg-blue-50 space-x-2 cursor-pointer"
-                    onClick={handleLogout}
-                  >
-                    <HiArrowLeftOnRectangle className="h-5" />
-                    <span className="font-medium">Keluar</span>
-                  </Link>
-                </div>
-              )}
-            </div>
-          </>
+          <DropdownNavbar />
         )}
-        <Link
-          to="/job"
-          spy={true}
-          offset={50}
-          smooth={true}
-          duration={500}
-          className="font-medium hover:cursor-pointer mr-auto hidden md:block"
-        >
-          Lowongan Kerja
-        </Link>
 
         <ul
           className={
@@ -151,11 +120,9 @@ const Navbar = () => {
             <Link
               onClick={handleClick}
               to="/"
-              smooth={true}
-              duration={500}
               className="hover:cursor-pointer"
             >
-              Home
+              Halaman utama
             </Link>
           </li>
           <li className="py-6 text-4xl">
@@ -163,8 +130,6 @@ const Navbar = () => {
             <Link
               onClick={handleClick}
               to="/job"
-              smooth={true}
-              duration={500}
               className="hover:cursor-pointer"
             >
               Lowongan Kerja
@@ -176,8 +141,6 @@ const Navbar = () => {
                 {" "}
                 <Link
                   to="/user/dashboard/profile"
-                  smooth={true}
-                  duration={500}
                   className="hover:cursor-pointer"
                 >
                   Dashboard
@@ -188,8 +151,6 @@ const Navbar = () => {
                 <Link
                   onClick={handleLogout}
                   to="/"
-                  smooth={true}
-                  duration={500}
                   className="hover:cursor-pointer"
                 >
                   Logout
@@ -198,13 +159,11 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <li className="pt-20 py-6 text-4xl">
+              <li className="py-6 text-4xl border-t-[1px] w-full text-center">
                 {" "}
                 <Link
                   onClick={handleClick}
                   to="/user/login"
-                  smooth={true}
-                  duration={500}
                   className="hover:cursor-pointer"
                 >
                   Masuk
@@ -215,11 +174,19 @@ const Navbar = () => {
                 <Link
                   onClick={handleClick}
                   to="/user/register"
-                  smooth={true}
-                  duration={500}
                   className="hover:cursor-pointer"
                 >
                   Daftar
+                </Link>
+              </li>
+              <li className="py-6 text-4xl border-t-[1px]  w-full text-center">
+                {" "}
+                <Link
+                  onClick={handleClick}
+                  to="/company/register"
+                  className="hover:cursor-pointer"
+                >
+                  Perusahaan
                 </Link>
               </li>
             </>

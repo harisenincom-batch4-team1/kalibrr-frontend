@@ -1,13 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import {
-  FaApple,
-  FaEye,
-  FaEyeSlash,
-  FaFacebookSquare,
-  FaGoogle,
-} from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import PublicLayout from "../../layouts/PublicLayout";
 
 const CompanyLogin = () => {

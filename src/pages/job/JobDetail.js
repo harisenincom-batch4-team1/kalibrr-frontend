@@ -35,8 +35,6 @@ const JobDetail = () => {
       });
   }, []);
 
-  console.log(state);
-
   return (
     <PublicLayout>
       <div className="pt-24 w-[800px] mx-auto">

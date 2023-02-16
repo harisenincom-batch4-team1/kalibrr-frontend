@@ -10,6 +10,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import Spinner from "../../components/Spinner";
 import PublicLayout from "../../layouts/PublicLayout";
+import { useGlobalContext } from "../../context/global-context";
 
 const UserLogin = () => {
   const {
@@ -18,6 +19,7 @@ const UserLogin = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const data = useGlobalContext();
   const { state, dispatch } = useUserLoginContext();
 
   const togglePasswordVisibility = () => {
@@ -47,8 +49,10 @@ const UserLogin = () => {
             dispatch({ type: "SUBMIT_SUCCESS" });
             Cookies.set("kalibrr", res.data.datas);
             setTimeout(() => {
+              data.dispatch({ type: "FETCH_USER" });
               navigate("/user/dashboard/profile");
-            }, 500);
+            }, 1000);
+            localStorage.setItem("kalibrr", res.data.datas);
           })
           .catch((err) => {
             toast.error(err?.response?.data?.message);
