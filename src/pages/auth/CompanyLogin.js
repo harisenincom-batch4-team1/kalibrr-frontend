@@ -23,10 +23,10 @@ const CompanyLogin = () => {
         ></link>
       </Helmet>
       <div
-        className="bg-cover pt-32 lg:pt-40 pb-24 lg:pb-40 px-3"
+        className="bg-cover pt-20 lg:pt-40 pb-24 lg:pb-40 px-2"
         style={{ backgroundImage: `url("/assets/bgSignup.webp")` }}
       >
-        <div className="max-w-[550px] p-10 items-center justify-center mx-auto mt-14 border-gray-300 rounded-sm bg-[#f7f9fb] h-fit">
+        <div className="max-w-[550px] p-10 items-center justify-center mx-auto mt-14 border-gray-300 rounded-lg bg-[#f7f9fb] h-fit">
           {/* login */}
           <div className="mb-5">
             <div className="text-center text-2xl mb-5">

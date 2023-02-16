@@ -9,7 +9,7 @@ const Homepage = () => {
   return (
     <PublicLayout>
       <Helmet>
-        <title>Beranda - Kalibrr Tempat Mencari Kerja</title>
+        <title>Beranda - Kalibrr Temukan Lowongan Kerja</title>
       </Helmet>
       <div className="px-5">
         <HeroSection />

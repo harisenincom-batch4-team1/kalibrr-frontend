@@ -1,7 +1,8 @@
 import { useEffect } from "react";
+import { useGlobalContext } from "../../context/global-context";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { userLoginApi } from "../../api";
 import { useUserLoginContext } from "../../context/user-login-context";
@@ -11,7 +12,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import Spinner from "../../components/Spinner";
 import PublicLayout from "../../layouts/PublicLayout";
-import { useGlobalContext } from "../../context/global-context";
 
 const UserLogin = () => {
   const {
@@ -56,8 +56,11 @@ const UserLogin = () => {
             localStorage.setItem("kalibrr", res.data.datas);
           })
           .catch((err) => {
-            toast.error(err?.response?.data?.message);
             dispatch({ type: "SUBMIT_ERROR", payload: err?.message });
+            if (err?.response?.data?.message) {
+              return toast.error(err?.response?.data?.message);
+            }
+            return toast.error(err?.message);
           });
         break;
       default:
@@ -161,7 +164,6 @@ const UserLogin = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </PublicLayout>
   );
 };

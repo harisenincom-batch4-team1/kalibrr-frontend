@@ -17,7 +17,7 @@ const CompanyRegister = () => {
         ></link>
       </Helmet>
       <div
-        className="bg-cover"
+        className="bg-cover px-2"
         style={{ backgroundImage: `url("/assets/bgSignup.webp")` }}
       >
         <div className="pt-28 pb-12">
@@ -34,7 +34,7 @@ const CompanyRegister = () => {
             </div>
 
             <div className="">
-              <p className="font-semibold text-2xl w-[600px] my-5">
+              <p className="font-semibold text-2xl my-5">
                 Informasi Dasar
               </p>
               <div className="mx-auto">

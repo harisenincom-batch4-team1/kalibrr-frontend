@@ -29,10 +29,12 @@ import { UserProfileProvider } from "./context/user-profile-context";
 import { GlobalProvider } from "./context/global-context";
 import ProtectRoute from "./middlewares/ProtectRoute";
 import AuthPage from "./middlewares/AuthPage";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <>
+      <ToastContainer />
       <GlobalProvider>
         <BrowserRouter>
           <Routes>

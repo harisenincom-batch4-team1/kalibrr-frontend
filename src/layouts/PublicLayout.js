@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Footer from "../components/footers/Footer";
 import LoadingBar from "react-top-loading-bar";
 
 const PublicLayout = ({ children }) => {

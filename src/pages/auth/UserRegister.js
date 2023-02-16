@@ -6,7 +6,7 @@ import { Button, Label, Spinner } from "flowbite-react";
 import { useUserRegisterContext } from "../../context/user-register-context";
 import { userRegisterApi } from "../../api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import PublicLayout from "../../layouts/PublicLayout";
 import axios from "axios";
 
@@ -50,11 +50,14 @@ const UserRegister = () => {
             dispatch({ type: "SUBMIT_SUCCESS" });
             setTimeout(() => {
               navigate("/user/login");
-            }, 500);
+            }, 1500);
           })
           .catch((err) => {
-            toast.error(err?.message);
             dispatch({ type: "SUBMIT_ERROR", payload: err?.message });
+            if (err?.response?.data?.message) {
+              return toast.error(err?.response?.data?.message);
+            }
+            return toast.error(err?.message);
           });
         break;
       default:
@@ -195,7 +198,6 @@ const UserRegister = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </PublicLayout>
   );
 };
