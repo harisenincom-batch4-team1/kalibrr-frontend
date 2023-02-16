@@ -6,7 +6,7 @@ import { AiFillSetting } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import Cookies from "js-cookie";
 
-const DropdownNavbar = () => {
+const NavbarDropdown = () => {
   const { state, dispatch } = useGlobalContext();
 
   const handleLogout = () => {
@@ -15,7 +15,7 @@ const DropdownNavbar = () => {
   };
 
   return (
-    <Dropdown label={state.datas.name}>
+    <Dropdown icon={FaPaperPlane} label={state.datas.name}>
       <Dropdown.Header>
         <img
           src={state.datas.photo}
@@ -57,4 +57,4 @@ const DropdownNavbar = () => {
   );
 };
 
-export default DropdownNavbar;
+export default NavbarDropdown;

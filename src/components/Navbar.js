@@ -10,7 +10,7 @@ import {
 } from "react-icons/hi2";
 import { useGlobalContext } from "../context/global-context";
 import Cookies from "js-cookie";
-import DropdownNavbar from "./DropdownNavbar";
+import DropdownNavbar from "./NavbarDropdown";
 import axios from "axios";
 import { userProfileApi } from "../api";
 import { toast } from "react-toastify";

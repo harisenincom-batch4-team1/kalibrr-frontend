@@ -10,12 +10,12 @@ const JobCard = () => {
   };
 
   {
-    return state.datas.map((data, i) => {
+    return state?.datas?.result?.map((data, i) => {
       return (
         <div
           onClick={() => handleDetailJob(data.id)}
           key={i}
-          className="border border-gray-200 w-[340px] md:w-[400px] p-5 rounded-lg hover:shadow cursor-pointer bg-white"
+          className="border border-gray-200 w-[100%] sm:w-[49%] p-5 rounded-lg hover:shadow cursor-pointer bg-white"
         >
           <h1 className="text-base font-bold">{data.name}</h1>
           <p>{data.type}</p>

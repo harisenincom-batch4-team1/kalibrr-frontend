@@ -1,6 +1,3 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { jobsApi } from "../api";
 import { useJobListContext } from "../context/joblist-context";
 
 const Search = () => {
@@ -12,10 +9,10 @@ const Search = () => {
   };
 
   return (
-    <div className="px-5 w-full flex justify-center pt-20 md:pt-24 fixed bg-white">
+    <div className="w-full flex justify-center pt-20 md:pt-24 bg-zinc-50 fixed px-5">
       <form
         onSubmit={handleSearch}
-        className="w-[320px] sm:w-[500px] md:w-[750px] lg:w-[820px] mx-auto fixed"
+        className="w-[800px] mx-auto"
       >
         <label
           htmlFor="default-search"
@@ -56,7 +53,7 @@ const Search = () => {
             type="submit"
             className="text-white absolute right-2.5 bottom-2.5 bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Search
+            Cari
           </button>
         </div>
       </form>
