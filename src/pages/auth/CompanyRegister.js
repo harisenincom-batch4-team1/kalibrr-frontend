@@ -1,4 +1,5 @@
 import { Button, Checkbox, Label } from "flowbite-react";
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import PublicLayout from "../../layouts/PublicLayout";
@@ -7,9 +8,17 @@ const CompanyRegister = () => {
   const { register } = useForm();
   return (
     <PublicLayout>
+      <Helmet>
+        <title>Daftar sebagai Perusahaan - Kalibrr</title>
+        <link
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        ></link>
+      </Helmet>
       <div
         className="bg-cover"
-        style={{ backgroundImage: `url("/assets/bgSignup.png")` }}
+        style={{ backgroundImage: `url("/assets/bgSignup.webp")` }}
       >
         <div className="pt-28 pb-12">
           <div className="max-w-[850px] px-10 mx-auto border rounded-lg bg-white py-10">
@@ -18,13 +27,16 @@ const CompanyRegister = () => {
                 Hai Recruiter!
               </h1>
               <p className="text-center text-gray-500 text-base max-w-[650px] mx-auto mt-6">
-              Kami ingin mengetahui lebih banyak tentang Anda dan perusahaan Anda sehingga kami 
-              dapat menyelesaikan kebutuhan perekrutan Anda bersama-sama.
+                Kami ingin mengetahui lebih banyak tentang Anda dan perusahaan
+                Anda sehingga kami dapat menyelesaikan kebutuhan perekrutan Anda
+                bersama-sama.
               </p>
             </div>
 
             <div className="">
-              <p className="font-semibold text-2xl w-[600px] my-5">Informasi Dasar</p>
+              <p className="font-semibold text-2xl w-[600px] my-5">
+                Informasi Dasar
+              </p>
               <div className="mx-auto">
                 <form className="" id="form">
                   <div class="mb-6">

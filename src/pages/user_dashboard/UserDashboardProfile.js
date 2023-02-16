@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useUserProfileContext } from "../../context/user-profile-context";
 import { userProfileApi } from "../../api";
 import { toast, ToastContainer } from "react-toastify";
@@ -63,6 +64,14 @@ const UserDashboardProfile = () => {
 
   return (
     <UserDashboardLayout>
+      <Helmet>
+        <title>Profil Pengguna - Kalibrr</title>
+        <link
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        ></link>
+      </Helmet>
       <ToastContainer />
       <HeaderTitle title={"Profil"} />
       <div className="max-w-full h-[95%] pb-16 mx-auto p-2 space-y-2 overflow-hidden overflow-y-scroll scrollbar-hide">

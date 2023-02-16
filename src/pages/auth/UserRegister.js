@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Label, Spinner } from "flowbite-react";
 import { useUserRegisterContext } from "../../context/user-register-context";
@@ -63,6 +64,14 @@ const UserRegister = () => {
 
   return (
     <PublicLayout>
+      <Helmet>
+        <title>Daftar - Kalibrr</title>
+        <link
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        ></link>
+      </Helmet>
       <div className="pt-28 lg:pt-32 pb-16 lg:pb-32 px-3 bg-zinc-100">
         <div className="max-w-[500px] h-fit items-center justify-center px-3 md:px-6 py-2 mx-auto border rounded-md border-gray-200 bg-white">
           <div className="flex flex-col gap-5">

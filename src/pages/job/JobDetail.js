@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useGlobalContext } from "../../context/global-context";
+import { Helmet } from "react-helmet";
 import { jobsApi } from "../../api";
 import { Spinner } from "flowbite-react";
 import axios from "axios";
 import PublicLayout from "../../layouts/PublicLayout";
 import rupiahFormat from "rupiah-format";
-import { useGlobalContext } from "../../context/global-context";
 
 const JobDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +21,6 @@ const JobDetail = () => {
     if (state.isLogin === false) {
       return navigate("/user/login");
     }
-
   };
 
   useEffect(() => {
@@ -37,6 +37,10 @@ const JobDetail = () => {
 
   return (
     <PublicLayout>
+      <Helmet>
+        <title>Lowongan Kerja - Kalibrr</title>
+        <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon"></link>
+      </Helmet>
       <div className="pt-24 w-[800px] mx-auto">
         {!errorMsg && <p className="text-center">{errorMsg}</p>}
         {isLoading && <Spinner />}

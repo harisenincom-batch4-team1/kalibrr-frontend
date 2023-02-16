@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useUserSettingContext } from "../../context/user-setting-context";
 import { userEmailApi } from "../../api";
 import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
@@ -43,6 +44,14 @@ const UserDashboardSetting = () => {
 
   return (
     <UserDashboardLayout>
+      <Helmet>
+        <title>Pengaturan Akun - Kalibrr</title>
+        <link
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        ></link>
+      </Helmet>
       <HeaderTitle title={"Pengaturan Akun"} />
       <div className="w-full h-[98%] md:h-[95%] mx-auto md:pb-14 p-2 space-y-2 overflow-hidden overflow-y-scroll scrollbar-hide">
         {/* <CardChangeEmail /> */}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -13,9 +14,17 @@ const CompanyLogin = () => {
 
   return (
     <PublicLayout>
+      <Helmet>
+        <title>Masuk sebagai Perusahaan - Kalibrr</title>
+        <link
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        ></link>
+      </Helmet>
       <div
         className="bg-cover pt-32 lg:pt-40 pb-24 lg:pb-40 px-3"
-        style={{ backgroundImage: `url("/assets/bgSignup.png")` }}
+        style={{ backgroundImage: `url("/assets/bgSignup.webp")` }}
       >
         <div className="max-w-[550px] p-10 items-center justify-center mx-auto mt-14 border-gray-300 rounded-sm bg-[#f7f9fb] h-fit">
           {/* login */}

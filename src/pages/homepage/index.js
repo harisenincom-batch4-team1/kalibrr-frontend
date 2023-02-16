@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import PublicLayout from "../../layouts/PublicLayout";
 import HeroSection from "../../components/homepage/HeroSection";
 import JobCategory from "../../components/homepage/JobCategory";
@@ -7,6 +8,9 @@ import ExploreJobs from "../../components/homepage/ExploreJob";
 const Homepage = () => {
   return (
     <PublicLayout>
+      <Helmet>
+        <title>Beranda - Kalibrr Tempat Mencari Kerja</title>
+      </Helmet>
       <div className="px-5">
         <HeroSection />
         <JobCategory />

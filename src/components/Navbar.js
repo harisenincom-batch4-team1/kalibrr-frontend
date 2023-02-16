@@ -41,7 +41,7 @@ const Navbar = () => {
           dispatch({ type: "FETCH_SUCCESS", payload: { isLogin: true } });
           dispatch({ type: "FETCH_USER" });
         } else {
-          dispatch({ type: "FETCH_SUCCESS", payload: false });
+          dispatch({ type: "FETCH_SUCCESS", payload: { isLogin: false } });
         }
         break;
       case "fetching_user":
@@ -74,7 +74,10 @@ const Navbar = () => {
             alt="kalibrr-logo"
           />
         </Link>
-        <Link to="/job" className="items-center cursor-pointer mr-auto font-medium hidden md:block">
+        <Link
+          to="/job"
+          className="items-center cursor-pointer mr-auto font-medium hidden md:block"
+        >
           Lowongan Kerja
         </Link>
         {state.isLogin === false ? (
@@ -117,11 +120,7 @@ const Navbar = () => {
           }
         >
           <li className="py-6 text-4xl">
-            <Link
-              onClick={handleClick}
-              to="/"
-              className="hover:cursor-pointer"
-            >
+            <Link onClick={handleClick} to="/" className="hover:cursor-pointer">
               Halaman utama
             </Link>
           </li>

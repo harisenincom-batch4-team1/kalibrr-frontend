@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { userJobApplicationApi } from "../../api";
 import { useUserJobApplicationContext } from "../../context/user-job-application";
 import axios from "axios";
@@ -38,6 +39,14 @@ const UserDashboardApplication = () => {
 
   return (
     <UserDashboardLayout>
+      <Helmet>
+        <title>Lamaran Pengguna - Kalibrr</title>
+        <link
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        ></link>
+      </Helmet>
       <HeaderTitle title={"Lamaran"} />
       {state.tag === "fetching" && (
         <div className="p-5 w-full h-[60%] flex justify-center items-center">

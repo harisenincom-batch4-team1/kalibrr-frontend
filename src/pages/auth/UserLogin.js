@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
 import { toast, ToastContainer } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { userLoginApi } from "../../api";
@@ -66,6 +67,14 @@ const UserLogin = () => {
 
   return (
     <PublicLayout>
+      <Helmet>
+        <title>Masuk - Kalibrr</title>
+        <link
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        ></link>
+      </Helmet>
       <div className="pt-32 lg:pt-40 pb-24 lg:pb-40 px-3 bg-zinc-100">
         <div className="max-w-[450px] h-fit items-center justify-center px-3 md:px-6 py-2 mx-auto border rounded-md border-gray-200 bg-white">
           <div className="flex flex-col gap-5">

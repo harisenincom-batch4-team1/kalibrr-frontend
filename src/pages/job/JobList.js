@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useJobListContext } from "../../context/joblist-context";
 import { jobsApi } from "../../api";
 import Search from "../../components/Search";
@@ -31,6 +32,9 @@ const JobList = () => {
 
   return (
     <PublicLayout>
+      <Helmet>
+        <title>Lowongan Kerja - Kalibrr</title>
+      </Helmet>
       <Search />
       <div className="max-w-[900px] mx-auto flex flex-wrap justify-evenly gap-y-5 pt-36 md:pt-44 px-5">
         <JobCard />

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { companyJobApi } from "../../api";
 import { useCompanyJobContext } from "../../context/company-job-context";
 import axios from "axios";
@@ -47,6 +48,14 @@ const CompanyDashboardJob = () => {
 
   return (
     <NavbarUserLayout>
+      <Helmet>
+        <title>Pekerjaan Perusahaan - Kalibrr</title>
+        <link
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        ></link>
+      </Helmet>
       <HeaderTitle title={"Lowongan Kerja"} />
       <Form />
       {state.tag === "fetching" && (
