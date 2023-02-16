@@ -1,13 +1,19 @@
-import Container from "./layouts/Container";
-import HeaderTitle from "./components/header/HeaderTitle";
-import NavbarUserLayout from "./layouts/NavbarUserLayout";
+import { Helmet } from "react-helmet";
+import HeaderTitle from "../../components/dashboard_company/header/HeaderTitle";
+import NavbarUserLayout from "../../layouts/DashboardLayoutCompany";
 
 const CompanyDashboardProfile = () => {
   return (
     <NavbarUserLayout>
-      <Container>
-        <HeaderTitle title={"Profil Perusahaan"} />
-      </Container>
+      <Helmet>
+        <title>Profil Perusahaan - Kalibrr</title>
+        <link
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        ></link>
+      </Helmet>
+      <HeaderTitle title={"Profil Perusahaan"} />
     </NavbarUserLayout>
   );
 };

@@ -1,21 +1,19 @@
-import { useState } from "react";
-import Container from "./layouts/Container";
-import NavbarUserLayout from "./layouts/NavbarUserLayout";
-import HeaderTitleSearch from "./components/header/HeaderTitleSearch";
+import { Helmet } from "react-helmet";
+import NavbarUserLayout from "../../layouts/DashboardLayoutCompany";
+import HeaderTitle from "../../components/dashboard_company/header/HeaderTitle";
 
 const CompanyDashboardApplicant = () => {
-  const [input, setInput] = useState("");
-
   return (
     <NavbarUserLayout>
-      <Container>
-        <HeaderTitleSearch
-          title={"Pelamar"}
-          placeholder={"Cari lamaran"}
-          input={input}
-          setInput={setInput}
-        />
-      </Container>
+      <Helmet>
+        <title>Pelamar Perusahaan - Kalibrr</title>
+        <link
+          rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon"
+        ></link>
+      </Helmet>
+      <HeaderTitle title={"Pelamar"} />
     </NavbarUserLayout>
   );
 };
