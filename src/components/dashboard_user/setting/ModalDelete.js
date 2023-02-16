@@ -1,0 +1,66 @@
+import { useState } from "react";
+import { useGlobalContext } from "../../../context/global-context";
+import { Button, Modal } from "flowbite-react";
+import { userProfileApi } from "../../../api";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
+import Cookies from "js-cookie";
+
+const ModalDelete = () => {
+  const { state, dispatch } = useGlobalContext();
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const onClick = () => {
+    setShow(true);
+  };
+  const onClose = () => {
+    setShow(false);
+  };
+
+  const handleSubmit = () => {
+    axios
+      .delete(userProfileApi, {
+        headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
+      })
+      .then(() => {
+        Cookies.remove("kalibrr");
+        dispatch({ type: "DELETE" });
+        navigate("/");
+      })
+      .catch((err) => toast.error(err?.message));
+  };
+
+  return (
+    <>
+      <Button
+        onClick={onClick}
+        color="failure"
+        className="ml-auto w-full md:w-20 h-10"
+      >
+        Hapus
+      </Button>
+      <Modal show={show} onClose={onClose}>
+        <Modal.Header>Hapus Akun Kalibrr</Modal.Header>
+        <Modal.Body>
+          <p className="text-sm md:text-base leading-relaxed text-gray-500 dark:text-gray-400">
+            Hapus akun bersifat permanen. Semua data anda akan dihapus. Anda
+            harus membuat akun Kalibrr baru dan mengisi semua informasi yang
+            diperlukan jika ingin melamar.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="gray" onClick={onClose} className="ml-auto">
+            Batal
+          </Button>
+          <Button onClick={handleSubmit} color="failure" className="ml-auto">
+            Hapus
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+
+export default ModalDelete;

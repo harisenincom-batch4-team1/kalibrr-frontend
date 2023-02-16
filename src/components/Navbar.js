@@ -50,9 +50,9 @@ const Navbar = () => {
   }, [state.tag]);
 
   return (
-    <nav className="w-full h-16 px-5 bg-white border-b-[1px] flex items-center justify-between fixed z-50">
+    <nav className="w-full h-16 px-5 bg-white border-b-[1px] flex items-center justify-between fixed z-20">
       <div className="w-full flex flex-wrap items-center justify-between mx-auto">
-        <Link to="/" className="flex items-center cursor-pointer w-w4">
+        <Link to="/" className="flex items-center cursor-pointer">
           <img
             className="w-24 mr-5"
             src="/assets/logo.svg"

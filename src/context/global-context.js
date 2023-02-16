@@ -44,6 +44,13 @@ export const GlobalProvider = ({ children }) => {
               tag: "fetching",
             };
           }
+          case "DELETE": {
+            return {
+              ...state,
+              tag: "idle",
+              isLogin: false
+            };
+          }
           default: {
             return state;
           }

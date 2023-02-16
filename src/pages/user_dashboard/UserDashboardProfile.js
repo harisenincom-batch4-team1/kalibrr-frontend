@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useUserProfileContext } from "../../context/user-profile-context";
 import { userProfileApi } from "../../api";
+import { toast, ToastContainer } from "react-toastify";
 import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
 import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
 import CardBasicInformation from "../../components/dashboard_user/profile/CardBasicInformation";
-import CardCV from "../../components/dashboard_user/profile/CardCV";
+import CardResume from "../../components/dashboard_user/profile/CardResume";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -30,20 +31,27 @@ const UserDashboardProfile = () => {
         break;
       }
       case "submitting": {
-        axios.put(userProfileApi, {
-          name: state.nameInput,
-          email: state.emailInput,
-          phone: state.phoneInput,
-          location: state.locationInput,
-          skill: state.skillInput,
-          role: state.roleInput,
-        }, {
-          headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
-        })
-          .then((res) =>
-            dispatch({ type: "SUBMIT_SUCCESS", payload: res.data.datas })
+        axios
+          .put(
+            userProfileApi,
+            {
+              name: state.nameInput,
+              email: state.emailInput,
+              phone: state.phoneInput,
+              location: state.locationInput,
+              skill: state.skillInput,
+              role: state.roleInput,
+            },
+            {
+              headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
+            }
           )
+          .then(() => {
+            toast.success("Akun berhasil di perbaharui");
+            dispatch({ type: "SUBMIT_SUCCESS" });
+          })
           .catch((err) => {
+            toast.success(err?.message);
             dispatch({ type: "SUBMIT_ERROR", payload: err?.message });
           });
         break;
@@ -55,10 +63,11 @@ const UserDashboardProfile = () => {
 
   return (
     <UserDashboardLayout>
+      <ToastContainer />
       <HeaderTitle title={"Profil"} />
-      <div className="max-w-full h-[95%] pb-16 mx-auto px-5 py-5 space-y-5 overflow-hidden overflow-y-scroll scrollbar-hide">
+      <div className="max-w-full h-[95%] pb-16 mx-auto p-2 space-y-2 overflow-hidden overflow-y-scroll scrollbar-hide">
         <CardBasicInformation />
-        <CardCV />
+        <CardResume />
       </div>
     </UserDashboardLayout>
   );

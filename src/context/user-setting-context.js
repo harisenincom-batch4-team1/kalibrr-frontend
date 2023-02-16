@@ -5,43 +5,73 @@ export const UserSettingContext = createContext();
 export const UserSettingProvider = ({ children }) => {
   const initialState = {
     tag: "idle",
-    email: "",
-    emailInput: "",
     currentPasswordInput: "",
     newPasswordInput: "",
     confirmPasswordInput: "",
     errorMsg: "",
-    progress: 0,
+    isShowPasswordCurrent: false,
+    isShowPasswordnew: false,
+    isShowPasswordConfirm: false,
   };
 
   function reducer(state = initialState, action) {
     switch (state.tag) {
       case "idle": {
         switch (action.type) {
-          case "FETCH_USER_SETTING":
+          case "CHANGE_CURRENT_PASSWORD":
             return {
               ...state,
-              tag: "loading",
+              currentPasswordInput: action.payload,
             };
+          case "CHANGE_NEW_PASSWORD":
+            return {
+              ...state,
+              newPasswordInput: action.payload,
+            };
+          case "CHANGE_CONFIRM_PASSWORD":
+            return {
+              ...state,
+              confirmPasswordInput: action.payload,
+            };
+          case "SUBMIT":
+            return {
+              ...state,
+              tag: "submitting",
+            };
+          case "SHOW_PASSWORD_CURRENT": {
+            return {
+              ...state,
+              isShowPasswordCurrent: action.payload,
+            };
+          }
+          case "SHOW_PASSWORD_NEW": {
+            return {
+              ...state,
+              isShowPasswordNew: action.payload,
+            };
+          }
+          case "SHOW_PASSWORD_CONFIRM": {
+            return {
+              ...state,
+              isShowPasswordConfirm: action.payload,
+            };
+          }
           default:
             return state;
         }
       }
-      case "loading": {
+      case "submitting": {
         switch (action.type) {
-          case "FETCH_USER_SETTING_SUCCESS":
+          case "SUBMIT_SUCCESS":
             return {
               ...state,
-              tag: "loaded",
-              email: action.payload,
-              emailInput: "",
+              tag: "idle",
               currentPasswordInput: "",
               newPasswordInput: "",
               confirmPasswordInput: "",
               errorMsg: "",
-              progress: action.payload,
             };
-          case "FETCH_USER_SETTING_ERROR":
+          case "SUBMIT_ERROR":
             return {
               ...state,
               tag: "error",
@@ -51,45 +81,8 @@ export const UserSettingProvider = ({ children }) => {
             return state;
         }
       }
-      case "loaded": {
-        switch (action.type) {
-          case "CHANGE_EMAIL":
-            return {
-              ...state,
-              emailInput: action.payload,
-            };
-          case "CHANGE_CURRENT_PASSWORD":
-            return {
-              ...state,
-              currentPasswordInput: action.payload,
-            };
-          case "CHANGE_NEW_PASSWORD":
-            return {
-              ...state,
-              newPasswordInput: action.payload,
-            };
-          case "CHANGE_CONFIRM_PASSWORD":
-            return {
-              ...state,
-              confirmPasswordInput: action.payload,
-            };
-          case "FETCH_USER_SETTING":
-            return {
-              ...state,
-              tag: "loading",
-              progress: action.payload,
-            };
-          default:
-            return state;
-        }
-      }
       case "error": {
         switch (action.type) {
-          case "CHANGE_EMAIL":
-            return {
-              ...state,
-              emailInput: action.payload,
-            };
           case "CHANGE_CURRENT_PASSWORD":
             return {
               ...state,
@@ -105,11 +98,29 @@ export const UserSettingProvider = ({ children }) => {
               ...state,
               confirmPasswordInput: action.payload,
             };
-          case "FETCH_USER_SETTING":
+          case "SUBMIT":
             return {
               ...state,
-              tag: "loading",
+              tag: "submitting",
             };
+          case "SHOW_PASSWORD_CURRENT": {
+            return {
+              ...state,
+              isShowPasswordCurrent: action.payload,
+            };
+          }
+          case "SHOW_PASSWORD_NEW": {
+            return {
+              ...state,
+              isShowPasswordNew: action.payload,
+            };
+          }
+          case "SHOW_PASSWORD_CONFIRM": {
+            return {
+              ...state,
+              isShowPasswordConfirm: action.payload,
+            };
+          }
           default:
             return state;
         }

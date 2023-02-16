@@ -1,17 +1,27 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { jobsApi } from "../../api";
 import { Spinner } from "flowbite-react";
 import axios from "axios";
 import PublicLayout from "../../layouts/PublicLayout";
 import rupiahFormat from "rupiah-format";
+import { useGlobalContext } from "../../context/global-context";
 
 const JobDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
   const [detailJob, setDetailJob] = useState(null);
 
+  const navigate = useNavigate();
   const { id } = useParams();
+  const { state, dispatch } = useGlobalContext();
+
+  const handleApply = () => {
+    if (state.isLogin === false) {
+      return navigate("/user/login");
+    }
+
+  };
 
   useEffect(() => {
     axios(jobsApi + "/" + id)
@@ -24,6 +34,8 @@ const JobDetail = () => {
         setIsLoading(false);
       });
   }, []);
+
+  console.log(state);
 
   return (
     <PublicLayout>
@@ -46,7 +58,10 @@ const JobDetail = () => {
                   {rupiahFormat.convert(detailJob.salaryMin)} -{" "}
                   {rupiahFormat.convert(detailJob.salaryMax)}
                 </p>
-                <button className="ml-auto bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg active:scale-[99%] text-sm">
+                <button
+                  onClick={handleApply}
+                  className="ml-auto bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg active:scale-[99%] text-sm"
+                >
                   Lamar sekarang
                 </button>
               </div>

@@ -44,8 +44,8 @@ const UserDashboardSetting = () => {
   return (
     <UserDashboardLayout>
       <HeaderTitle title={"Pengaturan Akun"} />
-      <div className="max-w-full h-[95%] pb-16 mx-auto px-5 py-5 space-y-5 overflow-hidden overflow-y-scroll scrollbar-hide">
-        <CardChangeEmail />
+      <div className="w-full h-[98%] md:h-[95%] mx-auto md:pb-14 p-2 space-y-2 overflow-hidden overflow-y-scroll scrollbar-hide">
+        {/* <CardChangeEmail /> */}
         <CardChangePassword />
         <CardDeleteAccount />
       </div>

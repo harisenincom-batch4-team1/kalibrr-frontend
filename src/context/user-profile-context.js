@@ -86,6 +86,12 @@ export const UserProfileProvider = ({ children }) => {
               nameInput: action.payload,
             };
           }
+          case "CHANGE_PHONE": {
+            return {
+              ...state,
+              phoneInput: action.payload,
+            };
+          }
           case "CHANGE_EMAIL": {
             return {
               ...state,
@@ -128,7 +134,7 @@ export const UserProfileProvider = ({ children }) => {
         }
       }
       case "submitting": {
-        switch (action.payload) {
+        switch (action.type) {
           case "SUBMIT_SUCCESS": {
             return {
               ...state,
