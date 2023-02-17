@@ -7,6 +7,7 @@ import Search from "../../components/Search";
 import axios from "axios";
 import JobCard from "../../components/JobCard";
 import PublicLayout from "../../layouts/PublicLayout";
+import JobCardSkeleton from "../../components/skeletons/JobCardSkeleton";
 
 const JobList = () => {
   const { state, dispatch } = useJobListContext();
@@ -14,7 +15,7 @@ const JobList = () => {
   useEffect(() => {
     switch (state.tag) {
       case "idle":
-        dispatch({ type: "FETCH", payload: 1 });
+        dispatch({ type: "FETCH", payload: 0 });
         break;
       case "fetching":
         axios(jobsApi + "?search=" + state.inputValue + "&page=" + state.page)
@@ -28,16 +29,14 @@ const JobList = () => {
               });
             }
           })
-          .catch((err) =>
-            dispatch({ type: "FETCH_ERROR", payload: err?.message })
-          );
+          .catch((err) => {
+            dispatch({ type: "FETCH_ERROR", payload: err?.message });
+          });
         break;
       default:
         break;
     }
   }, [state.tag]);
-
-  console.log(state.datas);
 
   return (
     <PublicLayout>
@@ -47,25 +46,28 @@ const JobList = () => {
       <Search />
       <div className="px-5">
         <div className="max-w-[800px] mx-auto flex flex-wrap justify-between pt-36 md:pt-44 gap-2 md:gap-3 md:gap-y-4">
-          {state.tag === "fetching" && <p>Loading...</p>}
+          {state.tag === "fetching" && <JobCardSkeleton />}
           {state.tag === "loaded" && <JobCard />}
           {state.tag === "error" && (
-            <p className="text-center">{state.errorMsg}</p>
+            <p className="py-20 text-center mx-auto text-base font-medium sm:text-lg mt-5 sm:mt-10">
+              {state.errorMsg}
+            </p>
           )}
           {state.tag === "empty" && (
-            <p className="text-center">Lowongan pekerjaan tidak ditemukan</p>
+            <>
+              <p className="text-center text-sm font-medium sm:text-lg mx-auto mt-5 sm:mt-10">
+                Maaf, Lowongan pekerjaan tidak ditemukan
+              </p>
+              <img src="/assets/empty.webp" className="mx-auto" />
+            </>
           )}
         </div>
       </div>
       <div className="px-5 flex justify-center overflow-hidden overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full">
         <Pagination
           className="mx-auto my-8 flex w-fit"
-          currentPage={state?.page || 1}
-          onPageChange={
-            state.datas.totalPage <= 1
-              ? false
-              : (e) => dispatch({ type: "FETCH", payload: e })
-          }
+          currentPage={state?.page + 1 || 1}
+          onPageChange={(e) => dispatch({ type: "FETCH", payload: -1 + e })}
           showIcons={false}
           nextLabel="Next"
           previousLabel="Prev"

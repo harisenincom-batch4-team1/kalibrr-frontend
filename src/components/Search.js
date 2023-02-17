@@ -9,11 +9,8 @@ const Search = () => {
   };
 
   return (
-    <div className="w-full flex justify-center pt-20 md:pt-24 bg-zinc-50 fixed px-5">
-      <form
-        onSubmit={handleSearch}
-        className="w-[800px] mx-auto"
-      >
+    <div className="w-full flex justify-center pt-20 md:pt-24 bg-zinc-50 fixed px-5 z-10">
+      <form onSubmit={handleSearch} className="w-[800px] mx-auto">
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -45,7 +42,7 @@ const Search = () => {
             }
             type="search"
             id="default-search"
-            className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Ketik untuk mencari..."
             autoComplete="off"
           />

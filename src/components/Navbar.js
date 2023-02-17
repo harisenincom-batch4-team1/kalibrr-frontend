@@ -1,19 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import {
-  HiArrowLeftOnRectangle,
-  HiBuildingOffice,
-  HiCog6Tooth,
-  HiNewspaper,
-  HiUserCircle,
-} from "react-icons/hi2";
+import { HiBuildingOffice } from "react-icons/hi2";
 import { useGlobalContext } from "../context/global-context";
+import { userProfileApi } from "../api";
+import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import DropdownNavbar from "./NavbarDropdown";
 import axios from "axios";
-import { userProfileApi } from "../api";
-import { toast } from "react-toastify";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -57,6 +51,8 @@ const Navbar = () => {
           .catch((err) => {
             navigate("/");
             toast.error(err?.message);
+            dispatch({ type: "LOGOUT" });
+            Cookies.remove("kalibrr");
           });
         break;
       default:

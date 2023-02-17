@@ -9,7 +9,7 @@ export const JobListProvider = ({ children }) => {
     datas: {},
     inputValue: "",
     errorMsg: "",
-    page: 1,
+    page: 0,
     limit: 10,
   };
 

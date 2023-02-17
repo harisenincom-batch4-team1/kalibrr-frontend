@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { companyJobApi } from "../../api";
 import { useCompanyJobContext } from "../../context/company-job-context";
+import { Spinner } from "flowbite-react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Form from "../../components/dashboard_company/job/Form";
 import Table from "../../components/dashboard_company/job/Table";
-import Spinner from "../../components/Spinner";
 import NavbarUserLayout from "../../layouts/DashboardLayoutCompany";
 import HeaderTitle from "../../components/dashboard_company/header/HeaderTitle";
 

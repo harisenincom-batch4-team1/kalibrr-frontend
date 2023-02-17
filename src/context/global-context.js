@@ -44,7 +44,15 @@ export const GlobalProvider = ({ children }) => {
               ...state,
               tag: "loaded",
               datas: action.payload.datas,
-              isLogin: true
+              isLogin: true,
+            };
+          }
+          case "LOGOUT": {
+            return {
+              ...state,
+              tag: "loaded",
+              datas: {},
+              isLogin: false,
             };
           }
           default: {

@@ -14,7 +14,7 @@ export const UserSettingProvider = ({ children }) => {
     isShowPasswordConfirm: false,
   };
 
-  function reducer(state = initialState, action) {
+  function reducer(state, action) {
     switch (state.tag) {
       case "idle": {
         switch (action.type) {
