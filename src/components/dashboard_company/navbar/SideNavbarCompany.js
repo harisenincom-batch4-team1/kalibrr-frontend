@@ -1,10 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import {
-  HiBriefcase,
-  HiBuildingOffice,
-  HiChatBubbleLeftRight,
-  HiUserGroup,
-} from "react-icons/hi2";
+import { HiBriefcase, HiBuildingOffice, HiUserGroup } from "react-icons/hi2";
 
 const SideNavbarCompany = () => {
   const { pathname } = useLocation();
@@ -49,18 +44,6 @@ const SideNavbarCompany = () => {
         >
           <HiUserGroup className="h-6 w-6 rounded-lg hover:bg-blue-50" />
           <span className="hidden md:block font-medium">Pelamar</span>
-        </div>
-      </Link>
-      <Link to="/company/dashboard/message" className="py-4 hover:bg-blue-50">
-        <div
-          className={
-            pathname === "/company/dashboard/message"
-              ? "flex items-center space-x-2 px-4 text-blue-500"
-              : "flex items-center space-x-2 px-4"
-          }
-        >
-          <HiChatBubbleLeftRight className="h-6 w-6 rounded-lg hover:bg-blue-50" />
-          <span className="hidden md:block font-medium">Pesan</span>
         </div>
       </Link>
     </div>

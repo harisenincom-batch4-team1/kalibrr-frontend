@@ -11,11 +11,11 @@ const Table = () => {
   };
 
   return (
-    <div className="px-5 max-w-[1280px] mx-auto">
+    <div className="max-w-[1280px] mx-auto">
       <div className="bg-white scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full overflow-x-scroll md:w-full overflow-hidden relative border border-gray-200 rounded-lg mx-auto">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-white">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr className="text-center bg-blue-500 text-white">
+            <tr className="text-center bg-blue-700 text-white">
               <th scope="col" className="px-6 py-3">
                 Nama
               </th>

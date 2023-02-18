@@ -67,7 +67,7 @@ const SignUp = () => {
           <div className="flex flex-col mx-auto">
             <p className="pb-4 text-center">
               Sudah mempunyai akun? 
-              <a href="/user/login" className="text-blue-600"> Masuk</a>
+              <Link to="/user/login" className="text-blue-600"> Masuk</Link>
             </p>
             <p className="text-sm pb-4 text-center">
             Dengan membuat akun Kalibrr, Anda setuju dengan Syarat dan Ketentuan, Kebijakan Privasi, dan persetujuan pengguna kami.

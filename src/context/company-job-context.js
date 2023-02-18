@@ -167,7 +167,7 @@ export const CompanyJobProvider = ({ children }) => {
         }
       }
       case "add": {
-        switch (action.payload) {
+        switch (action.type) {
           case "SUBMIT": {
             return {
               ...state,
@@ -186,7 +186,7 @@ export const CompanyJobProvider = ({ children }) => {
         }
       }
       case "edit": {
-        switch (action.payload) {
+        switch (action.type) {
           case "EDIT": {
             return {
               ...state,

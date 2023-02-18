@@ -64,20 +64,23 @@ const JobList = () => {
         </div>
       </div>
       <div className="px-5 flex justify-center overflow-hidden overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full">
-        <Pagination
-          className="mx-auto my-8 flex w-fit"
-          currentPage={state?.page + 1 || 1}
-          onPageChange={(e) => dispatch({ type: "FETCH", payload: -1 + e })}
-          showIcons={false}
-          nextLabel="Next"
-          previousLabel="Prev"
-          totalPages={
-            state.datas.totalPage === undefined
-              ? 0
-              : state?.datas?.totalPage - 1
-          }
-        />
+        {state?.datas?.totalPage > 1 && (
+          <Pagination
+            className="mx-auto my-8 flex w-fit"
+            currentPage={state?.page + 1 || 1}
+            onPageChange={(e) => dispatch({ type: "FETCH", payload: -1 + e })}
+            showIcons={false}
+            nextLabel="Next"
+            previousLabel="Prev"
+            totalPages={
+              state.datas.totalPage === undefined
+                ? 0
+                : state?.datas?.totalPage
+            }
+          />
+        )}
       </div>
+      <div className="my-10"/>
     </PublicLayout>
   );
 };

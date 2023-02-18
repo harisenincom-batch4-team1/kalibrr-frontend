@@ -117,17 +117,15 @@ const JobDetail = () => {
             </div>
             <hr className="mt-24 sm:my-5" />
             <div className="pb-10">
-              <h1 className="mb-2 mt-5 text-lg font-semibold">
-                Job Descrition
-              </h1>
+              <h1 className="mb-2 mt-5 text-lg font-semibold">Deskripsi</h1>
               <div
                 dangerouslySetInnerHTML={{ __html: detailJob.jobDescription }}
+                className="text-sm sm:text-base"
               />
-              <h1 className="mb-2 mt-5 text-lg font-semibold">
-                Job Qualification
-              </h1>
+              <h1 className="mb-2 mt-5 text-lg font-semibold">Kualifikasi</h1>
               <div
                 dangerouslySetInnerHTML={{ __html: detailJob.jobQualification }}
+                className="text-sm sm:text-base"
               />
             </div>
           </div>
