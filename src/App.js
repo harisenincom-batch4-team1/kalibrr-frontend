@@ -26,10 +26,11 @@ import { CompanyJobProvider } from "./context/company-job-context";
 import { UserJobApplicationProvider } from "./context/user-job-application";
 import { UserSettingProvider } from "./context/user-setting-context";
 import { UserProfileProvider } from "./context/user-profile-context";
+import { CompanySettingProvider } from "./context/company-setting-context";
 import { GlobalProvider } from "./context/global-context";
-import ProtectRoute from "./middlewares/ProtectRoute";
-import AuthPage from "./middlewares/AuthPage";
 import { ToastContainer } from "react-toastify";
+import ProtectRoute from "./helpers/ProtectRoute";
+import AuthPage from "./helpers/AuthPage";
 
 const App = () => {
   return (
@@ -133,7 +134,11 @@ const App = () => {
             />
             <Route
               path="/company/dashboard/setting"
-              element={<CompanyDashboardSetting />}
+              element={
+                <CompanySettingProvider>
+                  <CompanyDashboardSetting />
+                </CompanySettingProvider>
+              }
             />
 
             {/* Not Found */}

@@ -2,15 +2,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { companyJobApi } from "../../api";
 import { useCompanyJobContext } from "../../context/company-job-context";
-import {
-  Button,
-  Checkbox,
-  Label,
-  Modal,
-  Spinner,
-  Tabs,
-  TextInput,
-} from "flowbite-react";
+import { Spinner, Tabs } from "flowbite-react";
 import DashboardLayoutCompany from "../../layouts/DashboardLayoutCompany";
 import axios from "axios";
 import Cookies from "js-cookie";
