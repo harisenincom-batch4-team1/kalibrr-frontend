@@ -64,7 +64,6 @@ const Table = () => {
             </thead>
             <tbody>
               {state.datas.map((data, i) => {
-                console.log(data.status);
                 return (
                   <tr
                     className="text-center w-full border-t hover:bg-gray-50"

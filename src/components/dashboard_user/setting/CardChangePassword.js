@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Button, Spinner } from "flowbite-react";
 import { useUserSettingContext } from "../../../context/user-setting-context";
 import { userPasswordApi } from "../../../api";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -68,7 +68,11 @@ const CardChangePassword = () => {
             dispatch({ type: "SUBMIT_SUCCESS" });
           })
           .catch((err) => {
-            toast.error(err?.response?.data?.message);
+            toast.error(
+              err?.response?.data?.message
+                ? err?.response?.data?.message
+                : err?.message
+            );
             dispatch({ type: "SUBMIT_ERROR", payload: err?.message });
           });
         break;

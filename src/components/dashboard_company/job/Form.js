@@ -55,8 +55,6 @@ const Form = () => {
     }, 500);
   };
 
-  console.log(state.tag);
-
   return (
     <div className="max-w-[1000px] mx-auto">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { HiBuildingOffice } from "react-icons/hi2";
 import { useGlobalContext } from "../context/global-context";
-import { userProfileApi } from "../api";
+import { companyProfileApi, userProfileApi } from "../api";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import DropdownNavbar from "./NavbarDropdown";
@@ -12,16 +12,12 @@ import axios from "axios";
 const Navbar = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useGlobalContext();
-  const [isShowMenuAccount, setIsShowMenuAccount] = useState(false);
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
 
-  const showMenuAccount = () => {
-    setIsShowMenuAccount((prev) => !prev);
-  };
-
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
+    Cookies.remove("kalibrr-company");
     Cookies.remove("kalibrr");
   };
 
@@ -34,8 +30,19 @@ const Navbar = () => {
         if (Cookies.get("kalibrr") !== undefined) {
           dispatch({ type: "FETCH_SUCCESS", payload: { isLogin: true } });
           dispatch({ type: "FETCH_USER" });
+          return;
+        } else if (Cookies.get("kalibrr-company") !== undefined) {
+          dispatch({
+            type: "FETCH_SUCCESS",
+            payload: { isLoginCompany: true },
+          });
+          dispatch({ type: "FETCH_COMPANY" });
+          return;
         } else {
-          dispatch({ type: "FETCH_SUCCESS", payload: { isLogin: false } });
+          dispatch({
+            type: "FETCH_SUCCESS",
+            payload: { isLogin: false, isLoginCompany: false },
+          });
         }
         break;
       case "fetching_user":
@@ -53,6 +60,25 @@ const Navbar = () => {
             toast.error(err?.message);
             dispatch({ type: "LOGOUT" });
             Cookies.remove("kalibrr");
+          });
+        break;
+      case "fetching_company":
+        axios(companyProfileApi, {
+          headers: {
+            Authorization: "Bearer " + Cookies.get("kalibrr-company"),
+          },
+        })
+          .then((res) =>
+            dispatch({
+              type: "FETCH_COMPANY_SUCCESS",
+              payload: { datas: res.data.datas },
+            })
+          )
+          .catch((err) => {
+            navigate("/");
+            toast.error(err?.message);
+            dispatch({ type: "LOGOUT" });
+            Cookies.remove("kalibrr-company");
           });
         break;
       default:
@@ -76,7 +102,8 @@ const Navbar = () => {
         >
           Lowongan Kerja
         </Link>
-        {state.isLogin === false ? (
+
+        {state.isLogin === false && state.isLoginCompany === false ? (
           <div className="flex md:order-2 gap-y-10 sm:gap-5 items-center">
             <Link
               to="/user/login"
@@ -105,8 +132,11 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          <DropdownNavbar />
+          <></>
         )}
+
+        {state.isLogin && <DropdownNavbar />}
+        {state.isLoginCompany && <DropdownNavbar />}
 
         <ul
           className={
@@ -130,16 +160,26 @@ const Navbar = () => {
               Lowongan Kerja
             </Link>
           </li>
-          {state.isLogin === true ? (
+          {state.isLogin ? (
             <>
               <li className="pt-20 py-6 text-4xl">
                 {" "}
-                <Link
-                  to="/user/dashboard/profile"
-                  className="hover:cursor-pointer"
-                >
-                  Dashboard
-                </Link>
+                {state.isLogin && (
+                  <Link
+                    to="/user/dashboard/profile"
+                    className="hover:cursor-pointer"
+                  >
+                    Dashboard
+                  </Link>
+                )}
+                {state.isLoginCompany && (
+                  <Link
+                    to="/company/dashboard/profile"
+                    className="hover:cursor-pointer"
+                  >
+                    Dashboard
+                  </Link>
+                )}
               </li>
               <li className="py-6 text-4xl">
                 {" "}

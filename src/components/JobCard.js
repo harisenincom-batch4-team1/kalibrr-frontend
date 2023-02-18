@@ -20,7 +20,6 @@ const JobCard = () => {
 
   {
     return state?.datas?.result?.map((data, i) => {
-      console.log(data);
       return (
         <div
           onClick={() => handleDetailJob(data.id)}

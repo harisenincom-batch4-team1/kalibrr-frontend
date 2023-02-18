@@ -60,7 +60,9 @@ const CardChangePassword = () => {
               confirmPassword: state.confirmPasswordInput,
             },
             {
-              headers: { Authorization: "Bearer " + Cookies.get("kalibrr-company") },
+              headers: {
+                Authorization: "Bearer " + Cookies.get("kalibrr-company"),
+              },
             }
           )
           .then(() => {
@@ -68,7 +70,11 @@ const CardChangePassword = () => {
             dispatch({ type: "SUBMIT_SUCCESS" });
           })
           .catch((err) => {
-            toast.error(err?.response?.data?.message);
+            toast.error(
+              err?.response?.data?.message
+                ? err?.response?.data?.message
+                : err?.message
+            );
             dispatch({ type: "SUBMIT_ERROR", payload: err?.message });
           });
         break;

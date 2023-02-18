@@ -52,7 +52,6 @@ const UserLogin = () => {
               data.dispatch({ type: "FETCH_USER" });
               navigate("/user/dashboard/profile");
             }, 1000);
-            localStorage.setItem("kalibrr", res.data.datas);
           })
           .catch((err) => {
             dispatch({ type: "SUBMIT_ERROR", payload: err?.message });

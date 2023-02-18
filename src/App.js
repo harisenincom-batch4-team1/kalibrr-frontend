@@ -27,6 +27,8 @@ import { UserJobApplicationProvider } from "./context/user-job-application";
 import { UserSettingProvider } from "./context/user-setting-context";
 import { UserProfileProvider } from "./context/user-profile-context";
 import { CompanySettingProvider } from "./context/company-setting-context";
+import { CompanyLoginProvider } from "./context/company-login-context";
+import { CompanyProfileProvider } from "./context/company-profile-context";
 import { GlobalProvider } from "./context/global-context";
 import { ToastContainer } from "react-toastify";
 import ProtectRoute from "./helpers/ProtectRoute";
@@ -80,7 +82,14 @@ const App = () => {
                 </AuthPage>
               }
             />
-            <Route path="/company/login" element={<CompanyLogin />} />
+            <Route
+              path="/company/login"
+              element={
+                <CompanyLoginProvider>
+                  <CompanyLogin />
+                </CompanyLoginProvider>
+              }
+            />
             <Route path="/company/register" element={<CompanyRegister />} />
 
             {/* Protect Route User Dashboard  */}
@@ -118,7 +127,11 @@ const App = () => {
             {/* Protect Route Company Dashboard */}
             <Route
               path="/company/dashboard/profile"
-              element={<CompanyDashboardProfile />}
+              element={
+                <CompanyProfileProvider>
+                  <CompanyDashboardProfile />
+                </CompanyProfileProvider>
+              }
             />
             <Route
               path="/company/dashboard/job"

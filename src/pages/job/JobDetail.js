@@ -58,7 +58,7 @@ const JobDetail = () => {
       {errorMsg && (
         <div className="mx-auto text-center w-fit mt-40">
           <p className="text-base sm:text-lg font-medium">{errorMsg}</p>
-          <img src="/assets/error.webp" alt="" className="mx-auto -mt-20" />
+          <img src="/assets/error.webp" alt="" className="mx-auto -mt-10" />
         </div>
       )}
       {detailJob === null && isLoading === false && !errorMsg && (
@@ -71,14 +71,14 @@ const JobDetail = () => {
               onClick={handleApply}
               className="absolute top-40 sm:right-4 sm:top-20 py-2"
               size="sm"
-              disabled={!detailJob.status}
+              disabled={!detailJob.status || state.isLoginCompany}
             >
               Lamar sekarang
             </Button>
             <span
               className={
                 detailJob.status == 0 &&
-                "absolute top-0 right-28 bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"
+                "absolute top-0 right-4 sm:right-28 bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"
               }
             >
               {detailJob.status == 0 && "Close"}
@@ -126,7 +126,7 @@ const JobDetail = () => {
               </div>
             </div>
             <hr className="mt-24 sm:my-5" />
-            <div className="pb-10">
+            <div className="pb-10 w-[350px] sm:w-[600px] md:w-[720px] overflow-hidden overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full">
               <h1 className="mb-2 mt-5 text-lg font-semibold">Deskripsi</h1>
               <div
                 dangerouslySetInnerHTML={{ __html: detailJob.jobDescription }}

@@ -53,7 +53,7 @@ const JobList = () => {
               <p className="text-base sm:text-lg font-medium">
                 {state.errorMsg}
               </p>
-              <img src="/assets/error.webp" alt="" className="mx-auto -mt-20" />
+              <img src="/assets/error.webp" alt="" className="mx-auto -mt-10" />
             </div>
           )}
           {state.tag === "empty" && (

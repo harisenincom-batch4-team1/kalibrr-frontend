@@ -1,6 +1,6 @@
-import LoadingBar from "react-top-loading-bar";
-import NavbarCompany from "../components/dashboard_company/navbar/NavbarCompany";
+import Navbar from "../components/Navbar";
 import SideNavbarCompany from "../components/dashboard_company/navbar/SideNavbarCompany";
+import LoadingBar from "react-top-loading-bar";
 
 const NavbarLayoutCompany = ({ children }) => {
   return (
@@ -11,7 +11,7 @@ const NavbarLayoutCompany = ({ children }) => {
         height={2}
         progress={100}
       />
-      <NavbarCompany />
+      <Navbar />
       <div className="h-full pt-16 flex justify-between scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full ">
         <SideNavbarCompany />
         <div className="w-full bg-[#fafafa] h-full overflow-hidden overflow-y-scroll pb-5">

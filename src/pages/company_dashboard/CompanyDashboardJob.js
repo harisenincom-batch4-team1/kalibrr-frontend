@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { companyJobApi } from "../../api";
 import { useCompanyJobContext } from "../../context/company-job-context";
@@ -72,7 +72,7 @@ const CompanyDashboardJob = () => {
       <Tabs.Group
         aria-label="Full with tabs"
         style="underline"
-        className="sticky top-0 z-50 bg-zinc-50"
+        className="sticky top-0 z-10 bg-zinc-50"
       >
         <Tabs.Item title="Daftar">
           {state.tag === "fetching" && (
@@ -88,7 +88,10 @@ const CompanyDashboardJob = () => {
               <p className="mx-auto text-center mt-2 text-sm sm:text-base md:text-xl font-normal">
                 Silahkan klik tombol tambah di kiri atas
               </p>
-              <img src="" className="mx-auto -mt-10" />
+              <img
+                src="/assets/empty-job-applications.webp"
+                className="mx-auto -mt-10"
+              />
             </div>
           )}
           {state.tag === "error" && (
@@ -96,10 +99,14 @@ const CompanyDashboardJob = () => {
               <p className="text-base sm:text-lg font-medium">
                 {state.errorMsg}
               </p>
-              <img src="/assets/error.webp" alt="" className="mx-auto -mt-20" />
+              <img src="/assets/error.webp" alt="" className="mx-auto -mt-10" />
             </div>
           )}
-          {state.tag === "loaded" || state.tag === "delete" ? <Table /> : <></>}
+          {state.tag === "loaded" || state.tag === "delete" ? (
+            <Table />
+          ) : (
+            <></>
+          )}
         </Tabs.Item>
         <Tabs.Item title="Tambah">
           {state.tag === "fetching" && (
@@ -112,7 +119,7 @@ const CompanyDashboardJob = () => {
               <p className="text-base sm:text-lg font-medium">
                 {state.errorMsg}
               </p>
-              <img src="/assets/error.webp" alt="" className="mx-auto -mt-20" />
+              <img src="/assets/error.webp" alt="" className="mx-auto -mt-10" />
             </div>
           )}
           {state.tag === "loaded" ||

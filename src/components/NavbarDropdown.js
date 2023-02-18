@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import { Dropdown } from "flowbite-react";
 import { useGlobalContext } from "../context/global-context";
-import { FaSignOutAlt, FaPaperclip, FaPaperPlane } from "react-icons/fa";
+import {
+  FaSignOutAlt,
+  FaPaperclip,
+  FaPaperPlane,
+  FaBuilding,
+} from "react-icons/fa";
 import { AiFillSetting } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
+import { GiPapers } from "react-icons/gi";
+import { BsFillPeopleFill } from "react-icons/bs";
 import Cookies from "js-cookie";
 
 const NavbarDropdown = () => {
@@ -12,6 +19,7 @@ const NavbarDropdown = () => {
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     Cookies.remove("kalibrr");
+    Cookies.remove("kalibrr-company");
   };
 
   return (
@@ -20,7 +28,7 @@ const NavbarDropdown = () => {
         <img
           src={state.datas.photo}
           alt="profile"
-          className="w-10 h-10 mx-auto mb-5"
+          className="w-10 h-10 mx-auto mb-5 object-contain"
         />
         <span className="block text-sm">{state.datas.name}</span>
         <span className="block text-sm font-medium">{state.datas.email}</span>
@@ -33,17 +41,45 @@ const NavbarDropdown = () => {
           Lowongan kerja
         </Dropdown.Item>
       </Link>
-      <Link to="/user/dashboard/profile">
-        <Dropdown.Item icon={CgProfile} className="py-2">
-          Profil
-        </Dropdown.Item>
-      </Link>
-      <Link to="/user/dashboard/application">
-        <Dropdown.Item icon={FaPaperclip}>Lamaran</Dropdown.Item>
-      </Link>
-      <Link to="/user/dashboard/setting">
-        <Dropdown.Item icon={AiFillSetting}>Pengaturan</Dropdown.Item>
-      </Link>
+      {state.isLogin && (
+        <Link to="/user/dashboard/profile">
+          <Dropdown.Item icon={CgProfile} className="py-2">
+            Profil
+          </Dropdown.Item>
+        </Link>
+      )}
+      {state.isLoginCompany && (
+        <Link to="/company/dashboard/profile">
+          <Dropdown.Item icon={FaBuilding} className="py-2">
+            Profil
+          </Dropdown.Item>
+        </Link>
+      )}
+      {state.isLogin && (
+        <Link to="/user/dashboard/application">
+          <Dropdown.Item icon={FaPaperclip}>Lamaran</Dropdown.Item>
+        </Link>
+      )}
+      {state.isLoginCompany && (
+        <Link to="/company/dashboard/job">
+          <Dropdown.Item icon={GiPapers}>Lowongan</Dropdown.Item>
+        </Link>
+      )}
+      {state.isLoginCompany && (
+        <Link to="/company/dashboard/applicant">
+          <Dropdown.Item icon={BsFillPeopleFill}>Pelamar</Dropdown.Item>
+        </Link>
+      )}
+      {state.isLogin && (
+        <Link to="/user/dashboard/setting">
+          <Dropdown.Item icon={AiFillSetting}>Pengaturan</Dropdown.Item>
+        </Link>
+      )}
+      {state.isLoginCompany && (
+        <Link to="/company/dashboard/setting">
+          <Dropdown.Item icon={AiFillSetting}>Pengaturan</Dropdown.Item>
+        </Link>
+      )}
       <Link to="/">
         <Dropdown.Item
           onClick={handleLogout}
