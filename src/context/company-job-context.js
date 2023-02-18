@@ -7,7 +7,9 @@ export const CompanyJobProvider = ({ children }) => {
     tag: "idle",
     id: 0,
     datas: [],
-    inputValue: "",
+    nameInput: "",
+    descriptionInput: "",
+    qualificationInput: "",
     errorMsg: "",
   };
 
@@ -62,6 +64,8 @@ export const CompanyJobProvider = ({ children }) => {
             return {
               ...state,
               tag: "fetching",
+              descriptionInput: "",
+              qualificationInput: "",
             };
           }
           case "SUBMIT_ERROR": {
@@ -137,6 +141,12 @@ export const CompanyJobProvider = ({ children }) => {
       }
       case "loaded": {
         switch (action.type) {
+          case "SUBMIT": {
+            return {
+              ...state,
+              tag: "submitting",
+            };
+          }
           case "ADD": {
             return {
               ...state,
@@ -156,6 +166,24 @@ export const CompanyJobProvider = ({ children }) => {
               id: action.payload,
             };
           }
+          case "CHANGE_NAME": {
+            return {
+              ...state,
+              nameInput: action.payload,
+            };
+          }
+          case "CHANGE_DESCRIPTION": {
+            return {
+              ...state,
+              descriptionInput: action.payload,
+            };
+          }
+          case "CHANGE_QUALIFICATION": {
+            return {
+              ...state,
+              qualificationInput: action.payload,
+            };
+          }
           default: {
             return state;
           }
@@ -163,10 +191,22 @@ export const CompanyJobProvider = ({ children }) => {
       }
       case "empty": {
         switch (action.type) {
-          case "FETCH": {
+          case "SUBMIT": {
             return {
               ...state,
-              inputValue: action.payload,
+              tag: "submitting",
+            };
+          }
+          case "CHANGE_DESCRIPTION": {
+            return {
+              ...state,
+              descriptionInput: action.payload,
+            };
+          }
+          case "CHANGE_QUALIFICATION": {
+            return {
+              ...state,
+              qualificationInput: action.payload,
             };
           }
           default:
@@ -175,10 +215,22 @@ export const CompanyJobProvider = ({ children }) => {
       }
       case "error": {
         switch (action.type) {
-          case "FETCH": {
+          case "SUBMIT": {
             return {
               ...state,
-              inputValue: action.payload,
+              tag: "submitting",
+            };
+          }
+          case "CHANGE_DESCRIPTION": {
+            return {
+              ...state,
+              descriptionInput: action.payload,
+            };
+          }
+          case "CHANGE_QUALIFICATION": {
+            return {
+              ...state,
+              qualificationInput: action.payload,
             };
           }
           default:

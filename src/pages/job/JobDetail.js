@@ -56,9 +56,10 @@ const JobDetail = () => {
       </Helmet>
       {isLoading && <JobDetailSkeleton />}
       {errorMsg && (
-        <p className="text-center mx-auto w-fit my-32 pt-20 font-medium">
-          {errorMsg}
-        </p>
+        <div className="mx-auto text-center w-fit mt-40">
+          <p className="text-base sm:text-lg font-medium">{errorMsg}</p>
+          <img src="/assets/error.webp" alt="" className="mx-auto -mt-20" />
+        </div>
       )}
       {detailJob === null && isLoading === false && !errorMsg && (
         <p className="text-center">Lowongan pekerjaan tidak ditemukan</p>
@@ -70,6 +71,7 @@ const JobDetail = () => {
               onClick={handleApply}
               className="absolute top-40 sm:right-4 sm:top-20 py-2"
               size="sm"
+              disabled={!detailJob.status}
             >
               Lamar sekarang
             </Button>

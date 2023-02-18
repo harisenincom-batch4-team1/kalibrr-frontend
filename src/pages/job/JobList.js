@@ -49,9 +49,12 @@ const JobList = () => {
           {state.tag === "fetching" && <JobCardSkeleton />}
           {state.tag === "loaded" && <JobCard />}
           {state.tag === "error" && (
-            <p className="py-20 text-center mx-auto text-base font-medium sm:text-lg mt-5 sm:mt-10">
-              {state.errorMsg}
-            </p>
+            <div className="mx-auto text-center w-fit mt-20">
+              <p className="text-base sm:text-lg font-medium">
+                {state.errorMsg}
+              </p>
+              <img src="/assets/error.webp" alt="" className="mx-auto -mt-20" />
+            </div>
           )}
           {state.tag === "empty" && (
             <>
@@ -73,14 +76,12 @@ const JobList = () => {
             nextLabel="Next"
             previousLabel="Prev"
             totalPages={
-              state.datas.totalPage === undefined
-                ? 0
-                : state?.datas?.totalPage
+              state.datas.totalPage === undefined ? 0 : state?.datas?.totalPage
             }
           />
         )}
       </div>
-      <div className="my-10"/>
+      <div className="my-10" />
     </PublicLayout>
   );
 };
