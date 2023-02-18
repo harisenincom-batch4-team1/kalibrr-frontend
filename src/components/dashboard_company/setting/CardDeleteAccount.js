@@ -4,7 +4,7 @@ const CardDeleteAccount = () => {
   return (
     <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border border-gray-200">
       <h1 className="text-white font-medium text-sm md:text-base bg-red-700 py-3 px-4">
-        Hapus akun Kalibrr
+        Hapus Akun Perusahaan
       </h1>
       <div className="bg-white px-4 md:flex gap-5">
         <div className="space-y-3 pb-5 md:mt-0 w-full">

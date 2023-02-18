@@ -24,7 +24,14 @@ const CompanyDashboardJob = () => {
           },
         })
           .then((res) => {
-            dispatch({ type: "FETCH_SUCCESS", payload: res.data.datas });
+            if (res.data.datas.length === 0) {
+              return dispatch({ type: "FETCH_EMPTY" });
+            } else {
+              return dispatch({
+                type: "FETCH_SUCCESS",
+                payload: res.data.datas,
+              });
+            }
           })
           .catch((err) =>
             dispatch({ type: "FETCH_ERROR", payload: err?.message })
@@ -49,8 +56,6 @@ const CompanyDashboardJob = () => {
     }
   }, [state.tag]);
 
-  console.log(state.tag);
-
   return (
     <DashboardLayoutCompany>
       <Helmet>
@@ -61,22 +66,23 @@ const CompanyDashboardJob = () => {
           type="image/x-icon"
         ></link>
       </Helmet>
-      <Tabs.Group aria-label="Full with tabs" style="underline">
-        <Tabs.Item active={true} title="Daftar">
+      <Tabs.Group aria-label="Full with tabs" style="underline" className="sticky top-0 z-50 bg-zinc-50">
+        <Tabs.Item title="Daftar">
           {state.tag === "fetching" && (
-            <div className="p-5 pt-32 w-full h-[100%] flex justify-center items-center">
-              <Spinner />
+            <div className="mt-5 w-full h-96 flex justify-center items-center">
+              <Spinner size="lg" />
             </div>
           )}
           {state.tag === "empty" && (
             <p>Perusahaan belum menambahkan pekerjaan</p>
           )}
           {state.tag === "error" && <p>{state.errorMsg}</p>}
+          {state.tag === "loaded" || state.tag === "delete" ? <Table /> : <></>}
         </Tabs.Item>
         <Tabs.Item title="Tambah">
           {state.tag === "fetching" && (
-            <div className="p-5 pt-32 w-full h-[100%] flex justify-center items-center">
-              <Spinner />
+            <div className="mt-5 w-full h-96 flex justify-center items-center">
+              <Spinner size="lg" />
             </div>
           )}
           {state.tag === "empty" && (
@@ -84,18 +90,6 @@ const CompanyDashboardJob = () => {
           )}
           {state.tag === "error" && <p>{state.errorMsg}</p>}
           {state.tag === "loaded" && <Form />}
-        </Tabs.Item>
-        <Tabs.Item title="Edit">
-          {state.tag === "fetching" && (
-            <div className="p-5 pt-32 w-full h-[100%] flex justify-center items-center">
-              <Spinner />
-            </div>
-          )}
-          {state.tag === "empty" && (
-            <p>Perusahaan belum menambahkan pekerjaan</p>
-          )}
-          {state.tag === "error" && <p>{state.errorMsg}</p>}
-          {state.tag === "loaded" && <Table />}
         </Tabs.Item>
       </Tabs.Group>
     </DashboardLayoutCompany>

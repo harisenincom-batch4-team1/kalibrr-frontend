@@ -1,4 +1,4 @@
-import { Button, Label, TextInput } from "flowbite-react";
+import { Button, Label, Radio, TextInput } from "flowbite-react";
 import { useCompanyJobContext } from "../../../context/company-job-context";
 import { DefaultEditor } from "react-simple-wysiwyg";
 
@@ -26,7 +26,7 @@ const Form = () => {
           sizing="md"
           placeholder="Remote, Hybrid, WFO, dll"
           autoComplete="off"
-          className="-mt-2 bg-white"
+          className="-mt-2"
         />
         <Label htmlFor="tenure" value="Masa Pekerjaan" />
         <TextInput
@@ -36,7 +36,7 @@ const Form = () => {
           sizing="md"
           placeholder="Paruh waktu, Magang, dll"
           autoComplete="off"
-          className="-mt-2 bg-white"
+          className="-mt-2"
         />
         <div className="flex gap-2 w-full">
           <div>
@@ -48,7 +48,7 @@ const Form = () => {
               sizing="md"
               placeholder="4000000"
               autoComplete="off"
-              className=" bg-white"
+              className=""
             />
           </div>
           <div>
@@ -60,7 +60,7 @@ const Form = () => {
               sizing="md"
               placeholder="8000000"
               autoComplete="off"
-              className=" bg-white"
+              className=""
             />
           </div>
         </div>
@@ -79,7 +79,7 @@ const Form = () => {
         <div className="flex flex-col gap-2 w-full">
           <Label htmlFor="salaryMax" value="Status Lowongan Kerja" />
           <div className="flex items-center gap-2">
-            <TextInput
+            <Radio
               id="salaryMax"
               name="salaryMax"
               type="radio"
@@ -92,7 +92,7 @@ const Form = () => {
             <Label htmlFor="salaryMax" value="Buka" />
           </div>
           <div className="flex items-center gap-2">
-            <TextInput
+            <Radio
               id="salaryMax"
               name="salaryMax"
               type="radio"
@@ -105,7 +105,7 @@ const Form = () => {
             <Label htmlFor="salaryMax" value="Tutup" />
           </div>
         </div>
-        <Button className="my-5 sm:w-20 h-10">Kirim</Button>
+        <Button className="my-2 sm:w-20 h-10">Kirim</Button>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ export const CompanyJobProvider = ({ children }) => {
     inputValue: "",
     errorMsg: "",
   };
-  
+
   const reducer = (state, action) => {
     switch (state.tag) {
       case "idle": {
@@ -116,6 +116,25 @@ export const CompanyJobProvider = ({ children }) => {
             return state;
         }
       }
+      case "delete": {
+        switch (action.type) {
+          case "DELETE": {
+            return {
+              ...state,
+              tag: "deleting",
+            };
+          }
+          case "CANCEL_DELETE": {
+            return {
+              ...state,
+              tag: "loaded",
+            };
+          }
+          default: {
+            return state;
+          }
+        }
+      }
       case "loaded": {
         switch (action.type) {
           case "ADD": {
@@ -133,7 +152,7 @@ export const CompanyJobProvider = ({ children }) => {
           case "DELETE": {
             return {
               ...state,
-              tag: "deleting",
+              tag: "delete",
               id: action.payload,
             };
           }
@@ -211,10 +230,14 @@ export const CompanyJobProvider = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  
+
   const value = { state, dispatch };
 
-  return <CompanyJobContext.Provider value={value}>{children}</CompanyJobContext.Provider>;
+  return (
+    <CompanyJobContext.Provider value={value}>
+      {children}
+    </CompanyJobContext.Provider>
+  );
 };
 
 export const useCompanyJobContext = () => {

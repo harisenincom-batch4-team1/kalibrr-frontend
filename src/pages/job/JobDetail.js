@@ -73,6 +73,14 @@ const JobDetail = () => {
             >
               Lamar sekarang
             </Button>
+            <span
+              className={
+                detailJob.status == 0 &&
+                "absolute top-0 right-28 bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"
+              }
+            >
+              {detailJob.status == 0 && "Close"}
+            </span>
             <span className="absolute top-44 sm:top-0 right-4 bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
               {moment(detailJob.updatedAt).format("MM/DD/YYYY")}
             </span>
