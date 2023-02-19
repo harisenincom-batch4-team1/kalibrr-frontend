@@ -1,6 +1,3 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { jobsApi } from "../api";
 import { useJobListContext } from "../context/joblist-context";
 
 const Search = () => {
@@ -12,11 +9,8 @@ const Search = () => {
   };
 
   return (
-    <div className="px-5 w-full flex justify-center pt-20 md:pt-24 fixed bg-white">
-      <form
-        onSubmit={handleSearch}
-        className="w-[320px] sm:w-[500px] md:w-[750px] lg:w-[820px] mx-auto fixed"
-      >
+    <div className="w-full flex justify-center pt-20 md:pt-24 bg-zinc-50 fixed px-5 z-10">
+      <form onSubmit={handleSearch} className="w-[800px] mx-auto">
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -48,7 +42,7 @@ const Search = () => {
             }
             type="search"
             id="default-search"
-            className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block w-full p-4 pl-10 pr-20 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Ketik untuk mencari..."
             autoComplete="off"
           />
@@ -56,7 +50,7 @@ const Search = () => {
             type="submit"
             className="text-white absolute right-2.5 bottom-2.5 bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Search
+            Cari
           </button>
         </div>
       </form>

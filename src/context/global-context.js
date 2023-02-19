@@ -6,6 +6,7 @@ export const GlobalProvider = ({ children }) => {
   const initialState = {
     tag: "idle",
     isLogin: false,
+    isLoginCompany: false,
     datas: {},
   };
 
@@ -31,6 +32,7 @@ export const GlobalProvider = ({ children }) => {
               ...state,
               tag: "loaded",
               isLogin: action.payload.isLogin,
+              isLoginCompany: action.payload.isLoginCompany,
             };
           }
           default:
@@ -44,7 +46,15 @@ export const GlobalProvider = ({ children }) => {
               ...state,
               tag: "loaded",
               datas: action.payload.datas,
-              isLogin: true
+              isLogin: true,
+            };
+          }
+          case "LOGOUT": {
+            return {
+              ...state,
+              tag: "loaded",
+              datas: {},
+              isLogin: false,
             };
           }
           default: {
@@ -52,7 +62,30 @@ export const GlobalProvider = ({ children }) => {
           }
         }
       }
-      case "loaded":
+      case "fetching_company": {
+        switch (action.type) {
+          case "FETCH_COMPANY_SUCCESS": {
+            return {
+              ...state,
+              tag: "loaded",
+              datas: action.payload.datas,
+              isLoginCompany: true,
+            };
+          }
+          case "LOGOUT": {
+            return {
+              ...state,
+              tag: "loaded",
+              datas: {},
+              isLoginCompany: false,
+            };
+          }
+          default: {
+            return state;
+          }
+        }
+      }
+      case "loaded": {
         switch (action.type) {
           case "FETCH_USER": {
             return {
@@ -60,17 +93,25 @@ export const GlobalProvider = ({ children }) => {
               tag: "fetching_user",
             };
           }
+          case "FETCH_COMPANY": {
+            return {
+              ...state,
+              tag: "fetching_company",
+            };
+          }
           case "DELETE": {
             return {
               ...state,
               tag: "idle",
               isLogin: false,
+              isLoginCompany: false,
             };
           }
           case "LOGOUT": {
             return {
               ...state,
               isLogin: false,
+              isLoginCompany: false,
               datas: {},
             };
           }
@@ -78,6 +119,7 @@ export const GlobalProvider = ({ children }) => {
             return state;
           }
         }
+      }
       default: {
         return state;
       }

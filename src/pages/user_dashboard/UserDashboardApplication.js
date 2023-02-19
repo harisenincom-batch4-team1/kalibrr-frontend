@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { userJobApplicationApi } from "../../api";
 import { useUserJobApplicationContext } from "../../context/user-job-application";
+import { Spinner } from "flowbite-react";
 import axios from "axios";
 import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
 import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
 import Card from "../../components/dashboard_user/application/Card";
 import Cookies from "js-cookie";
-import Spinner from "../../components/Spinner";
 
 const UserDashboardApplication = () => {
   const { state, dispatch } = useUserJobApplicationContext();
@@ -22,7 +22,7 @@ const UserDashboardApplication = () => {
           headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
         })
           .then((res) => {
-            if (res.data.datas === 0) {
+            if (res.data.datas.length === 0) {
               dispatch({ type: "FETCH_EMPTY" });
             } else {
               dispatch({ type: "FETCH_SUCCESS", payload: res.data.datas });
@@ -59,14 +59,20 @@ const UserDashboardApplication = () => {
         </div>
       )}
       {state.tag === "empty" && (
-        <div className="p-5 w-full h-[60%] flex justify-center items-center text-center">
-          Kamu belum melamar pekerjaan apapun
+        <div className="px-10">
+          <p className="mx-auto text-center mt-20 text-sm sm:text-base md:text-xl font-medium">
+            Kamu belum melamar pekerjaan apapun
+          </p>
+          <img
+            src="/assets/empty-job-applications.webp"
+            className="mx-auto -mt-10"
+          />
         </div>
       )}
       {state.tag === "error" && (
-        <div className="p-5 w-full h-[60%] flex justify-center items-center text-center">
+        <p className="mx-auto text-center mt-20 text-sm sm:text-base md:text-xl font-medium">
           {state.errorMsg}
-        </div>
+        </p>
       )}
     </UserDashboardLayout>
   );

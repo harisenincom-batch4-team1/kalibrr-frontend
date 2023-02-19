@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useUserProfileContext } from "../../context/user-profile-context";
+import { useGlobalContext } from "../../context/global-context";
 import { userProfileApi } from "../../api";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import UserProfileSkeleton from "../../components/skeletons/UserProfileSkeleton";
 import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
 import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
 import CardBasicInformation from "../../components/dashboard_user/profile/CardBasicInformation";
@@ -11,6 +13,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const UserDashboardProfile = () => {
+  const data = useGlobalContext()
   const { state, dispatch } = useUserProfileContext();
 
   useEffect(() => {
@@ -50,6 +53,7 @@ const UserDashboardProfile = () => {
           .then(() => {
             toast.success("Akun berhasil di perbaharui");
             dispatch({ type: "SUBMIT_SUCCESS" });
+            data.dispatch({ type: "FETCH_USER" });
           })
           .catch((err) => {
             toast.success(err?.message);
@@ -72,11 +76,11 @@ const UserDashboardProfile = () => {
           type="image/x-icon"
         ></link>
       </Helmet>
-      <ToastContainer />
       <HeaderTitle title={"Profil"} />
       <div className="max-w-full h-[95%] pb-16 mx-auto p-2 space-y-2 overflow-hidden overflow-y-scroll scrollbar-hide">
-        <CardBasicInformation />
-        <CardResume />
+        {state.tag === "fetching" && <UserProfileSkeleton />}
+        {state.tag !== "fetching" && <CardBasicInformation />}
+        {state.tag !== "fetching" && <CardResume />}
       </div>
     </UserDashboardLayout>
   );

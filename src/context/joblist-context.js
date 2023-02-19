@@ -6,7 +6,7 @@ export const JobListProvider = ({ children }) => {
   const initialState = {
     tag: "idle",
     id: 0,
-    datas: [],
+    datas: {},
     inputValue: "",
     errorMsg: "",
     page: 0,
@@ -42,7 +42,7 @@ export const JobListProvider = ({ children }) => {
             return {
               ...state,
               tag: "empty",
-              datas: [],
+              datas: {},
               errorMsg: "",
             };
           }
@@ -50,7 +50,7 @@ export const JobListProvider = ({ children }) => {
             return {
               ...state,
               tag: "error",
-              datas: [],
+              datas: {},
               errorMsg: action.payload,
             };
           }
@@ -60,32 +60,17 @@ export const JobListProvider = ({ children }) => {
       }
       case "loaded": {
         switch (action.type) {
-          case "FETCH": {
-            return {
-              ...state,
-              tag: "fetching",
-            };
-          }
           case "CHANGE_INPUT": {
             return {
               ...state,
               inputValue: action.payload,
             };
           }
-          case "NEXT_PAGE": {
+          case "FETCH": {
             return {
               ...state,
               tag: "fetching",
-              page: state.page + 1,
-              limit: state.limit + 10,
-            };
-          }
-          case "PREV_PAGE": {
-            return {
-              ...state,
-              tag: "fetching",
-              page: state.page - 1,
-              limit: state.limit - 10,
+              page: action.payload,
             };
           }
           default: {
@@ -99,6 +84,19 @@ export const JobListProvider = ({ children }) => {
             return {
               ...state,
               tag: "fetching",
+            };
+          }
+          case "SUBMIT": {
+            return {
+              ...state,
+              tag: "submitting",
+              inputValue: action.payload,
+            };
+          }
+          case "CHANGE_INPUT": {
+            return {
+              ...state,
+              inputValue: action.payload,
             };
           }
           default:

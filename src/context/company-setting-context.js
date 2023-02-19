@@ -1,8 +1,8 @@
 import { createContext, useReducer, useContext } from "react";
 
-export const UserSettingContext = createContext();
+export const CompanySettingContext = createContext();
 
-export const UserSettingProvider = ({ children }) => {
+export const CompanySettingProvider = ({ children }) => {
   const initialState = {
     tag: "idle",
     currentPasswordInput: "",
@@ -135,12 +135,12 @@ export const UserSettingProvider = ({ children }) => {
   const value = { state, dispatch };
 
   return (
-    <UserSettingContext.Provider value={value}>
+    <CompanySettingContext.Provider value={value}>
       {children}
-    </UserSettingContext.Provider>
+    </CompanySettingContext.Provider>
   );
 };
 
-export const useUserSettingContext = () => {
-  return useContext(UserSettingContext);
+export const useCompanySettingContext = () => {
+  return useContext(CompanySettingContext);
 };

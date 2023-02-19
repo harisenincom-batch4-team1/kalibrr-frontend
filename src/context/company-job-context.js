@@ -7,10 +7,12 @@ export const CompanyJobProvider = ({ children }) => {
     tag: "idle",
     id: 0,
     datas: [],
-    inputValue: "",
+    nameInput: "",
+    descriptionInput: "",
+    qualificationInput: "",
     errorMsg: "",
   };
-  
+
   const reducer = (state, action) => {
     switch (state.tag) {
       case "idle": {
@@ -62,6 +64,8 @@ export const CompanyJobProvider = ({ children }) => {
             return {
               ...state,
               tag: "fetching",
+              descriptionInput: "",
+              qualificationInput: "",
             };
           }
           case "SUBMIT_ERROR": {
@@ -116,8 +120,33 @@ export const CompanyJobProvider = ({ children }) => {
             return state;
         }
       }
+      case "delete": {
+        switch (action.type) {
+          case "DELETE": {
+            return {
+              ...state,
+              tag: "deleting",
+            };
+          }
+          case "CANCEL_DELETE": {
+            return {
+              ...state,
+              tag: "loaded",
+            };
+          }
+          default: {
+            return state;
+          }
+        }
+      }
       case "loaded": {
         switch (action.type) {
+          case "SUBMIT": {
+            return {
+              ...state,
+              tag: "submitting",
+            };
+          }
           case "ADD": {
             return {
               ...state,
@@ -133,8 +162,26 @@ export const CompanyJobProvider = ({ children }) => {
           case "DELETE": {
             return {
               ...state,
-              tag: "deleting",
+              tag: "delete",
               id: action.payload,
+            };
+          }
+          case "CHANGE_NAME": {
+            return {
+              ...state,
+              nameInput: action.payload,
+            };
+          }
+          case "CHANGE_DESCRIPTION": {
+            return {
+              ...state,
+              descriptionInput: action.payload,
+            };
+          }
+          case "CHANGE_QUALIFICATION": {
+            return {
+              ...state,
+              qualificationInput: action.payload,
             };
           }
           default: {
@@ -144,10 +191,22 @@ export const CompanyJobProvider = ({ children }) => {
       }
       case "empty": {
         switch (action.type) {
-          case "FETCH": {
+          case "SUBMIT": {
             return {
               ...state,
-              inputValue: action.payload,
+              tag: "submitting",
+            };
+          }
+          case "CHANGE_DESCRIPTION": {
+            return {
+              ...state,
+              descriptionInput: action.payload,
+            };
+          }
+          case "CHANGE_QUALIFICATION": {
+            return {
+              ...state,
+              qualificationInput: action.payload,
             };
           }
           default:
@@ -156,10 +215,22 @@ export const CompanyJobProvider = ({ children }) => {
       }
       case "error": {
         switch (action.type) {
-          case "FETCH": {
+          case "SUBMIT": {
             return {
               ...state,
-              inputValue: action.payload,
+              tag: "submitting",
+            };
+          }
+          case "CHANGE_DESCRIPTION": {
+            return {
+              ...state,
+              descriptionInput: action.payload,
+            };
+          }
+          case "CHANGE_QUALIFICATION": {
+            return {
+              ...state,
+              qualificationInput: action.payload,
             };
           }
           default:
@@ -167,7 +238,7 @@ export const CompanyJobProvider = ({ children }) => {
         }
       }
       case "add": {
-        switch (action.payload) {
+        switch (action.type) {
           case "SUBMIT": {
             return {
               ...state,
@@ -186,7 +257,7 @@ export const CompanyJobProvider = ({ children }) => {
         }
       }
       case "edit": {
-        switch (action.payload) {
+        switch (action.type) {
           case "EDIT": {
             return {
               ...state,
@@ -211,10 +282,14 @@ export const CompanyJobProvider = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  
+
   const value = { state, dispatch };
 
-  return <CompanyJobContext.Provider value={value}>{children}</CompanyJobContext.Provider>;
+  return (
+    <CompanyJobContext.Provider value={value}>
+      {children}
+    </CompanyJobContext.Provider>
+  );
 };
 
 export const useCompanyJobContext = () => {

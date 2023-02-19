@@ -4,7 +4,6 @@ import { useUserSettingContext } from "../../context/user-setting-context";
 import { userEmailApi } from "../../api";
 import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
 import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
-import CardChangeEmail from "../../components/dashboard_user/setting/CardChangeEmail";
 import CardChangePassword from "../../components/dashboard_user/setting/CardChangePassword";
 import CardDeleteAccount from "../../components/dashboard_user/setting/CardDeleteAccount";
 import axios from "axios";
@@ -24,7 +23,6 @@ const UserDashboardSetting = () => {
             headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
           })
           .then((res) => {
-            console.log(res.data.datas);
             dispatch({
               type: "FETCH_USER_SETTING_SUCCESS",
               payload: res.data.datas.email,
@@ -54,7 +52,6 @@ const UserDashboardSetting = () => {
       </Helmet>
       <HeaderTitle title={"Pengaturan Akun"} />
       <div className="w-full h-[98%] md:h-[95%] mx-auto md:pb-14 p-2 space-y-2 overflow-hidden overflow-y-scroll scrollbar-hide">
-        {/* <CardChangeEmail /> */}
         <CardChangePassword />
         <CardDeleteAccount />
       </div>

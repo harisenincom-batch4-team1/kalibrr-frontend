@@ -6,12 +6,11 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { userLoginApi } from "../../api";
 import { useUserLoginContext } from "../../context/user-login-context";
-import { Button } from "flowbite-react";
+import { Button, Spinner } from "flowbite-react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import PublicLayout from "../../layouts/PublicLayout";
 import axios from "axios";
 import Cookies from "js-cookie";
-import Spinner from "../../components/Spinner";
-import PublicLayout from "../../layouts/PublicLayout";
 
 const UserLogin = () => {
   const {
@@ -53,7 +52,6 @@ const UserLogin = () => {
               data.dispatch({ type: "FETCH_USER" });
               navigate("/user/dashboard/profile");
             }, 1000);
-            localStorage.setItem("kalibrr", res.data.datas);
           })
           .catch((err) => {
             dispatch({ type: "SUBMIT_ERROR", payload: err?.message });
