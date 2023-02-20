@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Spinner } from "flowbite-react";
-import { useUserSettingContext } from "../../../context/user-setting-context";
+import { Button } from "flowbite-react";
 import { userPasswordApi } from "../../../api";
-import { toast } from "react-toastify";
+import { useUserSettingContext } from "../../../context/user-setting-context";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import axios from "axios";
+import { toast } from "react-toastify";
+import Spinner from "../../Spinner";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const CardChangePassword = () => {
   const {
@@ -203,7 +204,7 @@ const CardChangePassword = () => {
                 htmlFor="confirmPassword"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Kata sandi baru *
+                Konfirmasi kata sandi baru *
               </label>
               <input
                 {...register("confirm", { required: true })}

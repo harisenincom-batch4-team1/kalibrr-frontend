@@ -6,9 +6,10 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { companyLoginApi } from "../../api";
 import { useCompanyLoginContext } from "../../context/company-login-context";
-import { Button, Spinner } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import PublicLayout from "../../layouts/PublicLayout";
+import Spinner from "../../components/Spinner";
 import Cookies from "js-cookie";
 import axios from "axios";
 
@@ -51,7 +52,7 @@ const CompanyLogin = () => {
             setTimeout(() => {
               data.dispatch({ type: "FETCH_COMPANY" });
               navigate("/company/dashboard/profile");
-            }, 1000);
+            }, 200);
           })
           .catch((err) => {
             dispatch({ type: "SUBMIT_ERROR", payload: err?.message });

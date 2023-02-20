@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { Button, Spinner } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { companyPasswordApi } from "../../../api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useCompanySettingContext } from "../../../context/company-setting-context";
-import axios from "axios";
+import Spinner from "../../Spinner";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const CardChangePassword = () => {
   const {

@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Label, Spinner } from "flowbite-react";
+import { Button, Label } from "flowbite-react";
 import { useUserRegisterContext } from "../../context/user-register-context";
 import { userRegisterApi } from "../../api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import PublicLayout from "../../layouts/PublicLayout";
+import Spinner from "../../components/Spinner";
 import axios from "axios";
 
 const UserRegister = () => {
