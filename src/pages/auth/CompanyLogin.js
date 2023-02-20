@@ -160,7 +160,7 @@ const CompanyLogin = () => {
             <div className="text-center text-xs md:text-sm mb-2">
               Belum mempunyai akun perusahaan ?
               <Link
-                to="/user/register"
+                to="/company/register"
                 className="text-blue-500 ml-1 hover:underline"
               >
                 Daftar

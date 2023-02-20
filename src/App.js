@@ -22,12 +22,13 @@ import CompanyDashboardSetting from "./pages/company_dashboard/CompanyDashboardS
 import { JobListProvider } from "./context/joblist-context";
 import { UserLoginProvider } from "./context/user-login-context";
 import { UserRegisterProvider } from "./context/user-register-context";
+import { CompanyLoginProvider } from "./context/company-login-context";
+import { CompanyRegisterProvider } from "./context/company-register-context";
 import { CompanyJobProvider } from "./context/company-job-context";
 import { UserJobApplicationProvider } from "./context/user-job-application";
 import { UserSettingProvider } from "./context/user-setting-context";
 import { UserProfileProvider } from "./context/user-profile-context";
 import { CompanySettingProvider } from "./context/company-setting-context";
-import { CompanyLoginProvider } from "./context/company-login-context";
 import { CompanyProfileProvider } from "./context/company-profile-context";
 import { GlobalProvider } from "./context/global-context";
 import { ToastContainer } from "react-toastify";
@@ -90,7 +91,11 @@ const App = () => {
                 </CompanyLoginProvider>
               }
             />
-            <Route path="/company/register" element={<CompanyRegister />} />
+            <Route path="/company/register" element={
+              <CompanyRegisterProvider>
+                <CompanyRegister />
+              </CompanyRegisterProvider>
+            } />
 
             {/* Protect Route User Dashboard  */}
             <Route
