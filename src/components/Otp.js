@@ -89,7 +89,7 @@ const Otp = () => {
               </div>
             </div>
             <span className="mb-2 -mt-1 text-xs md:text-sm text-red-600 mx-auto text-center">
-              {state.errorMsg}
+              {state.errorOtpMsg}
             </span>
             <div className="flex flex-col space-y-5">
               <div>

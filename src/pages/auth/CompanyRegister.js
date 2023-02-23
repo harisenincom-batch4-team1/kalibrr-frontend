@@ -1,18 +1,24 @@
-import { Button, Checkbox, Label, Toast } from "flowbite-react";
 import { useEffect } from "react";
+import { Button } from "flowbite-react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { companyOtpApi, companyOtpApiCheck, userRegisterApi } from "../../api";
-import Stepper from "../../components/Stepper";
-import PublicLayout from "../../layouts/PublicLayout";
-import axios from "axios";
+import {
+  companyOtpApi,
+  companyOtpApiCheck,
+  companyRegisterApi,
+} from "../../api";
 import { DefaultEditor } from "react-simple-wysiwyg";
+import { useGlobalContext } from "../../context/global-context";
 import { useCompanyRegisterContext } from "../../context/company-register-context";
-import Otp from "../../components/Otp";
+import ConfirmCompanyRegister from "../../components/ConfirmCompanyRegister";
+import PublicLayout from "../../layouts/PublicLayout";
+import Stepper from "../../components/Stepper";
 import Spinner from "../../components/Spinner";
+import Otp from "../../components/Otp";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 const CompanyRegister = () => {
   const {
@@ -21,14 +27,8 @@ const CompanyRegister = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const dataGlobalContext = useGlobalContext();
   const { state, dispatch } = useCompanyRegisterContext();
-  const { nameInput, emailInput, passwordInput } = state;
-
-  const togglePasswordVisibility = () => {
-    state.tag !== "submitting" && state.isShowPassword
-      ? dispatch({ type: "SHOW_PASSWORD", payload: false })
-      : dispatch({ type: "SHOW_PASSWORD", payload: true });
-  };
 
   const onSubmit = (data) => {
     dispatch({ type: "CHANGE_NAME", payload: data.name });
@@ -81,25 +81,25 @@ const CompanyRegister = () => {
             }
           });
         break;
-      case "submitting":
+      case "confirming":
         axios
-          .post(userRegisterApi, {
-            name: nameInput,
-            email: emailInput,
-            password: passwordInput,
+          .post(companyRegisterApi, {
+            name: state.nameInput,
+            email: state.emailInput,
+            location: state.locationInput,
+            phone: state.phoneInput,
+            password: state.passwordInput,
+            // passwordConfirm: state.passwordConfirmInput,
           })
-          .then(() => {
-            toast.success("Akun berhasil di buat");
-            dispatch({ type: "SUBMIT_SUCCESS" });
+          .then((res) => {
+            Cookies.set("kalibrr-company", res.data.datas);
             setTimeout(() => {
-              navigate("/user/login");
-            }, 1000);
+              dataGlobalContext.dispatch({ type: "FETCH_COMPANY" });
+              navigate("/company/dashboard/profile");
+            }, 500);
           })
           .catch((err) => {
-            dispatch({ type: "SUBMIT_ERROR", payload: err?.message });
-            if (err?.response?.data?.message) {
-              return toast.error(err?.response?.data?.message);
-            }
+            dispatch({ type: "CONFIRM_ERROR", payload: err?.message });
             return toast.error(err?.message);
           });
         break;
@@ -107,8 +107,6 @@ const CompanyRegister = () => {
         break;
     }
   }, [state.tag]);
-
-  console.log(state.tag);
 
   return (
     <PublicLayout>
@@ -311,6 +309,11 @@ const CompanyRegister = () => {
             )}
             {state.tag === "onotp" || state.tag === "checkingotp" ? (
               <Otp />
+            ) : (
+              <></>
+            )}
+            {state.tag === "confirm" || state.tag === "confirming" ? (
+              <ConfirmCompanyRegister />
             ) : (
               <></>
             )}

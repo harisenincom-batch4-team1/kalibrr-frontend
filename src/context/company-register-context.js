@@ -11,8 +11,11 @@ export const CompanyRegisterProvider = ({ children }) => {
     locationInput: "",
     descriptionInput: "",
     passwordInput: "",
+    passwordConfirmInput: "",
     errorMsg: "",
+    errorOtpMsg: "",
     isShowPassword: false,
+    isShowPasswordConfirm: false,
     isSecondStep: false,
     isThirdStep: false,
     firstCode: "",
@@ -152,7 +155,7 @@ export const CompanyRegisterProvider = ({ children }) => {
             return {
               ...state,
               tag: "onotp",
-              errorMsg: action.payload
+              errorOtpMsg: action.payload,
             };
           }
           default: {
@@ -160,19 +163,52 @@ export const CompanyRegisterProvider = ({ children }) => {
           }
         }
       }
-      case "submitting": {
+      case "confirm": {
         switch (action.type) {
-          case "SUBMIT_SUCCESS": {
+          case "CONFIRM": {
+            return {
+              ...state,
+              tag: "confirming",
+            };
+          }
+          case "CHANGE_PASSWORD": {
+            return {
+              ...state,
+              passwordInput: action.payload,
+            };
+          }
+          case "CHANGE_PASSWORD_CONFIRM": {
+            return {
+              ...state,
+              passwordConfirmInput: action.payload,
+            };
+          }
+          case "SHOW_PASSWORD": {
+            return {
+              ...state,
+              isShowPassword: action.payload,
+            };
+          }
+          case "SHOW_PASSWORD_CONFIRM": {
+            return {
+              ...state,
+              isShowPasswordConfirm: action.payload,
+            };
+          }
+          default: {
+            return state;
+          }
+        }
+      }
+      case "confirming": {
+        switch (action.type) {
+          case "CONFIRM_SUCCESS": {
             return {
               ...state,
               tag: "loaded",
-              errorMsg: "",
-              nameInput: "",
-              emailInput: "",
-              passwordInput: "",
             };
           }
-          case "SUBMIT_ERROR": {
+          case "CONFIRM_ERROR": {
             return {
               ...state,
               tag: "error",

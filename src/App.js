@@ -32,8 +32,10 @@ import { CompanySettingProvider } from "./context/company-setting-context";
 import { CompanyProfileProvider } from "./context/company-profile-context";
 import { GlobalProvider } from "./context/global-context";
 import { ToastContainer } from "react-toastify";
-import ProtectRoute from "./helpers/ProtectRoute";
-import AuthPage from "./helpers/AuthPage";
+import UserProtectRoute from "./helpers/UserProtectRoute";
+import UserAuthPage from "./helpers/UserAuthPage";
+import CompanyProtectRoute from "./helpers/CompanyProtectRoute";
+import CompanyAuthPage from "./helpers/CompanyAuthPage";
 
 const App = () => {
   return (
@@ -66,66 +68,73 @@ const App = () => {
             <Route
               path="/user/login"
               element={
-                <AuthPage>
+                <UserAuthPage>
                   <UserLoginProvider>
                     <UserLogin />
                   </UserLoginProvider>
-                </AuthPage>
+                </UserAuthPage>
               }
             />
             <Route
               path="/user/register"
               element={
-                <AuthPage>
+                <UserAuthPage>
                   <UserRegisterProvider>
                     <UserRegister />
                   </UserRegisterProvider>
-                </AuthPage>
+                </UserAuthPage>
               }
             />
             <Route
               path="/company/login"
               element={
-                <CompanyLoginProvider>
-                  <CompanyLogin />
-                </CompanyLoginProvider>
+                <CompanyAuthPage>
+                  <CompanyLoginProvider>
+                    <CompanyLogin />
+                  </CompanyLoginProvider>
+                </CompanyAuthPage>
               }
             />
-            <Route path="/company/register" element={
-              <CompanyRegisterProvider>
-                <CompanyRegister />
-              </CompanyRegisterProvider>
-            } />
+            <Route
+              path="/company/register"
+              element={
+                <CompanyAuthPage>
+                  <CompanyRegisterProvider>
+                    <CompanyRegister />
+                  </CompanyRegisterProvider>
+                </CompanyAuthPage>
+              }
+            />
 
             {/* Protect Route User Dashboard  */}
             <Route
               path="/user/dashboard/profile"
               element={
-                <ProtectRoute>
+                <UserProtectRoute>
                   <UserProfileProvider>
                     <UserDashboardProfile />
                   </UserProfileProvider>
-                </ProtectRoute>
+                </UserProtectRoute>
               }
             />
             <Route
               path="/user/dashboard/application"
               element={
-                <ProtectRoute>
+                <UserProtectRoute>
                   <UserJobApplicationProvider>
                     <UserDashboardApplication />
                   </UserJobApplicationProvider>
-                </ProtectRoute>
+                </UserProtectRoute>
               }
             />
             <Route
               path="/user/dashboard/setting"
               element={
-                <ProtectRoute>
+                <UserProtectRoute>
                   <UserSettingProvider>
                     <UserDashboardSetting />
                   </UserSettingProvider>
-                </ProtectRoute>
+                </UserProtectRoute>
               }
             />
 
@@ -134,7 +143,9 @@ const App = () => {
               path="/company/dashboard/profile"
               element={
                 <CompanyProfileProvider>
-                  <CompanyDashboardProfile />
+                  <CompanyProtectRoute>
+                    <CompanyDashboardProfile />
+                  </CompanyProtectRoute>
                 </CompanyProfileProvider>
               }
             />
@@ -142,19 +153,29 @@ const App = () => {
               path="/company/dashboard/job"
               element={
                 <CompanyJobProvider>
-                  <CompanyDashboardJob />
+                  <CompanyProtectRoute>
+                    <CompanyDashboardJob />
+                  </CompanyProtectRoute>
                 </CompanyJobProvider>
               }
             />
             <Route
               path="/company/dashboard/applicant"
-              element={<CompanyDashboardApplicant />}
+              element={
+                <CompanyProtectRoute>
+                  <CompanyProtectRoute>
+                    <CompanyDashboardApplicant />
+                  </CompanyProtectRoute>
+                </CompanyProtectRoute>
+              }
             />
             <Route
               path="/company/dashboard/setting"
               element={
                 <CompanySettingProvider>
-                  <CompanyDashboardSetting />
+                  <CompanyProtectRoute>
+                    <CompanyDashboardSetting />
+                  </CompanyProtectRoute>
                 </CompanySettingProvider>
               }
             />
