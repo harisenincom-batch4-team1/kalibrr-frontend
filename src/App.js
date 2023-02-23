@@ -36,6 +36,7 @@ import UserProtectRoute from "./helpers/UserProtectRoute";
 import UserAuthPage from "./helpers/UserAuthPage";
 import CompanyProtectRoute from "./helpers/CompanyProtectRoute";
 import CompanyAuthPage from "./helpers/CompanyAuthPage";
+import ScrollToTop from "./helpers/ScrollToTop";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
       <ToastContainer />
       <GlobalProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             {/* Public Route */}
             <Route path="/" element={<Homepage />} />
