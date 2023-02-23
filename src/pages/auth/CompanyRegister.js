@@ -276,9 +276,9 @@ const CompanyRegister = () => {
                             : "rounded-full"
                         }
                       />
-                      <labe htmlFor="agree" className="text-xs md:text-sm">
+                      <label htmlFor="agree" className="text-xs md:text-sm">
                         Saya menyetujui syarat dan ketentuan Kalibrr
-                      </labe>
+                      </label>
                     </div>
                     <div className="flex justify-center justify-items-center items-center w-full">
                       <Button
