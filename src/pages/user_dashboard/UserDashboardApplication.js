@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { userJobApplicationApi } from "../../api";
 import { useUserJobApplicationContext } from "../../context/user-job-application";
-import { Spinner } from "flowbite-react";
-import axios from "axios";
 import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
 import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
 import Card from "../../components/dashboard_user/application/Card";
+import Spinner from "../../components/Spinner";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const UserDashboardApplication = () => {
   const { state, dispatch } = useUserJobApplicationContext();

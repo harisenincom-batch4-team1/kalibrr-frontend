@@ -3,7 +3,6 @@ import { createContext, useReducer, useContext } from "react";
 export const UserProfileContext = createContext();
 
 export const UserProfileProvider = ({ children }) => {
-
   const initialState = {
     tag: "idle",
     datas: {},

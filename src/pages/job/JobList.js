@@ -44,7 +44,7 @@ const JobList = () => {
         <title>Lowongan Kerja - Kalibrr</title>
       </Helmet>
       <Search />
-      <div className="px-5">
+      <div className="px-5 min-h-[70vh]">
         <div className="max-w-[800px] mx-auto flex flex-wrap justify-between pt-36 md:pt-44 gap-2 md:gap-3 md:gap-y-4">
           {state.tag === "fetching" && <JobCardSkeleton />}
           {state.tag === "loaded" && <JobCard />}

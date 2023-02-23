@@ -25,7 +25,7 @@ const ModalDelete = () => {
         headers: { Authorization: "Bearer " + Cookies.get("kalibrr-company") },
       })
       .then(() => {
-        Cookies.remove("kalibrr");
+        Cookies.remove("kalibrr-company");
         dispatch({ type: "DELETE" });
         navigate("/");
       })

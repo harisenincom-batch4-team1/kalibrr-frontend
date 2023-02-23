@@ -6,11 +6,12 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { userLoginApi } from "../../api";
 import { useUserLoginContext } from "../../context/user-login-context";
-import { Button, Spinner } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import PublicLayout from "../../layouts/PublicLayout";
-import axios from "axios";
+import Spinner from "../../components/Spinner";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const UserLogin = () => {
   const {
@@ -51,7 +52,7 @@ const UserLogin = () => {
             setTimeout(() => {
               data.dispatch({ type: "FETCH_USER" });
               navigate("/user/dashboard/profile");
-            }, 1000);
+            }, 200);
           })
           .catch((err) => {
             dispatch({ type: "SUBMIT_ERROR", payload: err?.message });

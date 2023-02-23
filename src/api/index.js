@@ -6,6 +6,9 @@ export const userRegisterApi = process.env.REACT_APP_USER_REGISTER;
 export const companyLoginApi = process.env.REACT_APP_COMPANY_LOGIN;
 export const companyRegisterApi = process.env.REACT_APP_COMPANY_REGISTER;
 
+export const companyOtpApi = process.env.REACT_APP_COMPANY_OTP;
+export const companyOtpApiCheck = process.env.REACT_APP_COMPANY_OTP_CHECK;
+
 export const userProfileApi = process.env.REACT_APP_USER_PROFILE;
 export const userResumeApi = process.env.REACT_APP_USER_RESUME;
 export const userJobApplicationApi = process.env.REACT_APP_USER_JOB_APPLICATION;

@@ -1,13 +1,13 @@
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Label, Radio, Spinner } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
+import { Button, Label, Radio } from "flowbite-react";
 import { useCompanyJobContext } from "../../../context/company-job-context";
 import { DefaultEditor } from "react-simple-wysiwyg";
 import { companyJobApi } from "../../../api";
 import { toast } from "react-toastify";
+import Spinner from "../../Spinner";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const navigate = useNavigate();

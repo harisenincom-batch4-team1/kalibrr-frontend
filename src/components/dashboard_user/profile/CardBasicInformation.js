@@ -1,6 +1,6 @@
 import { useUserProfileContext } from "../../../context/user-profile-context";
-import { Button, Spinner } from "flowbite-react";
-import UserProfileSkeleton from "../../skeletons/UserProfileSkeleton";
+import { Button } from "flowbite-react";
+import Spinner from "../../Spinner";
 
 const CardBasicInformation = () => {
   const { state, dispatch } = useUserProfileContext();
