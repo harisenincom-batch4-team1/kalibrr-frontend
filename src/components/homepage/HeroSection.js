@@ -119,13 +119,13 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-          {/* <div className="invisible lg:visible container flex items-center w-1/2 mx-8 my-8">
+          <div className="invisible lg:visible container flex items-center w-1/2 mx-8 my-8">
           <img
-            src={"/assets/Hero.jpg"}
+            src={"/assets/Hero.png"}
             alt=""
-            className="flex h-[480px] opacity-90 mx-auto"
+            className="flex bg-cover opacity-90 mx-auto"
           />
-        </div> */}
+        </div>
         </div>
 
         <div className="container mx-auto mt-5 py-10 overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full">
@@ -133,7 +133,7 @@ const HeroSection = () => {
             <div className="container mx-auto">
               <a href="/">
                 <img
-                  src={"/assets/companylogo.png"}
+                  src={"/assets/BCAlogo.png"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
@@ -142,7 +142,7 @@ const HeroSection = () => {
             <div className="container mx-auto">
               <a href="/">
                 <img
-                  src={"/assets/companylogo.png"}
+                  src={"/assets/BNIlogo.png"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
@@ -151,7 +151,7 @@ const HeroSection = () => {
             <div className="container mx-auto">
               <a href="/">
                 <img
-                  src={"/assets/companylogo.png"}
+                  src={"/assets/TokopediaLogo.png"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
@@ -160,7 +160,7 @@ const HeroSection = () => {
             <div className="container mx-auto">
               <a href="/">
                 <img
-                  src={"/assets/companylogo.png"}
+                  src={"/assets/RuangguruLogo.png"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
@@ -169,7 +169,16 @@ const HeroSection = () => {
             <div className="container mx-auto">
               <a href="/">
                 <img
-                  src={"/assets/companylogo.png"}
+                  src={"/assets/ShopeeLogo.png"}
+                  alt=""
+                  className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
+                />
+              </a>
+            </div>
+            <div className="container mx-auto">
+              <a href="/">
+                <img
+                  src={"/assets/TravelokaLogo.webp"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />

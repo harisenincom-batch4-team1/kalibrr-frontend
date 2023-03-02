@@ -25,42 +25,42 @@ const JobCategory = () => {
           <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
             <FaDesktop className="text-[#0086ff]" size={32} />
             <p className="text-base font-bold mt-2">Digital Marketing</p>
-            <p className="text-gray-600 mt-2">xx Jobs</p>
+            <p className="text-gray-600 mt-2">34 Pekerjaan</p>
           </div>
           <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
-            <FaDesktop className="text-[#0086ff]" size={32} />
-            <p className="text-base font-bold mt-2">Digital Marketing</p>
-            <p className="text-gray-600 mt-2">xx Jobs</p>
+            <FaCode className="text-[#0086ff]" size={32} />
+            <p className="text-base font-bold mt-2">Developer</p>
+            <p className="text-gray-600 mt-2">134 Pekerjaan</p>
           </div>
           <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
-            <FaDesktop className="text-[#0086ff]" size={32} />
-            <p className="text-base font-bold mt-2">Digital Marketing</p>
-            <p className="text-gray-600 mt-2">xx Jobs</p>
+            <FaMoneyBillWave className="text-[#0086ff]" size={32} />
+            <p className="text-base font-bold mt-2">Account & Finance</p>
+            <p className="text-gray-600 mt-2">68 Pekerjaan</p>
           </div>
           <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
-            <FaDesktop className="text-[#0086ff]" size={32} />
-            <p className="text-base font-bold mt-2">Digital Marketing</p>
-            <p className="text-gray-600 mt-2">xx Jobs</p>
+            <FaPencilRuler className="text-[#0086ff]" size={32} />
+            <p className="text-base font-bold mt-2">Graphic Designer</p>
+            <p className="text-gray-600 mt-2">93 Pekerjaan</p>
           </div>
           <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
-            <FaDesktop className="text-[#0086ff]" size={32} />
-            <p className="text-base font-bold mt-2">Digital Marketing</p>
-            <p className="text-gray-600 mt-2">xx Jobs</p>
+            <HiOutlinePencilAlt className="text-[#0086ff]" size={32} />
+            <p className="text-base font-bold mt-2">Content Writer</p>
+            <p className="text-gray-600 mt-2">56 Pekerjaan</p>
           </div>
           <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
-            <FaDesktop className="text-[#0086ff]" size={32} />
-            <p className="text-base font-bold mt-2">Digital Marketing</p>
-            <p className="text-gray-600 mt-2">xx Jobs</p>
+            <BsPeople className="text-[#0086ff]" size={32} />
+            <p className="text-base font-bold mt-2">HR Management</p>
+            <p className="text-gray-600 mt-2">33 Pekerjaan</p>
           </div>
           <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
-            <FaDesktop className="text-[#0086ff]" size={32} />
-            <p className="text-base font-bold mt-2">Digital Marketing</p>
-            <p className="text-gray-600 mt-2">xx Jobs</p>
+            <BsShop className="text-[#0086ff]" size={32} />
+            <p className="text-base font-bold mt-2">Sales</p>
+            <p className="text-gray-600 mt-2">61 Pekerjaan</p>
           </div>
           <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
-            <FaDesktop className="text-[#0086ff]" size={32} />
-            <p className="text-base font-bold mt-2">Digital Marketing</p>
-            <p className="text-gray-600 mt-2">xx Jobs</p>
+            <CgStack className="text-[#0086ff]" size={32} />
+            <p className="text-base font-bold mt-2">UI/UX Designer</p>
+            <p className="text-gray-600 mt-2">73 Pekerjaan</p>
           </div>
         </div>
       </div>
