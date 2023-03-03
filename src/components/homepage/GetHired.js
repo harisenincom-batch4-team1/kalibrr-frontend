@@ -72,7 +72,7 @@ export const GetHired = () => {
               <div className="container flex flex-row grow-0 max-w-80 h-26 bg-white">
                 <div className="flex items-center">
                   <img
-                    src={"/assets/BCALogo.png"}
+                    src={"/assets/BCAlogo.png"}
                     alt=""
                     className="w-36 items-center mx-auto"
                   />
