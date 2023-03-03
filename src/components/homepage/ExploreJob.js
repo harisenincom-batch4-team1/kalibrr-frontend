@@ -41,7 +41,7 @@ export const ExploreJobs = () => {
               <div className="container flex flex-row grow-0 h-26 bg-white">
                 <div className="flex items-center">
                   <img
-                    src={"/assets/BCALogo.png"}
+                    src={"/assets/BCAlogo.png"}
                     alt=""
                     className="w-28 items-center mx-auto"
                   />
@@ -105,7 +105,7 @@ export const ExploreJobs = () => {
               <div className="container flex flex-row grow-0 h-26 bg-white">
                 <div className="flex items-center">
                   <img
-                    src={"/assets/Tokopedialogo.png"}
+                    src={"/assets/TokopediaLogo.png"}
                     alt=""
                     className="w-28 items-center mx-auto"
                   />
@@ -169,7 +169,7 @@ export const ExploreJobs = () => {
               <div className="container flex flex-row grow-0 h-26 bg-white">
                 <div className="flex items-center">
                   <img
-                    src={"/assets/Travelokalogo.webp"}
+                    src={"/assets/TravelokaLogo.webp"}
                     alt=""
                     className="w-28 items-center mx-auto"
                   />
@@ -201,7 +201,7 @@ export const ExploreJobs = () => {
               <div className="container flex flex-row grow-0 h-26 bg-white">
                 <div className="flex items-center">
                   <img
-                    src={"/assets/Shopeelogo.png"}
+                    src={"/assets/ShopeeLogo.png"}
                     alt=""
                     className="w-28 items-center mx-auto"
                   />
