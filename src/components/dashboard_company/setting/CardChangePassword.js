@@ -2,14 +2,14 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { Button } from "flowbite-react";
-import { companyPasswordApi } from "../../../api";
+import { companyPasswordApi } from "api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useCompanySettingContext } from "../../../context/company-setting-context";
-import Spinner from "../../Spinner";
+import { useCompanySettingContext } from "context";
+import { Spinner } from "components";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-const CardChangePassword = () => {
+export const CardChangePasswordCompany = () => {
   const {
     register,
     handleSubmit,
@@ -261,5 +261,3 @@ const CardChangePassword = () => {
     </div>
   );
 };
-
-export default CardChangePassword;

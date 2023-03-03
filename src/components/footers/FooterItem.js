@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const FooterItem = ({ title, link }) => {
+export const FooterItem = ({ title, link }) => {
   return (
     <li className="mb-4">
       <Link to={link} className="hover:underline">
@@ -9,5 +9,3 @@ const FooterItem = ({ title, link }) => {
     </li>
   );
 };
-
-export default FooterItem;

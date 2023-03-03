@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useGlobalContext } from "../../context/global-context";
-import { Helmet } from "react-helmet";
-import { jobsApi } from "../../api";
+import { JobDetailSkeleton } from "components";
+import { useGlobalContext } from "context";
+import { PublicLayout } from "layouts";
 import { Button } from "flowbite-react";
+import { Helmet } from "react-helmet";
+import { jobsApi } from "api";
 import axios from "axios";
-import PublicLayout from "../../layouts/PublicLayout";
-import rupiahFormat from "rupiah-format";
 import moment from "moment";
-import JobDetailSkeleton from "../../components/skeletons/JobDetailSkeleton";
+import rupiahFormat from "rupiah-format";
 
-const JobDetail = () => {
+export const JobDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
   const [detailJob, setDetailJob] = useState(null);
@@ -144,5 +144,3 @@ const JobDetail = () => {
     </PublicLayout>
   );
 };
-
-export default JobDetail;

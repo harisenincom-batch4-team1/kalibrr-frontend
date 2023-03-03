@@ -1,8 +1,7 @@
+import { Navbar, SideNavbarUser } from "components";
 import LoadingBar from "react-top-loading-bar";
-import SideNavbarUser from "../components/SideNavbarUser";
-import Navbar from "../components/Navbar";
 
-const UserDashboardLayout = ({ children }) => {
+export const DashboardLayoutUser = ({ children }) => {
   return (
     <div className="h-screen overflow-hidden relative">
       <LoadingBar
@@ -19,5 +18,3 @@ const UserDashboardLayout = ({ children }) => {
     </div>
   );
 };
-
-export default UserDashboardLayout;

@@ -1,8 +1,7 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/footers/Footer";
+import { Navbar, Footer } from "components";
 import LoadingBar from "react-top-loading-bar";
 
-const PublicLayout = ({ children }) => {
+export const PublicLayout = ({ children }) => {
   return (
     <div className="flex flex-col justify-between bg-zinc-50">
       <LoadingBar
@@ -17,5 +16,3 @@ const PublicLayout = ({ children }) => {
     </div>
   );
 };
-
-export default PublicLayout;

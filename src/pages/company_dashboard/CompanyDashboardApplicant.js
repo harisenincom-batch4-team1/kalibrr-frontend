@@ -1,10 +1,10 @@
 import { Helmet } from "react-helmet";
-import NavbarUserLayout from "../../layouts/DashboardLayoutCompany";
-import HeaderTitle from "../../components/dashboard_company/header/HeaderTitle";
+import { DashboardLayoutCompany } from "layouts";
+import { HeaderTitleCompany } from "components/dashboard_company";
 
-const CompanyDashboardApplicant = () => {
+export const CompanyDashboardApplicant = () => {
   return (
-    <NavbarUserLayout>
+    <DashboardLayoutCompany>
       <Helmet>
         <title>Pelamar Perusahaan - Kalibrr</title>
         <link
@@ -13,9 +13,7 @@ const CompanyDashboardApplicant = () => {
           type="image/x-icon"
         ></link>
       </Helmet>
-      <HeaderTitle title={"Pelamar"} />
-    </NavbarUserLayout>
+      <HeaderTitleCompany title={"Pelamar"} />
+    </DashboardLayoutCompany>
   );
 };
-
-export default CompanyDashboardApplicant;

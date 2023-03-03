@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { useUserSettingContext } from "../../context/user-setting-context";
-import { userEmailApi } from "../../api";
-import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
-import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
-import CardChangePassword from "../../components/dashboard_user/setting/CardChangePassword";
-import CardDeleteAccount from "../../components/dashboard_user/setting/CardDeleteAccount";
+import { useUserSettingContext } from "context";
+import { userEmailApi } from "api";
+import { DashboardLayoutUser } from "layouts";
+import {
+  HeaderTitle,
+  CardChangePassword,
+  CardDeleteAccount,
+} from "components/dashboard_user";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const UserDashboardSetting = () => {
+export const UserDashboardSetting = () => {
   const { state, dispatch } = useUserSettingContext();
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const UserDashboardSetting = () => {
   }, [state.tag]);
 
   return (
-    <UserDashboardLayout>
+    <DashboardLayoutUser>
       <Helmet>
         <title>Pengaturan Akun - Kalibrr</title>
         <link
@@ -55,8 +57,6 @@ const UserDashboardSetting = () => {
         <CardChangePassword />
         <CardDeleteAccount />
       </div>
-    </UserDashboardLayout>
+    </DashboardLayoutUser>
   );
 };
-
-export default UserDashboardSetting;

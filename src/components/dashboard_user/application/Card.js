@@ -1,6 +1,6 @@
-import { useUserJobApplicationContext } from "../../../context/user-job-application";
+import { useUserJobApplicationContext } from "context";
 
-const Card = () => {
+export const Card = () => {
   const { state } = useUserJobApplicationContext();
 
   return (
@@ -38,5 +38,3 @@ const Card = () => {
     </div>
   );
 };
-
-export default Card;

@@ -1,8 +1,8 @@
 import { Button } from "flowbite-react";
-import { useCompanyRegisterContext } from "../context/company-register-context";
-import Spinner from "./Spinner";
+import { useCompanyRegisterContext } from "context";
+import { Spinner } from "components";
 
-const Otp = () => {
+export const Otp = () => {
   const { state, dispatch } = useCompanyRegisterContext();
 
   const handleCheckOtp = () => {
@@ -119,5 +119,3 @@ const Otp = () => {
     </div>
   );
 };
-
-export default Otp;

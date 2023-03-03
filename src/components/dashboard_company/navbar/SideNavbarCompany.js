@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { HiBriefcase, HiBuildingOffice, HiUserGroup } from "react-icons/hi2";
 
-const SideNavbarCompany = () => {
+export const SideNavbarCompany = () => {
   const { pathname } = useLocation();
 
   return (
@@ -49,5 +49,3 @@ const SideNavbarCompany = () => {
     </div>
   );
 };
-
-export default SideNavbarCompany;

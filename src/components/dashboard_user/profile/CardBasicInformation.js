@@ -1,8 +1,8 @@
-import { useUserProfileContext } from "../../../context/user-profile-context";
+import { useUserProfileContext } from "context";
 import { Button } from "flowbite-react";
-import Spinner from "../../Spinner";
+import { Spinner } from "components";
 
-const CardBasicInformation = () => {
+export const CardBasicInformation = () => {
   const { state, dispatch } = useUserProfileContext();
 
   const handleEdit = () => {
@@ -135,7 +135,9 @@ const CardBasicInformation = () => {
                     payload: e.target.value,
                   })
                 }
-                placeholder={!state.datas.phone ? "0823XXXXXXX" : state.datas.phone}
+                placeholder={
+                  !state.datas.phone ? "0823XXXXXXX" : state.datas.phone
+                }
                 type="number"
                 id="small-input"
                 autoComplete="off"
@@ -179,7 +181,9 @@ const CardBasicInformation = () => {
                   })
                 }
                 placeholder={
-                  !state.datas.skill ? "React, TypeScript, etc" : state.datas.skill
+                  !state.datas.skill
+                    ? "React, TypeScript, etc"
+                    : state.datas.skill
                 }
                 type="text"
                 id="small-input"
@@ -228,5 +232,3 @@ const CardBasicInformation = () => {
     </div>
   );
 };
-
-export default CardBasicInformation;

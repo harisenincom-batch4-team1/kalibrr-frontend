@@ -1,4 +1,4 @@
-const Spinner = () => {
+export const Spinner = () => {
   return (
     <svg
       aria-hidden="true"
@@ -18,5 +18,3 @@ const Spinner = () => {
     </svg>
   );
 };
-
-export default Spinner;

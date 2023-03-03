@@ -1,19 +1,20 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { useUserProfileContext } from "../../context/user-profile-context";
-import { useGlobalContext } from "../../context/global-context";
-import { userProfileApi } from "../../api";
 import { toast } from "react-toastify";
-import UserProfileSkeleton from "../../components/skeletons/UserProfileSkeleton";
-import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
-import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
-import CardBasicInformation from "../../components/dashboard_user/profile/CardBasicInformation";
-import CardResume from "../../components/dashboard_user/profile/CardResume";
+import { userProfileApi } from "api";
+import { DashboardLayoutUser } from "layouts";
+import { useGlobalContext, useUserProfileContext } from "context";
+import { UserProfileSkeleton } from "components";
+import {
+  HeaderTitle,
+  CardBasicInformation,
+  CardResume,
+} from "components/dashboard_user";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const UserDashboardProfile = () => {
-  const data = useGlobalContext()
+export const UserDashboardProfile = () => {
+  const data = useGlobalContext();
   const { state, dispatch } = useUserProfileContext();
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const UserDashboardProfile = () => {
   }, [state.tag]);
 
   return (
-    <UserDashboardLayout>
+    <DashboardLayoutUser>
       <Helmet>
         <title>Profil Pengguna - Kalibrr</title>
         <link
@@ -82,8 +83,6 @@ const UserDashboardProfile = () => {
         {state.tag !== "fetching" && <CardBasicInformation />}
         {state.tag !== "fetching" && <CardResume />}
       </div>
-    </UserDashboardLayout>
+    </DashboardLayoutUser>
   );
 };
-
-export default UserDashboardProfile;

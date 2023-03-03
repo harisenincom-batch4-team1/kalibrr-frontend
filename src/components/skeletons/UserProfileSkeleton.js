@@ -1,4 +1,4 @@
-const UserProfileSkeleton = () => {
+export const UserProfileSkeleton = () => {
   return (
     <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-gray-200 border relative p-5">
       <div role="status" className="w-full animate-pulse">
@@ -15,5 +15,3 @@ const UserProfileSkeleton = () => {
     </div>
   );
 };
-
-export default UserProfileSkeleton;

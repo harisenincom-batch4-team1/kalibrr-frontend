@@ -1,4 +1,4 @@
-const SkeletonCard = () => {
+export const SkeletonCard = () => {
   return (
     <div className="space-y-5">
       {/* First */}
@@ -76,5 +76,3 @@ const SkeletonCard = () => {
     </div>
   );
 };
-
-export default SkeletonCard;

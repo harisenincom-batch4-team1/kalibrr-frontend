@@ -3,15 +3,15 @@ import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Label } from "flowbite-react";
-import { useUserRegisterContext } from "../../context/user-register-context";
-import { userRegisterApi } from "../../api";
+import { useUserRegisterContext } from "context";
+import { userRegisterApi } from "api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
-import PublicLayout from "../../layouts/PublicLayout";
-import Spinner from "../../components/Spinner";
+import { PublicLayout } from "layouts";
+import { Spinner } from "components";
 import axios from "axios";
 
-const UserRegister = () => {
+export const UserRegister = () => {
   const {
     register,
     handleSubmit,
@@ -202,5 +202,3 @@ const UserRegister = () => {
     </PublicLayout>
   );
 };
-
-export default UserRegister;

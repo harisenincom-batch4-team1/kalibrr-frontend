@@ -1,7 +1,6 @@
-import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-const GetHired = () => {
+export const GetHired = () => {
   return (
     <div className="flex flex-col container mx-auto bg-[#f7f9fb] rounded-lg p-5">
       <div className="max-w-[1200px] flex flex-col md:flex-row mx-auto">
@@ -186,5 +185,3 @@ const GetHired = () => {
     </div>
   );
 };
-
-export default GetHired;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import PublicLayout from "../../layouts/PublicLayout";
+import { PublicLayout } from "layouts";
 
-const SignUp = () => {
+export const SignUp = () => {
   return (
     <PublicLayout>
       <div className="w-full h-full mx-auto mt-16 bg-[#f7f9fb]">
@@ -78,5 +78,3 @@ const SignUp = () => {
     </PublicLayout>
   );
 };
-
-export default SignUp;

@@ -1,6 +1,6 @@
-import ModalDelete from "./ModalDelete";
+import { ModalDelete } from "components";
 
-const CardDeleteAccount = () => {
+export const CardDeleteAccountCompany = () => {
   return (
     <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border border-gray-200">
       <h1 className="text-white font-medium text-sm md:text-base bg-red-700 py-3 px-4">
@@ -19,5 +19,3 @@ const CardDeleteAccount = () => {
     </div>
   );
 };
-
-export default CardDeleteAccount;

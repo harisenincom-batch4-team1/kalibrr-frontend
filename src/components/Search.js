@@ -1,6 +1,6 @@
-import { useJobListContext } from "../context/joblist-context";
+import { useJobListContext } from "context";
 
-const Search = () => {
+export const Search = () => {
   const { state, dispatch } = useJobListContext();
 
   const handleSearch = (e) => {
@@ -57,5 +57,3 @@ const Search = () => {
     </div>
   );
 };
-
-export default Search;

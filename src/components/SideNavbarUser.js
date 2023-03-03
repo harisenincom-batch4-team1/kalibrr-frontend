@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { HiDocumentText, HiUserCircle } from "react-icons/hi2";
 
-const SideNavbarUser = () => {
+export const SideNavbarUser = () => {
   const { pathname } = useLocation();
 
   return (
@@ -37,5 +37,3 @@ const SideNavbarUser = () => {
     </div>
   );
 };
-
-export default SideNavbarUser;

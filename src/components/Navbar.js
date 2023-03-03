@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { companyProfileApi, userProfileApi } from "api";
 import { HiBuildingOffice } from "react-icons/hi2";
-import { useGlobalContext } from "../context/global-context";
-import { companyProfileApi, userProfileApi } from "../api";
+import { useGlobalContext } from "context";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { NavbarDropdown } from "components";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-import DropdownNavbar from "./NavbarDropdown";
 import axios from "axios";
 
-const Navbar = () => {
+export const Navbar = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useGlobalContext();
   const [nav, setNav] = useState(false);
@@ -135,8 +135,8 @@ const Navbar = () => {
           <></>
         )}
 
-        {state.isLogin && <DropdownNavbar />}
-        {state.isLoginCompany && <DropdownNavbar />}
+        {state.isLogin && <NavbarDropdown />}
+        {state.isLoginCompany && <NavbarDropdown />}
 
         <ul
           className={
@@ -231,5 +231,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;

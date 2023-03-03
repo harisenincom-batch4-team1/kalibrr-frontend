@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import FooterItem from "./FooterItem";
+import { FooterItem } from "components";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="p-4 border-t bg-white sm:p-6 dark:bg-gray-900">
       <div className="md:flex md:justify-between">
@@ -145,5 +145,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

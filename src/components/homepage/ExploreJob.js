@@ -1,6 +1,4 @@
-import React from "react";
-
-const ExploreJobs = () => {
+export const ExploreJobs = () => {
   return (
     <div className="mb-10">
       <div className="container mx-auto mt-10 p-5 bg-[#f7f9fb] rounded-lg h-fit flex flex-col justify-center">
@@ -234,5 +232,3 @@ const ExploreJobs = () => {
     </div>
   );
 };
-
-export default ExploreJobs;

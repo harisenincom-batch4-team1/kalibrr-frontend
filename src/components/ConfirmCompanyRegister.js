@@ -1,17 +1,11 @@
-import axios from "axios";
-import { Button } from "flowbite-react";
-import Cookies from "js-cookie";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useCompanyRegisterContext, useGlobalContext } from "context";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { companyLoginApi, companyRegisterApi } from "../api";
-import { useCompanyRegisterContext } from "../context/company-register-context";
-import { useGlobalContext } from "../context/global-context";
-import Spinner from "./Spinner";
+import { useForm } from "react-hook-form";
+import { Button } from "flowbite-react";
+import { Spinner } from "components";
 
-const ConfirmCompanyRegister = () => {
+export const ConfirmCompanyRegister = () => {
   const {
     register,
     handleSubmit,
@@ -145,5 +139,3 @@ const ConfirmCompanyRegister = () => {
     </form>
   );
 };
-
-export default ConfirmCompanyRegister;

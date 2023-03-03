@@ -1,15 +1,14 @@
-import React from "react";
+import { HiOutlinePencilAlt } from "react-icons/hi";
+import { BsPeople, BsShop } from "react-icons/bs";
+import { CgStack } from "react-icons/cg";
 import {
   FaDesktop,
   FaCode,
   FaMoneyBillWave,
   FaPencilRuler,
 } from "react-icons/fa";
-import { HiOutlinePencilAlt } from "react-icons/hi";
-import { BsPeople, BsShop } from "react-icons/bs";
-import { CgStack } from "react-icons/cg";
 
-const JobCategory = () => {
+export const JobCategory = () => {
   return (
     <div>
       <div className="container mx-auto mt-10 bg-[#f7f9fb] rounded-lg h-fit flex flex-col justify-center">
@@ -18,7 +17,8 @@ const JobCategory = () => {
             Jelajahi pekerjaan berdasarkan kategori
           </h3>
           <p className="text-gray-600 text-md md:text-xl mt-4 mx-auto text-center">
-          Dapatkan pekerjaan paling menarik dari seluruh dunia dan kembangkan karirmu dengan cepat bersama orang lain.
+            Dapatkan pekerjaan paling menarik dari seluruh dunia dan kembangkan
+            karirmu dengan cepat bersama orang lain.
           </p>
         </div>
         <div className="max-w-[1200px] flex flex-wrap px-5 w-fit mx-auto gap-10 justify-center pb-10">
@@ -67,5 +67,3 @@ const JobCategory = () => {
     </div>
   );
 };
-
-export default JobCategory;

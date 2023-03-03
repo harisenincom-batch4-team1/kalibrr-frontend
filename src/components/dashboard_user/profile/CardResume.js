@@ -1,4 +1,4 @@
-const CardResume = () => {
+export const CardResume = () => {
   return (
     <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden bg-white border-gray-200 border">
       <h1 className="text-white font-medium text-sm md:text-base bg-blue-700 py-3 px-4">
@@ -20,5 +20,3 @@ const CardResume = () => {
     </div>
   );
 };
-
-export default CardResume;

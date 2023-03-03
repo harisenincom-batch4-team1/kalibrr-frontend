@@ -1,4 +1,4 @@
-const JobCardSkeleton = () => {
+export const JobCardSkeleton = () => {
   return (
     <div className="w-full flex flex-col sm:flex-row gap-2 sm:gap-y-4 flex-wrap justify-between">
       <div
@@ -124,5 +124,3 @@ const JobCardSkeleton = () => {
     </div>
   );
 };
-
-export default JobCardSkeleton;

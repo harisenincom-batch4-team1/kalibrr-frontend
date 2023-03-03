@@ -1,26 +1,19 @@
 import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { Button } from "flowbite-react";
 import { Helmet } from "react-helmet";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import {
-  companyOtpApi,
-  companyOtpApiCheck,
-  companyRegisterApi,
-} from "../../api";
+import { Link, useNavigate } from "react-router-dom";
 import { DefaultEditor } from "react-simple-wysiwyg";
-import { useGlobalContext } from "../../context/global-context";
-import { useCompanyRegisterContext } from "../../context/company-register-context";
-import ConfirmCompanyRegister from "../../components/ConfirmCompanyRegister";
-import PublicLayout from "../../layouts/PublicLayout";
-import Stepper from "../../components/Stepper";
-import Spinner from "../../components/Spinner";
-import Otp from "../../components/Otp";
-import Cookies from "js-cookie";
+import { companyOtpApi, companyOtpApiCheck, companyRegisterApi } from "api";
+import { useGlobalContext, useCompanyRegisterContext } from "context";
+import { ConfirmCompanyRegister } from "components";
+import { Otp, Spinner, Stepper } from "components";
+import { PublicLayout } from "layouts";
 import axios from "axios";
+import Cookies from "js-cookie";
 
-const CompanyRegister = () => {
+export const CompanyRegister = () => {
   const {
     register,
     handleSubmit,
@@ -323,5 +316,3 @@ const CompanyRegister = () => {
     </PublicLayout>
   );
 };
-
-export default CompanyRegister;

@@ -1,4 +1,4 @@
-const HeaderTitle = (props) => {
+export const HeaderTitle = (props) => {
   return (
     <div className="w-full justify-center bg-[#fafafa] hidden sm:flex">
       <div className="w-full">
@@ -9,5 +9,3 @@ const HeaderTitle = (props) => {
     </div>
   );
 };
-
-export default HeaderTitle;

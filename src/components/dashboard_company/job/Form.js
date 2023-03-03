@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Button, Label, Radio } from "flowbite-react";
-import { useCompanyJobContext } from "../../../context/company-job-context";
+import { useCompanyJobContext } from "context";
 import { DefaultEditor } from "react-simple-wysiwyg";
-import { companyJobApi } from "../../../api";
+import { companyJobApi } from "api";
 import { toast } from "react-toastify";
-import Spinner from "../../Spinner";
+import { Spinner } from "components";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-const Form = () => {
+export const Form = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useCompanyJobContext();
   const {
@@ -247,5 +247,3 @@ const Form = () => {
     </div>
   );
 };
-
-export default Form;

@@ -1,4 +1,4 @@
-const JobDetailSkeleton = () => {
+export const JobDetailSkeleton = () => {
   return (
     <div className="w-full px-5">
       <div
@@ -36,5 +36,3 @@ const JobDetailSkeleton = () => {
     </div>
   );
 };
-
-export default JobDetailSkeleton;

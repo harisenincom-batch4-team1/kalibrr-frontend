@@ -1,8 +1,8 @@
-import Navbar from "../components/Navbar";
-import SideNavbarCompany from "../components/dashboard_company/navbar/SideNavbarCompany";
+import { Navbar } from "components";
+import { SideNavbarCompany } from "components/dashboard_company";
 import LoadingBar from "react-top-loading-bar";
 
-const NavbarLayoutCompany = ({ children }) => {
+export const DashboardLayoutCompany = ({ children }) => {
   return (
     <div className="h-screen overflow-hidden">
       <LoadingBar
@@ -21,5 +21,3 @@ const NavbarLayoutCompany = ({ children }) => {
     </div>
   );
 };
-
-export default NavbarLayoutCompany;

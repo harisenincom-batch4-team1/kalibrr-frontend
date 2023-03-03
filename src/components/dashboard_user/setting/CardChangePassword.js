@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "flowbite-react";
-import { userPasswordApi } from "../../../api";
-import { useUserSettingContext } from "../../../context/user-setting-context";
+import { userPasswordApi } from "api";
+import { useUserSettingContext } from "context";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
-import Spinner from "../../Spinner";
+import { Spinner } from "components";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-const CardChangePassword = () => {
+export const CardChangePassword = () => {
   const {
     register,
     handleSubmit,
@@ -259,5 +259,3 @@ const CardChangePassword = () => {
     </div>
   );
 };
-
-export default CardChangePassword;

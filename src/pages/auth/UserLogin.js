@@ -1,19 +1,18 @@
 import { useEffect } from "react";
-import { useGlobalContext } from "../../context/global-context";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
-import { userLoginApi } from "../../api";
-import { useUserLoginContext } from "../../context/user-login-context";
 import { Button } from "flowbite-react";
+import { userLoginApi } from "api";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import PublicLayout from "../../layouts/PublicLayout";
-import Spinner from "../../components/Spinner";
-import Cookies from "js-cookie";
+import { useUserLoginContext, useGlobalContext } from "context";
+import { PublicLayout } from "layouts";
+import { Spinner } from "components";
 import axios from "axios";
+import Cookies from "js-cookie";
 
-const UserLogin = () => {
+export const UserLogin = () => {
   const {
     register,
     handleSubmit,
@@ -166,5 +165,3 @@ const UserLogin = () => {
     </PublicLayout>
   );
 };
-
-export default UserLogin;

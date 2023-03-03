@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { companyJobApi } from "api";
 import { Helmet } from "react-helmet";
-import { companyJobApi } from "../../api";
-import { useCompanyJobContext } from "../../context/company-job-context";
-import { Spinner, Tabs } from "flowbite-react";
 import { toast } from "react-toastify";
-import DashboardLayoutCompany from "../../layouts/DashboardLayoutCompany";
+import { useCompanyJobContext } from "context";
+import { Spinner, Tabs } from "flowbite-react";
+import { DashboardLayoutCompany } from "layouts";
+import { Form, Table } from "components/dashboard_company";
 import axios from "axios";
 import Cookies from "js-cookie";
-import Form from "../../components/dashboard_company/job/Form";
-import Table from "../../components/dashboard_company/job/Table";
 
-const CompanyDashboardJob = () => {
+export const CompanyDashboardJob = () => {
   const { state, dispatch } = useCompanyJobContext();
 
   useEffect(() => {
@@ -102,11 +101,7 @@ const CompanyDashboardJob = () => {
               <img src="/assets/error.webp" alt="" className="mx-auto -mt-10" />
             </div>
           )}
-          {state.tag === "loaded" || state.tag === "delete" ? (
-            <Table />
-          ) : (
-            <></>
-          )}
+          {state.tag === "loaded" || state.tag === "delete" ? <Table /> : <></>}
         </Tabs.Item>
         <Tabs.Item title="Tambah">
           {state.tag === "fetching" && (
@@ -134,5 +129,3 @@ const CompanyDashboardJob = () => {
     </DashboardLayoutCompany>
   );
 };
-
-export default CompanyDashboardJob;

@@ -1,9 +1,9 @@
+import { useCompanyJobContext } from "context";
 import { Button, Modal } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi2";
-import { useCompanyJobContext } from "../../../context/company-job-context";
 import moment from "moment";
 
-const Table = () => {
+export const Table = () => {
   const { state, dispatch } = useCompanyJobContext();
 
   return (
@@ -129,5 +129,3 @@ const Table = () => {
     </>
   );
 };
-
-export default Table;

@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
-const NotFound = () => {
+export const NotFound = () => {
   return (
     <>
       <Helmet>
@@ -28,5 +28,3 @@ const NotFound = () => {
     </>
   );
 };
-
-export default NotFound;

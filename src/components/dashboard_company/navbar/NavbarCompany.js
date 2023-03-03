@@ -6,7 +6,7 @@ import {
   HiBuildingOffice,
 } from "react-icons/hi2";
 
-const NavbarCompany = () => {
+export const NavbarCompany = () => {
   const [isShowMenuAccount, setIsShowMenuAccount] = useState(false);
 
   const showMenuAccount = () => {
@@ -47,5 +47,3 @@ const NavbarCompany = () => {
     </div>
   );
 };
-
-export default NavbarCompany;

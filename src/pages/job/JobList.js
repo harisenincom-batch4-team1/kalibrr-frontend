@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { useJobListContext } from "../../context/joblist-context";
-import { jobsApi } from "../../api";
+import { useJobListContext } from "context";
+import { jobsApi } from "api";
 import { Pagination } from "flowbite-react";
-import Search from "../../components/Search";
+import { JobCard, JobCardSkeleton, Search } from "components";
+import { PublicLayout } from "layouts";
 import axios from "axios";
-import JobCard from "../../components/JobCard";
-import PublicLayout from "../../layouts/PublicLayout";
-import JobCardSkeleton from "../../components/skeletons/JobCardSkeleton";
 
-const JobList = () => {
+export const JobList = () => {
   const { state, dispatch } = useJobListContext();
 
   useEffect(() => {
@@ -85,5 +83,3 @@ const JobList = () => {
     </PublicLayout>
   );
 };
-
-export default JobList;

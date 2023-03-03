@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useJobListContext } from "../context/joblist-context";
+import { useJobListContext } from "context";
 import rupiahFormat from "rupiah-format";
 import moment from "moment";
 
-const JobCard = () => {
+export const JobCard = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useJobListContext();
 
@@ -65,4 +65,3 @@ const JobCard = () => {
   }
 };
 
-export default JobCard;

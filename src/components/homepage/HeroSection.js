@@ -1,6 +1,4 @@
-import React from "react";
-
-const HeroSection = () => {
+export const HeroSection = () => {
   return (
     <>
       <div className="pt-24" />
@@ -120,12 +118,12 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="invisible lg:visible container flex items-center w-1/2 mx-8 my-8">
-          <img
-            src={"/assets/Hero.png"}
-            alt=""
-            className="flex bg-cover opacity-90 mx-auto"
-          />
-        </div>
+            <img
+              src={"/assets/Hero.png"}
+              alt=""
+              className="flex bg-cover opacity-90 mx-auto"
+            />
+          </div>
         </div>
 
         <div className="container mx-auto mt-5 py-10 overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full">
@@ -190,5 +188,3 @@ const HeroSection = () => {
     </>
   );
 };
-
-export default HeroSection;

@@ -1,19 +1,18 @@
 import { useEffect } from "react";
-import { useGlobalContext } from "../../context/global-context";
+import { useGlobalContext, useCompanyLoginContext } from "context";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import { companyLoginApi } from "../../api";
-import { useCompanyLoginContext } from "../../context/company-login-context";
+import { companyLoginApi } from "api";
 import { Button } from "flowbite-react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import PublicLayout from "../../layouts/PublicLayout";
-import Spinner from "../../components/Spinner";
-import Cookies from "js-cookie";
+import { PublicLayout } from "layouts";
+import { Spinner } from "components";
 import axios from "axios";
+import Cookies from "js-cookie";
 
-const CompanyLogin = () => {
+export const CompanyLogin = () => {
   const {
     register,
     handleSubmit,
@@ -156,7 +155,6 @@ const CompanyLogin = () => {
                 {state.tag === "submitting" ? <Spinner /> : "Masuk"}
               </Button>
             </form>
-
             <div className="text-center text-xs md:text-sm mb-2">
               Belum mempunyai akun perusahaan ?
               <Link
@@ -172,5 +170,3 @@ const CompanyLogin = () => {
     </PublicLayout>
   );
 };
-
-export default CompanyLogin;

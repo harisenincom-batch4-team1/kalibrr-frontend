@@ -1,15 +1,14 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { userJobApplicationApi } from "../../api";
-import { useUserJobApplicationContext } from "../../context/user-job-application";
-import UserDashboardLayout from "../../layouts/DashboardLayoutUser";
-import HeaderTitle from "../../components/dashboard_user/header/HeaderTitle";
-import Card from "../../components/dashboard_user/application/Card";
-import Spinner from "../../components/Spinner";
+import { userJobApplicationApi } from "api";
+import { DashboardLayoutUser } from "layouts";
+import { useUserJobApplicationContext } from "context";
+import { HeaderTitle, Card } from "components/dashboard_user";
+import { Spinner } from "components";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-const UserDashboardApplication = () => {
+export const UserDashboardApplication = () => {
   const { state, dispatch } = useUserJobApplicationContext();
 
   useEffect(() => {
@@ -38,7 +37,7 @@ const UserDashboardApplication = () => {
   }, [state.tag]);
 
   return (
-    <UserDashboardLayout>
+    <DashboardLayoutUser>
       <Helmet>
         <title>Lamaran Pengguna - Kalibrr</title>
         <link
@@ -74,8 +73,6 @@ const UserDashboardApplication = () => {
           {state.errorMsg}
         </p>
       )}
-    </UserDashboardLayout>
+    </DashboardLayoutUser>
   );
 };
-
-export default UserDashboardApplication;

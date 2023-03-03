@@ -1,4 +1,4 @@
-const SkeletonJobDetail = () => {
+export const SkeletonJobDetail = () => {
   return (
     <div>
       <div className="rounded-md p-4 w-full mx-auto bg-white">
@@ -37,5 +37,3 @@ const SkeletonJobDetail = () => {
     </div>
   );
 };
-
-export default SkeletonJobDetail;

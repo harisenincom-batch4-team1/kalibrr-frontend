@@ -1,6 +1,6 @@
-import { useCompanyRegisterContext } from "../context/company-register-context";
+import { useCompanyRegisterContext } from "context";
 
-const Stepper = () => {
+export const Stepper = () => {
   const { state } = useCompanyRegisterContext();
 
   return (
@@ -84,5 +84,3 @@ const Stepper = () => {
     </ol>
   );
 };
-
-export default Stepper;

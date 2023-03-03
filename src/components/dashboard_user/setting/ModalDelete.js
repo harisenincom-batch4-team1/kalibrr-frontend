@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useGlobalContext } from "../../../context/global-context";
+import { useGlobalContext } from "context";
 import { Button, Modal } from "flowbite-react";
-import { userProfileApi } from "../../../api";
+import { userProfileApi } from "api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const ModalDelete = () => {
+export const ModalDelete = () => {
   const { state, dispatch } = useGlobalContext();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -66,5 +66,3 @@ const ModalDelete = () => {
     </>
   );
 };
-
-export default ModalDelete;

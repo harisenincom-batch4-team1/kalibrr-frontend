@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import { Dropdown } from "flowbite-react";
-import { useGlobalContext } from "../context/global-context";
+import { useGlobalContext } from "context";
+import { AiFillSetting } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
+import { GiPapers } from "react-icons/gi";
+import { BsFillPeopleFill } from "react-icons/bs";
 import {
   FaSignOutAlt,
   FaPaperclip,
   FaPaperPlane,
   FaBuilding,
 } from "react-icons/fa";
-import { AiFillSetting } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
-import { GiPapers } from "react-icons/gi";
-import { BsFillPeopleFill } from "react-icons/bs";
 import Cookies from "js-cookie";
 
-const NavbarDropdown = () => {
+export const NavbarDropdown = () => {
   const { state, dispatch } = useGlobalContext();
 
   const handleLogout = () => {
@@ -92,5 +92,3 @@ const NavbarDropdown = () => {
     </Dropdown>
   );
 };
-
-export default NavbarDropdown;

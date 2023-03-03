@@ -1,24 +1,19 @@
 import { Helmet } from "react-helmet";
-import PublicLayout from "../../layouts/PublicLayout";
-import HeroSection from "../../components/homepage/HeroSection";
-import JobCategory from "../../components/homepage/JobCategory";
-import GetHired from "../../components/homepage/GetHired";
-import ExploreJobs from "../../components/homepage/ExploreJob";
+import { PublicLayout } from "layouts";
+import { HeroSection, JobCategory, GetHired, ExploreJobs } from "components";
 
-const Homepage = () => {
+export const Homepage = () => {
   return (
     <PublicLayout>
       <Helmet>
         <title>Beranda - Kalibrr Temukan Lowongan Kerja</title>
       </Helmet>
-      <div className="px-5">
+      <main className="px-5">
         <HeroSection />
         <JobCategory />
         <GetHired />
         <ExploreJobs />
-      </div>
+      </main>
     </PublicLayout>
   );
 };
-
-export default Homepage;
