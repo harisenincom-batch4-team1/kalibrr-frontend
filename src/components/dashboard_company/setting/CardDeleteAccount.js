@@ -1,4 +1,4 @@
-import { ModalDelete } from "components";
+import { ModalDeleteCompany } from "components/dashboard_company";
 
 export const CardDeleteAccountCompany = () => {
   return (
@@ -13,7 +13,7 @@ export const CardDeleteAccountCompany = () => {
             Perusahaan harus membuat akun Kalibrr baru dan mengisi semua
             informasi yang diperlukan jika ingin membuat lowongan pekerjaan.
           </p>
-          <ModalDelete />
+          <ModalDeleteCompany />
         </div>
       </div>
     </div>

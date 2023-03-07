@@ -68,12 +68,12 @@ export const Navbar = () => {
             Authorization: "Bearer " + Cookies.get("kalibrr-company"),
           },
         })
-          .then((res) =>
+          .then((res) => {
             dispatch({
               type: "FETCH_COMPANY_SUCCESS",
               payload: { datas: res.data.datas },
-            })
-          )
+            });
+          })
           .catch((err) => {
             navigate("/");
             toast.error(err?.message);

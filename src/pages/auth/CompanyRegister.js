@@ -27,6 +27,7 @@ export const CompanyRegister = () => {
     dispatch({ type: "CHANGE_NAME", payload: data.name });
     dispatch({ type: "CHANGE_EMAIL", payload: data.email });
     dispatch({ type: "CHANGE_PASSWORD", payload: data.password });
+    // dispatch({ type: "CHANGE_PASSWORD_CONFIRM", payload: data.password });
     dispatch({ type: "CHANGE_PHONE", payload: data.phone });
     dispatch({ type: "CHANGE_LOCATION", payload: data.location });
     dispatch({ type: "CHANGE_DESCRIPTION", payload: data.description });
@@ -82,7 +83,7 @@ export const CompanyRegister = () => {
             location: state.locationInput,
             phone: state.phoneInput,
             password: state.passwordInput,
-            // passwordConfirm: state.passwordConfirmInput,
+            confirmPassword: state.passwordConfirmInput,
           })
           .then((res) => {
             Cookies.set("kalibrr-company", res.data.datas);
@@ -92,8 +93,9 @@ export const CompanyRegister = () => {
             }, 500);
           })
           .catch((err) => {
+            console.log(err);
             dispatch({ type: "CONFIRM_ERROR", payload: err?.message });
-            return toast.error(err?.message);
+            return toast.error(err?.response?.data?.message);
           });
         break;
       default:
@@ -305,7 +307,9 @@ export const CompanyRegister = () => {
             ) : (
               <></>
             )}
-            {state.tag === "confirm" || state.tag === "confirming" ? (
+            {state.tag === "confirm" ||
+            state.tag === "confirming" ||
+            state.tag === "errorthirdstep" ? (
               <ConfirmCompanyRegister />
             ) : (
               <></>

@@ -211,7 +211,7 @@ export const CompanyRegisterProvider = ({ children }) => {
           case "CONFIRM_ERROR": {
             return {
               ...state,
-              tag: "error",
+              tag: "errorthirdstep",
               errorMsg: action.payload,
             };
           }
@@ -271,6 +271,43 @@ export const CompanyRegisterProvider = ({ children }) => {
           }
           default:
             return state;
+        }
+      }
+      case "errorthirdstep": {
+        switch (action.type) {
+          case "CONFIRM": {
+            return {
+              ...state,
+              tag: "confirming",
+            };
+          }
+          case "CHANGE_PASSWORD": {
+            return {
+              ...state,
+              passwordInput: action.payload,
+            };
+          }
+          case "CHANGE_PASSWORD_CONFIRM": {
+            return {
+              ...state,
+              passwordConfirmInput: action.payload,
+            };
+          }
+          case "SHOW_PASSWORD": {
+            return {
+              ...state,
+              isShowPassword: action.payload,
+            };
+          }
+          case "SHOW_PASSWORD_CONFIRM": {
+            return {
+              ...state,
+              isShowPasswordConfirm: action.payload,
+            };
+          }
+          default: {
+            return state;
+          }
         }
       }
       default: {
