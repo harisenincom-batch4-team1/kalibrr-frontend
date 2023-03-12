@@ -1,4 +1,4 @@
-import { ModalDelete } from "components";
+import { ModalDelete } from "components/dashboard_user";
 
 export const CardDeleteAccount = () => {
   return (

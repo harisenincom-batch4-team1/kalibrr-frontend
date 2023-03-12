@@ -238,7 +238,7 @@ export const CompanyRegister = () => {
                       </span>
                     </div>
 
-                    <div>
+                    {/* <div>
                       <label className="block mb-1" htmlFor="description">
                         Deskripsi Perusahaan *
                       </label>
@@ -256,7 +256,7 @@ export const CompanyRegister = () => {
                         {state.descriptionInput == "" &&
                           "Deskripsi perusahaan harus di isi"}
                       </span>
-                    </div>
+                    </div> */}
 
                     <div className="flex my-2 gap-2 items-center">
                       <input
