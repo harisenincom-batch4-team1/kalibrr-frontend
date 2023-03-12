@@ -55,12 +55,34 @@ export const UserJobApplicationProvider = ({ children }) => {
             return state;
         }
       }
-      case "loaded": {
+      case "submitting": {
         switch (action.type) {
-          case "FETCH": {
+          case "SUBMIT_SUCCESS": {
             return {
               ...state,
-              tag: "fetching",
+              tag: "loaded",
+              datas: action.payload,
+              errorMsg: "",
+            };
+          }
+          case "SUBMIT_ERROR": {
+            return {
+              ...state,
+              tag: "error",
+              datas: [],
+              errorMsg: action.payload,
+            };
+          }
+          default:
+            return state;
+        }
+      }
+      case "loaded": {
+        switch (action.type) {
+          case "SUBMIT": {
+            return {
+              ...state,
+              tag: "submitting",
             };
           }
           default: {
@@ -70,10 +92,10 @@ export const UserJobApplicationProvider = ({ children }) => {
       }
       case "empty": {
         switch (action.type) {
-          case "FETCH": {
+          case "SUBMIT": {
             return {
               ...state,
-              tag: "fetching",
+              tag: "submitting",
             };
           }
           default:
@@ -86,6 +108,12 @@ export const UserJobApplicationProvider = ({ children }) => {
             return {
               ...state,
               tag: "fetching",
+            };
+          }
+          case "SUBMIT": {
+            return {
+              ...state,
+              tag: "submitting",
             };
           }
           default:
