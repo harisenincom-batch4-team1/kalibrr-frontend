@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import { DashboardLayoutCompany } from "layouts";
 import { HeaderTitleCompany } from "components/dashboard_company";
+import { CardApplicant } from "components/dashboard_company";
 
 export const CompanyDashboardApplicant = () => {
   return (
@@ -14,6 +15,7 @@ export const CompanyDashboardApplicant = () => {
         ></link>
       </Helmet>
       <HeaderTitleCompany title={"Pelamar"} />
+      <CardApplicant />
     </DashboardLayoutCompany>
   );
 };

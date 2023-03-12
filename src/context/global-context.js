@@ -8,6 +8,7 @@ export const GlobalProvider = ({ children }) => {
     isLogin: false,
     isLoginCompany: false,
     datas: {},
+    isApplied: false
   };
 
   const reducer = (state, action) => {

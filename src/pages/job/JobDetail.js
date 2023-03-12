@@ -5,15 +5,19 @@ import { useGlobalContext } from "context";
 import { PublicLayout } from "layouts";
 import { Button } from "flowbite-react";
 import { Helmet } from "react-helmet";
-import { jobsApi } from "api";
+import { applyJobApi, jobsApi } from "api";
 import axios from "axios";
 import moment from "moment";
 import rupiahFormat from "rupiah-format";
+import { toast } from "react-toastify";
+import Cookies from "js-cookie";
+import { ModalDelete } from "components/ModalDelete";
 
 export const JobDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
   const [detailJob, setDetailJob] = useState(null);
+  const [isApplied, setIsApplied] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -22,6 +26,9 @@ export const JobDetail = () => {
   const handleApply = () => {
     if (state.isLogin === false) {
       return navigate("/user/login");
+    }
+    if (!state.datas.id) {
+      return toast.error("Harap unggah resume anda");
     }
   };
 
@@ -67,14 +74,19 @@ export const JobDetail = () => {
       <div className="pt-24 max-w-[800px] mx-auto">
         {detailJob !== null && (
           <div className="px-5 relative">
-            <Button
+            <ModalDelete
+              userId={state.datas.id}
+              jobId={id}
+              detailJob={detailJob.status}
+            />
+            {/* <Button
               onClick={handleApply}
               className="absolute top-40 sm:right-4 sm:top-20 py-2"
               size="sm"
               disabled={!detailJob.status || state.isLoginCompany}
             >
               Lamar sekarang
-            </Button>
+            </Button> */}
             <span
               className={
                 detailJob.status == 0 &&
