@@ -28,7 +28,10 @@ export const UserDashboardProfile = () => {
           headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
         })
           .then((res) =>
-            dispatch({ type: "FETCH_SUCCESS", payload: res.data.datas })
+            {
+              console.log(res.data.datas);
+              dispatch({ type: "FETCH_SUCCESS", payload: res.data.datas })
+            }
           )
           .catch((err) => {
             dispatch({ type: "FETCH_ERROR", payload: err?.message });

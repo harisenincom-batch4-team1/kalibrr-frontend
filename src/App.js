@@ -132,11 +132,9 @@ const App = () => {
             <Route
               path="/company/dashboard/profile"
               element={
-                <CompanyProfileProvider>
-                  <CompanyProtectRoute>
-                    <CompanyDashboardProfile />
-                  </CompanyProtectRoute>
-                </CompanyProfileProvider>
+                <CompanyProtectRoute>
+                  <CompanyDashboardProfile />
+                </CompanyProtectRoute>
               }
             />
             <Route

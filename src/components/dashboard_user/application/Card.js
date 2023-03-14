@@ -1,4 +1,5 @@
 import { useUserJobApplicationContext } from "context";
+import moment from "moment";
 
 export const Card = () => {
   const { state } = useUserJobApplicationContext();
@@ -27,9 +28,43 @@ export const Card = () => {
                   scope="row"
                   className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  {data.Job.name}
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={data.Job.Company.photo}
+                      className="w-16 border-[1px] rounded-sm p-2"
+                    />
+                    <div className="mb-3">
+                      <p className="text-lg font-semibold">{data.Job.name}</p>
+                      <p className="text-sm font-normal">
+                        {data.Job.Company.name}
+                      </p>
+                      <p className="text-xs font-normal mt-1">
+                        {moment(data.createdAt).format("MM/DD/YYYY")}
+                      </p>
+                    </div>
+                  </div>
                 </th>
-                <td className="px-6 py-4 text-center">{data.status}</td>
+                <td className="px-6 py-4 text-center">
+                  {data.status === "rejected" ? (
+                    <div className="flex flex-col gap-1 items-center justify-center">
+                      <p className="w-fit bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+                        {data.status}
+                      </p>
+                      <p className="text-xs">
+                        {moment(data.updatedAt).format("MM/DD/YYYY")}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-1 items-center justify-center text-center">
+                      <span className="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                        {data.status}
+                      </span>
+                      <p className="text-xs text-center">
+                        {moment(data.updatedAt).format("MM/DD/YYYY")}
+                      </p>
+                    </div>
+                  )}
+                </td>
               </tr>
             );
           })}

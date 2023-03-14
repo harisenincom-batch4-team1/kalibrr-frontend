@@ -66,6 +66,12 @@ export const UserProfileProvider = ({ children }) => {
               tag: "editing",
             };
           }
+          case "FETCHING": {
+            return {
+              ...state,
+              tag: "fetching",
+            };
+          }
           default: {
             return state;
           }

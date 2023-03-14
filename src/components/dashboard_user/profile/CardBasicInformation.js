@@ -1,9 +1,16 @@
 import { useUserProfileContext } from "context";
 import { Button } from "flowbite-react";
 import { Spinner } from "components";
+import { userPhotoApi, userPutPhotoApi } from "api";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 export const CardBasicInformation = () => {
   const { state, dispatch } = useUserProfileContext();
+  const [photo, setPhoto] = useState(null);
+  const [submit, setSubmit] = useState(false);
 
   const handleEdit = () => {
     state.nameInput = state.datas.name;
@@ -20,10 +27,38 @@ export const CardBasicInformation = () => {
     }
   };
 
+  const handlePhotoChange = (e) => {
+    setPhoto(e.target.files[0]);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: "SUBMIT" });
   };
+
+  useEffect(() => {
+    if (submit) {
+      let formData = new FormData();
+      formData.append("photo", photo);
+      axios
+        .put(userPutPhotoApi, formData, {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: "Bearer " + Cookies.get("kalibrr"),
+          },
+        })
+        .then(() => {
+          dispatch({ type: "FETCHING" });
+          toast.success("Berhasil mengubah foto profil");
+        })
+        .catch((err) => {
+          if (err?.response?.data?.error) {
+            return toast.error(err?.response?.data?.error);
+          }
+          return toast.error(err?.message);
+        });
+    }
+  }, [submit]);
 
   return (
     <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-gray-200 border relative">
@@ -39,15 +74,28 @@ export const CardBasicInformation = () => {
       <div className="bg-white py-3 px-4 md:flex md:flex-col gap-5">
         <div className="rounded-full w-16 h-16 md:w-24 md:h-24 overflow-hidden sm:ml-6 mt-2">
           <img
-            src={state.datas.photo}
-            className="rounded-full w-full"
+            src={userPhotoApi + state.datas.photo}
+            className="rounded-full w-full h-full object-cover"
             alt="profile"
           />
         </div>
+        {photo ? (
+          <Button onClick={() => setSubmit(true)} className="w-fit ml-8">
+            Ganti foto
+          </Button>
+        ) : (
+          <input
+            onChange={handlePhotoChange}
+            type="file"
+            className="-mt-5 bg-gray-400 rounded-full w-28 h-fit absolute left-36 top-36"
+            placeholder="Ganti foto"
+            name="Ganti foto"
+          />
+        )}
         {state.tag === "editing" || state.tag === "submitting" ? (
           <form
             onSubmit={handleSubmit}
-            className="max-w-full flex flex-wrap justify-between gap-y-2 mt-5"
+            className="max-w-full flex flex-wrap justify-between gap-y-2 mt-5 relative"
           >
             <div className="w-full sm:w-[49%]">
               <label
@@ -57,6 +105,7 @@ export const CardBasicInformation = () => {
                 Nama
               </label>
               <input
+                required
                 value={state.nameInput}
                 onChange={(e) =>
                   dispatch({ type: "CHANGE_NAME", payload: e.target.value })
@@ -78,6 +127,7 @@ export const CardBasicInformation = () => {
                 Email
               </label>
               <input
+                required
                 value={state.emailInput}
                 onChange={(e) =>
                   dispatch({
@@ -104,6 +154,7 @@ export const CardBasicInformation = () => {
                 Lokasi
               </label>
               <input
+                required
                 value={state.locationInput}
                 onChange={(e) =>
                   dispatch({
@@ -128,6 +179,7 @@ export const CardBasicInformation = () => {
                 Telepon
               </label>
               <input
+                required
                 value={state.phoneInput}
                 onChange={(e) =>
                   dispatch({
@@ -152,6 +204,7 @@ export const CardBasicInformation = () => {
                 Gelar
               </label>
               <input
+                required
                 value={state.roleInput}
                 onChange={(e) =>
                   dispatch({ type: "CHANGE_ROLE", payload: e.target.value })
@@ -173,6 +226,7 @@ export const CardBasicInformation = () => {
                 Keahlian
               </label>
               <input
+                required
                 value={state.skillInput}
                 onChange={(e) =>
                   dispatch({

@@ -12,6 +12,7 @@ import {
   FaBuilding,
 } from "react-icons/fa";
 import Cookies from "js-cookie";
+import { companyPhotoApi, userPhotoApi } from "api";
 
 export const NavbarDropdown = () => {
   const { state, dispatch } = useGlobalContext();
@@ -23,15 +24,25 @@ export const NavbarDropdown = () => {
   };
 
   return (
-    <Dropdown icon={FaPaperPlane} label={state.datas.name}>
+    <Dropdown
+      icon={FaPaperPlane}
+      label={state.datas.name || state?.datas[0]?.name}
+    >
       <Dropdown.Header>
-        <img
-          src={state.datas.photo}
+        {/* <img
+          src={
+            (userPhotoApi + state.datas.photo ?? state.datas.photo) ||
+            (companyPhotoApi + state?.datas[0]?.photo ?? state?.datas[0]?.photo)
+          }
           alt="profile"
-          className="w-10 h-10 mx-auto mb-5 object-contain"
-        />
-        <span className="block text-sm">{state.datas.name}</span>
-        <span className="block text-sm font-medium">{state.datas.email}</span>
+          className="w-10 h-10 mx-auto mb-5 object-fit rounded-full"
+        /> */}
+        <span className="block text-sm">
+          {state.datas.name || state?.datas[0]?.name}
+        </span>
+        <span className="block text-sm font-medium">
+          {state.datas.email || state?.datas[0]?.email}
+        </span>
       </Dropdown.Header>
       <Link to="/job">
         <Dropdown.Item

@@ -7,6 +7,7 @@ export const CompanyJobProvider = ({ children }) => {
     tag: "idle",
     id: 0,
     datas: [],
+    editDatas: {},
     nameInput: "",
     descriptionInput: "",
     qualificationInput: "",
@@ -85,7 +86,6 @@ export const CompanyJobProvider = ({ children }) => {
             return {
               ...state,
               tag: "loaded",
-              savedJobList: action.payload,
               errorMsg: "",
             };
           }
@@ -93,7 +93,6 @@ export const CompanyJobProvider = ({ children }) => {
             return {
               ...state,
               tag: "error",
-              savedJobList: [],
               errorMsg: action.payload,
             };
           }
@@ -145,6 +144,15 @@ export const CompanyJobProvider = ({ children }) => {
             return {
               ...state,
               tag: "submitting",
+            };
+          }
+          case "EDIT": {
+            return {
+              ...state,
+              tag: "edit",
+              editDatas: action.payload,
+              descriptionInput: action.payload.jobDescription,
+              qualificationInput: action.payload.jobQualification
             };
           }
           case "ADD": {
@@ -268,6 +276,18 @@ export const CompanyJobProvider = ({ children }) => {
             return {
               ...state,
               tag: "loaded",
+            };
+          }
+          case "CHANGE_DESCRIPTION": {
+            return {
+              ...state,
+              descriptionInput: action.payload,
+            };
+          }
+          case "CHANGE_QUALIFICATION": {
+            return {
+              ...state,
+              qualificationInput: action.payload,
             };
           }
           default: {

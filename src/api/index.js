@@ -15,6 +15,9 @@ export const userJobApplicationApi = process.env.REACT_APP_USER_JOB_APPLICATION;
 export const userEmailApi = process.env.REACT_APP_USER_EMAIL;
 export const userPasswordApi = process.env.REACT_APP_USER_PASSWORD;
 export const userDeleteApi = process.env.REACT_APP_USER_DELETE;
+export const userPhotoApi = process.env.REACT_APP_USER_PHOTO;
+export const userPutPhotoApi = process.env.REACT_APP_USER_PHOTO_PUT;
+export const userGetResumeApi = process.env.REACT_APP_USER_GET_RESUME;
 
 export const companyProfileApi = process.env.REACT_APP_COMPANY_PROFILE;
 export const companyJobApi = process.env.REACT_APP_COMPANY_JOB;
@@ -22,3 +25,5 @@ export const companyUserApplyApi = process.env.REACT_APP_COMPANY_USER_APPLY;
 export const companyEmailApi = process.env.REACT_APP_COMPANY_EMAIL;
 export const companyPasswordApi = process.env.REACT_APP_COMPANY_PASSWORD;
 export const companyDeleteApi = process.env.REACT_APP_COMPANY_DELETE;
+export const companyPhotoApi = process.env.REACT_APP_COMPANY_PHOTO;
+export const companyStaticPhotoApi = process.env.REACT_APP_COMPANY_STATIC_PHOTO;

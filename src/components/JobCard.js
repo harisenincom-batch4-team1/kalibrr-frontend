@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useJobListContext } from "context";
 import rupiahFormat from "rupiah-format";
 import moment from "moment";
+import { companyPhotoApi, companyStaticPhotoApi } from "api";
 
 export const JobCard = () => {
   const navigate = useNavigate();
@@ -48,7 +49,9 @@ export const JobCard = () => {
           </div>
           <div className="mt-4 md:mt-7 flex items-center gap-3">
             <img
-              src={data.Company.photo}
+              src={
+                companyStaticPhotoApi + data.Company.photo || data.Company.photo
+              }
               className="w-10 h-10 object-contain p-1 bg-white rounded-sm border"
             />
             <div className="">
@@ -64,4 +67,3 @@ export const JobCard = () => {
     });
   }
 };
-

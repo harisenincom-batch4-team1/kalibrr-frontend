@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { userJobApplicationApi } from "api";
+import { applyJobApi, userJobApplicationApi } from "api";
 import { DashboardLayoutUser } from "layouts";
 import { useUserJobApplicationContext } from "context";
 import { HeaderTitle, Card } from "components/dashboard_user";
@@ -17,19 +17,21 @@ export const UserDashboardApplication = () => {
         dispatch({ type: "FETCH" });
         break;
       case "fetching":
-        axios(userJobApplicationApi, {
+        axios(applyJobApi, {
           headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
         })
           .then((res) => {
+            console.log(res.data.datas);
             if (res.data.datas.length === 0) {
               dispatch({ type: "FETCH_EMPTY" });
             } else {
               dispatch({ type: "FETCH_SUCCESS", payload: res.data.datas });
             }
           })
-          .catch((err) =>
-            dispatch({ type: "FETCH_ERROR", payload: err?.message })
-          );
+          .catch((err) => {
+            console.log(err?.message);
+            dispatch({ type: "FETCH_ERROR", payload: err?.message });
+          });
         break;
       default:
         break;

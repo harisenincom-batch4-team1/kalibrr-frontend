@@ -85,8 +85,17 @@ export const CardResume = () => {
         Resume
       </h1>
       <form className="py-2 px-3 font-normal text-sm pt-4 md:px-12">
+        {datas && (
+          <a
+            className="mb-3"
+            href={"http://localhost:9000/static/uploads/users/" + datas}
+            target="_blank"
+          >
+            <Button>Lihat Resume</Button>
+          </a>
+        )}
         <label
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 mt-3 text-sm font-medium text-gray-900 dark:text-white"
           htmlFor="small_size"
         >
           Unggah Resume
@@ -97,8 +106,7 @@ export const CardResume = () => {
           id="small_size"
           type="file"
         />
-        {datas && <div>{datas}</div>}
-        <Button onClick={handleSubmit}>Kirim Resume</Button>
+        {resume && <Button onClick={handleSubmit}>Kirim Resume</Button>}
       </form>
     </div>
   );

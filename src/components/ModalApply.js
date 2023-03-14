@@ -7,13 +7,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export const ModalDelete = ({ userId, jobId, detailJob }) => {
+export const ModalApply = ({ userId, jobId, detailJob }) => {
   const { state, dispatch } = useGlobalContext();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-
-  console.log("status", state.isLoginCompany);
-  console.log("detail", detailJob);
 
   const onClick = () => {
     setShow(true);
@@ -23,6 +20,13 @@ export const ModalDelete = ({ userId, jobId, detailJob }) => {
   };
 
   const handleSubmit = () => {
+    if (state.isLogin === false) {
+      return navigate("/user/login");
+    }
+    console.log(state.datas);
+    if (!state.datas.resume) {
+      return toast.error("Harap unggah resume anda");
+    }
     axios
       .post(
         applyJobApi,

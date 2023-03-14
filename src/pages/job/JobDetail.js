@@ -5,13 +5,13 @@ import { useGlobalContext } from "context";
 import { PublicLayout } from "layouts";
 import { Button } from "flowbite-react";
 import { Helmet } from "react-helmet";
-import { applyJobApi, jobsApi } from "api";
+import { applyJobApi, companyStaticPhotoApi, jobsApi } from "api";
 import axios from "axios";
 import moment from "moment";
 import rupiahFormat from "rupiah-format";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-import { ModalDelete } from "components/ModalDelete";
+import { ModalApply } from "components/ModalApply";
 
 export const JobDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,15 +22,6 @@ export const JobDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { state, dispatch } = useGlobalContext();
-
-  const handleApply = () => {
-    if (state.isLogin === false) {
-      return navigate("/user/login");
-    }
-    if (!state.datas.id) {
-      return toast.error("Harap unggah resume anda");
-    }
-  };
 
   const truncate = (text, number) => {
     if (text.length > number) {
@@ -74,7 +65,7 @@ export const JobDetail = () => {
       <div className="pt-24 max-w-[800px] mx-auto">
         {detailJob !== null && (
           <div className="px-5 relative">
-            <ModalDelete
+            <ModalApply
               userId={state.datas.id}
               jobId={id}
               detailJob={detailJob.status}
@@ -100,7 +91,10 @@ export const JobDetail = () => {
             </span>
             <div className="flex items-center gap-5 w-fit">
               <img
-                src={detailJob.Company.photo}
+                src={
+                  companyStaticPhotoApi + detailJob.Company.photo ||
+                  detailJob.Company.photo
+                }
                 alt=""
                 className="w-28 h-28 object-contain border p-5 rounded-md bg-white"
               />

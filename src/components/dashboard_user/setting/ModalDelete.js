@@ -27,6 +27,7 @@ export const ModalDelete = () => {
       .then(() => {
         Cookies.remove("kalibrr");
         dispatch({ type: "DELETE" });
+        toast.success("Berhasil hapus akun perusahaan");
         navigate("/");
       })
       .catch((err) => toast.error(err?.message));

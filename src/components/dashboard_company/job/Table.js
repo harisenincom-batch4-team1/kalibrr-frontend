@@ -1,10 +1,61 @@
 import { useCompanyJobContext } from "context";
-import { Button, Modal } from "flowbite-react";
+import { Button, Label, Modal, Radio } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi2";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import moment from "moment";
+import { Spinner } from "components/Spinner";
+import { DefaultEditor } from "react-simple-wysiwyg";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import { companyJobApi } from "api";
 
 export const Table = () => {
   const { state, dispatch } = useCompanyJobContext();
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    dispatch({ type: "EDIT" });
+    setTimeout(() => {
+      axios
+        .put(
+          companyJobApi,
+          {
+            name: data.name,
+            type: data.type,
+            tenure: data.tenure,
+            salaryMin: data.salaryMin,
+            salaryMax: data.salaryMax,
+            jobDescription: state.descriptionInput,
+            jobQualification: state.qualificationInput,
+            status: data.status,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + Cookies.get("kalibrr-company"),
+            },
+          }
+        )
+        .then(() => {
+          navigate("/company/dashboard/profile");
+          setTimeout(() => {
+            navigate("/company/dashboard/job");
+          }, 1);
+          toast.success("Berhasil memperbarui lowongan pekerjaan");
+          dispatch({ type: "EDIT_SUCCESS" });
+        })
+        .catch((err) => {
+          toast.error(err?.message);
+          dispatch({ type: "EDIT_ERROR", payload: err?.message });
+        });
+    }, 500);
+  };
 
   return (
     <>
@@ -107,7 +158,12 @@ export const Table = () => {
                       {moment(data.updatedAt).format("YYYY/MM/DD")}
                     </td>
                     <div className="space-x-2 mt-4 flex justify-center mx-auto px-2">
-                      <button className="bg-yellow-400 text-white py-1 px-3 rounded-md text-xs">
+                      <button
+                        onClick={() =>
+                          dispatch({ type: "EDIT", payload: data })
+                        }
+                        className="bg-yellow-400 text-white py-1 px-3 rounded-md text-xs"
+                      >
                         Edit
                       </button>
                       <button

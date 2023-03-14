@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useCompanyJobContext } from "context";
 import { Spinner, Tabs } from "flowbite-react";
 import { DashboardLayoutCompany } from "layouts";
-import { Form, Table } from "components/dashboard_company";
+import { Form, Table, FormEdit } from "components/dashboard_company";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -102,6 +102,7 @@ export const CompanyDashboardJob = () => {
             </div>
           )}
           {state.tag === "loaded" || state.tag === "delete" ? <Table /> : <></>}
+          {state.tag === "edit" ? <FormEdit /> : <></>}
         </Tabs.Item>
         <Tabs.Item title="Tambah">
           {state.tag === "fetching" && (
