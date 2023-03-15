@@ -1,18 +1,15 @@
 import { Button } from "flowbite-react";
 import { Spinner } from "components";
-import {
-  companyProfileApi,
-  companyStaticPhotoApi,
-  userPhotoApi,
-  userPutPhotoApi,
-} from "api";
+import { companyProfileApi, companyStaticPhotoApi } from "api";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { AiFillEdit } from "react-icons/ai";
 
 export const CardBasicInformationCompany = () => {
   const [tag, setTag] = useState("idle");
+  const [image, setImagePreview] = useState(null);
   const [photo, setPhoto] = useState(null);
   const [datas, setDatas] = useState({});
   const [name, setName] = useState("");
@@ -29,7 +26,12 @@ export const CardBasicInformationCompany = () => {
       setTag("edit");
       return;
     }
-    return setTag("loaded");
+    if (tag === "edit") {
+      setImagePreview(null);
+      setPhoto(null);
+      setTag("loaded");
+      return;
+    }
   };
 
   const handleSubmit = (e) => {
@@ -38,8 +40,8 @@ export const CardBasicInformationCompany = () => {
   };
 
   const handlePhotoChange = (e) => {
-    console.log(e.target.files[0]);
     setPhoto(e.target.files[0]);
+    setImagePreview(URL.createObjectURL(e.target.files[0]));
   };
 
   useEffect(() => {
@@ -113,25 +115,36 @@ export const CardBasicInformationCompany = () => {
         onClick={handleEdit}
         className="absolute right-0 top-0 py-3 px-4 text-white font-medium text-sm md:text-base"
       >
-        Edit
+        {tag === "loaded" ? "Edit" : "Batal"}
       </button>
       <div className="bg-white py-3 px-4 md:flex md:flex-col gap-5">
-        <div className="rounded-full w-16 h-16 md:w-24 md:h-24 overflow-hidden sm:ml-6 mt-2">
-          <img
-            src={companyStaticPhotoApi + datas.photo || datas.photo}
-            className="rounded-full w-full h-full object-cover"
-            alt="profile"
-          />
+        <div className="w-16 h-16 md:w-24 md:h-24 overflow-hidden sm:ml-6 mt-2">
+          {image ? (
+            <img
+              src={image}
+              className="rounded-full w-full h-full object-cover"
+              alt="profile"
+            />
+          ) : (
+            <img
+              src={
+                datas.photo ? datas.photo : companyStaticPhotoApi + datas.photo
+              }
+              className=" w-full h-full object-contain"
+              alt="profile"
+            />
+          )}
         </div>
         {tag === "edit" || tag === "submitting" ? (
           <>
             <input
               onChange={handlePhotoChange}
               type="file"
-              className="-mt-5 bg-gray-400 rounded-full w-28 h-fit absolute left-36 top-36"
+              className="-mt-5 bg-gray-400 rounded-full w-10 h-fit absolute left-12 opacity-0 z-10 top-28 sm:left-16 sm:top-28 md:left-24 md:top-36"
               placeholder="Ganti foto"
               name="Ganti foto"
             />
+            <AiFillEdit className=" bg-gray-200 cursor-pointer -mt-5 rounded-full w-6 p-1 h-fit absolute left-14 top-32 sm:left-20 sm:top-32 md:left-28 md:top-40" />
             <form
               onSubmit={handleSubmit}
               className="max-w-full flex flex-wrap justify-between gap-y-2 mt-5 relative"

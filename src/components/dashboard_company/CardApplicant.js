@@ -1,4 +1,9 @@
-import { companyUserApplyApi, userGetResumeApi, userPhotoApi, userResumeApi } from "api";
+import {
+  companyUserApplyApi,
+  userGetResumeApi,
+  userPhotoApi,
+  userResumeApi,
+} from "api";
 import axios from "axios";
 import { Button, Dropdown } from "flowbite-react";
 import Cookies from "js-cookie";
@@ -79,7 +84,11 @@ export const CardApplicant = () => {
           <div className="bg-white hover:shadow-md cursor-pointer flex flex-col md:flex-row items-center w-full justify-between rounded-md p-5 gap-3">
             <div className="flex items-center gap-2">
               <img
-                src={userPhotoApi + data.JobApplications[i].User.photo}
+                src={
+                  data.JobApplications[i].User.photo
+                    ? data.JobApplications[i].User.photo
+                    : userPhotoApi + data.JobApplications[i].User.photo
+                }
                 className="w-12 h-12 mb-10"
               />
               <div>

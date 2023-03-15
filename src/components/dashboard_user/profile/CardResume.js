@@ -1,14 +1,9 @@
-import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
-import { userJobApplicationApi, userProfileApi, userResumeApi } from "api";
-import { DashboardLayoutUser } from "layouts";
-import { useUserProfileContext } from "context";
-import { HeaderTitle, Card } from "components/dashboard_user";
-import { Spinner } from "components";
-import Cookies from "js-cookie";
+import { userResumeApi } from "api";
 import axios from "axios";
-import { toast } from "react-toastify";
 import { Button } from "flowbite-react";
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export const CardResume = () => {
   const [status, setStatus] = useState("idle");

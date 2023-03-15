@@ -1,24 +1,13 @@
+import { userPhotoApi } from "api";
 import { useUserProfileContext } from "context";
 import { Button } from "flowbite-react";
 import { Spinner } from "components";
-import { userPhotoApi, userPutPhotoApi } from "api";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { toast } from "react-toastify";
+import { AiFillEdit } from "react-icons/ai";
 
 export const CardBasicInformation = () => {
   const { state, dispatch } = useUserProfileContext();
-  const [photo, setPhoto] = useState(null);
-  const [submit, setSubmit] = useState(false);
 
   const handleEdit = () => {
-    state.nameInput = state.datas.name;
-    state.emailInput = state.datas.email;
-    state.phoneInput = state.datas.phone;
-    state.roleInput = state.datas.role;
-    state.locationInput = state.datas.location;
-    state.skillInput = state.datas.skill;
     if (state.tag === "loaded") {
       dispatch({ type: "EDIT" });
     }
@@ -28,37 +17,13 @@ export const CardBasicInformation = () => {
   };
 
   const handlePhotoChange = (e) => {
-    setPhoto(e.target.files[0]);
+    dispatch({ type: "CHANGE_PHOTO", payload: e.target.files[0] });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: "SUBMIT" });
   };
-
-  useEffect(() => {
-    if (submit) {
-      let formData = new FormData();
-      formData.append("photo", photo);
-      axios
-        .put(userPutPhotoApi, formData, {
-          headers: {
-            "content-type": "multipart/form-data",
-            Authorization: "Bearer " + Cookies.get("kalibrr"),
-          },
-        })
-        .then(() => {
-          dispatch({ type: "FETCHING" });
-          toast.success("Berhasil mengubah foto profil");
-        })
-        .catch((err) => {
-          if (err?.response?.data?.error) {
-            return toast.error(err?.response?.data?.error);
-          }
-          return toast.error(err?.message);
-        });
-    }
-  }, [submit]);
 
   return (
     <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-gray-200 border relative">
@@ -73,186 +38,215 @@ export const CardBasicInformation = () => {
       </button>
       <div className="bg-white py-3 px-4 md:flex md:flex-col gap-5">
         <div className="rounded-full w-16 h-16 md:w-24 md:h-24 overflow-hidden sm:ml-6 mt-2">
-          <img
-            src={userPhotoApi + state.datas.photo}
-            className="rounded-full w-full h-full object-cover"
-            alt="profile"
-          />
+          {state.photoPreview ? (
+            <img
+              src={state.photoPreview}
+              className="rounded-full w-full h-full object-cover"
+              alt="profile"
+            />
+          ) : (
+            <img
+              src={state.datas.photo || userPhotoApi + state.datas.photo}
+              className="rounded-full w-full h-full object-cover"
+              alt="profile"
+            />
+          )}
         </div>
-        {photo ? (
-          <Button onClick={() => setSubmit(true)} className="w-fit ml-8">
-            Ganti foto
-          </Button>
-        ) : (
-          <input
-            onChange={handlePhotoChange}
-            type="file"
-            className="-mt-5 bg-gray-400 rounded-full w-28 h-fit absolute left-36 top-36"
-            placeholder="Ganti foto"
-            name="Ganti foto"
-          />
-        )}
-        {state.tag === "editing" || state.tag === "submitting" ? (
-          <form
-            onSubmit={handleSubmit}
-            className="max-w-full flex flex-wrap justify-between gap-y-2 mt-5 relative"
-          >
-            <div className="w-full sm:w-[49%]">
-              <label
-                htmlFor="small-input"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Nama
-              </label>
-              <input
-                required
-                value={state.nameInput}
-                onChange={(e) =>
-                  dispatch({ type: "CHANGE_NAME", payload: e.target.value })
-                }
-                placeholder={
-                  !state.datas.name ? "Budi Setiawan" : state.datas.name
-                }
-                type="text"
-                id="small-input"
-                autoComplete="off"
-                className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
-            <div className="w-full sm:w-[49%]">
-              <label
-                htmlFor="small-input"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Email
-              </label>
-              <input
-                required
-                value={state.emailInput}
-                onChange={(e) =>
-                  dispatch({
-                    type: "CHANGE_EMAIL",
-                    payload: e.target.value,
-                  })
-                }
-                placeholder={
-                  !state.datas.email
-                    ? "budisetiawan@gmail.com"
-                    : state.datas.email
-                }
-                type="text"
-                id="small-input"
-                autoComplete="off"
-                className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
-            <div className="w-full sm:w-[49%]">
-              <label
-                htmlFor="small-input"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Lokasi
-              </label>
-              <input
-                required
-                value={state.locationInput}
-                onChange={(e) =>
-                  dispatch({
-                    type: "CHANGE_LOCATION",
-                    payload: e.target.value,
-                  })
-                }
-                placeholder={
-                  !state.datas.location ? "Surabaya" : state.datas.location
-                }
-                type="text"
-                id="small-input"
-                autoComplete="off"
-                className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
-            <div className="w-full sm:w-[49%]">
-              <label
-                htmlFor="small-input"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Telepon
-              </label>
-              <input
-                required
-                value={state.phoneInput}
-                onChange={(e) =>
-                  dispatch({
-                    type: "CHANGE_PHONE",
-                    payload: e.target.value,
-                  })
-                }
-                placeholder={
-                  !state.datas.phone ? "0823XXXXXXX" : state.datas.phone
-                }
-                type="number"
-                id="small-input"
-                autoComplete="off"
-                className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
-            <div className="w-full sm:w-[49%]">
-              <label
-                htmlFor="small-input"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Gelar
-              </label>
-              <input
-                required
-                value={state.roleInput}
-                onChange={(e) =>
-                  dispatch({ type: "CHANGE_ROLE", payload: e.target.value })
-                }
-                placeholder={
-                  !state.datas.role ? "Frontend Engineer" : state.datas.role
-                }
-                type="text"
-                id="small-input"
-                autoComplete="off"
-                className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
-            <div className="w-full sm:w-[49%]">
-              <label
-                htmlFor="small-input"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Keahlian
-              </label>
-              <input
-                required
-                value={state.skillInput}
-                onChange={(e) =>
-                  dispatch({
-                    type: "CHANGE_SKILL",
-                    payload: e.target.value,
-                  })
-                }
-                placeholder={
-                  !state.datas.skill
-                    ? "React, TypeScript, etc"
-                    : state.datas.skill
-                }
-                type="text"
-                id="small-input"
-                autoComplete="off"
-                className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
-            <Button
-              type="submit"
-              className="ml-auto mt-2 w-full md:w-24 h-10"
-              disabled={state.tag === "submitting"}
+
+        {state.tag === "editing" ||
+        state.tag === "submitting" ||
+        state.tag === "submitting_photo" ? (
+          <>
+            {state.photo ? (
+              <>
+                <input
+                  onChange={handlePhotoChange}
+                  type="file"
+                  className="-mt-5 bg-gray-400 rounded-full w-10 h-fit absolute left-12 opacity-0 z-10 top-28 sm:left-16 sm:top-28 md:left-24 md:top-36"
+                  placeholder="Ganti foto"
+                  name="Ganti foto"
+                />
+                <AiFillEdit className=" bg-gray-200 cursor-pointer -mt-5 rounded-full w-6 p-1 h-fit absolute left-14 top-32 sm:left-20 sm:top-32 md:left-28 md:top-40" />
+                <Button
+                  onClick={() => dispatch({ type: "SUBMIT_PHOTO" })}
+                  className="w-fit ml-8"
+                >
+                  Ganti foto
+                </Button>
+              </>
+            ) : (
+              <>
+                <input
+                  onChange={handlePhotoChange}
+                  type="file"
+                  className="-mt-5 bg-gray-400 rounded-full w-10 h-fit absolute left-12 opacity-0 z-10 top-28 sm:left-16 sm:top-28 md:left-24 md:top-36"
+                  placeholder="Ganti foto"
+                  name="Ganti foto"
+                />
+                <AiFillEdit className=" bg-gray-200 cursor-pointer -mt-5 rounded-full w-6 p-1 h-fit absolute left-14 top-32 sm:left-20 sm:top-32 md:left-28 md:top-40" />
+              </>
+            )}
+            <form
+              onSubmit={handleSubmit}
+              className="max-w-full flex flex-wrap justify-between gap-y-2 mt-5 relative"
             >
-              {state.tag === "submitting" ? <Spinner /> : "Simpan"}
-            </Button>
-          </form>
+              <div className="w-full sm:w-[49%]">
+                <label
+                  htmlFor="small-input"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Nama
+                </label>
+                <input
+                  required
+                  value={state.nameInput}
+                  onChange={(e) =>
+                    dispatch({ type: "CHANGE_NAME", payload: e.target.value })
+                  }
+                  placeholder={
+                    !state.datas.name ? "Budi Setiawan" : state.datas.name
+                  }
+                  type="text"
+                  id="small-input"
+                  autoComplete="off"
+                  className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <div className="w-full sm:w-[49%]">
+                <label
+                  htmlFor="small-input"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Email
+                </label>
+                <input
+                  required
+                  value={state.emailInput}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "CHANGE_EMAIL",
+                      payload: e.target.value,
+                    })
+                  }
+                  placeholder={
+                    !state.datas.email
+                      ? "budisetiawan@gmail.com"
+                      : state.datas.email
+                  }
+                  type="text"
+                  id="small-input"
+                  autoComplete="off"
+                  className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <div className="w-full sm:w-[49%]">
+                <label
+                  htmlFor="small-input"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Lokasi
+                </label>
+                <input
+                  required
+                  value={state.locationInput}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "CHANGE_LOCATION",
+                      payload: e.target.value,
+                    })
+                  }
+                  placeholder={
+                    !state.datas.location ? "Surabaya" : state.datas.location
+                  }
+                  type="text"
+                  id="small-input"
+                  autoComplete="off"
+                  className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <div className="w-full sm:w-[49%]">
+                <label
+                  htmlFor="small-input"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Telepon
+                </label>
+                <input
+                  required
+                  value={state.phoneInput}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "CHANGE_PHONE",
+                      payload: e.target.value,
+                    })
+                  }
+                  placeholder={
+                    !state.datas.phone ? "0823XXXXXXX" : state.datas.phone
+                  }
+                  type="number"
+                  id="small-input"
+                  autoComplete="off"
+                  className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <div className="w-full sm:w-[49%]">
+                <label
+                  htmlFor="small-input"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Gelar
+                </label>
+                <input
+                  required
+                  value={state.roleInput}
+                  onChange={(e) =>
+                    dispatch({ type: "CHANGE_ROLE", payload: e.target.value })
+                  }
+                  placeholder={
+                    !state.datas.role ? "Frontend Engineer" : state.datas.role
+                  }
+                  type="text"
+                  id="small-input"
+                  autoComplete="off"
+                  className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <div className="w-full sm:w-[49%]">
+                <label
+                  htmlFor="small-input"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Keahlian
+                </label>
+                <input
+                  required
+                  value={state.skillInput}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "CHANGE_SKILL",
+                      payload: e.target.value,
+                    })
+                  }
+                  placeholder={
+                    !state.datas.skill
+                      ? "React, TypeScript, etc"
+                      : state.datas.skill
+                  }
+                  type="text"
+                  id="small-input"
+                  autoComplete="off"
+                  className="block w-full h-8 md:h-10 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <Button
+                type="submit"
+                className="ml-auto mt-2 w-full md:w-24 h-10"
+                disabled={state.tag === "submitting"}
+              >
+                {state.tag === "submitting" ? <Spinner /> : "Simpan"}
+              </Button>
+            </form>
+          </>
         ) : (
           <></>
         )}

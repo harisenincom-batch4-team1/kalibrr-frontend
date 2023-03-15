@@ -12,6 +12,8 @@ export const UserProfileProvider = ({ children }) => {
     roleInput: "",
     skillInput: "",
     phoneInput: "",
+    photo: null,
+    photoPreview: null,
     errorMessage: "",
   };
 
@@ -64,6 +66,12 @@ export const UserProfileProvider = ({ children }) => {
             return {
               ...state,
               tag: "editing",
+              nameInput: state.datas.name,
+              emailInput: state.datas.email,
+              locationInput: state.datas.location,
+              roleInput: state.datas.role,
+              skillInput: state.datas.skill,
+              phoneInput: state.datas.phone,
             };
           }
           case "FETCHING": {
@@ -83,6 +91,15 @@ export const UserProfileProvider = ({ children }) => {
             return {
               ...state,
               tag: "loaded",
+              photo: null,
+              photoPreview: null,
+            };
+          }
+          case "CHANGE_PHOTO": {
+            return {
+              ...state,
+              photo: action.payload,
+              photoPreview: URL.createObjectURL(action.payload),
             };
           }
           case "CHANGE_NAME": {
@@ -133,6 +150,12 @@ export const UserProfileProvider = ({ children }) => {
               tag: "submitting",
             };
           }
+          case "SUBMIT_PHOTO": {
+            return {
+              ...state,
+              tag: "submitting_photo",
+            };
+          }
           default: {
             return state;
           }
@@ -150,6 +173,39 @@ export const UserProfileProvider = ({ children }) => {
             return {
               ...state,
               tag: "error",
+            };
+          }
+          default: {
+            return state;
+          }
+        }
+      }
+      case "submitting_photo": {
+        switch (action.type) {
+          case "FETCHING": {
+            return {
+              ...state,
+              tag: "fetching",
+            };
+          }
+          case "SUBMIT": {
+            return {
+              ...state,
+              tag: "submitting",
+            };
+          }
+          case "ERROR": {
+            return {
+              ...state,
+              tag: "editing",
+            };
+          }
+          case "CANCEL_EDIT": {
+            return {
+              ...state,
+              tag: "loaded",
+              photo: null,
+              photoPreview: null,
             };
           }
           default: {
@@ -183,10 +239,14 @@ export const UserProfileProvider = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  
+
   const value = { state, dispatch };
 
-  return <UserProfileContext.Provider value={value}>{children}</UserProfileContext.Provider>;
+  return (
+    <UserProfileContext.Provider value={value}>
+      {children}
+    </UserProfileContext.Provider>
+  );
 };
 
 export const useUserProfileContext = () => {
