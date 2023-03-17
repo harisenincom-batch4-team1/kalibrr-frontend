@@ -2,8 +2,8 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 export const GetHired = () => {
   return (
-    <div className="flex flex-col container mx-auto bg-[#f7f9fb] rounded-lg p-5">
-      <div className="max-w-[1200px] flex flex-col md:flex-row mx-auto">
+    <div className="flex flex-col container mx-auto bg-[#f7f9fb] rounded-lg pt-10 md:pt-16">
+      <div className="container flex flex-col md:flex-row mx-auto">
         <div className="bg-[#f7f9fb] w-full md:w-1/2">
           <div className="container">
             <h3 className="text-2xl text-center md:text-4xl md:text-left font-bold ">

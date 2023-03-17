@@ -1,8 +1,8 @@
 export const ExploreJobs = () => {
   return (
     <div className="mb-10">
-      <div className="container mx-auto mt-10 p-5 bg-[#f7f9fb] rounded-lg h-fit flex flex-col justify-center">
-        <div className="container mx-auto px-10 py-5">
+      <div className="container mx-auto mt-10 bg-[#f7f9fb] rounded-lg h-fit flex flex-col justify-center">
+        <div className="container mx-auto py-5">
           <h1 className="text-2xl text-center md:text-4xl  font-bold">
             Jelajahi pekerjaan populer.
           </h1>

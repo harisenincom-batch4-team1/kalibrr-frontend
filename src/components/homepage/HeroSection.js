@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 export const HeroSection = () => {
   return (
     <>
-      <div className="pt-24" />
+      <div className="pt-16 md:pt-24" />
       <div className="container mx-auto bg-[#f7f9fb] rounded-lg">
-        <div className="container flex flex-auto mx-auto rounded-md">
-          <div className="w-screen container flex flex-col md:w-1/2 mx-8 my-8 ">
-            <div className="container ">
-              <h1 className="text-3xl md:text-5xl font-extrabold w-full">
+        <div className="flex flex-auto mx-auto rounded-md">
+          <div className="lg:w-1/2 my-8">
+            <div className="">
+              <h1 className="text-3xl md:text-5xl font-extrabold">
                 Temukan pekerjaan impianmu bersama
                 <p className="text-3xl md:text-5xl text-[#0086ff] mt-4">
                   Kalibrr
@@ -20,7 +22,7 @@ export const HeroSection = () => {
               <form>
                 <div className="flex">
                   <button
-                    id="dropdown-button"
+                    id=""
                     data-dropdown-toggle="dropdown"
                     className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
                     type="button"
@@ -41,7 +43,7 @@ export const HeroSection = () => {
                     </svg>
                   </button>
                   <div
-                    id="dropdown"
+                    id=""
                     className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
                   >
                     <ul
@@ -74,7 +76,7 @@ export const HeroSection = () => {
                       </li>
                     </ul>
                   </div>
-                  <div className="relative w-full">
+                  <div className="relative w-full ">
                     <input
                       type="search"
                       id="search-dropdown"
@@ -117,7 +119,7 @@ export const HeroSection = () => {
               </div>
             </div>
           </div>
-          <div className="invisible lg:visible container flex items-center w-1/2 mx-8 my-8">
+          <div className="hidden lg:block container lg:w-1/2 my-8">
             <img
               src={"/assets/Hero.png"}
               alt=""
@@ -126,61 +128,61 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        <div className="container mx-auto mt-5 py-10 overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full">
+        <div className="container mx-auto py-5 overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full">
           <div className="flex flex-row gap-4">
             <div className="container mx-auto">
-              <a href="/">
+              <Link to="/">
                 <img
                   src={"/assets/BCAlogo.png"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
-              </a>
+              </Link>
             </div>
             <div className="container mx-auto">
-              <a href="/">
+              <Link to="/">
                 <img
                   src={"/assets/BNIlogo.png"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
-              </a>
+              </Link>
             </div>
             <div className="container mx-auto">
-              <a href="/">
+              <Link to="/">
                 <img
                   src={"/assets/TokopediaLogo.png"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
-              </a>
+              </Link>
             </div>
             <div className="container mx-auto">
-              <a href="/">
+              <Link to="/">
                 <img
                   src={"/assets/RuangguruLogo.png"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
-              </a>
+              </Link>
             </div>
             <div className="container mx-auto">
-              <a href="/">
+              <Link to="/">
                 <img
                   src={"/assets/ShopeeLogo.png"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
-              </a>
+              </Link>
             </div>
             <div className="container mx-auto">
-              <a href="/">
+              <Link to="/">
                 <img
                   src={"/assets/TravelokaLogo.webp"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

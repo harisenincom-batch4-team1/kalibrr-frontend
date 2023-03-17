@@ -11,56 +11,56 @@ import {
 export const JobCategory = () => {
   return (
     <div>
-      <div className="container mx-auto mt-10 bg-[#f7f9fb] rounded-lg h-fit flex flex-col justify-center">
-        <div className="container px-10 py-10 text-center mx-auto">
+      <div className="container mx-auto mt-16 md:mt-20 bg-[#f7f9fb] rounded-lg h-fit flex flex-col justify-center">
+        <div className="container text-center mx-auto mb-8">
           <h3 className="md:text-4xl text-2xl font-bold text-center">
             Jelajahi pekerjaan berdasarkan kategori
           </h3>
-          <p className="text-gray-600 text-md md:text-xl mt-4 mx-auto text-center">
+          <p className="text-gray-600 text-sm md:text-base lg:text-lg mt-4 mx-auto text-center">
             Dapatkan pekerjaan paling menarik dari seluruh dunia dan kembangkan
             karirmu dengan cepat bersama orang lain.
           </p>
         </div>
-        <div className="max-w-[1200px] flex flex-wrap px-5 w-fit mx-auto gap-10 justify-center pb-10">
-          <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
+        <div className="container md:max-w-[960px] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mx-auto pb-10">
+          <div className=" bg-white flex flex-col justify-between py-4 pl-4 min-w-1/2 sm:min-w-4/12 lg:min-w-3/12 h-32 rounded-lg hover:shadow transition cursor-pointer">
             <FaDesktop className="text-[#0086ff]" size={32} />
-            <p className="text-base font-bold mt-2">Digital Marketing</p>
-            <p className="text-gray-600 mt-2">34 Pekerjaan</p>
+            <p className="text-base font-bold mt-3">Digital Marketing</p>
+            <p className="text-gray-600 text-sm">34 Pekerjaan</p>
           </div>
-          <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
+          <div className=" bg-white flex flex-col justify-between py-4 pl-4 min-w-1/2 sm:min-w-4/12 lg:min-w-3/12 h-32 rounded-lg hover:shadow transition cursor-pointer">
             <FaCode className="text-[#0086ff]" size={32} />
             <p className="text-base font-bold mt-2">Developer</p>
-            <p className="text-gray-600 mt-2">134 Pekerjaan</p>
+            <p className="text-gray-600 text-sm">134 Pekerjaan</p>
           </div>
-          <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
+          <div className=" bg-white flex flex-col justify-between py-4 pl-4 min-w-1/2 sm:min-w-4/12 lg:min-w-3/12 h-32 rounded-lg hover:shadow transition cursor-pointer">
             <FaMoneyBillWave className="text-[#0086ff]" size={32} />
-            <p className="text-base font-bold mt-2">Account & Finance</p>
-            <p className="text-gray-600 mt-2">68 Pekerjaan</p>
+            <p className="text-base font-bold mt-2">Finance</p>
+            <p className="text-gray-600 text-sm">68 Pekerjaan</p>
           </div>
-          <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
+          <div className=" bg-white flex flex-col justify-between py-4 pl-4 min-w-1/2 sm:min-w-4/12 lg:min-w-3/12 h-32 rounded-lg hover:shadow transition cursor-pointer">
             <FaPencilRuler className="text-[#0086ff]" size={32} />
             <p className="text-base font-bold mt-2">Graphic Designer</p>
-            <p className="text-gray-600 mt-2">93 Pekerjaan</p>
+            <p className="text-gray-600 text-sm">93 Pekerjaan</p>
           </div>
-          <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
+          <div className=" bg-white flex flex-col justify-between py-4 pl-4 min-w-1/2 sm:min-w-4/12 lg:min-w-3/12 h-32 rounded-lg hover:shadow transition cursor-pointer">
             <HiOutlinePencilAlt className="text-[#0086ff]" size={32} />
             <p className="text-base font-bold mt-2">Content Writer</p>
-            <p className="text-gray-600 mt-2">56 Pekerjaan</p>
+            <p className="text-gray-600 text-sm">56 Pekerjaan</p>
           </div>
-          <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
+          <div className=" bg-white flex flex-col justify-between py-4 pl-4 min-w-1/2 sm:min-w-4/12 lg:min-w-3/12 h-32 rounded-lg hover:shadow transition cursor-pointer">
             <BsPeople className="text-[#0086ff]" size={32} />
             <p className="text-base font-bold mt-2">HR Management</p>
-            <p className="text-gray-600 mt-2">33 Pekerjaan</p>
+            <p className="text-gray-600 text-sm">33 Pekerjaan</p>
           </div>
-          <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
+          <div className=" bg-white flex flex-col justify-between py-4 pl-4 min-w-1/2 sm:min-w-4/12 lg:min-w-3/12 h-32 rounded-lg hover:shadow transition cursor-pointer">
             <BsShop className="text-[#0086ff]" size={32} />
             <p className="text-base font-bold mt-2">Sales</p>
-            <p className="text-gray-600 mt-2">61 Pekerjaan</p>
+            <p className="text-gray-600 text-sm">61 Pekerjaan</p>
           </div>
-          <div className="container bg-white py-4 pl-4 w-40 md:w-56 h-fit">
+          <div className=" bg-white flex flex-col justify-between py-4 pl-4 min-w-1/2 sm:min-w-4/12 lg:min-w-3/12 h-32 rounded-lg hover:shadow transition cursor-pointer">
             <CgStack className="text-[#0086ff]" size={32} />
             <p className="text-base font-bold mt-2">UI/UX Designer</p>
-            <p className="text-gray-600 mt-2">73 Pekerjaan</p>
+            <p className="text-gray-600 text-sm ">73 Pekerjaan</p>
           </div>
         </div>
       </div>
