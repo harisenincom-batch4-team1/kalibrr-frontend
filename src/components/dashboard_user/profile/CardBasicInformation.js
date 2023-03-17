@@ -11,7 +11,7 @@ export const CardBasicInformation = () => {
     if (state.tag === "loaded") {
       dispatch({ type: "EDIT" });
     }
-    if (state.tag === "editing") {
+    if (state.tag === "editing" || state.tag === "error") {
       dispatch({ type: "CANCEL_EDIT" });
     }
   };
@@ -34,7 +34,7 @@ export const CardBasicInformation = () => {
         onClick={handleEdit}
         className="absolute right-0 top-0 py-3 px-4 text-white font-medium text-sm md:text-base"
       >
-        {state.tag === "editing" ? "Batal" : "Edit"}
+        {state.tag === "editing" || state.tag === "error" ? "Batal" : "Edit"}
       </button>
       <div className="bg-white py-3 px-4 md:flex md:flex-col gap-5">
         <div className="rounded-full w-16 h-16 md:w-24 md:h-24 overflow-hidden sm:ml-6 mt-2">
@@ -46,7 +46,12 @@ export const CardBasicInformation = () => {
             />
           ) : (
             <img
-              src={state.datas.photo || userPhotoApi + state.datas.photo}
+              src={
+                state.datas.photo ===
+                "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+                  ? "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+                  : userPhotoApi + state.datas.photo
+              }
               className="rounded-full w-full h-full object-cover"
               alt="profile"
             />

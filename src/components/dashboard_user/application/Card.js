@@ -1,4 +1,4 @@
-import { companyPhotoApi } from "api";
+import { companyPhotoApi, companyStaticPhotoApi } from "api";
 import { useUserJobApplicationContext } from "context";
 import moment from "moment";
 
@@ -32,11 +32,12 @@ export const Card = () => {
                   <div className="flex items-center gap-2">
                     <img
                       src={
-                        data.Job.Company.photo
-                          ? data.Job.Company.photo
-                          : companyPhotoApi + data.Job.Company.photo
+                        data.Job.Company.photo ===
+                        "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+                          ? "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+                          : companyStaticPhotoApi + data.Job.Company.photo
                       }
-                      className="w-16 border-[1px] rounded-sm p-2"
+                      className="w-16 h-16 object-contain border-[1px] rounded-sm p-2"
                     />
                     <div className="mb-3">
                       <p className="text-lg font-semibold">{data.Job.name}</p>

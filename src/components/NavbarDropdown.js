@@ -31,8 +31,10 @@ export const NavbarDropdown = () => {
       <Dropdown.Header>
         {/* <img
           src={
-            (userPhotoApi + state.datas.photo ?? state.datas.photo) ||
-            (companyPhotoApi + state?.datas[0]?.photo ?? state?.datas[0]?.photo)
+            state.datas.photo ===
+            "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+              ? "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+              : userPhotoApi + state.datas.photo
           }
           alt="profile"
           className="w-10 h-10 mx-auto mb-5 object-fit rounded-full"

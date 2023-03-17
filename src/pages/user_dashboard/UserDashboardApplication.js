@@ -21,7 +21,6 @@ export const UserDashboardApplication = () => {
           headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
         })
           .then((res) => {
-            console.log(res.data.datas);
             if (res.data.datas.length === 0) {
               dispatch({ type: "FETCH_EMPTY" });
             } else {
@@ -29,7 +28,6 @@ export const UserDashboardApplication = () => {
             }
           })
           .catch((err) => {
-            console.log(err?.message);
             dispatch({ type: "FETCH_ERROR", payload: err?.message });
           });
         break;

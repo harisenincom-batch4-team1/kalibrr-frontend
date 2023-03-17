@@ -71,24 +71,18 @@ export const CardBasicInformationCompany = () => {
             break;
           case photo != null:
             let formData = new FormData();
+            formData.append("name", name);
+            formData.append("email", email);
+            formData.append("phone", phone);
+            formData.append("location", location);
             formData.append("photo", photo);
             axios
-              .put(
-                companyProfileApi,
-                {
-                  name: name,
-                  email: email,
-                  phone: phone,
-                  location: location,
-                  photo: formData,
+              .put(companyProfileApi, formData, {
+                headers: {
+                  "content-type": "multipart/form-data",
+                  Authorization: "Bearer " + Cookies.get("kalibrr-company"),
                 },
-                {
-                  headers: {
-                    "content-type": "multipart/form-data",
-                    Authorization: "Bearer " + Cookies.get("kalibrr-company"),
-                  },
-                }
-              )
+              })
               .then((res) => {
                 setTag("idle");
                 setPhoto(null);
@@ -122,15 +116,18 @@ export const CardBasicInformationCompany = () => {
           {image ? (
             <img
               src={image}
-              className="rounded-full w-full h-full object-cover"
+              className="w-full h-full object-cover"
               alt="profile"
             />
           ) : (
             <img
               src={
-                datas.photo ? datas.photo : companyStaticPhotoApi + datas.photo
+                datas.photo ===
+                "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+                  ? "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+                  : companyStaticPhotoApi + datas.photo
               }
-              className=" w-full h-full object-contain"
+              className=" w-full h-full object-cover"
               alt="profile"
             />
           )}

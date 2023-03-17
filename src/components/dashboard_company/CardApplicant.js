@@ -79,14 +79,14 @@ export const CardApplicant = () => {
         </div>
       )}
       {datas.map((data, i) => {
-        console.log(data);
         return (
           <div className="bg-white hover:shadow-md cursor-pointer flex flex-col md:flex-row items-center w-full justify-between rounded-md p-5 gap-3">
             <div className="flex items-center gap-2">
               <img
                 src={
-                  data.JobApplications[i].User.photo
-                    ? data.JobApplications[i].User.photo
+                  data.JobApplications[i].User.photo ===
+                  "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+                    ? "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
                     : userPhotoApi + data.JobApplications[i].User.photo
                 }
                 className="w-12 h-12 mb-10"

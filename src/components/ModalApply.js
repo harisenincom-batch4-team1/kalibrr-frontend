@@ -23,10 +23,11 @@ export const ModalApply = ({ userId, jobId, detailJob }) => {
     if (state.isLogin === false) {
       return navigate("/user/login");
     }
-    console.log(state.datas);
+
     if (!state.datas.resume) {
       return toast.error("Harap unggah resume anda");
     }
+    
     axios
       .post(
         applyJobApi,

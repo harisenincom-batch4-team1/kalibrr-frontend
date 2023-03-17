@@ -28,7 +28,6 @@ export const UserDashboardProfile = () => {
           headers: { Authorization: "Bearer " + Cookies.get("kalibrr") },
         })
           .then((res) => {
-            console.log(res.data.datas);
             dispatch({ type: "FETCH_SUCCESS", payload: res.data.datas });
           })
           .catch((err) => {
@@ -78,10 +77,10 @@ export const UserDashboardProfile = () => {
             toast.success("Berhasil mengubah foto profil");
           })
           .catch((err) => {
+            dispatch({ type: "ERROR" });
             if (err?.response?.data?.error) {
               return toast.error(err?.response?.data?.error);
             }
-            dispatch({ type: "ERROR" });
             return toast.error(err?.message);
           });
         break;

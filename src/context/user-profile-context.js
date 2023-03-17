@@ -227,6 +227,14 @@ export const UserProfileProvider = ({ children }) => {
               tag: "fetching",
             };
           }
+          case "CANCEL_EDIT": {
+            return {
+              ...state,
+              tag: "loaded",
+              photo: null,
+              photoPreview: null,
+            };
+          }
           default: {
             return state;
           }

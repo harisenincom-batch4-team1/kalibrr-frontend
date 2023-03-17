@@ -35,6 +35,12 @@ export const CompanyRegisterProvider = ({ children }) => {
               tag: "gettingotp",
             };
           }
+          case "SUBMIT": {
+            return {
+              ...state,
+              tag: "submitting",
+            };
+          }
           case "CHANGE_NAME": {
             return {
               ...state,
@@ -71,10 +77,35 @@ export const CompanyRegisterProvider = ({ children }) => {
               passwordInput: action.payload,
             };
           }
+          case "CHANGE_PASSWORD_CONFIRM": {
+            return {
+              ...state,
+              passwordConfirmInput: action.payload,
+            };
+          }
           case "SHOW_PASSWORD": {
             return {
               ...state,
               isShowPassword: action.payload,
+            };
+          }
+          case "SHOW_PASSWORD_CONFIRM": {
+            return {
+              ...state,
+              isShowPasswordConfirm: action.payload,
+            };
+          }
+          default: {
+            return state;
+          }
+        }
+      }
+      case "submitting": {
+        switch (action.type) {
+          case "SUBMIT_ERROR": {
+            return {
+              ...state,
+              tag: "idle",
             };
           }
           default: {

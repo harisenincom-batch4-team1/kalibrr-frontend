@@ -12,10 +12,7 @@ export const CardResume = () => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleResumeChange = (e) => {
-    console.log(e.target.files);
-    if (e.target.files) {
-      setResume(e.target.files[0]);
-    }
+    setResume(e.target.files[0]);
   };
 
   const handleSubmit = (e) => {
@@ -36,7 +33,6 @@ export const CardResume = () => {
             if (!res.data.datas.resume) {
               setStatus("empty");
             } else {
-              console.log(res.data.datas.resume);
               setDatas(res.data.datas.resume);
               setStatus("success");
             }
@@ -58,7 +54,8 @@ export const CardResume = () => {
             },
           })
           .then((res) => {
-            setStatus("success");
+            setStatus("fetching");
+            setResume(null);
             toast.success("Resume berhasil di simpan");
           })
           .catch((err) => {

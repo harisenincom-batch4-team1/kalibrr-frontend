@@ -12,6 +12,7 @@ import { Otp, Spinner, Stepper } from "components";
 import { PublicLayout } from "layouts";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export const CompanyRegister = () => {
   const {
@@ -23,15 +24,35 @@ export const CompanyRegister = () => {
   const dataGlobalContext = useGlobalContext();
   const { state, dispatch } = useCompanyRegisterContext();
 
+  const togglePasswordVisibility = (id) => {
+    switch (id) {
+      case "current":
+        state.tag !== "submitting" && state.isShowPassword
+          ? dispatch({ type: "SHOW_PASSWORD", payload: false })
+          : dispatch({ type: "SHOW_PASSWORD", payload: true });
+        break;
+      case "confirm":
+        state.tag !== "submitting" && state.isShowPasswordConfirm
+          ? dispatch({ type: "SHOW_PASSWORD_CONFIRM", payload: false })
+          : dispatch({ type: "SHOW_PASSWORD_CONFIRM", payload: true });
+        break;
+      default:
+        break;
+    }
+  };
+
   const onSubmit = (data) => {
     dispatch({ type: "CHANGE_NAME", payload: data.name });
     dispatch({ type: "CHANGE_EMAIL", payload: data.email });
     dispatch({ type: "CHANGE_PASSWORD", payload: data.password });
-    // dispatch({ type: "CHANGE_PASSWORD_CONFIRM", payload: data.password });
+    dispatch({
+      type: "CHANGE_PASSWORD_CONFIRM",
+      payload: data.passwordConfirm,
+    });
     dispatch({ type: "CHANGE_PHONE", payload: data.phone });
     dispatch({ type: "CHANGE_LOCATION", payload: data.location });
     dispatch({ type: "CHANGE_DESCRIPTION", payload: data.description });
-    dispatch({ type: "NEXT" });
+    dispatch({ type: "SUBMIT" });
   };
 
   useEffect(() => {
@@ -93,8 +114,28 @@ export const CompanyRegister = () => {
             }, 500);
           })
           .catch((err) => {
-            console.log(err);
             dispatch({ type: "CONFIRM_ERROR", payload: err?.message });
+            return toast.error(err?.response?.data?.message);
+          });
+        break;
+      case "submitting":
+        axios
+          .post(companyRegisterApi, {
+            name: state.nameInput,
+            email: state.emailInput,
+            location: state.locationInput,
+            phone: state.phoneInput,
+            password: state.passwordInput,
+            passwordConfirm: state.passwordConfirmInput,
+          })
+          .then((res) => {
+            toast.success("Berhasil membuat akun perusahaan");
+            setTimeout(() => {
+              navigate("/company/login");
+            }, 500);
+          })
+          .catch((err) => {
+            dispatch({ type: "SUBMIT_ERROR", payload: err?.message });
             return toast.error(err?.response?.data?.message);
           });
         break;
@@ -118,17 +159,17 @@ export const CompanyRegister = () => {
         style={{ backgroundImage: `url("/assets/bgSignup.webp")` }}
       >
         <div className="pt-28 pb-12">
-          <div className="max-w-[850px] px-5 md:px-10 mx-auto border rounded-lg bg-white py-10">
-            <Stepper />
+          <div className="max-w-[850px] px-4 md:px-10 mx-auto border rounded-lg bg-white pt-2 pb-10">
+            {/* <Stepper /> */}
             {state.tag === "idle" ||
             state.tag === "error" ||
-            state.tag === "gettingotp" ? (
+            state.tag === "submitting" ? (
               <>
                 <div className="mx-auto mb-10">
                   <h1 className="mt-10 text-center font-semibold text-3xl md:text-5xl">
                     Hai Rekruiter!
                   </h1>
-                  <p className="text-center text-gray-500 text-sm md:text-base max-w-[650px] mx-auto mt-2 md:mt-6 px-2 md:px-0">
+                  <p className="text-center text-gray-500 text-sm md:text-base max-w-[650px] mx-auto mt-2 md:mt-6 px-1 md:px-0">
                     Kami ingin mengetahui lebih banyak tentang Anda dan
                     perusahaan Anda sehingga kami dapat menyelesaikan kebutuhan
                     perekrutan Anda bersama-sama.
@@ -136,7 +177,6 @@ export const CompanyRegister = () => {
                 </div>
                 <div className="">
                   <p className="font-semibold text-2xl my-5">Informasi Dasar</p>
-
                   <form
                     onSubmit={handleSubmit(onSubmit)}
                     className="space-y-5 mx-auto"
@@ -238,6 +278,92 @@ export const CompanyRegister = () => {
                       </span>
                     </div>
 
+                    <div className="relative">
+                      <label className="block mb-1" htmlFor="password">
+                        Kata Sandi Perusahaan *
+                      </label>
+                      <input
+                        {...register("password", { required: true })}
+                        disabled={state.tag === "submitting"}
+                        className={
+                          errors.password?.type === "required"
+                            ? "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-blue-50"
+                            : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50"
+                        }
+                        name="password"
+                        id="password"
+                        type={state.isShowPassword ? "text" : "password"}
+                        placeholder="*****"
+                        autoComplete="off"
+                      />
+                      <span className="mb-2 -mt-1 text-xs md:text-sm text-red-600">
+                        {errors.password?.type === "required" &&
+                          "Kata sandi harus di isi"}
+                      </span>
+                      <div
+                        className={
+                          errors.password?.type === "required"
+                            ? "absolute bottom-0 right-3 opacity-50 cursor-pointer"
+                            : "absolute bottom-2 right-3 opacity-50 cursor-pointer"
+                        }
+                      >
+                        {state.isShowPassword ? (
+                          <FaEye
+                            size={25}
+                            onClick={() => togglePasswordVisibility("current")}
+                          />
+                        ) : (
+                          <FaEyeSlash
+                            size={25}
+                            onClick={() => togglePasswordVisibility("current")}
+                          />
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="relative">
+                      <label className="block mb-1" htmlFor="passwordConfirm">
+                        Konfirmasi Kata Sandi Perusahaan *
+                      </label>
+                      <input
+                        {...register("passwordConfirm", { required: true })}
+                        disabled={state.tag === "submitting"}
+                        className={
+                          errors.passwordConfirm?.type === "required"
+                            ? "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-blue-50"
+                            : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50"
+                        }
+                        name="passwordConfirm"
+                        id="passwordConfirm"
+                        type={state.isShowPasswordConfirm ? "text" : "password"}
+                        placeholder="*****"
+                        autoComplete="off"
+                      />
+                      <span className="mb-2 -mt-1 text-xs md:text-sm text-red-600">
+                        {errors.passwordConfirm?.type === "required" &&
+                          "Konfirmasi kata sandi harus di isi"}
+                      </span>
+                      <div
+                        className={
+                          errors.password?.type === "required"
+                            ? "absolute bottom-0 right-3 opacity-50 cursor-pointer"
+                            : "absolute bottom-2 right-3 opacity-50 cursor-pointer"
+                        }
+                      >
+                        {state.isShowPasswordConfirm ? (
+                          <FaEye
+                            size={25}
+                            onClick={() => togglePasswordVisibility("confirm")}
+                          />
+                        ) : (
+                          <FaEyeSlash
+                            size={25}
+                            onClick={() => togglePasswordVisibility("confirm")}
+                          />
+                        )}
+                      </div>
+                    </div>
+
                     {/* <div>
                       <label className="block mb-1" htmlFor="description">
                         Deskripsi Perusahaan *
@@ -281,7 +407,7 @@ export const CompanyRegister = () => {
                         className="h-10 w-full"
                         disabled={state.tag === "gettingotp"}
                       >
-                        {state.tag === "gettingotp" ? <Spinner /> : "Daftar"}
+                        {state.tag === "submitting" ? <Spinner /> : "Daftar"}
                       </Button>
                     </div>
 
@@ -302,7 +428,7 @@ export const CompanyRegister = () => {
             ) : (
               <></>
             )}
-            {state.tag === "onotp" || state.tag === "checkingotp" ? (
+            {/* {state.tag === "onotp" || state.tag === "checkingotp" ? (
               <Otp />
             ) : (
               <></>
@@ -313,7 +439,7 @@ export const CompanyRegister = () => {
               <ConfirmCompanyRegister />
             ) : (
               <></>
-            )}
+            )} */}
           </div>
         </div>
       </div>

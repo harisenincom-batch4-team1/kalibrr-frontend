@@ -92,8 +92,10 @@ export const JobDetail = () => {
             <div className="flex items-center gap-5 w-fit">
               <img
                 src={
-                  companyStaticPhotoApi + detailJob.Company.photo ||
-                  detailJob.Company.photo
+                  detailJob.Company.photo ===
+                  "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+                    ? "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+                    : companyStaticPhotoApi + detailJob.Company.photo
                 }
                 alt=""
                 className="w-28 h-28 object-contain border p-5 rounded-md bg-white"

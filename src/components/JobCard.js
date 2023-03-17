@@ -50,7 +50,10 @@ export const JobCard = () => {
           <div className="mt-4 md:mt-7 flex items-center gap-3">
             <img
               src={
-                companyStaticPhotoApi + data.Company.photo || data.Company.photo
+                data.Company.photo ===
+                "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+                  ? "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+                  : companyStaticPhotoApi + data.Company.photo
               }
               className="w-10 h-10 object-contain p-1 bg-white rounded-sm border"
             />
