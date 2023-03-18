@@ -49,6 +49,18 @@ export const ExploreJobs = ({ status, errorMsg, datas, truncate }) => {
             />
           </div>
         )}
+        {status === "empty" && (
+          <div className="mx-auto text-center w-full h-full">
+            <p className="text-base sm:text-lg font-medium pt-20">
+              Sepertinya belum ada lowongan pekerjaan
+            </p>
+            <img
+              src="/assets/empty.webp"
+              alt=""
+              className="mx-auto -mb-5 h-72"
+            />
+          </div>
+        )}
 
         <div className="w-full grid xl:grid-cols-3 xl:grid-rows-2 md:grid-cols-2 mt-10 gap-3">
           {status === "fetching" && (

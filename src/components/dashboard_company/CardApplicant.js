@@ -69,7 +69,7 @@ export const CardApplicant = () => {
   }, [status]);
 
   return (
-    <div className="max-w-[800px] mx-auto mt-5 px-5">
+    <div className="max-w-[800px] mx-auto mt-5 px-5 gap-4">
       {status === "empty" && (
         <div className="px-5">
           <p className="mx-auto text-center mt-20 text-sm sm:text-base md:text-xl font-medium">
@@ -80,7 +80,7 @@ export const CardApplicant = () => {
       )}
       {datas.map((data, i) => {
         return (
-          <div className="bg-white hover:shadow-md cursor-pointer flex flex-col md:flex-row items-center w-full justify-between rounded-md p-5 gap-3">
+          <div className="bg-white hover:shadow cursor-pointer flex border flex-col md:flex-row items-center w-full justify-between rounded-md p-5 gap-3">
             <div className="flex items-center gap-2">
               <img
                 src={

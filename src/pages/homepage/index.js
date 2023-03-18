@@ -33,8 +33,14 @@ export const Homepage = () => {
       case "fetching":
         axios(jobsApi + "?limit=6&page=0")
           .then((res) => {
-            setStatus("success");
-            setDatas(res.data.datas.result);
+            if (res.data.datas.result.length === 0) {
+              setStatus("empty");
+              return;
+            } else {
+              setStatus("success");
+              setDatas(res.data.datas.result);
+              return;
+            }
           })
           .catch((err) => {
             setStatus("error");

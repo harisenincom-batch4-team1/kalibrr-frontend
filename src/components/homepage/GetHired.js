@@ -92,6 +92,14 @@ export const GetHired = ({ status, errorMsg, datas, truncate, randomId }) => {
               <img src="/assets/error.webp" alt="" className="mx-auto -mb-5 h-64" />
             </div>
           )}
+          {status === "empty" && (
+            <div className="mx-auto text-center w-full h-full border rounded-lg bg-white">
+              <p className="text-base sm:text-lg font-medium pt-10">
+                Sepertinya belum ada lowongan pekerjaan 
+              </p>
+              <img src="/assets/empty.webp" alt="" className="mx-auto -mb-5 h-64" />
+            </div>
+          )}
           {status === "success" && (
             <div className="w-full gap-3 h-full p-5 pb-16 lg:pb-14 bg-white border rounded-lg hover:shadow dark:bg-gray-800 dark:border-gray-700 relative">
               <img
