@@ -3,6 +3,8 @@ import { PublicLayout } from "layouts";
 import { HeroSection, JobCategory, GetHired, ExploreJobs } from "components";
 
 export const Homepage = () => {
+
+
   return (
     <PublicLayout>
       <Helmet>

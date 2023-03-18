@@ -2,7 +2,7 @@ import { useJobListContext } from "context";
 import { Link, useNavigate } from "react-router-dom";
 
 export const HeroSection = () => {
-  const { dispatch } = useJobListContext();
+  const { state, dispatch } = useJobListContext();
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
@@ -14,9 +14,9 @@ export const HeroSection = () => {
   return (
     <>
       <div className="pt-16 md:pt-24" />
-      <div className="container mx-auto bg-[#f7f9fb] rounded-lg">
-        <div className="flex flex-auto mx-auto rounded-md">
-          <div className="lg:w-1/2 my-8">
+      <div className="max-w-[1280px] mx-auto bg-[#f7f9fb] rounded-lg">
+        <div className="flex flex-auto mx-auto rounded-md relative">
+          <div className="lg:w-1/2 w-full my-8">
             <div className="">
               <h1 className="text-3xl md:text-5xl font-extrabold">
                 Temukan pekerjaan impianmu bersama
@@ -28,7 +28,7 @@ export const HeroSection = () => {
                 Bersama Kalibrr, #kejarsuksesmu sekarang!
               </p>
             </div>
-            <div className="container mt-8">
+            <div className="mt-8">
               <form onSubmit={handleSearch}>
                 <label
                   htmlFor="default-search"
@@ -61,11 +61,12 @@ export const HeroSection = () => {
                         payload: e.target.value,
                       })
                     }
+                    value={state.inputValue}
                     type="search"
                     id="default-search"
                     className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Cari pekerjaan yang kamu mau"
-                    required=""
+                    required
                     autoComplete="off"
                   />
                   <button
@@ -86,11 +87,11 @@ export const HeroSection = () => {
               </div>
             </div>
           </div>
-          <div className="hidden lg:block container lg:w-1/2 my-8">
+          <div className="hidden lg:block lg:w-1/2 absolute right-0 bottom-3">
             <img
               src={"/assets/Hero.png"}
               alt=""
-              className="flex bg-cover opacity-90 mx-auto"
+              className="hidden lg:block"
             />
           </div>
         </div>
