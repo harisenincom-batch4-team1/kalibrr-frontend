@@ -5,7 +5,7 @@ import {
   userResumeApi,
 } from "api";
 import axios from "axios";
-import { Button, Dropdown } from "flowbite-react";
+import { Button, Dropdown, Spinner } from "flowbite-react";
 import Cookies from "js-cookie";
 import moment from "moment";
 import { useEffect, useState } from "react";
@@ -16,6 +16,7 @@ export const CardApplicant = () => {
   const [id, setId] = useState(0);
   const [applyStatus, setApplyStatus] = useState("");
   const [status, setStatus] = useState("fetching");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = (value, id) => {
     setStatus("submitting");
@@ -39,8 +40,8 @@ export const CardApplicant = () => {
             setDatas(res.data.datas);
           })
           .catch((err) => {
-            toast.error(err?.message);
-            setStatus("error", err?.message);
+            setErrorMsg(err?.message);
+            setStatus("error");
           });
         break;
       case "submitting":
@@ -76,6 +77,17 @@ export const CardApplicant = () => {
             Belum ada pengguna yang melamar
           </p>
           <img src="/assets/empty-user-apply.png" className="mx-auto" />
+        </div>
+      )}
+      {status === "error" && (
+        <div className="mx-auto text-center w-fit mt-20">
+          <p className="text-base sm:text-lg font-medium">{errorMsg}</p>
+          <img src="/assets/error.webp" alt="" className="mx-auto -mt-10" />
+        </div>
+      )}
+      {status === "fetching" && (
+        <div className="mt-5 w-full h-96 flex justify-center items-center">
+          <Spinner size="lg" />
         </div>
       )}
       {datas.map((data, i) => {
