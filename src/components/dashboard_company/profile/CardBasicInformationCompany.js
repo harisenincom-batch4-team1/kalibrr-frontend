@@ -112,7 +112,7 @@ export const CardBasicInformationCompany = () => {
         {tag === "loaded" ? "Edit" : "Batal"}
       </button>
       <div className="bg-white py-3 px-4 md:flex md:flex-col gap-5">
-        <div className="w-16 h-16 md:w-24 md:h-24 overflow-hidden sm:ml-6 mt-2">
+        <div className="w-16 h-16 border object-cover rounded-lg md:w-24 md:h-24 overflow-hidden sm:ml-8 mt-2">
           {image ? (
             <img
               src={image}
@@ -137,11 +137,11 @@ export const CardBasicInformationCompany = () => {
             <input
               onChange={handlePhotoChange}
               type="file"
-              className="-mt-5 bg-gray-400 rounded-full w-10 h-fit absolute left-12 opacity-0 z-10 top-28 sm:left-16 sm:top-28 md:left-24 md:top-36"
+              className="-mt-5 bg-gray-400 rounded-full w-10 h-fit absolute left-12 opacity-0 z-10 top-28 sm:left-16 sm:top-28 md:left-28 md:top-36"
               placeholder="Ganti foto"
               name="Ganti foto"
             />
-            <AiFillEdit className=" bg-gray-200 cursor-pointer -mt-5 rounded-full w-6 p-1 h-fit absolute left-14 top-32 sm:left-20 sm:top-32 md:left-28 md:top-40" />
+            <AiFillEdit className=" bg-gray-200 cursor-pointer -mt-5 rounded-full w-6 p-1 h-fit absolute left-16 top-32 sm:left-24 sm:top-32 md:left-32 md:top-40" />
             <form
               onSubmit={handleSubmit}
               className="max-w-full flex flex-wrap justify-between gap-y-2 mt-5 relative"

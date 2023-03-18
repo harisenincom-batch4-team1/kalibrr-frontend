@@ -1,9 +1,50 @@
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { PublicLayout } from "layouts";
 import { HeroSection, JobCategory, GetHired, ExploreJobs } from "components";
+import { jobsApi } from "api";
+import axios from "axios";
 
 export const Homepage = () => {
+  const [status, setStatus] = useState("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [datas, setDatas] = useState([]);
+  const [randomNumber, setRandomNumber] = useState(0);
 
+  const truncate = (text, number) => {
+    if (text.length > number) {
+      return text.slice(0, number) + "...";
+    }
+    return text;
+  };
+
+  const randomId = () => {
+    const number = Math.floor(Math.random() * 6);
+
+    setRandomNumber(number);
+  };
+
+  useEffect(() => {
+    switch (status) {
+      case "idle":
+        setStatus("fetching");
+        randomId();
+        break;
+      case "fetching":
+        axios(jobsApi + "?limit=6&page=0")
+          .then((res) => {
+            setStatus("success");
+            setDatas(res.data.datas.result);
+          })
+          .catch((err) => {
+            setStatus("error");
+            setErrorMsg(err?.message);
+          });
+        break;
+      default:
+        break;
+    }
+  }, [status]);
 
   return (
     <PublicLayout>
@@ -13,8 +54,19 @@ export const Homepage = () => {
       <main className="px-5">
         <HeroSection />
         <JobCategory />
-        <GetHired />
-        <ExploreJobs />
+        <GetHired
+          datas={datas}
+          errorMsg={errorMsg}
+          status={status}
+          truncate={truncate}
+          randomId={randomNumber}
+        />
+        <ExploreJobs
+          datas={datas}
+          errorMsg={errorMsg}
+          status={status}
+          truncate={truncate}
+        />
       </main>
     </PublicLayout>
   );

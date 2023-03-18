@@ -1,7 +1,8 @@
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { companyStaticPhotoApi } from "api";
+import { HomeGetHiredSkeleton } from "components/skeletons";
 import { Link } from "react-router-dom";
 
-export const GetHired = () => {
+export const GetHired = ({ status, errorMsg, datas, truncate, randomId }) => {
   return (
     <div className="flex flex-col h-fit max-w-[1280px] mx-auto bg-[#f7f9fb] rounded-lg my-10 md:mt-14 pb-10">
       <div className="container pb-4 w-full lg:w-1/2">
@@ -80,46 +81,67 @@ export const GetHired = () => {
             </div>
           </Link>
         </div>
+
         <div className="flex min-h-full items-center justify-center w-full lg:w-1/2">
-          <div className="w-full gap-3 relative h-full p-5 bg-white border rounded-lg hover:shadow dark:bg-gray-800 dark:border-gray-700">
-            <img
-              src={"/assets/TravelokaLogo.webp"}
-              alt=""
-              className="w-32 h-fit object-contain"
-            />
-            <div className="p-2">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Data Engineer
-              </h5>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Responsibilities: Developing front-end web architecture
-                Developing/extending front-end components. Ensuring
-                responsiveness and scalability of applications. Understand and
-                translate business requirements into a...
+          {status === "fetching" && <HomeGetHiredSkeleton />}
+          {status === "error" && (
+            <div className="mx-auto text-center w-full h-full border rounded-lg bg-white">
+              <p className="text-base sm:text-lg font-medium pt-10">
+                {errorMsg}
               </p>
-              <Link
-                to="/"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Lebih lengkap
-                <svg
-                  aria-hidden="true"
-                  className="w-4 h-4 ml-2 -mr-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </Link>
+              <img src="/assets/error.webp" alt="" className="mx-auto -mb-5 h-64" />
             </div>
-          </div>
+          )}
+          {status === "success" && (
+            <div className="w-full gap-3 h-full p-5 pb-16 lg:pb-14 bg-white border rounded-lg hover:shadow dark:bg-gray-800 dark:border-gray-700 relative">
+              <img
+                src={
+                  datas[randomId].Company.photo ===
+                  "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+                    ? "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+                    : companyStaticPhotoApi + datas[randomId].Company.photo
+                }
+                alt=""
+                className="w-24 h-24 rounded-lg object-cover"
+              />
+              <div className="mt-3">
+                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {datas[randomId].Company.name}
+                </h5>
+                <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                  {datas[randomId].name}
+                </h5>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: truncate(datas[randomId].jobDescription, 80),
+                  }}
+                  className="mb-3 font-normal text-gray-700 dark:text-gray-400"
+                />
+                <Link
+                  to={`/job/${datas[randomId].id}`}
+                  className="inline-flex absolute bottom-5 items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Lebih lengkap
+                  <svg
+                    aria-hidden="true"
+                    className="w-4 h-4 ml-2 -mr-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
+
       {/* 2nd section */}
       {/* <div className="max-w-[1200px] flex flex-col-reverse md:flex-row mx-auto w-full">
         <div className="container flex items-center justify-center w-full lg:w-1/2">

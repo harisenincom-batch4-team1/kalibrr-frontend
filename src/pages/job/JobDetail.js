@@ -98,7 +98,7 @@ export const JobDetail = () => {
                     : companyStaticPhotoApi + detailJob.Company.photo
                 }
                 alt=""
-                className="w-28 h-28 object-contain border p-5 rounded-md bg-white"
+                className="w-28 h-28 object-cover border rounded-md bg-white"
               />
               <div className="">
                 <h1 className="font-semibold text-xl sm:hidden">

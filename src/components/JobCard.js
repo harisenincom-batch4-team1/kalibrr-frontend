@@ -55,7 +55,7 @@ export const JobCard = () => {
                   ? "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
                   : companyStaticPhotoApi + data.Company.photo
               }
-              className="w-10 h-10 object-contain p-1 bg-white rounded-sm border"
+              className="w-10 h-10 object-cover bg-white rounded-md border"
             />
             <div className="">
               <h1 className="text-sm font-bold">{data.Company.name}</h1>
