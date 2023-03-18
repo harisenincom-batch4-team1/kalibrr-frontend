@@ -1,6 +1,16 @@
-import { Link } from "react-router-dom";
+import { useJobListContext } from "context";
+import { Link, useNavigate } from "react-router-dom";
 
 export const HeroSection = () => {
+  const { dispatch } = useJobListContext();
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch({ type: "FETCH" });
+    navigate("/job");
+  };
+
   return (
     <>
       <div className="pt-16 md:pt-24" />
@@ -19,103 +29,60 @@ export const HeroSection = () => {
               </p>
             </div>
             <div className="container mt-8">
-              <form>
-                <div className="flex">
-                  <button
-                    id=""
-                    data-dropdown-toggle="dropdown"
-                    className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
-                    type="button"
-                  >
-                    Nama Pekerjaan
+              <form onSubmit={handleSearch}>
+                <label
+                  htmlFor="default-search"
+                  className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                >
+                  Search
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg
                       aria-hidden="true"
-                      className="w-4 h-4 ml-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+                      className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fillRule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clipRule="evenodd"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                       />
                     </svg>
-                  </button>
-                  <div
-                    id=""
-                    className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  </div>
+                  <input
+                    onChange={(e) =>
+                      dispatch({
+                        type: "CHANGE_INPUT",
+                        payload: e.target.value,
+                      })
+                    }
+                    type="search"
+                    id="default-search"
+                    className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Cari pekerjaan yang kamu mau"
+                    required=""
+                    autoComplete="off"
+                  />
+                  <button
+                    type="submit"
+                    className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
-                    <ul
-                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdown-button"
-                    >
-                      <li>
-                        <button
-                          type="button"
-                          className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Nama Pekerjaan
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          type="button"
-                          className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Lokasi
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          type="button"
-                          className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Perusahaan
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="relative w-full ">
-                    <input
-                      type="search"
-                      id="search-dropdown"
-                      className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
-                      placeholder="Pekerjaan apa yang kamu inginkan?"
-                      required
-                      autoComplete="off"
-                    />
-                    <button
-                      type="submit"
-                      className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-600 rounded-r-lg border border-[#0086ff] hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                        />
-                      </svg>
-                      <span className="sr-only">Pencarian</span>
-                    </button>
-                  </div>
+                    Cari
+                  </button>
                 </div>
               </form>
             </div>
             <div className="container mt-8 font-semibold">
               <p>Pencarian Populer: </p>
               <div className="text-gray-500">
-                <a href="/">Software developer, </a>
-                <a href="/">UI/UX Designer, </a>
-                <a href="/">Digital Marketer </a>
+                <Link to="/">Software developer, </Link>
+                <Link to="/">UI/UX Designer, </Link>
+                <Link to="/">Digital Marketer </Link>
               </div>
             </div>
           </div>

@@ -48,7 +48,14 @@ const App = () => {
           <ScrollToTop />
           <ToastContainer />
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route
+              path="/"
+              element={
+                <JobListProvider>
+                  <Homepage />
+                </JobListProvider>
+              }
+            />
             <Route
               path="/job"
               element={

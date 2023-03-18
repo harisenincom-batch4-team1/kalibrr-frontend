@@ -23,6 +23,12 @@ export const JobListProvider = ({ children }) => {
               tag: "fetching",
             };
           }
+          case "CHANGE_INPUT": {
+            return {
+              ...state,
+              inputValue: action.payload,
+            };
+          }
           default: {
             return state;
           }
