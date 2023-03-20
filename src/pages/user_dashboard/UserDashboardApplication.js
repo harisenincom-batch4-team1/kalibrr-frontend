@@ -53,8 +53,10 @@ export const UserDashboardApplication = () => {
         </div>
       )}
       {state.tag === "loaded" && (
-        <div className="px-5">
-          <Card />
+        <div className="max-w-full h-[95%] sm:pb-16 mx-auto gap-2 pr-16 sm:pr-0 rounded-lg overflow-hidden overflow-y-scroll overflow-x-scroll scrollbar-hide">
+          <div className="px-5 rounded-lg overflow-hidden">
+            <Card />
+          </div>
         </div>
       )}
       {state.tag === "empty" && (

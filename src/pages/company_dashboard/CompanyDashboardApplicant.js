@@ -15,7 +15,11 @@ export const CompanyDashboardApplicant = () => {
         ></link>
       </Helmet>
       <HeaderTitleCompany title={"Pelamar"} />
-      <CardApplicant />
+      <div
+        className="max-w-full mx-auto gap-2 sm:pr-0 rounded-lg overflow-hidden overflow-y-scroll overflow-x-scroll scrollbar-hide"
+      >
+        <CardApplicant />
+      </div>
     </DashboardLayoutCompany>
   );
 };

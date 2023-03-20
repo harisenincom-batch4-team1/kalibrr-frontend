@@ -1,15 +1,10 @@
-import {
-  companyUserApplyApi,
-  userGetResumeApi,
-  userPhotoApi,
-  userResumeApi,
-} from "api";
-import axios from "axios";
-import { Button, Dropdown, Spinner } from "flowbite-react";
-import Cookies from "js-cookie";
-import moment from "moment";
 import { useEffect, useState } from "react";
+import { companyUserApplyApi, userGetResumeApi, userPhotoApi } from "api";
+import { Dropdown, Spinner, Button } from "flowbite-react";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
+import axios from "axios";
+import moment from "moment";
 
 export const CardApplicant = () => {
   const [datas, setDatas] = useState([]);
@@ -36,8 +31,8 @@ export const CardApplicant = () => {
             if (res.data.datas.length === 0) {
               return setStatus("empty");
             }
-            setStatus("success");
             setDatas(res.data.datas);
+            setStatus("success");
           })
           .catch((err) => {
             setErrorMsg(err?.message);
@@ -70,7 +65,7 @@ export const CardApplicant = () => {
   }, [status]);
 
   return (
-    <div className="max-w-[800px] mx-auto mt-5 px-5 gap-4">
+    <div className="max-w-[800px] mx-auto sm:mt-20 pt-5 mx-auto px-5 gap-4 overflow-hidden">
       {status === "empty" && (
         <div className="px-5">
           <p className="mx-auto text-center mt-20 text-sm sm:text-base md:text-xl font-medium">
@@ -92,89 +87,69 @@ export const CardApplicant = () => {
       )}
       {datas.map((data, i) => {
         return (
-          <div className="bg-white hover:shadow cursor-pointer flex border flex-col md:flex-row items-center w-full justify-between rounded-md p-5 gap-3">
-            <div className="flex items-center gap-2">
+          <div
+            key={i}
+            className="w-full bg-white mb-5 gap-4 hover:shadow cursor-pointer flex border flex-col md:flex-row md:items-center justify-between rounded-md p-3 sm:p-5"
+          >
+            <div className="flex items-center gap-4">
               <img
                 src={
-                  data.JobApplications[i].User.photo ===
+                  data.User?.photo ===
                   "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
                     ? "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
-                    : userPhotoApi + data.JobApplications[i].User.photo
+                    : userPhotoApi + data.User?.photo
                 }
-                className="w-12 h-12 mb-10"
+                className="w-12 h-12 mb-14 object-cover rounded-full"
               />
               <div>
-                <p className="font-semibold">
-                  {data.JobApplications[i].User.name}
-                </p>
-                <p className="text-sm">{data.JobApplications[i].User.email}</p>
+                <p className="font-semibold">{data?.User?.name}</p>
+                <p className="text-sm">{data?.User?.email}</p>
                 <p className="text-sm mt-2">
-                  Pekerjaan yang dilamar <br /> {data.name} -{" "}
-                  {moment(data.createdAt).format("MM/DD/YYYY")}
+                  Pekerjaan yang dilamar <br /> {data?.Job?.name}
+                </p>
+                <p className="text-xs mt-2">
+                  {moment(data?.createdAt).format("MM/DD/YYYY")}
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <a
-                href={userGetResumeApi + data.JobApplications[i].User.resume}
-                target="_blank"
-              >
+              <a href={userGetResumeApi + data?.User?.resume} target="_blank">
                 <Button color={"gray"}>Lihat resume</Button>
               </a>
               <Dropdown
-                label={data.JobApplications[i].status}
-                color={
-                  data.JobApplications[i].status === "rejected"
-                    ? "failure"
-                    : "gray"
-                }
+                label={data?.status}
+                color={data?.status === "rejected" ? "failure" : "gray"}
               >
                 <Dropdown.Item
-                  onClick={() =>
-                    handleSubmit("onreview", data.JobApplications[i].id)
-                  }
+                  onClick={() => handleSubmit("onreview", data.id)}
                 >
                   Onreview
                 </Dropdown.Item>
                 <Dropdown.Item
-                  onClick={() =>
-                    handleSubmit("selected", data.JobApplications[i].id)
-                  }
+                  onClick={() => handleSubmit("selected", data.id)}
                 >
                   Selected
                 </Dropdown.Item>
                 <Dropdown.Item
-                  onClick={() =>
-                    handleSubmit("interview", data.JobApplications[i].id)
-                  }
+                  onClick={() => handleSubmit("interview", data.id)}
                 >
                   Interview
                 </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() =>
-                    handleSubmit("test", data.JobApplications[i].id)
-                  }
-                >
+                <Dropdown.Item onClick={() => handleSubmit("test", data.id)}>
                   Test
                 </Dropdown.Item>
                 <Dropdown.Item
-                  onClick={() =>
-                    handleSubmit("offering", data.JobApplications[i].id)
-                  }
+                  onClick={() => handleSubmit("offering", data.id)}
                 >
                   Offering
                 </Dropdown.Item>
                 <Dropdown.Item
-                  onClick={() =>
-                    handleSubmit("recruited", data.JobApplications[i].id)
-                  }
+                  onClick={() => handleSubmit("recruited", data.id)}
                 >
                   Recruited
                 </Dropdown.Item>
                 <Dropdown.Item
-                  onClick={() =>
-                    handleSubmit("rejected", data.JobApplications[i].id)
-                  }
+                  onClick={() => handleSubmit("rejected", data.id)}
                 >
                   Rejected
                 </Dropdown.Item>

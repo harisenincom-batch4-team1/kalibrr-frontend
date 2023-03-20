@@ -6,8 +6,8 @@ export const Card = () => {
   const { state } = useUserJobApplicationContext();
 
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-[800px] mx-auto my-5">
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg overflow-hidden max-w-[800px] mx-auto my-5">
+      <table className="w-full text-sm text-left rounded-lg text-gray-500 dark:text-gray-400">
         <thead className="text-xs uppercase bg-blue-600 text-white dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
@@ -23,7 +23,7 @@ export const Card = () => {
             return (
               <tr
                 key={i}
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                className="bg-white relative border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
                 <th
                   scope="row"
@@ -37,7 +37,7 @@ export const Card = () => {
                           ? "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
                           : companyStaticPhotoApi + data.Job.Company.photo
                       }
-                      className="w-16 h-16 object-contain border-[1px] rounded-sm p-2"
+                      className="w-16 h-16 object-cover rounded-md border"
                     />
                     <div className="mb-3">
                       <p className="text-lg font-semibold">{data.Job.name}</p>
@@ -52,7 +52,7 @@ export const Card = () => {
                 </th>
                 <td className="px-6 py-4 text-center">
                   {data.status === "rejected" ? (
-                    <div className="flex flex-col gap-1 items-center justify-center">
+                    <div className="flex flex-col gap-1 -mb-4 items-center justify-center">
                       <p className="w-fit bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
                         {data.status}
                       </p>
@@ -61,7 +61,7 @@ export const Card = () => {
                       </p>
                     </div>
                   ) : (
-                    <div className="flex flex-col gap-1 items-center justify-center text-center">
+                    <div className="flex flex-col gap-1 -mb-4 items-center justify-center text-center">
                       <span className="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
                         {data.status}
                       </span>

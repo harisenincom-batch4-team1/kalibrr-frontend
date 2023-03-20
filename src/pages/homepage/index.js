@@ -18,17 +18,10 @@ export const Homepage = () => {
     return text;
   };
 
-  const randomId = () => {
-    const number = Math.floor(Math.random() * 6);
-
-    setRandomNumber(number);
-  };
-
   useEffect(() => {
     switch (status) {
       case "idle":
         setStatus("fetching");
-        randomId();
         break;
       case "fetching":
         axios(jobsApi + "?limit=6&page=0")
@@ -37,8 +30,11 @@ export const Homepage = () => {
               setStatus("empty");
               return;
             } else {
-              setStatus("success");
               setDatas(res.data.datas.result);
+              setRandomNumber(
+                Math.floor(Math.random() * res.data.datas.result.length)
+              );
+              setStatus("success");
               return;
             }
           })

@@ -21,6 +21,12 @@ export const GlobalProvider = ({ children }) => {
               tag: "fetching",
             };
           }
+          case "FETCH_COMPANY": {
+            return {
+              ...state,
+              tag: "fetching_company",
+            };
+          }
           default: {
             return state;
           }

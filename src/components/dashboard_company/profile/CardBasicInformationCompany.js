@@ -6,8 +6,10 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { AiFillEdit } from "react-icons/ai";
+import { useGlobalContext } from "context";
 
 export const CardBasicInformationCompany = () => {
+  const { state, dispatch } = useGlobalContext();
   const [tag, setTag] = useState("idle");
   const [image, setImagePreview] = useState(null);
   const [photo, setPhoto] = useState(null);
@@ -58,7 +60,7 @@ export const CardBasicInformationCompany = () => {
         })
           .then((res) => {
             setTag("loaded");
-            setDatas(res.data.datas[0]);
+            setDatas(res.data.datas);
           })
           .catch((err) => {
             setTag("error");
@@ -89,6 +91,7 @@ export const CardBasicInformationCompany = () => {
                 setTag("idle");
                 setPhoto(null);
                 toast.success(res.data.message);
+                dispatch({ type: "FETCH_COMPANY" });
               })
               .catch((err) => {
                 toast.error(err?.message);
@@ -116,7 +119,7 @@ export const CardBasicInformationCompany = () => {
         </div>
       )}
       {tag === "loaded" || tag === "edit" || tag === "submitting" ? (
-        <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border-gray-200 border relative">
+        <div className="max-w-[800px] sm:mt-20 mx-auto rounded-lg overflow-hidden border-gray-200 border relative">
           <h1 className="text-white font-medium text-sm md:text-base bg-blue-600 py-3 px-4">
             Informasi Dasar
           </h1>
@@ -159,7 +162,7 @@ export const CardBasicInformationCompany = () => {
                 <AiFillEdit className=" bg-gray-200 cursor-pointer -mt-5 rounded-full w-6 p-1 h-fit absolute left-16 top-32 sm:left-24 sm:top-32 md:left-32 md:top-40" />
                 <form
                   onSubmit={handleSubmit}
-                  className="max-w-full flex flex-wrap justify-between gap-y-2 mt-5 relative"
+                  className="max-w-full flex flex-wrap sm:pb-5 justify-between gap-y-2 relative sm:px-8"
                 >
                   <div className="w-full">
                     <label

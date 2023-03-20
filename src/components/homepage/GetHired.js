@@ -89,15 +89,23 @@ export const GetHired = ({ status, errorMsg, datas, truncate, randomId }) => {
               <p className="text-base sm:text-lg font-medium pt-10">
                 {errorMsg}
               </p>
-              <img src="/assets/error.webp" alt="" className="mx-auto -mb-5 h-64" />
+              <img
+                src="/assets/error.webp"
+                alt=""
+                className="mx-auto -mb-5 h-64"
+              />
             </div>
           )}
           {status === "empty" && (
             <div className="mx-auto text-center w-full h-full border rounded-lg bg-white">
               <p className="text-base sm:text-lg font-medium pt-10">
-                Sepertinya belum ada lowongan pekerjaan 
+                Sepertinya belum ada lowongan pekerjaan
               </p>
-              <img src="/assets/empty.webp" alt="" className="mx-auto -mb-5 h-64" />
+              <img
+                src="/assets/empty.webp"
+                alt=""
+                className="mx-auto -mb-5 h-64"
+              />
             </div>
           )}
           {status === "success" && (
@@ -121,7 +129,7 @@ export const GetHired = ({ status, errorMsg, datas, truncate, randomId }) => {
                 </h5>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: truncate(datas[randomId].jobDescription, 80),
+                    __html: truncate(datas[randomId].jobDescription, 90),
                   }}
                   className="mb-3 font-normal text-gray-700 dark:text-gray-400"
                 />

@@ -46,6 +46,8 @@ export const UserProfileProvider = ({ children }) => {
               phoneInput: "",
               emailInput: "",
               errorMessage: "",
+              photo: null,
+              photoPreview: null,
             };
           }
           case "FETCH_ERROR": {

@@ -15,7 +15,7 @@ export const CompanyDashboardProfile = () => {
         ></link>
       </Helmet>
       <HeaderTitleCompany title={"Profil Perusahaan"} />
-      <div className="max-w-full h-[95%] pb-16 mx-auto p-2 space-y-2 overflow-hidden overflow-y-scroll scrollbar-hide">
+      <div className="pb-16 mx-auto p-2 space-y-2 overflow-hidden overflow-y-scroll scrollbar-hide">
         <CardBasicInformationCompany />
       </div>
     </DashboardLayoutCompany>

@@ -74,6 +74,7 @@ export const UserDashboardProfile = () => {
           })
           .then(() => {
             dispatch({ type: "FETCHING" });
+            data.dispatch({ type: "FETCH_USER" });
             toast.success("Berhasil mengubah foto profil");
           })
           .catch((err) => {

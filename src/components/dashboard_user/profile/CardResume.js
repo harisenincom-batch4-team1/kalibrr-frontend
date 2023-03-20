@@ -1,11 +1,13 @@
+import { useEffect, useState } from "react";
 import { userResumeApi } from "api";
 import axios from "axios";
+import { useGlobalContext } from "context";
 import { Button } from "flowbite-react";
 import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export const CardResume = () => {
+  const { dispatch } = useGlobalContext();
   const [status, setStatus] = useState("idle");
   const [datas, setDatas] = useState(null);
   const [resume, setResume] = useState(null);
@@ -56,6 +58,7 @@ export const CardResume = () => {
           .then((res) => {
             setStatus("fetching");
             setResume(null);
+            dispatch({ type: "FETCH_USER" });
             toast.success("Resume berhasil di simpan");
           })
           .catch((err) => {

@@ -24,6 +24,7 @@ export const Navbar = () => {
   useEffect(() => {
     switch (state.tag) {
       case "idle":
+        // dispatch({ type: "FETCH_COMPANY" });
         dispatch({ type: "FETCH" });
         break;
       case "fetching":

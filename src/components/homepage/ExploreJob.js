@@ -97,7 +97,7 @@ export const ExploreJobs = ({ status, errorMsg, datas, truncate }) => {
                       </h5>
                       <div
                         dangerouslySetInnerHTML={{
-                          __html: truncate(data.jobDescription, 50),
+                          __html: truncate(data.jobDescription, 90),
                         }}
                         className="mb-3 font-normal text-gray-700 dark:text-gray-400"
                       />

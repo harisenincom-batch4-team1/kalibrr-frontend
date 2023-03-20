@@ -12,7 +12,7 @@ import {
   FaBuilding,
 } from "react-icons/fa";
 import Cookies from "js-cookie";
-import { companyPhotoApi, userPhotoApi } from "api";
+import { companyPhotoApi, companyStaticPhotoApi, userPhotoApi } from "api";
 
 export const NavbarDropdown = () => {
   const { state, dispatch } = useGlobalContext();
@@ -23,22 +23,33 @@ export const NavbarDropdown = () => {
     Cookies.remove("kalibrr-company");
   };
 
+  const navbarPhoto = () => {
+    if (state.datas.photo === "https://cdn-icons-png.flaticon.com/512/3177/3177440.png") {
+      return "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+    } else {
+      return userPhotoApi + state.datas.photo
+    }
+  }
+
+  const navbarPhotoCompany = () => {
+    if (state.datas.photo === "https://cdn-icons-png.flaticon.com/512/2098/2098316.png") {
+      return "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
+    } else{
+      return companyStaticPhotoApi + state.datas.photo
+    }
+  }
+
   return (
     <Dropdown
       icon={FaPaperPlane}
-      label={state.datas.name || state?.datas[0]?.name}
+      label={state.datas.name}
     >
       <Dropdown.Header>
-        {/* <img
-          src={
-            state.datas.photo ===
-            "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
-              ? "https://cdn-icons-png.flaticon.com/512/2098/2098316.png"
-              : userPhotoApi + state.datas.photo
-          }
+        <img
+          src={state.isLogin ? navbarPhoto() : navbarPhotoCompany()}
           alt="profile"
-          className="w-10 h-10 mx-auto mb-5 object-fit rounded-full"
-        /> */}
+          className="w-10 h-10 mx-auto mb-5 object-cover rounded-full"
+        />
         <span className="block text-sm">
           {state.datas.name || state?.datas[0]?.name}
         </span>

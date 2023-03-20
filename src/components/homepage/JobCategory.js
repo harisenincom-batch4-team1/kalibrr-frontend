@@ -21,7 +21,7 @@ export const JobCategory = () => {
             karirmu dengan cepat bersama orang lain.
           </p>
         </div>
-        <div className="container grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mx-auto pb-10">
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mx-auto pb-10">
           <div className=" bg-white border flex flex-col justify-between py-4 pl-4 min-w-1/2 sm:min-w-4/12 lg:min-w-3/12 h-32 rounded-lg hover:shadow transition cursor-pointer">
             <FaDesktop className="text-[#0086ff]" size={32} />
             <p className="text-base font-bold mt-3">Digital Marketing</p>
