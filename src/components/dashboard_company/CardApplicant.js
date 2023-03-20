@@ -65,7 +65,7 @@ export const CardApplicant = () => {
   }, [status]);
 
   return (
-    <div className="max-w-[800px] mx-auto sm:mt-20 pt-5 mx-auto px-5 gap-4 overflow-hidden">
+    <div className="max-w-[800px] mx-auto sm:mt-20 pt-5 px-5 gap-4 overflow-hidden">
       {status === "empty" && (
         <div className="px-5">
           <p className="mx-auto text-center mt-20 text-sm sm:text-base md:text-xl font-medium">
