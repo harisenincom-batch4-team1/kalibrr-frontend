@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
+    "env-cmd": "^10.1.0",
     "flowbite": "^1.6.3",
     "flowbite-react": "^0.3.8",
     "js-cookie": "^3.0.1",
@@ -27,8 +28,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:local": "env-cmd -f .env.local react-scripts start",
+    "start:stg": "env-cmd -f .env.staging react-scripts start",
+    "build:local": "env-cmd -f .env.local react-scripts build",
+    "build:stg": "env-cmd -f .env.staging react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

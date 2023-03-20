@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { userResumeApi } from "api";
+import { userGetResumeApi, userResumeApi } from "api";
 import axios from "axios";
 import { useGlobalContext } from "context";
 import { Button } from "flowbite-react";
@@ -83,7 +83,7 @@ export const CardResume = () => {
         {datas && (
           <a
             className="mb-3"
-            href={"http://localhost:9000/static/uploads/users/" + datas}
+            href={userGetResumeApi + datas}
             target="_blank"
           >
             <Button>Lihat Resume</Button>
