@@ -1,25 +1,20 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { companyStaticPhotoApi, jobsApi } from "api";
+import axios from "axios";
 import { JobDetailSkeleton } from "components";
+import { ModalApply } from "components/ModalApply";
 import { useGlobalContext } from "context";
 import { PublicLayout } from "layouts";
-import { Button } from "flowbite-react";
-import { Helmet } from "react-helmet";
-import { applyJobApi, companyStaticPhotoApi, jobsApi } from "api";
-import axios from "axios";
 import moment from "moment";
+import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+import { useParams } from "react-router-dom";
 import rupiahFormat from "rupiah-format";
-import { toast } from "react-toastify";
-import Cookies from "js-cookie";
-import { ModalApply } from "components/ModalApply";
 
 export const JobDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
   const [detailJob, setDetailJob] = useState(null);
-  const [isApplied, setIsApplied] = useState(false);
 
-  const navigate = useNavigate();
   const { id } = useParams();
   const { state, dispatch } = useGlobalContext();
 
@@ -81,7 +76,7 @@ export const JobDetail = () => {
             <span
               className={
                 detailJob.status == 0 &&
-                "absolute top-0 right-4 sm:right-28 bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"
+                "absolute top-24 sm:top-0 right-4 sm:right-28 bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"
               }
             >
               {detailJob.status == 0 && "Close"}
@@ -98,23 +93,26 @@ export const JobDetail = () => {
                     : companyStaticPhotoApi + detailJob.Company.photo
                 }
                 alt=""
-                className="w-28 h-28 object-cover border rounded-md bg-white"
+                className="w-28 h-28 object-cover border rounded-md bg-white -mt-4 sm:mt-0"
               />
               <div className="">
-                <h1 className="font-semibold text-xl sm:hidden">
+                {/* <h1 className="font-semibold text-xl sm:hidden">
                   {truncate(detailJob.name, 15)}
-                </h1>
-                <h1 className="font-semibold text-xl hidden sm:block">
+                </h1> */}
+                <h1 className="font-semibold text-xl">
                   {truncate(detailJob.name)}
                 </h1>
                 <div className="sm:mb-4 font-semibold flex items-center w-fit mb-10">
-                  <span className="hover:underline cursor-pointer ">
-                    {detailJob.Company.name}
-                  </span>{" "}
-                  -{" "}
+                  <span className="hover:underline cursor-pointer text-sm sm:text-base">
+                    {detailJob.Company.name} <br className="sm:hidden" />{" "}
+                    <span className="hidden sm:inline"> - </span>{" "}
+                    {detailJob.Company.location}
+                  </span>
+                  {/*
                   <span className="cursor-default no-underline">
                     {detailJob.Company.location}
                   </span>
+                  */}
                 </div>
                 <div className="absolute top-32 left-5 sm:static">
                   <span className="bg-green-100 text-green-800 text-xs font-medium mr-1 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300 ">
@@ -125,10 +123,10 @@ export const JobDetail = () => {
                     {rupiahFormat.convert(detailJob.salaryMax)}
                   </span>
                 </div>
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-green-300">
+                <span className="bg-blue-100 absolute top-24 sm:static text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-green-300">
                   {detailJob.tenure}
                 </span>
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                <span className="bg-blue-100 absolute top-24 left-60 sm:static text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
                   {detailJob.type}
                 </span>
               </div>

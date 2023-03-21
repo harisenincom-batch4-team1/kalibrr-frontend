@@ -71,7 +71,7 @@ export const CardApplicant = () => {
           <p className="mx-auto text-center mt-20 text-sm sm:text-base md:text-xl font-medium">
             Belum ada pengguna yang melamar
           </p>
-          <img src="/assets/empty-user-apply.png" className="mx-auto" />
+          <img src="/assets/empty-user-apply.webp" className="mx-auto" />
         </div>
       )}
       {status === "error" && (

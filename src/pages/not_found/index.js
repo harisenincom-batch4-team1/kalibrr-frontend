@@ -13,7 +13,7 @@ export const NotFound = () => {
         ></link>
       </Helmet>
       <div className="flex flex-col mx-auto w-screen h-screen bg-slate-300 items-center justify-center px-2">
-        <img src={"/assets/404.png"} alt="Halaman tidak ditemukan" className="w-48 h-fit md:w-96"/>
+        <img src={"/assets/404.webp"} alt="Halaman tidak ditemukan" className="w-48 h-fit md:w-96"/>
         <p className="text-xl md:text-4xl text-center font-bold">
           Ups! Halaman yang kamu akses tidak ditemukan.
         </p>

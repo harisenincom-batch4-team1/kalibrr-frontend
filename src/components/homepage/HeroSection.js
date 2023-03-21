@@ -88,11 +88,7 @@ export const HeroSection = () => {
             </div>
           </div>
           <div className="hidden lg:block lg:w-1/2 absolute right-0 bottom-3">
-            <img
-              src={"/assets/Hero.png"}
-              alt=""
-              className="hidden lg:block"
-            />
+            <img src={"/assets/Hero.webp"} alt="" className="hidden lg:block" />
           </div>
         </div>
 
@@ -101,7 +97,7 @@ export const HeroSection = () => {
             <div className="container mx-auto">
               <Link to="/">
                 <img
-                  src={"/assets/BCAlogo.png"}
+                  src={"/assets/BCAlogo.webp"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
@@ -110,7 +106,7 @@ export const HeroSection = () => {
             <div className="container mx-auto">
               <Link to="/">
                 <img
-                  src={"/assets/BNIlogo.png"}
+                  src={"/assets/BNIlogo.webp"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
@@ -119,7 +115,7 @@ export const HeroSection = () => {
             <div className="container mx-auto">
               <Link to="/">
                 <img
-                  src={"/assets/TokopediaLogo.png"}
+                  src={"/assets/TokopediaLogo.webp"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
@@ -128,7 +124,7 @@ export const HeroSection = () => {
             <div className="container mx-auto">
               <Link to="/">
                 <img
-                  src={"/assets/RuangguruLogo.png"}
+                  src={"/assets/RuangguruLogo.webp"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />
@@ -137,7 +133,7 @@ export const HeroSection = () => {
             <div className="container mx-auto">
               <Link to="/">
                 <img
-                  src={"/assets/ShopeeLogo.png"}
+                  src={"/assets/ShopeeLogo.webp"}
                   alt=""
                   className="max-w-fit w-52 h-36 content-center object-contain mx-auto"
                 />

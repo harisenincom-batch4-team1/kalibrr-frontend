@@ -276,6 +276,9 @@ export const CompanyJobProvider = ({ children }) => {
             return {
               ...state,
               tag: "loaded",
+              descriptionInput: "",
+              qualificationInput: "",
+
             };
           }
           case "CHANGE_DESCRIPTION": {

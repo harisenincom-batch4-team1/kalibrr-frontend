@@ -1,15 +1,13 @@
-import { useCompanyJobContext } from "context";
-import { Button, Label, Modal, Radio } from "flowbite-react";
-import { HiOutlineExclamationCircle } from "react-icons/hi2";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import moment from "moment";
-import { Spinner } from "components/Spinner";
-import { DefaultEditor } from "react-simple-wysiwyg";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { toast } from "react-toastify";
 import { companyJobApi } from "api";
+import axios from "axios";
+import { Spinner } from "components/Spinner";
+import { useCompanyJobContext } from "context";
+import { Button, Label, Radio } from "flowbite-react";
+import Cookies from "js-cookie";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { DefaultEditor } from "react-simple-wysiwyg";
+import { toast } from "react-toastify";
 
 export const FormEdit = () => {
   const { state, dispatch } = useCompanyJobContext();
@@ -230,7 +228,6 @@ export const FormEdit = () => {
               placeholder="8000000"
               autoComplete="off"
               className="rounded-full"
-              defaultValue={state.editDatas.status}
               value={1}
               disabled={state.tag === "submitting"}
             />
@@ -247,7 +244,6 @@ export const FormEdit = () => {
               autoComplete="off"
               className="rounded-full"
               value={0}
-              defaultValue={state.editDatas.status}
               disabled={state.tag === "submitting"}
             />
             <Label htmlFor="status" value="Tutup" />
