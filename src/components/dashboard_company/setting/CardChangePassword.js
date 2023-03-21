@@ -86,7 +86,7 @@ export const CardChangePasswordCompany = () => {
   }, [state.tag]);
 
   return (
-    <div className="max-w-[800px] mx-auto rounded-lg overflow-hidden border border-gray-200">
+    <div className="max-w-[800px] sm:mt-20 z-0 mx-auto rounded-lg overflow-hidden border border-gray-200">
       <h1 className="text-white font-medium text-sm md:text-base bg-blue-600 py-3 px-4">
         Ubah Kata Sandi Perusahaan
       </h1>
