@@ -22,7 +22,7 @@ export const GetHired = ({ status, errorMsg, datas, truncate, randomId }) => {
           >
             <div className="container flex flex-row gap-x-3 lg:flex-col grow-0 max-w-80 h-26 bg-white p-3">
               <img
-                src={"/assets/TokopediaLogo.png"}
+                src={"/assets/TokopediaLogo.webp"}
                 alt=""
                 className="w-16 h-16 object-cover"
               />
@@ -38,7 +38,7 @@ export const GetHired = ({ status, errorMsg, datas, truncate, randomId }) => {
           >
             <div className="container flex flex-row gap-x-3 lg:flex-col grow-0 max-w-80 h-26 bg-white p-3">
               <img
-                src={"/assets/RuangguruLogo.png"}
+                src={"/assets/RuangguruLogo.webp"}
                 alt=""
                 className="w-16 h-16 object-contain"
               />
@@ -54,7 +54,7 @@ export const GetHired = ({ status, errorMsg, datas, truncate, randomId }) => {
           >
             <div className="container flex flex-row gap-x-3 lg:flex-col grow-0 max-w-80 h-26 bg-white p-3">
               <img
-                src={"/assets/ShopeeLogo.png"}
+                src={"/assets/ShopeeLogo.webp"}
                 alt=""
                 className="w-16 h-16 object-contain"
               />
@@ -70,7 +70,7 @@ export const GetHired = ({ status, errorMsg, datas, truncate, randomId }) => {
           >
             <div className="container flex flex-row gap-x-3 lg:flex-col grow-0 max-w-80 h-26 bg-white p-3">
               <img
-                src={"/assets/BCAlogo.png"}
+                src={"/assets/BCAlogo.webp"}
                 alt=""
                 className="w-16 h-16 object-contain"
               />
