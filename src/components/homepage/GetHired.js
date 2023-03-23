@@ -10,8 +10,7 @@ export const GetHired = ({ status, errorMsg, datas, truncate, randomId }) => {
           Dapatkan pekerjaan dari perusahaan populer
         </h3>
         <p className="mt-4 text-gray-600 text-sm md:text-base md:text-left lg:text-lg mx-auto text-center">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus,
-          laboriosam assumenda.
+          Lihat pekerjaan unggulan dari perusahaan, atau mulai melamar sekarang
         </p>
       </div>
       <div className="flex flex-col lg:flex-row gap-3 h-full">
